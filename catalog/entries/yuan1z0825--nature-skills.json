@@ -1,0 +1,12 @@
+{
+  "id": "yuan1z0825-nature-skills",
+  "kind": "skill",
+  "repository": { "owner": "Yuan1z0825", "name": "nature-skills", "url": "https://github.com/Yuan1z0825/nature-skills" },
+  "title": "Nature Skills",
+  "summary": "Chinese and English skills for Nature-style academic writing and scientific figures.",
+  "license": "Apache-2.0",
+  "topics": ["research", "writing", "figures"],
+  "artifacts": [{ "type": "skill", "path": "skills", "status": "verified" }],
+  "curated": true,
+  "notes": "Community-maintained project with active upstream contributions."
+}

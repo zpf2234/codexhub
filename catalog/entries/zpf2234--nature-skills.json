@@ -1,0 +1,12 @@
+{
+  "id": "zpf2234-nature-skills",
+  "kind": "skill",
+  "repository": { "owner": "zpf2234", "name": "nature-skills", "url": "https://github.com/zpf2234/nature-skills" },
+  "title": "Nature Skills Fork",
+  "summary": "A maintained fork of Nature Skills with community-facing workflow updates.",
+  "license": "Apache-2.0",
+  "topics": ["research", "writing", "skills"],
+  "artifacts": [{ "type": "skill", "path": "skills", "status": "declared" }],
+  "curated": true,
+  "notes": "Fork relationship is retained so users can compare it with the canonical upstream project."
+}

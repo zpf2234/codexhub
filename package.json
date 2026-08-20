@@ -1,0 +1,26 @@
+{
+  "name": "codexhub",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Community-maintained index and quality signals for the Codex ecosystem.",
+  "repository": { "type": "git", "url": "https://github.com/zpf2234/codexhub.git" },
+  "homepage": "https://zpf2234.github.io/codexhub/",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build-catalog.mjs",
+    "build:cached": "node scripts/build-catalog.mjs --cached",
+    "build:offline": "node scripts/build-catalog.mjs --offline",
+    "refresh": "node scripts/build-catalog.mjs --write-cache",
+    "check": "node scripts/validate-entry.mjs",
+    "preview": "node scripts/serve.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "playwright test"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1"
+  }
+}

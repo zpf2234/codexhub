@@ -1,0 +1,12 @@
+{
+  "id": "microsoft-playwright-mcp",
+  "kind": "mcp",
+  "repository": { "owner": "microsoft", "name": "playwright-mcp", "url": "https://github.com/microsoft/playwright-mcp" },
+  "title": "Playwright MCP",
+  "summary": "Microsoft-maintained browser automation MCP server powered by Playwright.",
+  "license": "Apache-2.0",
+  "topics": ["mcp", "browser", "automation"],
+  "artifacts": [{ "type": "mcp", "path": "server.json", "status": "verified" }],
+  "curated": true,
+  "notes": "Metadata-only listing; CodexHub never launches or connects to this server."
+}

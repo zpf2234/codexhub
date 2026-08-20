@@ -1,0 +1,12 @@
+{
+  "id": "openai-plugins",
+  "kind": "plugin",
+  "repository": { "owner": "openai", "name": "plugins", "url": "https://github.com/openai/plugins" },
+  "title": "OpenAI Plugins",
+  "summary": "Reusable plugin packages for ChatGPT and Codex integrations.",
+  "license": "NOASSERTION",
+  "topics": ["plugins", "mcp", "codex"],
+  "artifacts": [{ "type": "plugin", "path": ".codex-plugin/plugin.json", "status": "declared" }],
+  "curated": true,
+  "notes": "Official plugin ecosystem repository; plugin metadata is tracked without executing components."
+}

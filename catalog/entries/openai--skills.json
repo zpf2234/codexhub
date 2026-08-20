@@ -1,0 +1,12 @@
+{
+  "id": "openai-skills",
+  "kind": "skill",
+  "repository": { "owner": "openai", "name": "skills", "url": "https://github.com/openai/skills" },
+  "title": "OpenAI Skills",
+  "summary": "Reusable skills that extend ChatGPT and Codex with focused workflows.",
+  "license": "NOASSERTION",
+  "topics": ["skills", "workflow", "codex"],
+  "artifacts": [{ "type": "skill", "path": "skills/.curated", "status": "verified" }],
+  "curated": true,
+  "notes": "Official skills collection; listed for ecosystem context, not endorsement."
+}

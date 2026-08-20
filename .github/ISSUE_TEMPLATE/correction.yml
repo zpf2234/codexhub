@@ -1,0 +1,19 @@
+name: Correct or remove a listing
+description: Report inaccurate metadata, ownership, safety, or removal concerns.
+title: "[Catalog correction]: "
+labels: [catalog-correction]
+body:
+  - type: input
+    id: repository
+    attributes:
+      label: Repository or entry URL
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What should change?
+      description: Include public evidence. Do not include credentials or private data.
+    validations:
+      required: true
+

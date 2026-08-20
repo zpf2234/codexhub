@@ -1,0 +1,11 @@
+{
+  "id": "agentsmd-agents-md",
+  "kind": "agents",
+  "repository": { "owner": "agentsmd", "name": "agents.md", "url": "https://github.com/agentsmd/agents.md" },
+  "title": "AGENTS.md Specification",
+  "summary": "An open format and community reference for repository-scoped agent instructions.",
+  "license": "MIT",
+  "topics": ["agents-md", "documentation", "conventions"],
+  "artifacts": [{ "type": "agents", "path": "AGENTS.md", "status": "verified" }],
+  "curated": true
+}

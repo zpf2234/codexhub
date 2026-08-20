@@ -1,0 +1,295 @@
+{
+  "addyosmani-agent-skills": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T19:14:54.041Z",
+    "defaultBranch": "main",
+    "stars": 88793,
+    "forks": 9513,
+    "isArchived": false,
+    "updatedAt": "2026-08-14T18:51:33Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": true,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "plugin",
+        "path": ".codex-plugin/plugin.json",
+        "status": "verified"
+      },
+      {
+        "type": "agents",
+        "path": "AGENTS.md",
+        "status": "verified"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4988"
+  },
+  "agentsmd-agents-md": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T19:14:59.903Z",
+    "defaultBranch": "main",
+    "stars": 23755,
+    "forks": 1788,
+    "isArchived": false,
+    "updatedAt": "2026-03-12T14:26:14Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": true,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "agents",
+        "path": "AGENTS.md",
+        "status": "verified"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4985"
+  },
+  "openai-codex": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T19:15:20.634Z",
+    "defaultBranch": "main",
+    "stars": 107096,
+    "forks": 16280,
+    "isArchived": false,
+    "updatedAt": "2026-08-20T19:10:23Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": false,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "codex",
+        "path": "README.md",
+        "status": "verified"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4970"
+  },
+  "openai-codex-action": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T19:15:15.531Z",
+    "defaultBranch": "main",
+    "stars": 1199,
+    "forks": 153,
+    "isArchived": false,
+    "updatedAt": "2026-08-18T12:32:45Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": true,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "action",
+        "path": "action.yml",
+        "status": "verified"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4973"
+  },
+  "github-github-mcp-server": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T19:15:04.230Z",
+    "defaultBranch": "main",
+    "stars": 32386,
+    "forks": 4828,
+    "isArchived": false,
+    "updatedAt": "2026-08-20T16:19:33Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": true,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "mcp",
+        "path": "server.json",
+        "status": "verified"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4982"
+  },
+  "yuan1z0825-nature-skills": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T19:15:33.096Z",
+    "defaultBranch": "main",
+    "stars": 36241,
+    "forks": 2030,
+    "isArchived": false,
+    "updatedAt": "2026-08-20T07:03:35Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": true,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "skill",
+        "path": "skills",
+        "status": "verified"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4961"
+  },
+  "microsoft-playwright-mcp": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T19:15:07.518Z",
+    "defaultBranch": "main",
+    "stars": 36306,
+    "forks": 3042,
+    "isArchived": false,
+    "updatedAt": "2026-08-20T17:47:50Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": true,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "mcp",
+        "path": "server.json",
+        "status": "verified"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4979"
+  },
+  "obra-superpowers": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T19:15:11.760Z",
+    "defaultBranch": "main",
+    "stars": 274837,
+    "forks": 24594,
+    "isArchived": false,
+    "updatedAt": "2026-08-19T17:33:23Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": false,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "plugin",
+        "path": ".codex-plugin/plugin.json",
+        "status": "verified"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4976"
+  },
+  "openai-skills": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T19:15:28.052Z",
+    "defaultBranch": "main",
+    "stars": 25061,
+    "forks": 1701,
+    "isArchived": false,
+    "updatedAt": "2026-07-14T16:47:46Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": true,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "skill",
+        "path": "skills/.curated",
+        "status": "verified"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4964"
+  },
+  "zpf2234-mathmodel-skills": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T19:15:38.127Z",
+    "defaultBranch": "main",
+    "stars": 0,
+    "forks": 0,
+    "isArchived": false,
+    "updatedAt": "2026-07-23T10:11:16Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": true,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "skill",
+        "path": "skills",
+        "status": "declared"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4958"
+  },
+  "zpf2234-nature-skills": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T19:15:42.315Z",
+    "defaultBranch": "main",
+    "stars": 0,
+    "forks": 0,
+    "isArchived": false,
+    "updatedAt": "2026-07-19T04:29:45Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": true,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "skill",
+        "path": "skills",
+        "status": "declared"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4955"
+  },
+  "openai-plugins": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T19:15:24.511Z",
+    "defaultBranch": "main",
+    "stars": 5133,
+    "forks": 717,
+    "isArchived": false,
+    "updatedAt": "2026-08-20T19:08:32Z",
+    "hasReadme": true,
+    "hasInstall": false,
+    "hasUsage": true,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "plugin",
+        "path": ".codex-plugin/plugin.json",
+        "status": "declared"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4967"
+  }
+}

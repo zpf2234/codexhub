@@ -1,0 +1,12 @@
+{
+  "id": "openai-codex",
+  "kind": "tool",
+  "repository": { "owner": "openai", "name": "codex", "url": "https://github.com/openai/codex" },
+  "title": "Codex CLI",
+  "summary": "The open-source Codex coding agent and CLI for software development.",
+  "license": "Apache-2.0",
+  "topics": ["agent", "cli", "coding"],
+  "artifacts": [{ "type": "codex", "path": "README.md", "status": "verified" }],
+  "curated": true,
+  "notes": "Official open-source Codex component; listed for ecosystem context, not endorsement."
+}

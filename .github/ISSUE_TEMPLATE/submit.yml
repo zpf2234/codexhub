@@ -1,0 +1,34 @@
+name: Submit a project
+description: Propose a public Codex ecosystem project for review.
+title: "[Submission]: "
+labels: [submission]
+body:
+  - type: input
+    id: repository
+    attributes:
+      label: Repository URL
+      placeholder: https://github.com/owner/repository
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Primary artifact
+      options: [Skill, Plugin, MCP server, AGENTS.md resource]
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Artifact paths and evidence
+      description: List paths such as SKILL.md, .codex-plugin/plugin.json, AGENTS.md, or server documentation.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: The repository is public and I am not claiming OpenAI endorsement.
+          required: true
+

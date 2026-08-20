@@ -1,0 +1,11 @@
+{
+  "id": "obra-superpowers",
+  "kind": "plugin",
+  "repository": { "owner": "obra", "name": "superpowers", "url": "https://github.com/obra/superpowers" },
+  "title": "Superpowers",
+  "summary": "A tested collection of planning, TDD, debugging, review, and worktree skills.",
+  "license": "MIT",
+  "topics": ["skills", "tdd", "workflow"],
+  "artifacts": [{ "type": "plugin", "path": ".codex-plugin/plugin.json", "status": "verified" }],
+  "curated": true
+}

@@ -1,0 +1,12 @@
+{
+  "id": "openai-codex-action",
+  "kind": "action",
+  "repository": { "owner": "openai", "name": "codex-action", "url": "https://github.com/openai/codex-action" },
+  "title": "Codex GitHub Action",
+  "summary": "A GitHub Action for running Codex in controlled repository workflows.",
+  "license": "Apache-2.0",
+  "topics": ["github-actions", "ci", "codex"],
+  "artifacts": [{ "type": "action", "path": "action.yml", "status": "verified" }],
+  "curated": true,
+  "notes": "Official action; CodexHub indexes its public metadata and does not execute it."
+}

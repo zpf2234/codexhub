@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schemaVersion", "scoreVersion", "generatedAt", "refreshStatus", "entries"],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "scoreVersion": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "refreshStatus": { "enum": ["fresh", "partial", "offline", "stale"] },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "entries": { "type": "array", "items": { "type": "object", "required": ["id", "kind", "repository", "title", "summary", "license", "artifacts", "metadata", "score"], "additionalProperties": true } }
+  },
+  "additionalProperties": true
+}

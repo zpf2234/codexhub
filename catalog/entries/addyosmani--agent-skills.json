@@ -1,0 +1,11 @@
+{
+  "id": "addyosmani-agent-skills",
+  "kind": "plugin",
+  "repository": { "owner": "addyosmani", "name": "agent-skills", "url": "https://github.com/addyosmani/agent-skills" },
+  "title": "Agent Skills",
+  "summary": "Production-oriented skills and Codex plugin packaging for common engineering workflows.",
+  "license": "MIT",
+  "topics": ["skills", "plugin", "engineering"],
+  "artifacts": [{ "type": "plugin", "path": ".codex-plugin/plugin.json", "status": "verified" }, { "type": "agents", "path": "AGENTS.md", "status": "verified" }],
+  "curated": true
+}

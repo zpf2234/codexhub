@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A community-maintained index and quality radar for the Codex ecosystem." />
+    <title>CodexHub - Codex Ecosystem Index</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="CodexHub home"><span class="brand-mark">CH</span><span>CodexHub</span></a>
+      <nav><a href="https://github.com/zpf2234/codexhub">GitHub</a><a href="./api/v1/catalog.json">API</a></nav>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">Community-maintained · Independent</p>
+        <h1 id="page-title">Find dependable building blocks for Codex.</h1>
+        <p class="lede">Search Skills, Plugins, MCP servers, and AGENTS.md resources. Compare transparent quality signals without confusing popularity for quality.</p>
+        <div class="search-row">
+          <label class="search"><span>Search</span><input id="search" type="search" placeholder="Search projects, owners, and topics" autocomplete="off" /></label>
+          <label class="sort"><span>Sort</span><select id="sort"><option value="quality">Quality</option><option value="stars">Stars</option><option value="updated">Recently updated</option><option value="name">Name</option></select></label>
+        </div>
+        <div id="filters" class="filters" aria-label="Artifact type filters"></div>
+        <p id="status-banner" class="status-banner" hidden></p>
+      </section>
+      <section class="metrics" aria-label="Catalog statistics">
+        <div><strong id="entry-count">0</strong><span>reviewed entries</span></div>
+        <div><strong id="ranked-count">0</strong><span>ranked entries</span></div>
+        <div><strong id="updated-at">-</strong><span>last refresh</span></div>
+      </section>
+      <section class="catalog" aria-labelledby="catalog-title">
+        <div class="section-title"><div><p class="eyebrow">Evidence-backed catalog</p><h2 id="catalog-title">Ecosystem radar</h2></div><p id="result-count" aria-live="polite"></p></div>
+        <div id="results" class="results"></div>
+        <div id="empty" class="empty" hidden><h3>No matches</h3><p>Try another search term or include more artifact types.</p></div>
+      </section>
+      <section class="method" aria-labelledby="method-title">
+        <div><p class="eyebrow">How rankings work</p><h2 id="method-title">Inspectable signals, not a black box.</h2></div>
+        <div class="method-grid"><p><strong>Quality</strong> measures specification conformance, documentation, maintenance, distribution hygiene, and transparency.</p><p><strong>Popularity</strong> shows stars and forks separately. It never increases the quality score.</p><p><strong>Safety</strong> means the indexer reads bounded public metadata. It never executes indexed code or connects to MCP servers.</p></div>
+      </section>
+    </main>
+    <footer><p>CodexHub is not affiliated with or endorsed by OpenAI. Listings are not security audits or endorsements.</p><a href="https://github.com/zpf2234/codexhub/issues">Submit or correct an entry</a></footer>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

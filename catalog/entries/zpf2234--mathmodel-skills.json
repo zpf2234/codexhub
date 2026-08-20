@@ -1,0 +1,11 @@
+{
+  "id": "zpf2234-mathmodel-skills",
+  "kind": "skill",
+  "repository": { "owner": "zpf2234", "name": "mathmodel-skills", "url": "https://github.com/zpf2234/mathmodel-skills" },
+  "title": "MathModel Skills",
+  "summary": "Chinese mathematical modeling and paper-production skills for Codex workflows.",
+  "license": "Apache-2.0",
+  "topics": ["math", "research", "skills"],
+  "artifacts": [{ "type": "skill", "path": "skills", "status": "declared" }],
+  "curated": true
+}

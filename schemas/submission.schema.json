@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["id", "kind", "repository", "title", "summary", "license", "artifacts", "curated"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,80}$" },
+    "kind": { "enum": ["skill", "plugin", "mcp", "agents", "action", "tool"] },
+    "repository": { "type": "object", "required": ["owner", "name", "url"], "properties": { "owner": { "type": "string" }, "name": { "type": "string" }, "url": { "type": "string", "format": "uri" } }, "additionalProperties": false },
+    "title": { "type": "string", "minLength": 3, "maxLength": 120 },
+    "summary": { "type": "string", "minLength": 20, "maxLength": 280 },
+    "license": { "type": "string", "minLength": 1 },
+    "artifacts": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["type", "path", "status"], "properties": { "type": { "type": "string" }, "path": { "type": "string" }, "status": { "enum": ["verified", "declared", "unknown"] } }, "additionalProperties": false } },
+    "topics": { "type": "array", "items": { "type": "string" } },
+    "curated": { "type": "boolean" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

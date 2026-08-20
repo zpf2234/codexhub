@@ -1,0 +1,12 @@
+{
+  "id": "github-github-mcp-server",
+  "kind": "mcp",
+  "repository": { "owner": "github", "name": "github-mcp-server", "url": "https://github.com/github/github-mcp-server" },
+  "title": "GitHub MCP Server",
+  "summary": "GitHub-maintained MCP server for repository, issue, pull request, and workflow operations.",
+  "license": "MIT",
+  "topics": ["mcp", "github", "automation"],
+  "artifacts": [{ "type": "mcp", "path": "server.json", "status": "verified" }],
+  "curated": true,
+  "notes": "Metadata-only listing; CodexHub never launches or connects to this server."
+}
