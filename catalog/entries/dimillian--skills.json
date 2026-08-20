@@ -1,0 +1,11 @@
+{
+  "id": "dimillian-skills",
+  "kind": "skill",
+  "repository": { "owner": "Dimillian", "name": "Skills", "url": "https://github.com/Dimillian/Skills" },
+  "title": "Dimillian Skills",
+  "summary": "A focused collection of Codex skills for iOS, macOS, code review, and swarm workflows.",
+  "license": "MIT",
+  "topics": ["skills", "ios", "macos"],
+  "artifacts": [{ "type": "skill", "path": "app-store-changelog/SKILL.md", "status": "verified" }],
+  "curated": true
+}

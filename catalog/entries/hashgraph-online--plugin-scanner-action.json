@@ -1,0 +1,12 @@
+{
+  "id": "hashgraph-online-plugin-scanner-action",
+  "kind": "action",
+  "repository": { "owner": "hashgraph-online", "name": "hol-codex-plugin-scanner-action", "url": "https://github.com/hashgraph-online/hol-codex-plugin-scanner-action" },
+  "title": "Codex Plugin Scanner Action",
+  "summary": "A GitHub Action for scanning plugin metadata and producing registry-oriented reports.",
+  "license": "Apache-2.0",
+  "topics": ["github-actions", "plugins", "ci"],
+  "artifacts": [{ "type": "action", "path": "action.yml", "status": "verified" }],
+  "curated": true,
+  "notes": "Experimental community action; inspect workflow permissions before use."
+}

@@ -22,11 +22,12 @@
           <label class="sort"><span>Sort</span><select id="sort"><option value="quality">Quality</option><option value="stars">Stars</option><option value="updated">Recently updated</option><option value="name">Name</option></select></label>
         </div>
         <div id="filters" class="filters" aria-label="Artifact type filters"></div>
-        <p id="status-banner" class="status-banner" hidden></p>
+        <p id="status-banner" class="status-banner">Loading catalog...</p>
+        <div id="compare-bar" class="compare-bar" hidden><span id="compare-count">0 selected</span><button id="compare-open" type="button">Compare selected</button><button id="compare-clear" class="quiet-button" type="button">Clear</button></div>
       </section>
       <section class="metrics" aria-label="Catalog statistics">
-        <div><strong id="entry-count">0</strong><span>reviewed entries</span></div>
-        <div><strong id="ranked-count">0</strong><span>ranked entries</span></div>
+        <div><strong id="entry-count">—</strong><span>reviewed entries</span></div>
+        <div><strong id="ranked-count">—</strong><span>ranked entries</span></div>
         <div><strong id="updated-at">-</strong><span>last refresh</span></div>
       </section>
       <section class="catalog" aria-labelledby="catalog-title">
@@ -39,6 +40,7 @@
         <div class="method-grid"><p><strong>Quality</strong> measures specification conformance, documentation, maintenance, distribution hygiene, and transparency.</p><p><strong>Popularity</strong> shows stars and forks separately. It never increases the quality score.</p><p><strong>Safety</strong> means the indexer reads bounded public metadata. It never executes indexed code or connects to MCP servers.</p></div>
       </section>
     </main>
+    <dialog id="compare-dialog"><div class="dialog-header"><div><p class="eyebrow">Side-by-side</p><h2>Compare projects</h2></div><button id="compare-close" class="dialog-close" type="button" aria-label="Close comparison">Close</button></div><div id="compare-content"></div></dialog>
     <footer><p>CodexHub is not affiliated with or endorsed by OpenAI. Listings are not security audits or endorsements.</p><a href="https://github.com/zpf2234/codexhub/issues">Submit or correct an entry</a></footer>
     <script type="module" src="./app.js"></script>
   </body>

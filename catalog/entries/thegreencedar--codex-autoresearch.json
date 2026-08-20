@@ -1,0 +1,11 @@
+{
+  "id": "thegreencedar-codex-autoresearch",
+  "kind": "plugin",
+  "repository": { "owner": "TheGreenCedar", "name": "codex-autoresearch", "url": "https://github.com/TheGreenCedar/codex-autoresearch" },
+  "title": "Codex Autoresearch",
+  "summary": "A measurable optimization-loop plugin for iterating against tests, benchmarks, or other printed targets.",
+  "license": "Apache-2.0",
+  "topics": ["plugins", "optimization", "benchmarks"],
+  "artifacts": [{ "type": "plugin", "path": "plugins/codex-autoresearch/.codex-plugin/plugin.json", "status": "verified" }, { "type": "agents", "path": "AGENTS.md", "status": "verified" }],
+  "curated": true
+}

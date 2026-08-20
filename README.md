@@ -14,6 +14,8 @@ Browse the live catalog at https://zpf2234.github.io/codexhub/.
 - Detects supported Codex artifacts without executing repository code.
 - Scores specification conformance, documentation, maintenance, distribution hygiene, and transparency.
 - Builds a static searchable site and `dist/api/v1/catalog.json`.
+- Compares up to three projects with quality and popularity signals side by side.
+- Discovers review candidates weekly without auto-publishing them.
 - Runs deterministic checks locally and on GitHub Actions.
 
 ### Quick start

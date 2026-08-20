@@ -1,10 +1,12 @@
 import { test, expect } from '@playwright/test';
 
 test('loads catalog and filters by artifact type', async ({ page }) => {
+  const catalog = await (await page.request.get('/api/v1/catalog.json')).json();
+  const expected = catalog.entries.filter((entry) => entry.kind === 'plugin').length;
   await page.goto('/?kind=plugin&sort=stars');
-  await expect(page.locator('#result-count')).toHaveText('3 results');
+  await expect(page.locator('#result-count')).toHaveText(`${expected} results`);
   await expect(page.locator('.filter.active')).toContainText('Plugins');
-  await expect(page.locator('.card')).toHaveCount(3);
+  await expect(page.locator('.card')).toHaveCount(expected);
   await expect(page.locator('.card').first().locator('.score')).toBeVisible();
 });
 
@@ -29,4 +31,15 @@ test('mobile layout has no horizontal overflow', async ({ page }) => {
   await page.goto('/');
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(overflow).toBeLessThanOrEqual(1);
+});
+
+test('compares two projects side by side', async ({ page }) => {
+  await page.goto('/?kind=mcp');
+  await page.locator('.compare-button').nth(0).click();
+  await page.locator('.compare-button').nth(1).click();
+  await expect(page.locator('#compare-count')).toHaveText('2 selected');
+  await page.locator('#compare-open').click();
+  await expect(page.locator('#compare-dialog')).toBeVisible();
+  await expect(page.locator('.compare-table')).toContainText('Quality score');
+  await expect(page.locator('.compare-table thead th')).toHaveCount(3);
 });

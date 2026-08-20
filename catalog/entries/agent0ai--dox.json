@@ -1,0 +1,11 @@
+{
+  "id": "agent0ai-dox",
+  "kind": "agents",
+  "repository": { "owner": "agent0ai", "name": "dox", "url": "https://github.com/agent0ai/dox" },
+  "title": "Dox AGENTS.md Generator",
+  "summary": "A self-documenting AGENTS.md tool for capturing repository context and conventions.",
+  "license": "MIT",
+  "topics": ["agents-md", "documentation", "tooling"],
+  "artifacts": [{ "type": "agents", "path": "AGENTS.md", "status": "verified" }],
+  "curated": true
+}

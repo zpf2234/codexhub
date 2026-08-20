@@ -1,0 +1,12 @@
+{
+  "id": "microsoft-mcp",
+  "kind": "mcp",
+  "repository": { "owner": "microsoft", "name": "mcp", "url": "https://github.com/microsoft/mcp" },
+  "title": "Microsoft MCP Catalog",
+  "summary": "Microsoft-maintained catalog of MCP server implementations and supporting skills.",
+  "license": "MIT",
+  "topics": ["mcp", "microsoft", "tools"],
+  "artifacts": [{ "type": "agents", "path": "AGENTS.md", "status": "verified" }],
+  "curated": true,
+  "notes": "Metadata-only listing; CodexHub never launches or connects to a server."
+}

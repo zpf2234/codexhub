@@ -1,8 +1,16 @@
 import { readEntries, assert } from './lib.mjs';
+import fs from 'node:fs/promises';
+import Ajv2020 from 'ajv/dist/2020.js';
+import addFormats from 'ajv-formats';
 
 const entries = await readEntries();
+const schema = JSON.parse(await fs.readFile(new URL('../schemas/submission.schema.json', import.meta.url), 'utf8'));
+const ajv = new Ajv2020({ allErrors: true, strict: false });
+addFormats(ajv);
+const validateSchema = ajv.compile(schema);
 const ids = new Set();
 for (const entry of entries) {
+  assert(validateSchema(entry), `schema validation failed for ${entry.id}: ${ajv.errorsText(validateSchema.errors)}`);
   assert(!ids.has(entry.id), `duplicate id: ${entry.id}`);
   ids.add(entry.id);
   assert(/^[a-z0-9][a-z0-9-]{2,80}$/.test(entry.id), `invalid id: ${entry.id}`);

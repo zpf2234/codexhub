@@ -1,10 +1,10 @@
 {
   "addyosmani-agent-skills": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T19:14:54.041Z",
+    "fetchedAt": "2026-08-20T20:05:43.845Z",
     "defaultBranch": "main",
-    "stars": 88793,
-    "forks": 9513,
+    "stars": 88802,
+    "forks": 9514,
     "isArchived": false,
     "updatedAt": "2026-08-14T18:51:33Z",
     "hasReadme": true,
@@ -26,11 +26,11 @@
       }
     ],
     "warnings": [],
-    "rateRemaining": "4988"
+    "rateRemaining": "4989"
   },
   "agentsmd-agents-md": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T19:14:59.903Z",
+    "fetchedAt": "2026-08-20T20:05:48.954Z",
     "defaultBranch": "main",
     "stars": 23755,
     "forks": 1788,
@@ -50,16 +50,16 @@
       }
     ],
     "warnings": [],
-    "rateRemaining": "4985"
+    "rateRemaining": "4983"
   },
   "openai-codex": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T19:15:20.634Z",
+    "fetchedAt": "2026-08-20T20:06:33.941Z",
     "defaultBranch": "main",
-    "stars": 107096,
-    "forks": 16280,
+    "stars": 107103,
+    "forks": 16283,
     "isArchived": false,
-    "updatedAt": "2026-08-20T19:10:23Z",
+    "updatedAt": "2026-08-20T20:05:56Z",
     "hasReadme": true,
     "hasInstall": true,
     "hasUsage": false,
@@ -74,11 +74,11 @@
       }
     ],
     "warnings": [],
-    "rateRemaining": "4970"
+    "rateRemaining": "4956"
   },
   "openai-codex-action": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T19:15:15.531Z",
+    "fetchedAt": "2026-08-20T20:06:29.007Z",
     "defaultBranch": "main",
     "stars": 1199,
     "forks": 153,
@@ -98,13 +98,13 @@
       }
     ],
     "warnings": [],
-    "rateRemaining": "4973"
+    "rateRemaining": "4959"
   },
   "github-github-mcp-server": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T19:15:04.230Z",
+    "fetchedAt": "2026-08-20T20:06:13.046Z",
     "defaultBranch": "main",
-    "stars": 32386,
+    "stars": 32387,
     "forks": 4828,
     "isArchived": false,
     "updatedAt": "2026-08-20T16:19:33Z",
@@ -122,13 +122,13 @@
       }
     ],
     "warnings": [],
-    "rateRemaining": "4982"
+    "rateRemaining": "4974"
   },
   "yuan1z0825-nature-skills": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T19:15:33.096Z",
+    "fetchedAt": "2026-08-20T20:06:55.665Z",
     "defaultBranch": "main",
-    "stars": 36241,
+    "stars": 36242,
     "forks": 2030,
     "isArchived": false,
     "updatedAt": "2026-08-20T07:03:35Z",
@@ -146,13 +146,13 @@
       }
     ],
     "warnings": [],
-    "rateRemaining": "4961"
+    "rateRemaining": "4941"
   },
   "microsoft-playwright-mcp": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T19:15:07.518Z",
+    "fetchedAt": "2026-08-20T20:06:21.101Z",
     "defaultBranch": "main",
-    "stars": 36306,
+    "stars": 36307,
     "forks": 3042,
     "isArchived": false,
     "updatedAt": "2026-08-20T17:47:50Z",
@@ -170,14 +170,14 @@
       }
     ],
     "warnings": [],
-    "rateRemaining": "4979"
+    "rateRemaining": "4965"
   },
   "obra-superpowers": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T19:15:11.760Z",
+    "fetchedAt": "2026-08-20T20:06:24.092Z",
     "defaultBranch": "main",
-    "stars": 274837,
-    "forks": 24594,
+    "stars": 274857,
+    "forks": 24596,
     "isArchived": false,
     "updatedAt": "2026-08-19T17:33:23Z",
     "hasReadme": true,
@@ -194,13 +194,13 @@
       }
     ],
     "warnings": [],
-    "rateRemaining": "4976"
+    "rateRemaining": "4962"
   },
   "openai-skills": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T19:15:28.052Z",
+    "fetchedAt": "2026-08-20T20:06:42.820Z",
     "defaultBranch": "main",
-    "stars": 25061,
+    "stars": 25062,
     "forks": 1701,
     "isArchived": false,
     "updatedAt": "2026-07-14T16:47:46Z",
@@ -218,11 +218,11 @@
       }
     ],
     "warnings": [],
-    "rateRemaining": "4964"
+    "rateRemaining": "4947"
   },
   "zpf2234-mathmodel-skills": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T19:15:38.127Z",
+    "fetchedAt": "2026-08-20T20:06:58.377Z",
     "defaultBranch": "main",
     "stars": 0,
     "forks": 0,
@@ -242,11 +242,11 @@
       }
     ],
     "warnings": [],
-    "rateRemaining": "4958"
+    "rateRemaining": "4938"
   },
   "zpf2234-nature-skills": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T19:15:42.315Z",
+    "fetchedAt": "2026-08-20T20:07:02.793Z",
     "defaultBranch": "main",
     "stars": 0,
     "forks": 0,
@@ -266,11 +266,11 @@
       }
     ],
     "warnings": [],
-    "rateRemaining": "4955"
+    "rateRemaining": "4935"
   },
   "openai-plugins": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T19:15:24.511Z",
+    "fetchedAt": "2026-08-20T20:06:37.866Z",
     "defaultBranch": "main",
     "stars": 5133,
     "forks": 717,
@@ -290,6 +290,179 @@
       }
     ],
     "warnings": [],
-    "rateRemaining": "4967"
+    "rateRemaining": "4953"
+  },
+  "awslabs-mcp": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T20:06:06.982Z",
+    "defaultBranch": "main",
+    "stars": 9627,
+    "forks": 1716,
+    "isArchived": false,
+    "updatedAt": "2026-08-20T18:25:20Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": true,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "mcp",
+        "path": "src/dynamodb-mcp-server/AGENTS.md",
+        "status": "verified"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4980"
+  },
+  "hashgraph-online-plugin-scanner-action": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T20:06:14.957Z",
+    "defaultBranch": "main",
+    "stars": 5,
+    "forks": 0,
+    "isArchived": false,
+    "updatedAt": "2026-08-20T18:33:54Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": true,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "action",
+        "path": "action.yml",
+        "status": "verified"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4971"
+  },
+  "dimillian-skills": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T20:06:09.741Z",
+    "defaultBranch": "main",
+    "stars": 3912,
+    "forks": 206,
+    "isArchived": false,
+    "updatedAt": "2026-03-29T15:28:02Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": true,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "skill",
+        "path": "app-store-changelog/SKILL.md",
+        "status": "verified"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4977"
+  },
+  "microsoft-mcp": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T20:06:19.059Z",
+    "defaultBranch": "main",
+    "stars": 3593,
+    "forks": 592,
+    "isArchived": false,
+    "updatedAt": "2026-08-20T19:40:08Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": true,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "agents",
+        "path": "AGENTS.md",
+        "status": "verified"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4968"
+  },
+  "openai-role-specific-plugins": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T20:06:40.085Z",
+    "defaultBranch": "main",
+    "stars": 503,
+    "forks": 80,
+    "isArchived": false,
+    "updatedAt": "2026-07-13T23:17:20Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": true,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "plugin",
+        "path": "plugins/data-analytics/.codex-plugin/plugin.json",
+        "status": "verified"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4950"
+  },
+  "thegreencedar-codex-autoresearch": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T20:06:46.407Z",
+    "defaultBranch": "main",
+    "stars": 829,
+    "forks": 59,
+    "isArchived": false,
+    "updatedAt": "2026-08-02T04:01:24Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": false,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "plugin",
+        "path": "plugins/codex-autoresearch/.codex-plugin/plugin.json",
+        "status": "verified"
+      },
+      {
+        "type": "agents",
+        "path": "AGENTS.md",
+        "status": "verified"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4944"
+  },
+  "agent0ai-dox": {
+    "status": "fresh",
+    "fetchedAt": "2026-08-20T20:05:46.696Z",
+    "defaultBranch": "main",
+    "stars": 1404,
+    "forks": 190,
+    "isArchived": false,
+    "updatedAt": "2026-08-01T09:45:21Z",
+    "hasReadme": true,
+    "hasInstall": true,
+    "hasUsage": false,
+    "documentationEvidence": [
+      "README.md"
+    ],
+    "artifacts": [
+      {
+        "type": "agents",
+        "path": "AGENTS.md",
+        "status": "verified"
+      }
+    ],
+    "warnings": [],
+    "rateRemaining": "4986"
   }
 }

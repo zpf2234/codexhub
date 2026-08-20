@@ -1,0 +1,12 @@
+{
+  "id": "awslabs-mcp",
+  "kind": "mcp",
+  "repository": { "owner": "awslabs", "name": "mcp", "url": "https://github.com/awslabs/mcp" },
+  "title": "AWS MCP Servers",
+  "summary": "AWS-maintained MCP servers and domain skills for connecting AI workflows to AWS services.",
+  "license": "Apache-2.0",
+  "topics": ["mcp", "aws", "cloud"],
+  "artifacts": [{ "type": "mcp", "path": "src/dynamodb-mcp-server/AGENTS.md", "status": "verified" }],
+  "curated": true,
+  "notes": "Metadata-only listing; CodexHub never launches or connects to these servers."
+}

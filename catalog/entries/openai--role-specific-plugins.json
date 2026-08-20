@@ -1,0 +1,12 @@
+{
+  "id": "openai-role-specific-plugins",
+  "kind": "plugin",
+  "repository": { "owner": "openai", "name": "role-specific-plugins", "url": "https://github.com/openai/role-specific-plugins" },
+  "title": "Role-specific Codex Plugins",
+  "summary": "Official role-oriented Codex plugin templates for analytics, product design, and sales workflows.",
+  "license": "MIT",
+  "topics": ["plugins", "workflow", "codex"],
+  "artifacts": [{ "type": "plugin", "path": "plugins/data-analytics/.codex-plugin/plugin.json", "status": "verified" }],
+  "curated": true,
+  "notes": "Official templates; components are indexed as evidence and never executed."
+}
