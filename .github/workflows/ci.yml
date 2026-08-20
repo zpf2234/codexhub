@@ -20,9 +20,9 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm test
+      - run: npm run build:offline
       - run: npx playwright install --with-deps chromium
       - run: npm run test:browser
-      - run: npm run build:offline
       - name: Verify deterministic output
         run: |
           SCAN_TIMESTAMP=2026-01-01T00:00:00.000Z npm run build:offline
