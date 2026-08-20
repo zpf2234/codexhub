@@ -2,6 +2,12 @@
 
 ## Codex ecosystem index
 
+[![CI](https://github.com/zpf2234/codexhub/actions/workflows/ci.yml/badge.svg)](https://github.com/zpf2234/codexhub/actions/workflows/ci.yml)
+[![Pages](https://github.com/zpf2234/codexhub/actions/workflows/pages.yml/badge.svg)](https://zpf2234.github.io/codexhub/)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+
+> **Pre-release:** the public site is an active preview. The catalog format, scoring rubric, and seed set may change before the first tagged release.
+
 CodexHub is a community-maintained directory of Codex Skills, Plugins, MCP servers, and `AGENTS.md` resources. It publishes repository quality signals with evidence links, a transparent rubric, and a machine-readable catalog.
 
 Browse the live catalog at https://zpf2234.github.io/codexhub/.
