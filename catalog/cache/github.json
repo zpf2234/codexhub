@@ -1,9 +1,9 @@
 {
   "addyosmani-agent-skills": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:05:43.845Z",
+    "fetchedAt": "2026-08-20T20:26:40.850Z",
     "defaultBranch": "main",
-    "stars": 88802,
+    "stars": 88806,
     "forks": 9514,
     "isArchived": false,
     "updatedAt": "2026-08-14T18:51:33Z",
@@ -17,22 +17,26 @@
       {
         "type": "plugin",
         "path": ".codex-plugin/plugin.json",
-        "status": "verified"
+        "status": "verified",
+        "verification": "passed",
+        "note": "Requires name, version, and description in plugin.json."
       },
       {
         "type": "agents",
         "path": "AGENTS.md",
-        "status": "verified"
+        "status": "verified",
+        "verification": "passed",
+        "note": "Non-empty evidence file."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4989"
+    "rateRemaining": "4868"
   },
   "agentsmd-agents-md": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:05:48.954Z",
+    "fetchedAt": "2026-08-20T20:26:52.086Z",
     "defaultBranch": "main",
-    "stars": 23755,
+    "stars": 23756,
     "forks": 1788,
     "isArchived": false,
     "updatedAt": "2026-03-12T14:26:14Z",
@@ -46,20 +50,22 @@
       {
         "type": "agents",
         "path": "AGENTS.md",
-        "status": "verified"
+        "status": "verified",
+        "verification": "passed",
+        "note": "Non-empty evidence file."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4983"
+    "rateRemaining": "4859"
   },
   "openai-codex": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:06:33.941Z",
+    "fetchedAt": "2026-08-20T20:27:57.543Z",
     "defaultBranch": "main",
-    "stars": 107103,
+    "stars": 107106,
     "forks": 16283,
     "isArchived": false,
-    "updatedAt": "2026-08-20T20:05:56Z",
+    "updatedAt": "2026-08-20T20:10:30Z",
     "hasReadme": true,
     "hasInstall": true,
     "hasUsage": false,
@@ -70,15 +76,17 @@
       {
         "type": "codex",
         "path": "README.md",
-        "status": "verified"
+        "status": "verified",
+        "verification": "passed",
+        "note": "Non-empty evidence file."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4956"
+    "rateRemaining": "4823"
   },
   "openai-codex-action": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:06:29.007Z",
+    "fetchedAt": "2026-08-20T20:27:48.737Z",
     "defaultBranch": "main",
     "stars": 1199,
     "forks": 153,
@@ -94,18 +102,20 @@
       {
         "type": "action",
         "path": "action.yml",
-        "status": "verified"
+        "status": "verified",
+        "verification": "passed",
+        "note": "Requires name and runs keys in action.yml."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4959"
+    "rateRemaining": "4827"
   },
   "github-github-mcp-server": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:06:13.046Z",
+    "fetchedAt": "2026-08-20T20:27:23.820Z",
     "defaultBranch": "main",
-    "stars": 32387,
-    "forks": 4828,
+    "stars": 32388,
+    "forks": 4829,
     "isArchived": false,
     "updatedAt": "2026-08-20T16:19:33Z",
     "hasReadme": true,
@@ -118,15 +128,17 @@
       {
         "type": "mcp",
         "path": "server.json",
-        "status": "verified"
+        "status": "verified",
+        "verification": "passed",
+        "note": "Valid JSON metadata."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4974"
+    "rateRemaining": "4847"
   },
   "yuan1z0825-nature-skills": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:06:55.665Z",
+    "fetchedAt": "2026-08-20T20:28:24.333Z",
     "defaultBranch": "main",
     "stars": 36242,
     "forks": 2030,
@@ -141,18 +153,20 @@
     "artifacts": [
       {
         "type": "skill",
-        "path": "skills",
-        "status": "verified"
+        "path": "skills/nature-academic-search/SKILL.md",
+        "status": "verified",
+        "verification": "passed",
+        "note": "Requires YAML frontmatter with name and description."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4941"
+    "rateRemaining": "4802"
   },
   "microsoft-playwright-mcp": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:06:21.101Z",
+    "fetchedAt": "2026-08-20T20:27:40.302Z",
     "defaultBranch": "main",
-    "stars": 36307,
+    "stars": 36308,
     "forks": 3042,
     "isArchived": false,
     "updatedAt": "2026-08-20T17:47:50Z",
@@ -166,17 +180,19 @@
       {
         "type": "mcp",
         "path": "server.json",
-        "status": "verified"
+        "status": "verified",
+        "verification": "passed",
+        "note": "Valid JSON metadata."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4965"
+    "rateRemaining": "4835"
   },
   "obra-superpowers": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:06:24.092Z",
+    "fetchedAt": "2026-08-20T20:27:44.772Z",
     "defaultBranch": "main",
-    "stars": 274857,
+    "stars": 274863,
     "forks": 24596,
     "isArchived": false,
     "updatedAt": "2026-08-19T17:33:23Z",
@@ -190,15 +206,17 @@
       {
         "type": "plugin",
         "path": ".codex-plugin/plugin.json",
-        "status": "verified"
+        "status": "verified",
+        "verification": "passed",
+        "note": "Requires name, version, and description in plugin.json."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4962"
+    "rateRemaining": "4831"
   },
   "openai-skills": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:06:42.820Z",
+    "fetchedAt": "2026-08-20T20:28:15.046Z",
     "defaultBranch": "main",
     "stars": 25062,
     "forks": 1701,
@@ -213,16 +231,18 @@
     "artifacts": [
       {
         "type": "skill",
-        "path": "skills/.curated",
-        "status": "verified"
+        "path": "skills/.curated/cli-creator/SKILL.md",
+        "status": "verified",
+        "verification": "passed",
+        "note": "Requires YAML frontmatter with name and description."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4947"
+    "rateRemaining": "4811"
   },
   "zpf2234-mathmodel-skills": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:06:58.377Z",
+    "fetchedAt": "2026-08-20T20:28:28.693Z",
     "defaultBranch": "main",
     "stars": 0,
     "forks": 0,
@@ -237,16 +257,18 @@
     "artifacts": [
       {
         "type": "skill",
-        "path": "skills",
-        "status": "declared"
+        "path": "skills/productivity/math-modeling-paper/SKILL.md",
+        "status": "verified",
+        "verification": "passed",
+        "note": "Requires YAML frontmatter with name and description."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4938"
+    "rateRemaining": "4798"
   },
   "zpf2234-nature-skills": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:07:02.793Z",
+    "fetchedAt": "2026-08-20T20:28:36.069Z",
     "defaultBranch": "main",
     "stars": 0,
     "forks": 0,
@@ -261,16 +283,18 @@
     "artifacts": [
       {
         "type": "skill",
-        "path": "skills",
-        "status": "declared"
+        "path": "skills/nature-academic-search/SKILL.md",
+        "status": "verified",
+        "verification": "passed",
+        "note": "Requires YAML frontmatter with name and description."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4935"
+    "rateRemaining": "4794"
   },
   "openai-plugins": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:06:37.866Z",
+    "fetchedAt": "2026-08-20T20:28:04.887Z",
     "defaultBranch": "main",
     "stars": 5133,
     "forks": 717,
@@ -285,16 +309,18 @@
     "artifacts": [
       {
         "type": "plugin",
-        "path": ".codex-plugin/plugin.json",
-        "status": "declared"
+        "path": "plugins/actively/.codex-plugin/plugin.json",
+        "status": "verified",
+        "verification": "passed",
+        "note": "Requires name, version, and description in plugin.json."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4953"
+    "rateRemaining": "4819"
   },
   "awslabs-mcp": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:06:06.982Z",
+    "fetchedAt": "2026-08-20T20:27:10.720Z",
     "defaultBranch": "main",
     "stars": 9627,
     "forks": 1716,
@@ -310,15 +336,17 @@
       {
         "type": "mcp",
         "path": "src/dynamodb-mcp-server/AGENTS.md",
-        "status": "verified"
+        "status": "verified",
+        "verification": "passed",
+        "note": "Non-empty evidence file."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4980"
+    "rateRemaining": "4855"
   },
   "hashgraph-online-plugin-scanner-action": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:06:14.957Z",
+    "fetchedAt": "2026-08-20T20:27:27.848Z",
     "defaultBranch": "main",
     "stars": 5,
     "forks": 0,
@@ -334,15 +362,17 @@
       {
         "type": "action",
         "path": "action.yml",
-        "status": "verified"
+        "status": "verified",
+        "verification": "passed",
+        "note": "Requires name and runs keys in action.yml."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4971"
+    "rateRemaining": "4843"
   },
   "dimillian-skills": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:06:09.741Z",
+    "fetchedAt": "2026-08-20T20:27:17.614Z",
     "defaultBranch": "main",
     "stars": 3912,
     "forks": 206,
@@ -358,15 +388,17 @@
       {
         "type": "skill",
         "path": "app-store-changelog/SKILL.md",
-        "status": "verified"
+        "status": "verified",
+        "verification": "passed",
+        "note": "Requires YAML frontmatter with name and description."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4977"
+    "rateRemaining": "4851"
   },
   "microsoft-mcp": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:06:19.059Z",
+    "fetchedAt": "2026-08-20T20:27:36.057Z",
     "defaultBranch": "main",
     "stars": 3593,
     "forks": 592,
@@ -382,15 +414,17 @@
       {
         "type": "agents",
         "path": "AGENTS.md",
-        "status": "verified"
+        "status": "verified",
+        "verification": "passed",
+        "note": "Non-empty evidence file."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4968"
+    "rateRemaining": "4839"
   },
   "openai-role-specific-plugins": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:06:40.085Z",
+    "fetchedAt": "2026-08-20T20:28:08.149Z",
     "defaultBranch": "main",
     "stars": 503,
     "forks": 80,
@@ -406,15 +440,17 @@
       {
         "type": "plugin",
         "path": "plugins/data-analytics/.codex-plugin/plugin.json",
-        "status": "verified"
+        "status": "verified",
+        "verification": "passed",
+        "note": "Requires name, version, and description in plugin.json."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4950"
+    "rateRemaining": "4815"
   },
   "thegreencedar-codex-autoresearch": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:06:46.407Z",
+    "fetchedAt": "2026-08-20T20:28:19.200Z",
     "defaultBranch": "main",
     "stars": 829,
     "forks": 59,
@@ -430,20 +466,24 @@
       {
         "type": "plugin",
         "path": "plugins/codex-autoresearch/.codex-plugin/plugin.json",
-        "status": "verified"
+        "status": "verified",
+        "verification": "passed",
+        "note": "Requires name, version, and description in plugin.json."
       },
       {
         "type": "agents",
         "path": "AGENTS.md",
-        "status": "verified"
+        "status": "verified",
+        "verification": "passed",
+        "note": "Non-empty evidence file."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4944"
+    "rateRemaining": "4807"
   },
   "agent0ai-dox": {
     "status": "fresh",
-    "fetchedAt": "2026-08-20T20:05:46.696Z",
+    "fetchedAt": "2026-08-20T20:26:47.529Z",
     "defaultBranch": "main",
     "stars": 1404,
     "forks": 190,
@@ -459,10 +499,12 @@
       {
         "type": "agents",
         "path": "AGENTS.md",
-        "status": "verified"
+        "status": "verified",
+        "verification": "passed",
+        "note": "Non-empty evidence file."
       }
     ],
     "warnings": [],
-    "rateRemaining": "4986"
+    "rateRemaining": "4863"
   }
 }

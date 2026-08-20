@@ -6,7 +6,7 @@
   "summary": "Reusable skills that extend ChatGPT and Codex with focused workflows.",
   "license": "NOASSERTION",
   "topics": ["skills", "workflow", "codex"],
-  "artifacts": [{ "type": "skill", "path": "skills/.curated", "status": "verified" }],
+  "artifacts": [{ "type": "skill", "path": "skills/.curated/cli-creator/SKILL.md", "status": "verified" }],
   "curated": true,
   "notes": "Official skills collection; listed for ecosystem context, not endorsement."
 }

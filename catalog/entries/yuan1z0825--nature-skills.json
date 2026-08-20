@@ -6,7 +6,7 @@
   "summary": "Chinese and English skills for Nature-style academic writing and scientific figures.",
   "license": "Apache-2.0",
   "topics": ["research", "writing", "figures"],
-  "artifacts": [{ "type": "skill", "path": "skills", "status": "verified" }],
+  "artifacts": [{ "type": "skill", "path": "skills/nature-academic-search/SKILL.md", "status": "verified" }],
   "curated": true,
   "notes": "Community-maintained project with active upstream contributions."
 }

@@ -52,6 +52,43 @@ async function githubText(url, headers) {
   }
 }
 
+function encodePath(value) {
+  return value.split('/').map((part) => encodeURIComponent(part)).join('/');
+}
+
+function validateArtifactContent(type, content, pathValue) {
+  if (!content || !content.trim()) return { ok: false, note: 'File is empty.' };
+  if (type === 'skill') {
+    const frontmatter = content.match(/^---\s*\n([\s\S]*?)\n---/);
+    const body = frontmatter ? frontmatter[1] : '';
+    return { ok: Boolean(frontmatter && /^name:\s*\S+/m.test(body) && /^description:\s*\S+/m.test(body)), note: 'Requires YAML frontmatter with name and description.' };
+  }
+  if (type === 'plugin') {
+    try {
+      const manifest = JSON.parse(content);
+      return { ok: Boolean(manifest.name && manifest.version && manifest.description), note: 'Requires name, version, and description in plugin.json.' };
+    } catch {
+      return { ok: false, note: 'plugin.json is not valid JSON.' };
+    }
+  }
+  if (type === 'action') return { ok: /^name:\s*\S+/m.test(content) && /^runs:\s*$/m.test(content), note: 'Requires name and runs keys in action.yml.' };
+  if (type === 'mcp' && pathValue.endsWith('.json')) {
+    try { JSON.parse(content); return { ok: true, note: 'Valid JSON metadata.' }; } catch { return { ok: false, note: 'MCP metadata is not valid JSON.' }; }
+  }
+  return { ok: true, note: 'Non-empty evidence file.' };
+}
+
+async function resolveArtifact(entry, artifact, repo, paths, headers) {
+  const matching = paths.has(artifact.path) ? artifact.path : [...paths].find((candidate) => candidate.startsWith(`${artifact.path}/`) && (artifact.type !== 'skill' || candidate.endsWith('SKILL.md')));
+  if (!matching) return { ...artifact, verification: 'missing', note: 'Declared path was not found on the default branch.' };
+  const contentUrl = `https://api.github.com/repos/${entry.repository.owner}/${entry.repository.name}/contents/${encodePath(matching)}?ref=${encodeURIComponent(repo.default_branch)}`;
+  const content = await githubJson(contentUrl, headers);
+  if (!content.ok || !content.data?.content) return { ...artifact, path: matching, verification: 'unavailable', note: content.error || 'GitHub did not return file content.' };
+  const decoded = Buffer.from(content.data.content.replace(/\s/g, ''), 'base64').toString('utf8');
+  const result = validateArtifactContent(artifact.type, decoded, matching);
+  return { ...artifact, path: matching, verification: result.ok ? 'passed' : 'failed', note: result.note, status: artifact.status === 'verified' ? (result.ok ? 'verified' : 'unknown') : artifact.status };
+}
+
 export async function fetchMetadata(entry, offline = false) {
   const fallback = { status: offline ? 'offline' : 'unavailable', stars: null, forks: null, isArchived: false, updatedAt: null, hasReadme: false, hasInstall: false, hasUsage: false, documentationEvidence: [], warnings: offline ? ['Offline build; GitHub metadata was not fetched.'] : [] };
   if (offline) return fallback;
@@ -62,7 +99,7 @@ export async function fetchMetadata(entry, offline = false) {
   const repo = repoResult.data;
   const treeResult = await githubJson(`${base}/git/trees/${repo.default_branch}?recursive=1`, headers);
   const paths = new Set(treeResult.ok ? (treeResult.data.tree || []).map((item) => item.path) : []);
-  const artifacts = entry.artifacts.map((artifact) => ({ ...artifact, status: artifact.status === 'verified' && (paths.has(artifact.path) || [...paths].some((candidate) => candidate.startsWith(`${artifact.path}/`))) ? 'verified' : artifact.status === 'verified' ? 'unknown' : artifact.status }));
+  const artifacts = await Promise.all(entry.artifacts.map((artifact) => resolveArtifact(entry, artifact, repo, paths, headers)));
   const readmeResult = await githubText(`${base}/readme`, { ...headers, Accept: 'application/vnd.github.raw' });
   const readmeText = readmeResult.ok ? readmeResult.data : '';
   const lower = readmeText.toLowerCase();

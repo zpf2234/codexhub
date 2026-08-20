@@ -6,7 +6,7 @@
   "summary": "Reusable plugin packages for ChatGPT and Codex integrations.",
   "license": "NOASSERTION",
   "topics": ["plugins", "mcp", "codex"],
-  "artifacts": [{ "type": "plugin", "path": ".codex-plugin/plugin.json", "status": "declared" }],
+  "artifacts": [{ "type": "plugin", "path": "plugins/actively/.codex-plugin/plugin.json", "status": "verified" }],
   "curated": true,
   "notes": "Official plugin ecosystem repository; plugin metadata is tracked without executing components."
 }

@@ -6,6 +6,6 @@
   "summary": "Chinese mathematical modeling and paper-production skills for Codex workflows.",
   "license": "Apache-2.0",
   "topics": ["math", "research", "skills"],
-  "artifacts": [{ "type": "skill", "path": "skills", "status": "declared" }],
+  "artifacts": [{ "type": "skill", "path": "skills/productivity/math-modeling-paper/SKILL.md", "status": "verified" }],
   "curated": true
 }
