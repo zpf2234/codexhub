@@ -85,7 +85,8 @@ export class GithubClient {
   async collectQuery(query, source, options = {}) {
     const maxResults = options.maxResults ?? 100_000;
     const perPage = Math.min(100, options.perPage ?? 100);
-    const maxDepth = options.maxDepth ?? 20;
+    const maxDepth = options.maxDepth ?? Number(process.env.GITHUB_DISCOVERY_MAX_DEPTH || 6);
+    const maxSegments = options.maxSegments ?? Number(process.env.GITHUB_DISCOVERY_MAX_SEGMENTS || 32);
     const segments = [];
     const errors = [];
     const partitions = [];
@@ -93,6 +94,7 @@ export class GithubClient {
     const visited = new Set();
     let truncated = false;
     const collect = async (segmentQuery, depth = 0) => {
+      if (segments.length >= maxSegments) { truncated = true; return; }
       if (visited.has(segmentQuery)) return;
       visited.add(segmentQuery);
       const probe = await this.searchPage(segmentQuery, 1, perPage);
