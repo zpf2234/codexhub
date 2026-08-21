@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-21T16:08:15.435Z",
-  "startedAt": "2026-08-21T16:07:34.127Z",
-  "completedAt": "2026-08-21T16:08:15.435Z",
+  "generatedAt": "2026-08-21T16:18:41.939Z",
+  "startedAt": "2026-08-21T16:18:07.013Z",
+  "completedAt": "2026-08-21T16:18:41.939Z",
   "scope": "Declared GitHub search sources plus official MCP Registry at crawl time.",
   "limitations": [
     "GitHub repository search exposes at most 1,000 results per query; recursive stars/date partitions are used where possible.",
@@ -98,10 +98,31 @@
         "reset": 1787328514,
         "retryAfter": null
       }
+    },
+    {
+      "id": "github-topic-codex-plugin",
+      "kind": "plugin",
+      "query": "topic:codex-plugin fork:false archived:false",
+      "segments": [
+        {
+          "query": "topic:codex-plugin fork:false archived:false",
+          "total": 925,
+          "incomplete": false
+        }
+      ],
+      "partitions": [],
+      "results": 925,
+      "truncated": false,
+      "errors": [],
+      "rate": {
+        "remaining": 20,
+        "reset": 1787329147,
+        "retryAfter": null
+      }
     }
   ],
   "sourcesProcessedThisRun": 1,
-  "sourcesRemaining": 17,
+  "sourcesRemaining": 16,
   "registry": {
     "source": "mcp-official-registry",
     "pages": [
@@ -122,24 +143,60 @@
         "count": 100,
         "nextCursor": "ai.bowmark/bowmark:3.106.6",
         "cursor": "ai.benroberts/b4-index:3.3.0"
+      },
+      {
+        "page": 4,
+        "count": 100,
+        "nextCursor": "ai.bowmark/bowmark:3.42.1",
+        "cursor": "ai.bowmark/bowmark:3.106.6"
+      },
+      {
+        "page": 5,
+        "count": 100,
+        "nextCursor": "ai.bowmark/bowmark:3.65.0",
+        "cursor": "ai.bowmark/bowmark:3.42.1"
+      },
+      {
+        "page": 6,
+        "count": 100,
+        "nextCursor": "ai.bowmark/bowmark:6.0.0",
+        "cursor": "ai.bowmark/bowmark:3.65.0"
       }
     ],
-    "results": 300,
+    "results": 600,
     "complete": false,
     "errors": []
   },
   "scans": [
     {
-      "repository": "github/github-mcp-server",
+      "repository": "loriadatj-cyber/cineops-skills",
       "status": "fresh",
-      "artifacts": 2,
+      "artifacts": 11,
       "verifiedArtifacts": 2,
+      "deferredArtifacts": 9,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Raynerhalfandhalf451/writeback",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
       "deferredArtifacts": 0,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "hashgraph-online/hol-codex-plugin-scanner-action",
+      "repository": "hsir2411-dotcom/codex-autoskin",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "unpronounceable-ordersphenisciformes466/roblox-best-practices-skill",
       "status": "fresh",
       "artifacts": 1,
       "verifiedArtifacts": 1,
@@ -148,16 +205,106 @@
       "errors": []
     },
     {
-      "repository": "microsoft/mcp",
+      "repository": "KevinYe0725/ielts-writing-coach",
       "status": "fresh",
-      "artifacts": 9,
+      "artifacts": 3,
       "verifiedArtifacts": 2,
-      "deferredArtifacts": 7,
+      "deferredArtifacts": 1,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "microsoft/playwright-mcp",
+      "repository": "Andreiarsenevichtarkovskyinmate282/codex-messenger",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "alfonsosagacious5877/awesome-claude-design",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Anjoo1861/anti-distill",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "marysatasselshaped667/skills-collection-1",
+      "status": "fresh",
+      "artifacts": 1026,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 1024,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Shamussuited879/codex-on-desk",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Footracespasticity75/CPA-Codex-Manager",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "gascookerovercast97/CPACodexKeeper",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "round-comfortfood117/codex-workflows",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Machineaccessible-ochre867/agenthub",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "anns2rn/awesome-claude-md",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Samuelkebede24/skill-conductor",
       "status": "fresh",
       "artifacts": 1,
       "verifiedArtifacts": 1,
@@ -166,79 +313,25 @@
       "errors": []
     },
     {
-      "repository": "obra/superpowers",
+      "repository": "BKR-57/symfony-ux-skills",
       "status": "fresh",
-      "artifacts": 20,
+      "artifacts": 6,
       "verifiedArtifacts": 2,
-      "deferredArtifacts": 18,
+      "deferredArtifacts": 4,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "openai/codex-action",
+      "repository": "Deepu-Thapa/codex-skills",
       "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
       "deferredArtifacts": 0,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "openai/codex",
-      "status": "fresh",
-      "artifacts": 37,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 35,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "openai/plugins",
-      "status": "fresh",
-      "artifacts": 1544,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 1542,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "openai/role-specific-plugins",
-      "status": "fresh",
-      "artifacts": 103,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 101,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "openai/skills",
-      "status": "fresh",
-      "artifacts": 88,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 86,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "TheGreenCedar/codex-autoresearch",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Yuan1z0825/nature-skills",
-      "status": "fresh",
-      "artifacts": 40,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 38,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "zpf2234/mathmodel-skills",
+      "repository": "fengjunnan-web/competitor-screenshot-insights",
       "status": "fresh",
       "artifacts": 5,
       "verifiedArtifacts": 2,
@@ -247,169 +340,16 @@
       "errors": []
     },
     {
-      "repository": "zpf2234/nature-skills",
+      "repository": "gaia-research/gaia-skill-heaven",
       "status": "fresh",
-      "artifacts": 21,
+      "artifacts": 23,
       "verifiedArtifacts": 2,
-      "deferredArtifacts": 19,
+      "deferredArtifacts": 21,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "zpf2234/codexhub",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "a2578348864a-sys/khazix-skills",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Darkmalan-1987/sparring-reason",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "onlymuneeb38-glitch/ios-agent-skills-evaluator",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Jaedki/repurposing-research-program",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "qiao-obs/qiaobs-skills",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "AnemoneUwU/agent-forge-cli",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Mauriciog87/codex-skill",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "AllyJuma1/easel-js-cpu-render-kit",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "5uprem4/ai-skill-vault",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ashfaquecg806-dot/symfony-ux-insights",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "toying78/supremeworkflow-orchestrator",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "coryparrry/codex-skills",
-      "status": "fresh",
-      "artifacts": 39,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 37,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "nipun-arora/semantic-seo-geek",
-      "status": "fresh",
-      "artifacts": 25,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 23,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "alex-macra/ai-skills-assembly",
-      "status": "fresh",
-      "artifacts": 16,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 14,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "LUC4N3X/antigravity-thalarch",
-      "status": "fresh",
-      "artifacts": 47,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 45,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "zhuwujing28-del/codex-skills-cn",
-      "status": "fresh",
-      "artifacts": 12,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 10,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "pestalytix/innovate-or-die",
+      "repository": "xeonvs/codex-engineering-workflow",
       "status": "fresh",
       "artifacts": 9,
       "verifiedArtifacts": 2,
@@ -418,34 +358,16 @@
       "errors": []
     },
     {
-      "repository": "sanhuang520-ship-it/awesome-chinese-ai-tools",
+      "repository": "userInner/SKILLS",
       "status": "fresh",
-      "artifacts": 13,
+      "artifacts": 807,
       "verifiedArtifacts": 2,
-      "deferredArtifacts": 11,
+      "deferredArtifacts": 805,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "du-u-uck/mathematical-modeling-skill",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "GaZmagik/iso-24495",
-      "status": "fresh",
-      "artifacts": 18,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 16,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "wuxiaoxia88/hybrid-avatar-video-production-skill",
+      "repository": "thisisnsh/planx",
       "status": "fresh",
       "artifacts": 2,
       "verifiedArtifacts": 2,
@@ -454,52 +376,52 @@
       "errors": []
     },
     {
-      "repository": "ruicore/codex-skills",
+      "repository": "sumitake/agent-collab",
       "status": "fresh",
-      "artifacts": 54,
+      "artifacts": 56,
       "verifiedArtifacts": 2,
-      "deferredArtifacts": 52,
+      "deferredArtifacts": 54,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "aiskillstore/marketplace",
+      "repository": "Jobo16/ielts-buddy",
       "status": "fresh",
-      "artifacts": 5991,
+      "artifacts": 20,
       "verifiedArtifacts": 2,
-      "deferredArtifacts": 5989,
+      "deferredArtifacts": 18,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "BaixuanZhu/skills",
+      "repository": "hashgraph-online/awesome-codex-plugins",
       "status": "fresh",
-      "artifacts": 49,
+      "artifacts": 2533,
       "verifiedArtifacts": 2,
-      "deferredArtifacts": 47,
+      "deferredArtifacts": 2531,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "alirezarezvani/claude-skills",
+      "repository": "titanwings/colleague-skill",
       "status": "fresh",
-      "artifacts": 812,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 810,
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "CrunTeam/crun-agent-skills",
+      "repository": "Ghost011118/project-state-governor",
       "status": "fresh",
-      "artifacts": 18,
+      "artifacts": 2,
       "verifiedArtifacts": 2,
-      "deferredArtifacts": 16,
+      "deferredArtifacts": 0,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "aliciajia399-ops/skillbook",
+      "repository": "jasonshrepo/qiju",
       "status": "fresh",
       "artifacts": 0,
       "verifiedArtifacts": 0,
@@ -508,16 +430,61 @@
       "errors": []
     },
     {
-      "repository": "weshopai/weshop-skill-pakage",
+      "repository": "phenomenoner/baton-fanout-skill",
       "status": "fresh",
-      "artifacts": 177,
+      "artifacts": 2,
       "verifiedArtifacts": 2,
-      "deferredArtifacts": 175,
+      "deferredArtifacts": 0,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "Li3NGa/DHS-multi-agent-plugin",
+      "repository": "JellyBrick/korean-prose-skill",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "bitwise-media-group/skills",
+      "status": "fresh",
+      "artifacts": 30,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 28,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "radesjardins/codex.skills",
+      "status": "fresh",
+      "artifacts": 55,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 53,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "notque/vexjoy-agent",
+      "status": "fresh",
+      "artifacts": 120,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 118,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ellmos-ai/skills",
+      "status": "fresh",
+      "artifacts": 381,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 379,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "burnabyjudicial666/agent-profiles",
       "status": "fresh",
       "artifacts": 0,
       "verifiedArtifacts": 0,
@@ -526,16 +493,79 @@
       "errors": []
     },
     {
-      "repository": "VoltAgent/awesome-agent-skills",
+      "repository": "soulmachine/skills",
       "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
+      "artifacts": 23,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 21,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "tiyee/codex-figma-skills",
+      "repository": "blacksheep1118/codex-obsidian-skills",
+      "status": "fresh",
+      "artifacts": 12,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 10,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Metalnib/dotnet-episteme-skills",
+      "status": "fresh",
+      "artifacts": 19,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 17,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "tobihagemann/turbo",
+      "status": "fresh",
+      "artifacts": 150,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 148,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "oegeyilmaz9/seo-aeo-geo-ultimate",
+      "status": "fresh",
+      "artifacts": 55,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 53,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "CardSorting/LUMI-JOY",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "VapiAI/skills",
+      "status": "fresh",
+      "artifacts": 15,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 13,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "jianshuo/claude-skills",
+      "status": "fresh",
+      "artifacts": 40,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 38,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "KERNlang/agon",
       "status": "fresh",
       "artifacts": 3,
       "verifiedArtifacts": 2,
@@ -544,16 +574,34 @@
       "errors": []
     },
     {
-      "repository": "T8mars/minimax-h3-prompt-skill-T8",
+      "repository": "hoatv2211/GameStudio-CodexKIT",
       "status": "fresh",
-      "artifacts": 255,
+      "artifacts": 98,
       "verifiedArtifacts": 2,
-      "deferredArtifacts": 253,
+      "deferredArtifacts": 96,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "ThinkDonk/llm-safe-write",
+      "repository": "exasol-labs/exasol-agent-skills",
+      "status": "fresh",
+      "artifacts": 20,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 18,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ohmyskyhigh/threadwave-skill",
+      "status": "fresh",
+      "artifacts": 16,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 14,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "drivly/auto-dev-skill",
       "status": "fresh",
       "artifacts": 1,
       "verifiedArtifacts": 1,
@@ -562,48 +610,39 @@
       "errors": []
     },
     {
-      "repository": "kabudu/engineering-agent-skills",
+      "repository": "dse120071750/m8m-harness-builder",
       "status": "fresh",
-      "artifacts": 2,
+      "artifacts": 4,
       "verifiedArtifacts": 2,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "breadtitor/local-prompt-studio",
-      "status": "fresh",
-      "artifacts": 7,
-      "verifiedArtifacts": 2,
-      "deferredArtifacts": 5,
+      "deferredArtifacts": 2,
       "truncated": false,
       "errors": []
     }
   ],
-  "repositoriesDiscovered": 1230,
+  "repositoriesDiscovered": 2080,
   "repositoriesScanned": 50,
-  "repositoriesNotScanned": 1036,
-  "scanOffset": 55,
+  "repositoriesNotScanned": 1836,
+  "scanOffset": 105,
   "cycleComplete": false,
-  "artifactsDiscovered": 9806,
+  "artifactsDiscovered": 15662,
   "errors": 0,
   "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
-    "skill": 7855,
-    "plugin": 201,
-    "mcp": 479,
-    "marketplace": 13,
-    "hook": 9,
-    "plugin-metadata": 1183,
-    "agents": 49,
+    "skill": 12408,
+    "plugin": 454,
+    "mcp": 869,
+    "marketplace": 96,
+    "hook": 26,
+    "plugin-metadata": 1722,
+    "agents": 70,
     "action": 17,
     "other": 0
   },
   "verificationCounts": {
-    "verified": 106,
-    "discovered": 9400,
-    "registry": 300,
+    "verified": 174,
+    "discovered": 14888,
+    "registry": 600,
     "unknown": 0
   }
 }
