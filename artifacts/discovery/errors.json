@@ -1,19 +1,6 @@
 {
-  "generatedAt": "2026-08-21T19:44:38.513Z",
+  "generatedAt": "2026-08-21T20:08:01.949Z",
   "errors": [
-    {
-      "source": "github-code-codex-action-yml",
-      "query": "filename:action.yml codex",
-      "page": 3,
-      "error": "GitHub API 429",
-      "status": 429
-    },
-    {
-      "source": "github-code-codex-action-yaml",
-      "query": "filename:action.yaml codex",
-      "error": "GitHub API 429",
-      "status": 429
-    },
     {
       "source": "github-tree-scan",
       "repository": "HIDORAKAI002/ai-workspace-archive",
@@ -31,13 +18,6 @@
     {
       "source": "github-tree-scan",
       "repository": "rogue-shadowdancer/codex-hyperv-clean-room-plugin",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "benteigland11/cartograph-plugin",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -65,13 +45,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "boshu2/agentops",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "MelnixDev/codex-ymt",
       "status": "unavailable",
       "truncated": false,
@@ -87,13 +60,6 @@
     {
       "source": "github-tree-scan",
       "repository": "hogancv/coordinate-agents",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "andreilungeanu/codex-delegate-mcp",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -142,13 +108,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "ddtcorex/agent-dev-skills",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "sturlese/build-squad",
       "status": "unavailable",
       "truncated": false,
@@ -163,21 +122,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "cch96/happycodex",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "joeaoe-hash/harmonyos-mobile-app-research",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "Fish121380/auto-mouse",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -192,13 +137,6 @@
     {
       "source": "github-tree-scan",
       "repository": "jonit-dev/linchpin",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "Besty0728/sub-agy",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -233,21 +171,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "gaelic-ghost/socket",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "suxrobGM/jobpilot",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "Demonbane18/astral-orchestrator",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -262,13 +186,6 @@
     {
       "source": "github-tree-scan",
       "repository": "tetracoralla/armorial",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "DeployGate/deploygate-agent-plugin",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -290,13 +207,6 @@
     {
       "source": "github-tree-scan",
       "repository": "linsong-dev/mindol",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "cosmobimetal956/Layntra",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -338,13 +248,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "ajhcs/Codex-Co-Engineer",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "wearshoes/release-ops",
       "status": "unavailable",
       "truncated": false,
@@ -366,35 +269,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "douglasmonsky/codex-usage-tracker",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "hyhunss/sg-semicon-us-expansion-plugin",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0xenzyme/agent-harness",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "freedom-winds/CodexMux",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "entr-engineering/planned-codex-plugin",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -416,20 +291,6 @@
     {
       "source": "github-tree-scan",
       "repository": "pushnoi/skills-internet-codex",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "FFriends/GPT-Helper",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "GML-MMGroup/Diverter",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -465,13 +326,6 @@
     {
       "source": "github-tree-scan",
       "repository": "reshuibuduo/tmcra",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "AMAP-ML/LongHorizon-Harness",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -520,13 +374,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "axing100/project-workflow",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "lql341/codex-scnet-hpc",
       "status": "unavailable",
       "truncated": false,
@@ -542,13 +389,6 @@
     {
       "source": "github-tree-scan",
       "repository": "squarepots/claude-seo-for-codex",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "Bene-2020/plane-codex-mcp",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -618,13 +458,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "FaxanFM/chronos",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "tetracoralla/decision-table",
       "status": "unavailable",
       "truncated": false,
@@ -681,13 +514,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "dequn/personal-finance-planner",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "handong66/opencode-plugin-codex",
       "status": "unavailable",
       "truncated": false,
@@ -723,13 +549,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "chiphoton/MiniMax-H3-Codex-Drama",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "JordanReighn/design-reference-library",
       "status": "unavailable",
       "truncated": false,
@@ -758,13 +577,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "19Chris19/china-travel-assistant",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "jinny51/codex-deepseek-subagent",
       "status": "unavailable",
       "truncated": false,
@@ -786,28 +598,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "fatmo666/Caushell",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "plaid-ai/opscale-codex-plugin",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "Arindaag760/humanizer-cli",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "Dtgam7689/claude-skill-critique",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -829,20 +620,6 @@
     {
       "source": "github-tree-scan",
       "repository": "Shilo/pixellab-pip",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "Cusnd/agent-docs",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "GZ-L/agent-cardroom",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -891,27 +668,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "Fish121380/csc-agent-guard-v1",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "AbhiiGatty/cld-flare-maxxing",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "cloudyview/structure-preserving-doc-converter",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "memorylake-ai/memorylake-harness",
       "status": "unavailable",
       "truncated": false,
@@ -920,13 +676,6 @@
     {
       "source": "github-tree-scan",
       "repository": "xDylanLong/xiaomi-band-codex-notify",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "CJhuochai/cp-memory",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -955,13 +704,6 @@
     {
       "source": "github-tree-scan",
       "repository": "ViszCham/RepoSeiri",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "goodbotbadbot/goodbotbadbot",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -1024,13 +766,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "cavi-ai/obsidian-agent",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "magic2goodil/studioops",
       "status": "unavailable",
       "truncated": false,
@@ -1059,13 +794,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "fn-opt/dryforge",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "PouLJenny/trundle",
       "status": "unavailable",
       "truncated": false,
@@ -1080,49 +808,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "foggykitchen/foggykitchen-mcp",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "frabcd/codex-ai-game-studio",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "psh4607/notion-multi-workspace",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "good-boy4069/Deepseek-omnimodal",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "gaofeng21cn/opl-relay",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "gaofeng21cn/opl-persona",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "cyberlesterr/paper-collage-video",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -1143,21 +829,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "gongzhang9396-ui/codex-multi-model-workflow",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "vadim-chiriac/worldkeep",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "AgentTanuki/agent-guild",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -1171,21 +843,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "Czarnak/totally-integrated-claude",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "OpenNekoPaw/codex-dsh-web",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "chromapaw/codex-chromapaw",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
@@ -1262,20 +920,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "6Kmfi6HP/avoid-overkill",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "BlueSkyXN/Codex-is-all-you-need",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "legal-expert-ai/marketplace",
       "status": "unavailable",
       "truncated": false,
@@ -1333,13 +977,6 @@
     {
       "source": "github-tree-scan",
       "repository": "MarvinSunnnn/codex-svg-review",
-      "status": "unavailable",
-      "truncated": false,
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "dingyiyi0226/fantasy-baseball-mcp",
       "status": "unavailable",
       "truncated": false,
       "error": "GitHub API 403"
