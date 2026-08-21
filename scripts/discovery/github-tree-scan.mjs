@@ -37,6 +37,9 @@ export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, 
         const response = await fetchImpl(url, { ...init, signal: AbortSignal.timeout(timeoutMs), headers: { ...headers, ...(init.headers || {}) } });
         const remaining = Number(response.headers?.get?.('x-ratelimit-remaining') ?? NaN);
         const reset = Number(response.headers?.get?.('x-ratelimit-reset') ?? NaN);
+        if ((response.status === 403 || response.status === 429) && remaining === 0) {
+          return { ok: false, error: `GitHub API ${response.status}`, status: response.status, rateLimited: true, rateRemaining: remaining, rateReset: Number.isFinite(reset) ? reset : null };
+        }
         if ((response.status === 403 || response.status === 429) && attempt < maxRetries) {
           const retryAfter = Number(response.headers?.get?.('retry-after') || 0);
           const delay = retryAfter > 0 ? retryAfter * 1000 : Number.isFinite(reset) && reset > 0 ? Math.max(1000, reset * 1000 - Date.now()) : 500 * 2 ** attempt;

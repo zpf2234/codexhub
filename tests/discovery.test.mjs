@@ -88,6 +88,23 @@ test('GitHub repository search keeps failed segments queued for retry', async ()
   assert.equal(second.state.queue.length, 0);
 });
 
+test('GitHub repository search stops immediately when the quota is exhausted', async () => {
+  let attempts = 0;
+  let sleeps = 0;
+  const client = new GithubClient({
+    maxRetries: 2,
+    sleep: async () => { sleeps += 1; },
+    fetchImpl: async () => {
+      attempts += 1;
+      return response({ message: 'rate limited' }, 403, { 'x-ratelimit-remaining': '0', 'x-ratelimit-reset': '9999999999' });
+    }
+  });
+  const result = await client.collectQueryBatch('topic:test', { id: 'test', kind: 'skill' }, {}, { maxSegments: 1 });
+  assert.equal(result.complete, false);
+  assert.equal(attempts, 1);
+  assert.equal(sleeps, 0);
+});
+
 test('GitHub repository search does not duplicate queued segments after a failed retry', async () => {
   const client = new GithubClient({ fetchImpl: async () => response({ message: 'rate limited' }, 403), maxRetries: 0 });
   const queue = [1, 2, 3].map((index) => ({ query: `topic:test created:2020-01-0${index}..2020-01-0${index}`, depth: 0, range: { from: `2020-01-0${index}`, to: `2020-01-0${index}` } }));
@@ -263,13 +280,19 @@ test('repository tree scan retries transient GitHub rate limits', async () => {
 });
 
 test('repository tree scan marks exhausted quota separately from repository failure', async () => {
+  let attempts = 0;
   const result = await scanRepository({ fullName: 'a/quota', owner: 'a', name: 'quota' }, {
-    maxRetries: 0,
-    fetchImpl: async () => response({ message: 'rate limited' }, 403, { 'x-ratelimit-remaining': '0', 'x-ratelimit-reset': '9999999999' })
+    maxRetries: 2,
+    sleep: async () => { throw new Error('quota retry should be skipped'); },
+    fetchImpl: async () => {
+      attempts += 1;
+      return response({ message: 'rate limited' }, 403, { 'x-ratelimit-remaining': '0', 'x-ratelimit-reset': '9999999999' });
+    }
   });
   assert.equal(result.status, 'rate-limited');
   assert.equal(result.rateLimited, true);
   assert.equal(result.terminal, false);
+  assert.equal(attempts, 1);
 });
 
 test('scan queue reserves a retry share while continuing with fresh repositories', () => {

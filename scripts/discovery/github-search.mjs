@@ -62,6 +62,9 @@ export class GithubClient {
       const reset = response.headers?.get?.('x-ratelimit-reset');
       const retryAfter = response.headers?.get?.('retry-after');
       this.lastRate = { remaining: remaining == null ? null : Number(remaining), reset: reset == null ? null : Number(reset), retryAfter: retryAfter == null ? null : Number(retryAfter) };
+      if ((response.status === 403 || response.status === 429) && this.lastRate.remaining === 0) {
+        return { ok: false, error: `GitHub API ${response.status}`, status: response.status, rate: this.lastRate };
+      }
       if ((response.status === 403 || response.status === 429) && attempt < this.maxRetries) {
         const delay = retryAfter ? Number(retryAfter) * 1000 : reset ? Math.max(1000, Number(reset) * 1000 - Date.now()) : 1000 * 2 ** attempt;
         attempt += 1;
