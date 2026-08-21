@@ -174,7 +174,7 @@ export class GithubClient {
       const probe = await this.searchPage(segmentQuery, 1, perPage);
       if (!probe.ok) {
         errors.push({ query: segmentQuery, error: probe.error, status: probe.status });
-        unresolved.push(task, ...queue);
+        unresolved.push(task);
         break;
       }
       processed += 1;
@@ -200,7 +200,7 @@ export class GithubClient {
         const result = page === 1 ? { ok: true, data: probe.data, rate: probe.rate } : await this.searchPage(segmentQuery, page, perPage);
         if (!result.ok) {
           errors.push({ query: segmentQuery, page, error: result.error, status: result.status });
-          unresolved.push(task, ...queue);
+          unresolved.push(task);
           failed = true;
           break;
         }

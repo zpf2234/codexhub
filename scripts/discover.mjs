@@ -41,7 +41,11 @@ if (resume && checkpoint.cycleComplete) {
   checkpoint.sourceCursor = 0;
   checkpoint.sourceStates = {};
   checkpoint.cycleComplete = false;
-  for (const repository of Object.values(checkpoint.repositories)) delete repository.scan;
+  for (const repository of Object.values(checkpoint.repositories)) {
+    delete repository.scan;
+    delete repository.registryServers;
+    delete repository.registryOnly;
+  }
 }
 const entries = await readEntries();
 const repositories = new Map(Object.entries(checkpoint.repositories));
@@ -112,8 +116,8 @@ for (const source of sourcesThisRun) {
   if (!isCodeSource) checkpoint.sourceStates[source.id] = result.state;
   mergeRepositories(result.items, source);
   const sourceReport = isCodeSource
-    ? { id: source.id, kind: source.kind, coverage: source.coverage, query: source.query, mode: 'code-search', total: result.total, pages: result.pages, results: result.items.length, truncated: result.truncated, errors: result.errors, rate: result.rate }
-    : { id: source.id, kind: source.kind, coverage: source.coverage, query: source.query, segments: result.segments, partitions: result.partitions, pendingSegments: result.state.queue.length, results: result.items.length, truncated: result.truncated, errors: result.errors, rate: result.rate };
+    ? { id: source.id, kind: source.kind, coverage: source.coverage, query: source.query, mode: 'code-search', total: result.total, pages: result.pages, results: [...repositories.values()].filter((repository) => repository.discoveredBy?.includes(source.id)).length, truncated: result.truncated, errors: result.errors, rate: result.rate }
+    : { id: source.id, kind: source.kind, coverage: source.coverage, query: source.query, segments: result.segments, partitions: result.partitions, pendingSegments: result.state.queue.length, results: [...repositories.values()].filter((repository) => repository.discoveredBy?.includes(source.id)).length, truncated: result.truncated, errors: result.errors, rate: result.rate };
   saveSourceReport(sourceReport);
   errors.push(...result.errors.map((error) => ({ source: source.id, ...error })));
   if ((source.coverage === 'supplemental' && result.errors.length === 0) || sourceSucceeded(result)) {
@@ -137,7 +141,7 @@ if (!process.env.DISCOVERY_SKIP_REGISTRY && (!selectedSources || selectedSources
     if (previous) previous.registryServers = [...new Map([...(previous.registryServers || []), server].map((value) => [value.id, value])).values()];
     else repositories.set(key, { fullName: parsed?.fullName || server.id, owner: parsed?.owner || null, name: parsed?.name || server.name, url: parsed?.url || server.repositoryUrl, description: server.description, stars: null, forks: null, license: 'NOASSERTION', discoveredBy: [MCP_REGISTRY_SOURCE.id], sourceKinds: ['mcp'], registryServers: [server], registryOnly: !parsed });
   }
-  errors.push(...registry.errors.map((error) => ({ source: MCP_REGISTRY_SOURCE.id, ...error })));
+errors.push(...registry.errors.map((error) => ({ source: MCP_REGISTRY_SOURCE.id, ...error })));
   if (registry.errors.length === 0 && registry.complete) checkpoint.completedSources.push(MCP_REGISTRY_SOURCE.id);
   checkpoint.repositories = Object.fromEntries(repositories);
   checkpoint.sourceReports = sourceReports;
@@ -197,7 +201,8 @@ const persistedScanFailures = allRepositories
   });
 const terminalUnavailableRepositories = allRepositories.filter((candidate) => checkpoint.repositories[candidate.fullName.toLowerCase()]?.scan?.terminal === true).length;
 const persistedErrors = persistedScanFailures.map((failure) => ({ source: 'github-tree-scan', repository: failure.repository, status: failure.status, truncated: failure.truncated, error: failure.errors.join('; ') || 'Repository tree scan is incomplete.' }));
-const unresolvedErrors = [...new Map([...errors, ...persistedErrors].map((error) => [JSON.stringify(error), error])).values()];
+const historicalRegistryErrors = (registryReport.errors || []).map((error) => ({ source: MCP_REGISTRY_SOURCE.id, ...error }));
+const unresolvedErrors = [...new Map([...errors, ...persistedErrors, ...historicalRegistryErrors].map((error) => [JSON.stringify(error), error])).values()];
 const sourcesRemaining = githubSources.filter((source) => !checkpoint.completedSources.includes(source.id)).length;
 const exhaustiveSources = GITHUB_SOURCES.filter((source) => source.coverage === 'exhaustive');
 const exhaustiveSourcesRemaining = exhaustiveSources.filter((source) => !checkpoint.completedSources.includes(source.id)).length;

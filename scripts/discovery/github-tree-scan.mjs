@@ -42,7 +42,7 @@ export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, 
   if (!tree.ok) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', errors: [tree.error] };
   if (tree.data.truncated) {
     const root = await request(`${base}/git/trees/${encodeURIComponent(branch)}`);
-    if (!root.ok) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', truncated: true, errors: [root.error] };
+    if (!root.ok || root.data.truncated) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', truncated: true, errors: [root.error || 'GitHub subtree response was truncated.'] };
     const files = [];
     const queue = [...(root.data.tree || []).map((item) => ({ ...item, path: item.path }))];
     while (queue.length) {
@@ -50,7 +50,7 @@ export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, 
       if (item.type === 'blob') { files.push(item); continue; }
       if (item.type !== 'tree' || !item.sha) continue;
       const child = await request(`${base}/git/trees/${encodeURIComponent(item.sha)}`);
-      if (!child.ok) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', truncated: true, errors: [child.error] };
+      if (!child.ok || child.data.truncated) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', truncated: true, errors: [child.error || 'GitHub subtree response was truncated.'] };
       queue.push(...(child.data.tree || []).map((entry) => ({ ...entry, path: `${item.path}/${entry.path}` })));
     }
     tree = { ok: true, data: { tree: files, truncated: false } };

@@ -20,6 +20,7 @@ export async function crawlMcpRegistry({ endpoint = 'https://registry.modelconte
   const pages = [...initialPages];
   const errors = [];
   let cursor = initialCursor;
+  if (maxPages <= 0) return { servers: [...servers.values()], pages, errors: [{ page: pages.length + 1, error: 'MCP Registry page budget must be greater than zero.' }], complete: false, cursor };
   const lastPage = pages.length + maxPages;
   for (let page = pages.length + 1; page <= lastPage; page += 1) {
     const url = new URL(endpoint);
@@ -47,5 +48,5 @@ export async function crawlMcpRegistry({ endpoint = 'https://registry.modelconte
     if (!next || next === cursor || batch.length === 0) break;
     cursor = next;
   }
-  return { servers: [...servers.values()], pages, errors, complete: errors.length === 0 && (!pages.length || !pages.at(-1).nextCursor), cursor };
+  return { servers: [...servers.values()], pages, errors, complete: errors.length === 0 && pages.length > 0 && !pages.at(-1).nextCursor, cursor };
 }

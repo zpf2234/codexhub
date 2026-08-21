@@ -87,6 +87,14 @@ test('GitHub repository search keeps failed segments queued for retry', async ()
   assert.equal(second.state.queue.length, 0);
 });
 
+test('GitHub repository search does not duplicate queued segments after a failed retry', async () => {
+  const client = new GithubClient({ fetchImpl: async () => response({ message: 'rate limited' }, 403), maxRetries: 0 });
+  const queue = [1, 2, 3].map((index) => ({ query: `topic:test created:2020-01-0${index}..2020-01-0${index}`, depth: 0, range: { from: `2020-01-0${index}`, to: `2020-01-0${index}` } }));
+  const result = await client.collectQueryBatch('topic:test', { id: 'test', kind: 'skill' }, { queue });
+  assert.equal(result.state.queue.length, 3);
+  assert.equal(new Set(result.state.queue.map((item) => item.query)).size, 3);
+});
+
 test('GitHub code search paginates and collapses multiple files from one repository', async () => {
   const fetchImpl = async (url) => {
     const parsed = new URL(url);
@@ -140,6 +148,13 @@ test('MCP Registry resumes for another page budget after a checkpoint', async ()
   assert.equal(result.servers.length, 2);
 });
 
+test('MCP Registry with no page budget remains incomplete', async () => {
+  const result = await crawlMcpRegistry({ maxPages: 0, fetchImpl: async () => response({ servers: [] }) });
+  assert.equal(result.complete, false);
+  assert.equal(result.pages.length, 0);
+  assert.equal(result.errors.length, 1);
+});
+
 test('repository tree scan keeps every artifact path when content verification is capped', async () => {
   const tree = Array.from({ length: 4 }, (_, index) => ({ type: 'blob', path: `skills/${index}/SKILL.md` }));
   const fetchImpl = async (url) => {
@@ -179,6 +194,19 @@ test('repository tree scan falls back to walking subtrees when the recursive tre
   assert.equal(result.status, 'fresh');
   assert.equal(result.truncated, false);
   assert.equal(result.artifacts[0].path, 'skills/demo/SKILL.md');
+});
+
+test('repository tree scan never hides a truncated fallback subtree', async () => {
+  const fetchImpl = async (url) => {
+    if (url === 'https://api.github.com/repos/a/truncated') return response({ default_branch: 'main', archived: false });
+    if (url.endsWith('/git/trees/main?recursive=1')) return response({ truncated: true, tree: [] });
+    if (url.endsWith('/git/trees/main')) return response({ truncated: true, tree: [] });
+    throw new Error(`unexpected ${url}`);
+  };
+  const result = await scanRepository({ fullName: 'a/truncated', owner: 'a', name: 'truncated' }, { fetchImpl });
+  assert.equal(result.status, 'partial');
+  assert.equal(result.truncated, true);
+  assert.ok(result.errors.length > 0);
 });
 
 test('repository tree scan treats deleted repositories as terminally unavailable', async () => {
