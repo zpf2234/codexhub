@@ -30,6 +30,16 @@ await fs.mkdir(path.join(output, 'api', 'v1'), { recursive: true });
 await fs.cp(path.join(ROOT, 'web'), output, { recursive: true });
 await fs.copyFile(path.join(ROOT, 'schemas', 'catalog.schema.json'), path.join(output, 'api', 'v1', 'schema.json'));
 await fs.copyFile(path.join(ROOT, 'schemas', 'submission.schema.json'), path.join(output, 'api', 'v1', 'submission.schema.json'));
+const discoveryDir = path.join(ROOT, 'artifacts', 'discovery');
+const publicDiscoveryDir = path.join(output, 'api', 'v1', 'discovery');
+try {
+  await fs.mkdir(publicDiscoveryDir, { recursive: true });
+  for (const name of ['discovery.json', 'repositories.json', 'artifacts.json', 'coverage.json', 'errors.json']) {
+    await fs.copyFile(path.join(discoveryDir, name), path.join(publicDiscoveryDir, name));
+  }
+} catch {
+  // Discovery is an independent, optionally scheduled dataset.
+}
 if (writeCache) {
   const nextCache = { ...cache };
   for (const entry of enriched) if (['fresh', 'partial'].includes(entry.metadata.status)) nextCache[entry.id] = entry.metadata;

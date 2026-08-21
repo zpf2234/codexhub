@@ -22,6 +22,7 @@ Browse the live catalog at https://zpf2234.github.io/codexhub/.
 - Builds a static searchable site and `dist/api/v1/catalog.json`.
 - Compares up to three projects with quality and popularity signals side by side.
 - Discovers review candidates weekly without auto-publishing them.
+- Crawls declared GitHub sources with pagination, query partitioning, checkpoint recovery, and repository-tree artifact discovery; MCP servers are also read from the official MCP Registry.
 - Runs deterministic checks locally and on GitHub Actions.
 
 ### Quick start
@@ -33,6 +34,20 @@ python -m http.server 4173 --directory dist
 ```
 
 Then open `http://localhost:4173`.
+
+### Discovery API
+
+`npm run discover` produces an independently auditable dataset under `artifacts/discovery/`. A cached build publishes the same files at `dist/api/v1/discovery/`:
+
+- `discovery.json`: combined repository, artifact, source, and error data.
+- `repositories.json`: deduplicated repository candidates and source provenance.
+- `artifacts.json`: individual `SKILL.md`, Plugin manifest, `AGENTS.md`, Action, and MCP metadata matches.
+- `coverage.json`: source queries, partitions, page counts, completion state, and known limitations.
+- `errors.json`: rate-limit, unavailable, and truncated-source errors.
+
+The dataset is complete only relative to its declared sources and the crawl time. GitHub search indexing, rate limits, private/deleted repositories, and recursive-tree truncation remain explicit limitations. Discovery never executes indexed code or connects to MCP servers. Use `npm run discover -- --fresh` to discard the previous checkpoint, or `DISCOVERY_MAX_REPOSITORIES=100 npm run discover` for a bounded test run.
+
+For operational recovery, `GITHUB_DISCOVERY_TIMEOUT_MS` and `GITHUB_DISCOVERY_RETRIES` bound individual GitHub requests. `DISCOVERY_SOURCES=github-topic-codex-skills` can isolate one source while diagnosing a failed scheduled run.
 
 ### Supported artifacts
 

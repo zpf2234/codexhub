@@ -3,6 +3,9 @@ dist/
 *.png
 test-results/
 playwright-report/
-artifacts/
+artifacts/*
+!artifacts/discovery/
+!artifacts/discovery/*.json
+artifacts/discovery/checkpoint.json
 .DS_Store
 npm-debug.log*
