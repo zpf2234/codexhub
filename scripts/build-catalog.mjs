@@ -37,9 +37,9 @@ try {
   await fs.mkdir(publicDiscoveryDir, { recursive: true });
   const discovery = normalizeDiscovery(JSON.parse(await fs.readFile(path.join(discoveryDir, 'discovery.json'), 'utf8')));
   const dashboard = createDashboardSnapshot(discovery);
-  await fs.writeFile(path.join(publicDiscoveryDir, 'discovery.json'), JSON.stringify(discovery, null, 2) + '\n');
-  await fs.writeFile(path.join(publicDiscoveryDir, 'repositories.json'), JSON.stringify({ generatedAt: discovery.generatedAt, repositories: discovery.repositories }, null, 2) + '\n');
-  await fs.writeFile(path.join(publicDiscoveryDir, 'artifacts.json'), JSON.stringify({ generatedAt: discovery.generatedAt, artifacts: discovery.artifacts }, null, 2) + '\n');
+  await fs.writeFile(path.join(publicDiscoveryDir, 'discovery.json'), JSON.stringify(discovery) + '\n');
+  await fs.writeFile(path.join(publicDiscoveryDir, 'repositories.json'), JSON.stringify({ generatedAt: discovery.generatedAt, repositories: discovery.repositories }) + '\n');
+  await fs.writeFile(path.join(publicDiscoveryDir, 'artifacts.json'), JSON.stringify({ generatedAt: discovery.generatedAt, artifacts: discovery.artifacts }) + '\n');
   await fs.writeFile(path.join(publicDiscoveryDir, 'coverage.json'), JSON.stringify(discovery.coverage, null, 2) + '\n');
   await fs.writeFile(path.join(publicDiscoveryDir, 'errors.json'), JSON.stringify({ generatedAt: discovery.generatedAt, errors: discovery.errors || [] }, null, 2) + '\n');
   await fs.writeFile(path.join(publicDiscoveryDir, 'dashboard.json'), JSON.stringify(dashboard) + '\n');

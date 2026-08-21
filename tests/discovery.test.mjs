@@ -223,6 +223,23 @@ test('repository tree scan never hides a truncated fallback subtree', async () =
   assert.ok(result.errors.length > 0);
 });
 
+test('repository tree scan URL-encodes fallback branches and rejects truncated child trees', async () => {
+  const calls = [];
+  const fetchImpl = async (url) => {
+    calls.push(url);
+    if (url === 'https://api.github.com/repos/a/truncated-child') return response({ default_branch: 'feature/main', archived: false });
+    if (url.endsWith('/git/trees/feature%2Fmain?recursive=1')) return response({ truncated: true, tree: [] });
+    if (url.endsWith('/git/trees/feature%2Fmain')) return response({ tree: [{ type: 'tree', path: 'skills', sha: 'skills-sha' }] });
+    if (url.endsWith('/git/trees/skills-sha')) return response({ truncated: true, tree: [] });
+    throw new Error(`unexpected ${url}`);
+  };
+  const result = await scanRepository({ fullName: 'a/truncated-child', owner: 'a', name: 'truncated-child' }, { fetchImpl });
+  assert.equal(result.status, 'partial');
+  assert.equal(result.truncated, true);
+  assert.match(result.errors[0], /subtree response was truncated at skills/);
+  assert.ok(calls.includes('https://api.github.com/repos/a/truncated-child/git/trees/feature%2Fmain'));
+});
+
 test('repository tree scan treats deleted repositories as terminally unavailable', async () => {
   const result = await scanRepository({ fullName: 'a/deleted', owner: 'a', name: 'deleted' }, { fetchImpl: async () => response({ message: 'not found' }, 404) });
   assert.equal(result.status, 'terminal-unavailable');

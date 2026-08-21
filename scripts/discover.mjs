@@ -146,11 +146,16 @@ if (!process.env.DISCOVERY_SKIP_REGISTRY && (!selectedSources || selectedSources
     if (previous) previous.registryServers = [...new Map([...(previous.registryServers || []), server].map((value) => [value.id, value])).values()];
     else repositories.set(key, { fullName: parsed?.fullName || server.id, owner: parsed?.owner || null, name: parsed?.name || server.name, url: parsed?.url || server.repositoryUrl, description: server.description, stars: null, forks: null, license: 'NOASSERTION', discoveredBy: [MCP_REGISTRY_SOURCE.id], sourceKinds: ['mcp'], registryServers: [server], registryOnly: !parsed });
   }
-errors.push(...registry.errors.map((error) => ({ source: MCP_REGISTRY_SOURCE.id, ...error })));
+  errors.push(...registry.errors.map((error) => ({ source: MCP_REGISTRY_SOURCE.id, ...error })));
   if (registry.errors.length === 0 && registry.complete) checkpoint.completedSources.push(MCP_REGISTRY_SOURCE.id);
   checkpoint.repositories = Object.fromEntries(repositories);
   checkpoint.sourceReports = sourceReports;
   await saveCheckpoint(checkpointPath, checkpoint);
+}
+
+// Preserve errors from a previously persisted Registry attempt when this run skips it.
+if (!registryReport.complete && registryReport.errors?.length) {
+  errors.push(...registryReport.errors.map((error) => ({ source: MCP_REGISTRY_SOURCE.id, ...error })));
 }
 
 const allRepositories = [...repositories.values()].filter((candidate) => candidate.owner && candidate.name);
@@ -162,6 +167,7 @@ const scanCandidates = allRepositories.map((candidate) => ({ ...candidate, scan:
 const scanList = selectScanBatch(scanCandidates, { limit: maxRepositories, retryShare: Number(process.env.DISCOVERY_SCAN_RETRY_SHARE || 0.25), isComplete: successfullyScanned });
 const artifacts = [];
 const scanReports = [];
+let rateLimitedScanEvents = 0;
 if (scanEnabled) {
   let rateLimited = false;
   for (let batchStart = 0; batchStart < scanList.length; batchStart += scanConcurrency) {
@@ -174,6 +180,7 @@ if (scanEnabled) {
     }));
     for (const { candidate, key, scanned } of results) {
       if (scanned.rateLimited === true) {
+        rateLimitedScanEvents += 1;
         rateLimited = true;
         continue;
       }
@@ -184,7 +191,6 @@ if (scanEnabled) {
       if (scanned.terminal !== true) errors.push(...(scanned.errors || []).map((error) => ({ source: 'github-tree-scan', repository: candidate.fullName, error })));
     }
     if (rateLimited) {
-      errors.push({ source: 'github-tree-scan', error: 'GitHub API rate limit exhausted; remaining repository scans are deferred to a later run.' });
       break;
     }
     checkpoint.scanOffset = allRepositories.filter(successfullyScanned).length;
@@ -205,13 +211,18 @@ const accumulatedArtifacts = Object.values(checkpoint.repositories).flatMap((sto
   const repository = repositoryIndex.get(String(stored.fullName).toLowerCase()) || stored;
   return { ...artifact, repository: stored.fullName, repositoryUrl: repository.url, defaultBranch: repository.defaultBranch || stored.scan?.repository?.defaultBranch, stars: repository.stars, discoveredBy: repository.discoveredBy, sourceKinds: repository.sourceKinds };
 }));
+const isRateLimitedScan = (scan) => scan?.status === 'rate-limited' || ((scan?.errors || []).length > 0 && scan.errors.every((error) => /^GitHub API (?:403|429)$/.test(error)));
 const persistedScanFailures = allRepositories
-  .filter((candidate) => !successfullyScanned(candidate) && checkpoint.repositories[candidate.fullName.toLowerCase()]?.scan)
+  .filter((candidate) => {
+    const scan = checkpoint.repositories[candidate.fullName.toLowerCase()]?.scan;
+    return !successfullyScanned(candidate) && scan && !isRateLimitedScan(scan);
+  })
   .map((candidate) => {
     const scan = checkpoint.repositories[candidate.fullName.toLowerCase()].scan;
     return { repository: candidate.fullName, status: scan.status, truncated: scan.truncated === true, errors: scan.errors || [] };
   });
 const terminalUnavailableRepositories = allRepositories.filter((candidate) => checkpoint.repositories[candidate.fullName.toLowerCase()]?.scan?.terminal === true).length;
+const rateLimitedRepositories = allRepositories.filter((candidate) => isRateLimitedScan(checkpoint.repositories[candidate.fullName.toLowerCase()]?.scan)).length;
 const persistedErrors = persistedScanFailures.map((failure) => ({ source: 'github-tree-scan', repository: failure.repository, status: failure.status, truncated: failure.truncated, error: failure.errors.join('; ') || 'Repository tree scan is incomplete.' }));
 const historicalRegistryErrors = (registryReport.errors || []).map((error) => ({ source: MCP_REGISTRY_SOURCE.id, ...error }));
 const unresolvedErrors = [...new Map([...errors, ...persistedErrors, ...historicalRegistryErrors].map((error) => [JSON.stringify(error), error])).values()];
@@ -247,6 +258,8 @@ const coverage = {
   cycleComplete: scanEnabled ? checkpoint.cycleComplete : false,
   persistedScanFailures,
   terminalUnavailableRepositories,
+  rateLimitedRepositories,
+  rateLimitedScanEvents,
   artifactsDiscovered: accumulatedArtifacts.length,
   errors: unresolvedErrors.length,
   scanDisabled: !scanEnabled,
@@ -254,9 +267,9 @@ const coverage = {
 };
 const payload = normalizeDiscovery({ schemaVersion: '1.1.0', generatedAt, coverage, repositories: candidateList, artifacts: accumulatedArtifacts, errors: unresolvedErrors });
 await fs.mkdir(outputDir, { recursive: true });
-await fs.writeFile(path.join(outputDir, 'repositories.json'), JSON.stringify({ generatedAt, repositories: payload.repositories }, null, 2) + '\n');
-await fs.writeFile(path.join(outputDir, 'artifacts.json'), JSON.stringify({ generatedAt, artifacts: payload.artifacts }, null, 2) + '\n');
+await fs.writeFile(path.join(outputDir, 'repositories.json'), JSON.stringify({ generatedAt, repositories: payload.repositories }) + '\n');
+await fs.writeFile(path.join(outputDir, 'artifacts.json'), JSON.stringify({ generatedAt, artifacts: payload.artifacts }) + '\n');
 await fs.writeFile(path.join(outputDir, 'coverage.json'), JSON.stringify(payload.coverage, null, 2) + '\n');
 await fs.writeFile(path.join(outputDir, 'errors.json'), JSON.stringify({ generatedAt, errors: unresolvedErrors }, null, 2) + '\n');
-await fs.writeFile(path.join(outputDir, 'discovery.json'), JSON.stringify(payload, null, 2) + '\n');
+await fs.writeFile(path.join(outputDir, 'discovery.json'), JSON.stringify(payload) + '\n');
 console.log(`Discovered ${candidateList.length} repositories and ${payload.artifacts.length} artifacts. Coverage: ${coverage.complete ? 'complete' : 'partial'}; unresolved errors: ${unresolvedErrors.length}.`);

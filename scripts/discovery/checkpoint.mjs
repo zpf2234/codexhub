@@ -26,6 +26,6 @@ export async function loadCheckpoint(filePath) {
 export async function saveCheckpoint(filePath, checkpoint) {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
   const temporary = `${filePath}.tmp`;
-  await fs.writeFile(temporary, JSON.stringify({ ...checkpoint, version: 1 }, null, 2) + '\n');
+  await fs.writeFile(temporary, JSON.stringify({ ...checkpoint, version: 1 }) + '\n');
   await fs.rename(temporary, filePath);
 }

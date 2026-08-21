@@ -175,6 +175,12 @@ export class GithubClient {
     const repositories = new Map();
     const errors = [];
     const unresolved = [];
+    const unresolvedQueries = new Set();
+    const requeue = (task) => {
+      if (unresolvedQueries.has(task.query)) return;
+      unresolvedQueries.add(task.query);
+      unresolved.push(task);
+    };
     let processed = 0;
 
     while (queue.length && processed < maxSegments) {
@@ -183,7 +189,7 @@ export class GithubClient {
       const probe = await this.searchPage(segmentQuery, 1, perPage);
       if (!probe.ok) {
         errors.push({ query: segmentQuery, error: probe.error, status: probe.status });
-        unresolved.push(task);
+        requeue(task);
         break;
       }
       processed += 1;
@@ -192,7 +198,7 @@ export class GithubClient {
       segmentMap.set(segmentQuery, { query: segmentQuery, total, incomplete });
       if (incomplete) {
         errors.push({ query: segmentQuery, error: 'GitHub returned incomplete repository search results.' });
-        unresolved.push(task);
+        requeue(task);
         break;
       }
       if (total > 1000) {
@@ -207,7 +213,7 @@ export class GithubClient {
           const boundary = await this.boundary(segmentQuery, 'stars', 'desc');
           if (!boundary.result.ok) {
             errors.push({ query: segmentQuery, error: boundary.result.error, status: boundary.result.status });
-            unresolved.push(task);
+            requeue(task);
             break;
           }
           starRange = { from: 0, to: Number(boundary.item?.stargazers_count || 0) };
@@ -223,7 +229,7 @@ export class GithubClient {
           continue;
         }
         errors.push({ query: segmentQuery, error: 'Repository search bucket exceeds 1,000 results and cannot be partitioned further by created date or stars.' });
-        unresolved.push(task);
+        requeue(task);
         break;
       }
       const pages = Math.min(Math.ceil(Math.min(total, 1000) / perPage), 10);
@@ -232,14 +238,14 @@ export class GithubClient {
         const result = page === 1 ? { ok: true, data: probe.data, rate: probe.rate } : await this.searchPage(segmentQuery, page, perPage);
         if (!result.ok) {
           errors.push({ query: segmentQuery, page, error: result.error, status: result.status });
-          unresolved.push(task);
+          requeue(task);
           failed = true;
           break;
         }
         for (const item of result.data.items || []) if (item.full_name) repositories.set(item.full_name.toLowerCase(), item);
       }
       if (failed) break;
-      if (total > 1000) unresolved.push(task);
+      if (total > 1000) requeue(task);
     }
 
     const segments = [...segmentMap.values()];

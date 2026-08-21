@@ -66,7 +66,7 @@ function renderCoverage() {
   const card = document.querySelector('#coverage-card');
   const status = el('span', `coverage-pill ${coverage.complete ? 'complete' : 'partial'}`, coverage.complete ? 'Complete cycle' : 'Scanning in progress');
   const title = el('h2', '', coverage.complete ? 'Declared sources covered' : `${formatNumber(coverage.exhaustiveSourcesRemaining ?? coverage.sourcesRemaining)} exhaustive sources remain`);
-  const text = el('p', '', coverage.complete ? 'Every exhaustive source, official Registry page, and discovered repository tree completed without unresolved errors.' : `${formatNumber(coverage.repositoriesNotScanned)} repository trees remain. ${formatNumber(coverage.supplementalSourcesRemaining || 0)} supplemental searches remain; GitHub Code Search limits each query to 1,000 results.`);
+  const text = el('p', '', coverage.complete ? 'Every exhaustive source, official Registry page, and discovered repository tree completed without unresolved errors.' : `${formatNumber(coverage.repositoriesNotScanned)} repository trees remain. ${formatNumber(coverage.rateLimitedRepositories || 0)} are waiting for GitHub quota recovery; ${formatNumber(coverage.supplementalSourcesRemaining || 0)} supplemental searches remain.`);
   const time = el('small', '', `Snapshot ${new Date(state.data.generatedAt).toLocaleString()}`);
   card.replaceChildren(status, title, text, time);
   document.querySelector('#discovery-repositories').textContent = formatExact(coverage.repositoriesDiscovered ?? state.data.repositories.length);

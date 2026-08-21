@@ -44,7 +44,7 @@ export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, 
           await sleep(Math.min(delay, 30_000));
           continue;
         }
-        if (!response.ok) return { ok: false, error: `GitHub API ${response.status}`, status: response.status, rateLimited: (response.status === 403 || response.status === 429) && remaining === 0, rateRemaining: Number.isFinite(remaining) ? remaining : null, rateReset: Number.isFinite(reset) ? reset : null };
+        if (!response.ok) return { ok: false, error: `GitHub API ${response.status}`, status: response.status, rateLimited: response.status === 403 || response.status === 429, rateRemaining: Number.isFinite(remaining) ? remaining : null, rateReset: Number.isFinite(reset) ? reset : null };
         return { ok: true, data: await response.json() };
       } catch (error) {
         if (attempt++ < maxRetries) {
@@ -58,11 +58,13 @@ export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, 
   const repo = await request(base);
   if (!repo.ok) return { repository: candidate, artifacts: [], status: repo.rateLimited ? 'rate-limited' : repo.status === 404 || repo.status === 451 ? 'terminal-unavailable' : 'unavailable', terminal: repo.status === 404 || repo.status === 451, rateLimited: repo.rateLimited === true, rateRemaining: repo.rateRemaining, rateReset: repo.rateReset, errors: [repo.error] };
   const branch = repo.data.default_branch || candidate.defaultBranch || 'main';
-  let tree = await request(`${base}/git/trees/${encodeURIComponent(branch)}?recursive=1`);
+  const encodedBranch = encodeURIComponent(branch);
+  let tree = await request(`${base}/git/trees/${encodedBranch}?recursive=1`);
   if (!tree.ok) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: tree.rateLimited ? 'rate-limited' : 'partial', rateLimited: tree.rateLimited === true, rateRemaining: tree.rateRemaining, rateReset: tree.rateReset, errors: [tree.error] };
   if (tree.data.truncated) {
-    const root = await request(`${base}/git/trees/${encodeURIComponent(branch)}`);
-    if (!root.ok || root.data.truncated) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', truncated: true, errors: [root.error || 'GitHub subtree response was truncated.'] };
+    const root = await request(`${base}/git/trees/${encodedBranch}`);
+    if (!root.ok) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', truncated: true, errors: [root.error] };
+    if (root.data.truncated) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', truncated: true, errors: ['GitHub repository root tree response was truncated.'] };
     const files = [];
     const queue = [...(root.data.tree || []).map((item) => ({ ...item, path: item.path }))];
     while (queue.length) {
@@ -70,7 +72,8 @@ export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, 
       if (item.type === 'blob') { files.push(item); continue; }
       if (item.type !== 'tree' || !item.sha) continue;
       const child = await request(`${base}/git/trees/${encodeURIComponent(item.sha)}`);
-      if (!child.ok || child.data.truncated) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', truncated: true, errors: [child.error || 'GitHub subtree response was truncated.'] };
+      if (!child.ok) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', truncated: true, errors: [child.error] };
+      if (child.data.truncated) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', truncated: true, errors: [`GitHub repository subtree response was truncated at ${item.path}.`] };
       queue.push(...(child.data.tree || []).map((entry) => ({ ...entry, path: `${item.path}/${entry.path}` })));
     }
     tree = { ok: true, data: { tree: files, truncated: false } };
