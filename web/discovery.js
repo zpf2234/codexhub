@@ -2,6 +2,7 @@ const params = new URLSearchParams(location.search);
 const state = { data: null, query: params.get('q') || '', category: params.get('category') || 'all', verification: params.get('verification') || 'all', view: params.get('view') || 'artifacts', sort: params.get('sort') || 'repository', visible: 60 };
 const categories = ['all', 'skill', 'plugin', 'mcp', 'marketplace', 'hook', 'config', 'agent-config', 'rule', 'prompt', 'plugin-metadata', 'agents', 'action', 'other'];
 const labels = { all: 'All artifacts', skill: 'Skills', plugin: 'Plugins', mcp: 'MCP', marketplace: 'Marketplaces', hook: 'Hooks', config: 'Codex config', 'agent-config': 'Custom agents', rule: 'Execpolicy rules', prompt: 'Custom prompts', 'plugin-metadata': 'Plugin metadata', agents: 'AGENTS.md', action: 'Actions', other: 'Other' };
+const artifactTypeLabels = { 'mcp-app': 'MCP app mapping', mcp: 'MCP configuration', 'mcp-registry': 'MCP Registry', 'codex-config': 'Codex configuration', 'agent-config': 'Custom agent', rule: 'Execpolicy rule', prompt: 'Custom prompt' };
 const statusLabels = { verified: 'Verified', discovered: 'Deferred', registry: 'Registry', unknown: 'Unknown' };
 const el = (tag, className, text) => { const node = document.createElement(tag); if (className) node.className = className; if (text != null) node.textContent = text; return node; };
 const safeUrl = (value) => { try { const url = new URL(value); return ['http:', 'https:'].includes(url.protocol) ? url.href : '#'; } catch { return '#'; } };
@@ -147,6 +148,11 @@ async function start() {
   const response = await fetch('./api/v1/discovery/dashboard.json');
   if (!response.ok) throw new Error('Discovery snapshot unavailable');
   state.data = await response.json();
+  const repositoryIndex = new Map(state.data.repositories.map((repository) => [String(repository.fullName).toLowerCase(), repository]));
+  state.data.artifacts = state.data.artifacts.map((artifact) => {
+    const repository = repositoryIndex.get(String(artifact.repository || '').toLowerCase());
+    return { ...artifact, categoryLabel: artifact.categoryLabel || artifactTypeLabels[artifact.artifactType] || labels[artifact.category] || artifact.category, repositoryUrl: artifact.repositoryUrl || repository?.url || null, defaultBranch: artifact.defaultBranch || repository?.defaultBranch || 'main', stars: artifact.stars ?? repository?.stars ?? null };
+  });
   renderCoverage();
   const search = document.querySelector('#discovery-search'); search.value = state.query; search.oninput = () => { state.query = search.value; state.visible = 60; render(); };
   const view = document.querySelector('#discovery-view'); view.value = state.view; view.onchange = () => { state.view = view.value; state.visible = 60; render(); };

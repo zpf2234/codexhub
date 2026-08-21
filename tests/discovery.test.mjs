@@ -346,3 +346,12 @@ test('dashboard snapshot retains the precise artifact type for presentation', ()
   assert.equal(dashboard.artifacts[0].artifactType, 'mcp-app');
   assert.equal(dashboard.artifacts[0].categoryLabel, 'MCP app mapping');
 });
+
+test('dashboard snapshot de-duplicates repository metadata from artifacts', () => {
+  const discovery = normalizeDiscovery({ generatedAt: '2026-01-01T00:00:00Z', coverage: {}, repositories: [{ fullName: 'a/b', name: 'b', url: 'https://github.com/a/b', defaultBranch: 'main', stars: 3 }], artifacts: [{ id: 'github:a/b#.app.json', path: '.app.json', repository: 'a/b', repositoryUrl: 'https://github.com/a/b', defaultBranch: 'main', stars: 3, status: 'discovered', source: 'github-tree' }] });
+  const dashboard = createDashboardSnapshot(discovery);
+  assert.equal('repositoryUrl' in dashboard.artifacts[0], false);
+  assert.equal('defaultBranch' in dashboard.artifacts[0], false);
+  assert.equal('stars' in dashboard.artifacts[0], false);
+  assert.equal(dashboard.repositories[0].url, 'https://github.com/a/b');
+});

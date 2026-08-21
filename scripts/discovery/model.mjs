@@ -113,13 +113,10 @@ export function createDashboardSnapshot(discovery) {
     verification: artifact.verification,
     source: artifact.source,
     repository: artifact.repository,
-    repositoryUrl: artifact.repositoryUrl,
-    defaultBranch: artifact.defaultBranch,
-    stars: artifact.stars,
     name: artifact.name,
     version: artifact.version,
     description: artifact.description,
-    note: artifact.note
+    ...(artifact.note && artifact.note !== 'Artifact path was discovered from the complete repository tree; content verification is deferred.' ? { note: artifact.note } : {})
   }));
   return { schemaVersion: discovery.schemaVersion, generatedAt: discovery.generatedAt, coverage: discovery.coverage, repositories, artifacts, errors: discovery.errors || [] };
 }
