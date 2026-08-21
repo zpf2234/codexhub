@@ -1,6 +1,8 @@
 const DEFAULT_HEADERS = { 'User-Agent': 'CodexHub/0.2', Accept: 'application/vnd.github+json' };
 import { classifyPath } from './model.mjs';
 
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const artifactId = (fullName, filePath) => `github:${fullName.toLowerCase()}#${filePath}`;
 function validate(type, content, filePath) {
   if (!content.trim()) return { valid: false, note: 'File is empty.' };
@@ -25,15 +27,32 @@ function validate(type, content, filePath) {
   return { valid: true, note: 'Non-empty evidence file.' };
 }
 
-export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, token = process.env.GITHUB_TOKEN, maxArtifacts = 500, timeoutMs = Number(process.env.GITHUB_DISCOVERY_TIMEOUT_MS || 20_000) } = {}) {
+export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, token = process.env.GITHUB_TOKEN, maxArtifacts = 500, timeoutMs = Number(process.env.GITHUB_DISCOVERY_TIMEOUT_MS || 20_000), maxRetries = Number(process.env.GITHUB_DISCOVERY_RETRIES || 2), sleep = wait } = {}) {
   const headers = { ...DEFAULT_HEADERS, ...(token ? { Authorization: `Bearer ${token}` } : {}) };
   const base = `https://api.github.com/repos/${candidate.owner}/${candidate.name}`;
   const request = async (url, init = {}) => {
-    try {
-      const response = await fetchImpl(url, { ...init, signal: AbortSignal.timeout(timeoutMs), headers: { ...headers, ...(init.headers || {}) } });
-      if (!response.ok) return { ok: false, error: `GitHub API ${response.status}`, status: response.status };
-      return { ok: true, data: await response.json() };
-    } catch (error) { return { ok: false, error: error instanceof Error ? error.message : String(error) }; }
+    let attempt = 0;
+    while (true) {
+      try {
+        const response = await fetchImpl(url, { ...init, signal: AbortSignal.timeout(timeoutMs), headers: { ...headers, ...(init.headers || {}) } });
+        if ((response.status === 403 || response.status === 429) && attempt < maxRetries) {
+          const retryAfter = Number(response.headers?.get?.('retry-after') || 0);
+          const reset = Number(response.headers?.get?.('x-ratelimit-reset') || 0);
+          const delay = retryAfter > 0 ? retryAfter * 1000 : reset > 0 ? Math.max(1000, reset * 1000 - Date.now()) : 500 * 2 ** attempt;
+          attempt += 1;
+          await sleep(Math.min(delay, 30_000));
+          continue;
+        }
+        if (!response.ok) return { ok: false, error: `GitHub API ${response.status}`, status: response.status };
+        return { ok: true, data: await response.json() };
+      } catch (error) {
+        if (attempt++ < maxRetries) {
+          await sleep(Math.min(30_000, 500 * 2 ** attempt));
+          continue;
+        }
+        return { ok: false, error: error instanceof Error ? error.message : String(error) };
+      }
+    }
   };
   const repo = await request(base);
   if (!repo.ok) return { repository: candidate, artifacts: [], status: repo.status === 404 || repo.status === 451 ? 'terminal-unavailable' : 'unavailable', terminal: repo.status === 404 || repo.status === 451, errors: [repo.error] };

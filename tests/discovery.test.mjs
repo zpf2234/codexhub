@@ -228,6 +228,22 @@ test('repository tree scan treats deleted repositories as terminally unavailable
   assert.equal(result.terminal, true);
 });
 
+test('repository tree scan retries transient GitHub rate limits', async () => {
+  let attempts = 0;
+  const result = await scanRepository({ fullName: 'a/retry', owner: 'a', name: 'retry' }, {
+    maxRetries: 1,
+    sleep: async () => {},
+    fetchImpl: async (url) => {
+      attempts += 1;
+      if (attempts === 1) return response({ message: 'rate limited' }, 429);
+      if (url === 'https://api.github.com/repos/a/retry') return response({ default_branch: 'main', archived: false });
+      return response({ tree: [] });
+    }
+  });
+  assert.equal(result.status, 'fresh');
+  assert.equal(attempts, 3);
+});
+
 test('registry server merge key is stable across resumed pages', () => {
   const values = [{ id: 'mcp:one', version: '1' }, { id: 'mcp:one', version: '1' }, { id: 'mcp:two', version: '2' }];
   const merged = [...new Map(values.map((value) => [value.id, value])).values()];
