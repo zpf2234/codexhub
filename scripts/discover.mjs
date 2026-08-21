@@ -10,7 +10,7 @@ import { normalizeDiscovery } from './discovery/model.mjs';
 
 const outputDir = path.join(ROOT, 'artifacts', 'discovery');
 const checkpointPath = path.join(outputDir, 'checkpoint.json');
-const SOURCE_ALGORITHM_VERSION = 2;
+const SOURCE_ALGORITHM_VERSION = 3;
 const resume = !process.argv.includes('--fresh');
 const scanEnabled = !process.argv.includes('--no-scan');
 const maxRepositories = Number(process.env.DISCOVERY_MAX_REPOSITORIES || 0);
@@ -20,9 +20,13 @@ const scanConcurrency = Math.max(1, Number(process.env.DISCOVERY_SCAN_CONCURRENC
 const selectedSources = process.env.DISCOVERY_SOURCES ? new Set(process.env.DISCOVERY_SOURCES.split(',').map((value) => value.trim()).filter(Boolean)) : null;
 const startedAt = new Date().toISOString();
 const client = new GithubClient();
-const checkpoint = resume ? await loadCheckpoint(checkpointPath) : { version: 1, completedSources: [], repositories: {}, registry: {}, sourceReports: [], registryReport: null, scanOffset: 0, cycleComplete: false };
+const checkpoint = resume ? await loadCheckpoint(checkpointPath) : { version: 1, completedSources: [], sourceAttempts: {}, sourceCursor: 0, repositories: {}, registry: {}, sourceReports: [], scanOffset: 0, cycleComplete: false };
 if (checkpoint.sourceAlgorithmVersion !== SOURCE_ALGORITHM_VERSION) {
-  checkpoint.completedSources = checkpoint.completedSources.filter((id) => id === MCP_REGISTRY_SOURCE.id);
+  const registryComplete = checkpoint.registryReport?.complete === true && checkpoint.registry?.complete === true;
+  checkpoint.completedSources = registryComplete ? [MCP_REGISTRY_SOURCE.id] : [];
+  checkpoint.sourceAttempts = {};
+  checkpoint.sourceCursor = 0;
+  checkpoint.sourceStates = {};
   checkpoint.sourceReports = [];
   checkpoint.sourceAlgorithmVersion = SOURCE_ALGORITHM_VERSION;
   checkpoint.cycleComplete = false;
@@ -33,6 +37,9 @@ if (resume && checkpoint.cycleComplete) {
   checkpoint.registry = {};
   checkpoint.registryReport = null;
   checkpoint.scanOffset = 0;
+  checkpoint.sourceAttempts = {};
+  checkpoint.sourceCursor = 0;
+  checkpoint.sourceStates = {};
   checkpoint.cycleComplete = false;
   for (const repository of Object.values(checkpoint.repositories)) delete repository.scan;
 }
@@ -48,8 +55,36 @@ const sourceReports = [...(checkpoint.sourceReports || [])];
 const errors = [];
 let processedSources = 0;
 
+const githubSources = [...GITHUB_SOURCES, ...GITHUB_CODE_SOURCES];
+const sourceOrder = new Map(githubSources.map((source, index) => [source.id, index]));
+checkpoint.sourceAttempts ||= {};
+checkpoint.sourceCursor ||= 0;
+
 function sourceBudgetAvailable() {
   return selectedSources || maxSourcesPerRun <= 0 || processedSources < maxSourcesPerRun;
+}
+
+function sourceSucceeded(result) {
+  return result.errors.length === 0 && result.truncated === false;
+}
+
+function mergeRepositories(items, source) {
+  for (const item of items) {
+    const key = item.full_name.toLowerCase();
+    const candidate = repositoryCandidate(item, source);
+    const previous = repositories.get(key);
+    if (previous) {
+      Object.assign(previous, Object.fromEntries(Object.entries(candidate).filter(([, value]) => value != null)));
+      previous.discoveredBy = [...new Set([...(previous.discoveredBy || []), source.id])].sort();
+      previous.sourceKinds = [...new Set([...(previous.sourceKinds || []), source.kind])].sort();
+    } else repositories.set(key, candidate);
+  }
+}
+
+function saveSourceReport(report) {
+  const reportIndex = sourceReports.findIndex((value) => value.id === report.id);
+  if (reportIndex >= 0) sourceReports[reportIndex] = report;
+  else sourceReports.push(report);
 }
 
 function parseGithubRepository(value) {
@@ -61,53 +96,29 @@ function parseGithubRepository(value) {
   return { owner, name, fullName: `${owner}/${name}`, url: `https://github.com/${owner}/${name}` };
 }
 
-for (const source of GITHUB_SOURCES) {
-  if (selectedSources && !selectedSources.has(source.id)) continue;
-  if (checkpoint.completedSources.includes(source.id)) continue;
-  if (!sourceBudgetAvailable()) break;
-  processedSources += 1;
-  const result = await client.collectQuery(source.query, source);
-  for (const item of result.items) {
-    const key = item.full_name.toLowerCase();
-    const candidate = repositoryCandidate(item, source);
-    const previous = repositories.get(key);
-    if (previous) {
-      Object.assign(previous, Object.fromEntries(Object.entries(candidate).filter(([, value]) => value != null)));
-      previous.discoveredBy = [...new Set([...(previous.discoveredBy || []), source.id])].sort();
-      previous.sourceKinds = [...new Set([...(previous.sourceKinds || []), source.kind])].sort();
-    } else repositories.set(key, candidate);
-  }
-  const sourceReport = { id: source.id, kind: source.kind, query: source.query, segments: result.segments, partitions: result.partitions, results: result.items.length, truncated: result.truncated, errors: result.errors, rate: result.rate };
-  const reportIndex = sourceReports.findIndex((report) => report.id === source.id);
-  if (reportIndex >= 0) sourceReports[reportIndex] = sourceReport; else sourceReports.push(sourceReport);
-  errors.push(...result.errors.map((error) => ({ source: source.id, ...error })));
-  if (!checkpoint.completedSources.includes(source.id)) checkpoint.completedSources.push(source.id);
-  checkpoint.repositories = Object.fromEntries(repositories);
-  checkpoint.sourceReports = sourceReports;
-  await saveCheckpoint(checkpointPath, checkpoint);
-}
+const unresolvedSources = githubSources
+  .filter((source) => (!selectedSources || selectedSources.has(source.id)) && !checkpoint.completedSources.includes(source.id))
+  .sort((a, b) => (checkpoint.sourceAttempts[a.id] || 0) - (checkpoint.sourceAttempts[b.id] || 0) || sourceOrder.get(a.id) - sourceOrder.get(b.id));
+const sourcesThisRun = selectedSources ? unresolvedSources : unresolvedSources.slice(0, maxSourcesPerRun > 0 ? maxSourcesPerRun : unresolvedSources.length);
 
-for (const source of GITHUB_CODE_SOURCES) {
-  if (selectedSources && !selectedSources.has(source.id)) continue;
-  if (checkpoint.completedSources.includes(source.id)) continue;
+for (const source of sourcesThisRun) {
   if (!sourceBudgetAvailable()) break;
   processedSources += 1;
-  const result = await client.collectCodeQuery(source.query, source);
-  for (const item of result.items) {
-    const key = item.full_name.toLowerCase();
-    const candidate = repositoryCandidate(item, source);
-    const previous = repositories.get(key);
-    if (previous) {
-      Object.assign(previous, Object.fromEntries(Object.entries(candidate).filter(([, value]) => value != null)));
-      previous.discoveredBy = [...new Set([...(previous.discoveredBy || []), source.id])].sort();
-      previous.sourceKinds = [...new Set([...(previous.sourceKinds || []), source.kind])].sort();
-    } else repositories.set(key, candidate);
-  }
-  const sourceReport = { id: source.id, kind: source.kind, query: source.query, mode: 'code-search', total: result.total, pages: result.pages, results: result.items.length, truncated: result.truncated, errors: result.errors, rate: result.rate };
-  const reportIndex = sourceReports.findIndex((report) => report.id === source.id);
-  if (reportIndex >= 0) sourceReports[reportIndex] = sourceReport; else sourceReports.push(sourceReport);
+  checkpoint.sourceAttempts[source.id] = (checkpoint.sourceAttempts[source.id] || 0) + 1;
+  const isCodeSource = GITHUB_CODE_SOURCES.some((candidate) => candidate.id === source.id);
+  const result = isCodeSource
+    ? await client.collectCodeQuery(source.query, source)
+    : await client.collectQueryBatch(source.query, source, checkpoint.sourceStates[source.id] || {}, { maxSegments: Number(process.env.GITHUB_DISCOVERY_MAX_SEGMENTS_PER_RUN || process.env.GITHUB_DISCOVERY_MAX_SEGMENTS || 32) });
+  if (!isCodeSource) checkpoint.sourceStates[source.id] = result.state;
+  mergeRepositories(result.items, source);
+  const sourceReport = isCodeSource
+    ? { id: source.id, kind: source.kind, coverage: source.coverage, query: source.query, mode: 'code-search', total: result.total, pages: result.pages, results: result.items.length, truncated: result.truncated, errors: result.errors, rate: result.rate }
+    : { id: source.id, kind: source.kind, coverage: source.coverage, query: source.query, segments: result.segments, partitions: result.partitions, pendingSegments: result.state.queue.length, results: result.items.length, truncated: result.truncated, errors: result.errors, rate: result.rate };
+  saveSourceReport(sourceReport);
   errors.push(...result.errors.map((error) => ({ source: source.id, ...error })));
-  if (!checkpoint.completedSources.includes(source.id)) checkpoint.completedSources.push(source.id);
+  if ((source.coverage === 'supplemental' && result.errors.length === 0) || sourceSucceeded(result)) {
+    if (!checkpoint.completedSources.includes(source.id)) checkpoint.completedSources.push(source.id);
+  }
   checkpoint.repositories = Object.fromEntries(repositories);
   checkpoint.sourceReports = sourceReports;
   await saveCheckpoint(checkpointPath, checkpoint);
@@ -134,8 +145,14 @@ if (!process.env.DISCOVERY_SKIP_REGISTRY && (!selectedSources || selectedSources
 }
 
 const allRepositories = [...repositories.values()].filter((candidate) => candidate.owner && candidate.name);
-const scanOffset = Math.min(checkpoint.scanOffset || 0, allRepositories.length);
-const scanList = maxRepositories > 0 ? allRepositories.slice(scanOffset, scanOffset + maxRepositories) : allRepositories.slice(scanOffset);
+const successfullyScanned = (candidate) => {
+  const scan = checkpoint.repositories[candidate.fullName.toLowerCase()]?.scan;
+  return (scan?.status === 'fresh' && scan.truncated !== true && (scan.errors || []).length === 0) || scan?.terminal === true;
+};
+const pendingRepositories = allRepositories
+  .filter((candidate) => !successfullyScanned(candidate))
+  .sort((a, b) => (checkpoint.repositories[a.fullName.toLowerCase()]?.scan?.attempts || 0) - (checkpoint.repositories[b.fullName.toLowerCase()]?.scan?.attempts || 0));
+const scanList = maxRepositories > 0 ? pendingRepositories.slice(0, maxRepositories) : pendingRepositories;
 const artifacts = [];
 const scanReports = [];
 if (scanEnabled) {
@@ -143,8 +160,8 @@ if (scanEnabled) {
     const batch = scanList.slice(batchStart, batchStart + scanConcurrency);
     const results = await Promise.all(batch.map(async (candidate) => {
       const key = candidate.fullName.toLowerCase();
-      const cached = checkpoint.repositories[key]?.scan;
-      const scanned = cached?.status === 'fresh' && (cached.errors || []).length === 0 ? cached : await scanRepository(candidate, { maxArtifacts: maxArtifactsPerRepository });
+      const scanned = await scanRepository(candidate, { maxArtifacts: maxArtifactsPerRepository });
+      scanned.attempts = (checkpoint.repositories[key]?.scan?.attempts || 0) + 1;
       return { candidate, key, scanned };
     }));
     for (const { candidate, key, scanned } of results) {
@@ -154,13 +171,14 @@ if (scanEnabled) {
       artifacts.push(...scanned.artifacts.map((artifact) => ({ ...artifact, repository: candidate.fullName, repositoryUrl: candidate.url, stars: candidate.stars, discoveredBy: candidate.discoveredBy, sourceKinds: candidate.sourceKinds })));
       errors.push(...(scanned.errors || []).map((error) => ({ source: 'github-tree-scan', repository: candidate.fullName, error })));
     }
-    checkpoint.scanOffset = scanOffset + batchStart + results.length;
+    checkpoint.scanOffset = allRepositories.filter(successfullyScanned).length;
     await saveCheckpoint(checkpointPath, checkpoint);
   }
 }
 if (scanEnabled) {
-  checkpoint.scanOffset = scanOffset + scanList.length;
-  checkpoint.cycleComplete = checkpoint.scanOffset >= allRepositories.length && checkpoint.completedSources.filter((id) => id !== MCP_REGISTRY_SOURCE.id).length >= GITHUB_SOURCES.length + GITHUB_CODE_SOURCES.length && registryReport.complete;
+  checkpoint.scanOffset = allRepositories.filter(successfullyScanned).length;
+  const sourcesComplete = githubSources.every((source) => checkpoint.completedSources.includes(source.id));
+  checkpoint.cycleComplete = checkpoint.scanOffset >= allRepositories.length && sourcesComplete && registryReport.complete;
   await saveCheckpoint(checkpointPath, checkpoint);
 }
 
@@ -171,32 +189,56 @@ const accumulatedArtifacts = Object.values(checkpoint.repositories).flatMap((sto
   const repository = repositoryIndex.get(String(stored.fullName).toLowerCase()) || stored;
   return { ...artifact, repository: stored.fullName, repositoryUrl: repository.url, defaultBranch: repository.defaultBranch || stored.scan?.repository?.defaultBranch, stars: repository.stars, discoveredBy: repository.discoveredBy, sourceKinds: repository.sourceKinds };
 }));
+const persistedScanFailures = allRepositories
+  .filter((candidate) => !successfullyScanned(candidate) && checkpoint.repositories[candidate.fullName.toLowerCase()]?.scan)
+  .map((candidate) => {
+    const scan = checkpoint.repositories[candidate.fullName.toLowerCase()].scan;
+    return { repository: candidate.fullName, status: scan.status, truncated: scan.truncated === true, errors: scan.errors || [] };
+  });
+const terminalUnavailableRepositories = allRepositories.filter((candidate) => checkpoint.repositories[candidate.fullName.toLowerCase()]?.scan?.terminal === true).length;
+const persistedErrors = persistedScanFailures.map((failure) => ({ source: 'github-tree-scan', repository: failure.repository, status: failure.status, truncated: failure.truncated, error: failure.errors.join('; ') || 'Repository tree scan is incomplete.' }));
+const unresolvedErrors = [...new Map([...errors, ...persistedErrors].map((error) => [JSON.stringify(error), error])).values()];
+const sourcesRemaining = githubSources.filter((source) => !checkpoint.completedSources.includes(source.id)).length;
+const exhaustiveSources = GITHUB_SOURCES.filter((source) => source.coverage === 'exhaustive');
+const exhaustiveSourcesRemaining = exhaustiveSources.filter((source) => !checkpoint.completedSources.includes(source.id)).length;
+const supplementalSources = GITHUB_CODE_SOURCES.filter((source) => source.coverage === 'supplemental');
+const supplementalSourcesRemaining = supplementalSources.filter((source) => !checkpoint.completedSources.includes(source.id)).length;
+const repositoriesNotScanned = allRepositories.filter((candidate) => !successfullyScanned(candidate)).length;
+const allSourceReportsReady = githubSources.every((source) => {
+  const report = sourceReports.find((value) => value.id === source.id);
+  if (!report || report.errors.length > 0) return false;
+  return source.coverage === 'supplemental' || report.truncated === false;
+});
 const coverage = {
   generatedAt,
   startedAt,
   completedAt: generatedAt,
-  scope: 'Declared GitHub search sources plus official MCP Registry at crawl time.',
-  limitations: ['GitHub repository search exposes at most 1,000 results per query; recursive stars/date partitions are used where possible.', 'GitHub API rate limits, deleted/private repositories, search indexing lag, and truncated repository trees can prevent absolute internet-wide completeness.', 'Discovery never executes repository code, installs dependencies, or connects to MCP servers.'],
+  scope: 'Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.',
+  limitations: ['GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.', 'GitHub Code Search exposes at most 1,000 results per query and cannot be exhaustively enumerated; these manifest searches are reported as supplemental coverage.', 'GitHub API rate limits, deleted/private repositories, and search indexing lag prevent claims of absolute internet-wide completeness.', 'Discovery never executes repository code, installs dependencies, or connects to MCP servers.'],
   sources: sourceReports,
   sourcesProcessedThisRun: processedSources,
-  sourcesRemaining: Math.max(0, GITHUB_SOURCES.length + GITHUB_CODE_SOURCES.length - checkpoint.completedSources.filter((id) => id !== MCP_REGISTRY_SOURCE.id).length),
+  sourcesRemaining,
+  exhaustiveSourcesRemaining,
+  supplementalSourcesRemaining,
   registry: registryReport,
   scans: scanReports,
   repositoriesDiscovered: candidateList.length,
   repositoriesScanned: scanEnabled ? scanList.length : 0,
-  repositoriesNotScanned: scanEnabled ? Math.max(0, allRepositories.length - scanOffset - scanList.length) : candidateList.length,
+  repositoriesNotScanned: scanEnabled ? repositoriesNotScanned : candidateList.length,
   scanOffset: scanEnabled ? checkpoint.scanOffset : 0,
   cycleComplete: scanEnabled ? checkpoint.cycleComplete : false,
+  persistedScanFailures,
+  terminalUnavailableRepositories,
   artifactsDiscovered: accumulatedArtifacts.length,
-  errors: errors.length,
+  errors: unresolvedErrors.length,
   scanDisabled: !scanEnabled,
-  complete: !selectedSources && !process.env.DISCOVERY_SKIP_REGISTRY && scanEnabled && errors.length === 0 && sourceReports.length === GITHUB_SOURCES.length + GITHUB_CODE_SOURCES.length && sourceReports.every((source) => !source.truncated && source.errors.length === 0) && registryReport.complete
+  complete: !selectedSources && !process.env.DISCOVERY_SKIP_REGISTRY && scanEnabled && checkpoint.cycleComplete && sourcesRemaining === 0 && repositoriesNotScanned === 0 && persistedScanFailures.length === 0 && allSourceReportsReady && registryReport.complete
 };
-const payload = normalizeDiscovery({ schemaVersion: '1.1.0', generatedAt, coverage, repositories: candidateList, artifacts: accumulatedArtifacts, errors });
+const payload = normalizeDiscovery({ schemaVersion: '1.1.0', generatedAt, coverage, repositories: candidateList, artifacts: accumulatedArtifacts, errors: unresolvedErrors });
 await fs.mkdir(outputDir, { recursive: true });
 await fs.writeFile(path.join(outputDir, 'repositories.json'), JSON.stringify({ generatedAt, repositories: payload.repositories }, null, 2) + '\n');
 await fs.writeFile(path.join(outputDir, 'artifacts.json'), JSON.stringify({ generatedAt, artifacts: payload.artifacts }, null, 2) + '\n');
 await fs.writeFile(path.join(outputDir, 'coverage.json'), JSON.stringify(payload.coverage, null, 2) + '\n');
-await fs.writeFile(path.join(outputDir, 'errors.json'), JSON.stringify({ generatedAt, errors }, null, 2) + '\n');
+await fs.writeFile(path.join(outputDir, 'errors.json'), JSON.stringify({ generatedAt, errors: unresolvedErrors }, null, 2) + '\n');
 await fs.writeFile(path.join(outputDir, 'discovery.json'), JSON.stringify(payload, null, 2) + '\n');
-console.log(`Discovered ${candidateList.length} repositories and ${payload.artifacts.length} artifacts. Coverage: ${coverage.complete ? 'complete' : 'partial'}; errors: ${errors.length}.`);
+console.log(`Discovered ${candidateList.length} repositories and ${payload.artifacts.length} artifacts. Coverage: ${coverage.complete ? 'complete' : 'partial'}; unresolved errors: ${unresolvedErrors.length}.`);

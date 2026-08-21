@@ -1,14 +1,11 @@
 {
-  "generatedAt": "2026-08-21T16:39:23.868Z",
+  "generatedAt": "2026-08-21T18:10:39.057Z",
   "errors": [
     {
       "source": "github-tree-scan",
-      "repository": "a798221115-byte/Book-Video-Factory",
-      "error": "fetch failed"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "sodanyx/codebase-baseline-planner",
+      "status": "partial",
+      "truncated": false,
       "error": "fetch failed"
     }
   ]

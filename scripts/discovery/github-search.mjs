@@ -23,6 +23,11 @@ function withCreatedRange(query, from, to) {
   return `${base} created:${from}..${to}`;
 }
 
+function rangeFromQuery(query) {
+  const match = String(query).match(/\bcreated:(\d{4}-\d{2}-\d{2})\.\.(\d{4}-\d{2}-\d{2})\b/i);
+  return match ? { from: match[1], to: match[2] } : null;
+}
+
 export class GithubClient {
   constructor({ fetchImpl = globalThis.fetch, token = process.env.GITHUB_TOKEN, sleep = wait, maxRetries = Number(process.env.GITHUB_DISCOVERY_RETRIES || 3), timeoutMs = Number(process.env.GITHUB_DISCOVERY_TIMEOUT_MS || 20_000) } = {}) {
     this.fetchImpl = fetchImpl;
@@ -150,6 +155,74 @@ export class GithubClient {
       { query: withCreatedRange(baseQuery, from, pivot), range: { from, to: pivot } },
       { query: withCreatedRange(baseQuery, rightFrom, to), range: { from: rightFrom, to } }
     ];
+  }
+
+  async collectQueryBatch(query, source, state = {}, options = {}) {
+    const perPage = Math.min(100, options.perPage ?? 100);
+    const maxSegments = Math.max(1, options.maxSegments ?? Number(process.env.GITHUB_DISCOVERY_MAX_SEGMENTS || 32));
+    const queue = Array.isArray(state.queue) && state.queue.length ? [...state.queue] : [{ query, depth: 0, range: null }];
+    const segments = [...(state.segments || [])];
+    const partitions = [...(state.partitions || [])];
+    const repositories = new Map();
+    const errors = [];
+    const unresolved = [];
+    let processed = 0;
+
+    while (queue.length && processed < maxSegments) {
+      const task = queue.shift();
+      const segmentQuery = task.query;
+      const probe = await this.searchPage(segmentQuery, 1, perPage);
+      if (!probe.ok) {
+        errors.push({ query: segmentQuery, error: probe.error, status: probe.status });
+        unresolved.push(task, ...queue);
+        break;
+      }
+      processed += 1;
+      const total = Number(probe.data.total_count || 0);
+      const incomplete = Boolean(probe.data.incomplete_results);
+      segments.push({ query: segmentQuery, total, incomplete });
+      if (incomplete) {
+        errors.push({ query: segmentQuery, error: 'GitHub returned incomplete repository search results.' });
+        unresolved.push(task, ...queue);
+        break;
+      }
+      if (total > 1000) {
+        const split = this.splitQuery(query, task.range || rangeFromQuery(segmentQuery));
+        if (split) {
+          partitions.push({ from: segmentQuery, into: split.map((item) => item.query) });
+          queue.unshift({ query: split[0].query, depth: task.depth + 1, range: split[0].range }, { query: split[1].query, depth: task.depth + 1, range: split[1].range });
+          continue;
+        }
+      }
+      const pages = Math.min(Math.ceil(Math.min(total, 1000) / perPage), 10);
+      let failed = false;
+      for (let page = 1; page <= pages; page += 1) {
+        const result = page === 1 ? { ok: true, data: probe.data, rate: probe.rate } : await this.searchPage(segmentQuery, page, perPage);
+        if (!result.ok) {
+          errors.push({ query: segmentQuery, page, error: result.error, status: result.status });
+          unresolved.push(task, ...queue);
+          failed = true;
+          break;
+        }
+        for (const item of result.data.items || []) if (item.full_name) repositories.set(item.full_name.toLowerCase(), item);
+      }
+      if (failed) break;
+      if (total > 1000) unresolved.push(task);
+    }
+
+    const nextQueue = [...unresolved, ...queue];
+    const complete = nextQueue.length === 0 && errors.length === 0;
+    return {
+      source,
+      items: [...repositories.values()],
+      segments,
+      partitions,
+      errors,
+      truncated: !complete,
+      complete,
+      state: { queue: nextQueue, segments, partitions },
+      rate: this.lastRate
+    };
   }
 }
 

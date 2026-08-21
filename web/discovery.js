@@ -6,6 +6,7 @@ const statusLabels = { verified: 'Verified', discovered: 'Deferred', registry: '
 const el = (tag, className, text) => { const node = document.createElement(tag); if (className) node.className = className; if (text != null) node.textContent = text; return node; };
 const safeUrl = (value) => { try { const url = new URL(value); return ['http:', 'https:'].includes(url.protocol) ? url.href : '#'; } catch { return '#'; } };
 const formatNumber = (value) => value == null ? '—' : new Intl.NumberFormat('en', { notation: value > 9999 ? 'compact' : 'standard', maximumFractionDigits: 1 }).format(value);
+const formatExact = (value) => value == null ? '—' : new Intl.NumberFormat('en').format(value);
 
 function syncUrl() {
   const next = new URLSearchParams();
@@ -64,14 +65,14 @@ function renderCoverage() {
   const coverage = state.data.coverage || {};
   const card = document.querySelector('#coverage-card');
   const status = el('span', `coverage-pill ${coverage.complete ? 'complete' : 'partial'}`, coverage.complete ? 'Complete cycle' : 'Scanning in progress');
-  const title = el('h2', '', coverage.complete ? 'Declared sources covered' : `${formatNumber(coverage.sourcesRemaining)} sources remain`);
-  const text = el('p', '', coverage.complete ? 'All declared sources and repository scan batches completed without recorded errors.' : `${formatNumber(coverage.repositoriesNotScanned)} repository trees remain. ${formatNumber(coverage.errors)} errors are recorded transparently.`);
+  const title = el('h2', '', coverage.complete ? 'Declared sources covered' : `${formatNumber(coverage.exhaustiveSourcesRemaining ?? coverage.sourcesRemaining)} exhaustive sources remain`);
+  const text = el('p', '', coverage.complete ? 'Every exhaustive source, official Registry page, and discovered repository tree completed without unresolved errors.' : `${formatNumber(coverage.repositoriesNotScanned)} repository trees remain. ${formatNumber(coverage.supplementalSourcesRemaining || 0)} supplemental searches remain; GitHub Code Search limits each query to 1,000 results.`);
   const time = el('small', '', `Snapshot ${new Date(state.data.generatedAt).toLocaleString()}`);
   card.replaceChildren(status, title, text, time);
-  document.querySelector('#discovery-repositories').textContent = formatNumber(coverage.repositoriesDiscovered ?? state.data.repositories.length);
-  document.querySelector('#discovery-artifacts').textContent = formatNumber(state.data.artifacts.length);
-  document.querySelector('#discovery-registry').textContent = formatNumber(coverage.registry?.results || state.data.artifacts.filter((artifact) => artifact.source === 'mcp-registry').length);
-  document.querySelector('#discovery-scanned').textContent = formatNumber(coverage.scanOffset ?? coverage.repositoriesScanned);
+  document.querySelector('#discovery-repositories').textContent = formatExact(coverage.repositoriesDiscovered ?? state.data.repositories.length);
+  document.querySelector('#discovery-artifacts').textContent = formatExact(state.data.artifacts.length);
+  document.querySelector('#discovery-registry').textContent = formatExact(coverage.registry?.results || state.data.artifacts.filter((artifact) => artifact.source === 'mcp-registry').length);
+  document.querySelector('#discovery-scanned').textContent = formatExact(coverage.scanOffset ?? coverage.repositoriesScanned);
   renderSources(coverage);
 }
 
@@ -80,9 +81,9 @@ function renderSources(coverage) {
   document.querySelector('#coverage-source-count').textContent = `${formatNumber(sources.length)} GitHub sources · ${formatNumber(coverage.registry?.pages?.length || 0)} Registry pages`;
   const rows = sources.map((source) => {
     const row = el('article', 'source-row');
-    const identity = el('div', 'source-identity'); identity.append(el('strong', '', source.id), el('small', '', source.mode === 'code-search' ? 'GitHub code search' : 'GitHub repository search'));
+    const identity = el('div', 'source-identity'); identity.append(el('strong', '', source.id), el('small', '', `${source.mode === 'code-search' ? 'GitHub code search' : 'GitHub repository search'} · ${source.coverage || 'exhaustive'}`));
     const numbers = el('div', 'source-numbers'); numbers.append(el('span', '', `${formatNumber(source.results)} results`), el('span', '', `${formatNumber(source.segments?.length || source.pages || 0)} pages/segments`));
-    const sourceState = source.errors?.length ? el('span', 'verification verification-unknown', `${source.errors.length} errors`) : source.truncated ? el('span', 'verification verification-discovered', 'Truncated') : el('span', 'verification verification-verified', 'Covered');
+    const sourceState = source.errors?.length ? el('span', 'verification verification-unknown', `${source.errors.length} errors`) : source.truncated && source.coverage === 'supplemental' ? el('span', 'verification verification-discovered', 'API-capped sample') : source.truncated ? el('span', 'verification verification-discovered', `${formatNumber(source.pendingSegments || 0)} segments pending`) : el('span', 'verification verification-verified', 'Covered');
     row.append(identity, numbers, sourceState); return row;
   });
   const registry = el('article', 'source-row');

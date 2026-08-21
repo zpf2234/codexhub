@@ -31,15 +31,30 @@ export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, 
   const request = async (url, init = {}) => {
     try {
       const response = await fetchImpl(url, { ...init, signal: AbortSignal.timeout(timeoutMs), headers: { ...headers, ...(init.headers || {}) } });
-      if (!response.ok) return { ok: false, error: `GitHub API ${response.status}` };
+      if (!response.ok) return { ok: false, error: `GitHub API ${response.status}`, status: response.status };
       return { ok: true, data: await response.json() };
     } catch (error) { return { ok: false, error: error instanceof Error ? error.message : String(error) }; }
   };
   const repo = await request(base);
-  if (!repo.ok) return { repository: candidate, artifacts: [], status: 'unavailable', errors: [repo.error] };
+  if (!repo.ok) return { repository: candidate, artifacts: [], status: repo.status === 404 || repo.status === 451 ? 'terminal-unavailable' : 'unavailable', terminal: repo.status === 404 || repo.status === 451, errors: [repo.error] };
   const branch = repo.data.default_branch || candidate.defaultBranch || 'main';
-  const tree = await request(`${base}/git/trees/${encodeURIComponent(branch)}?recursive=1`);
+  let tree = await request(`${base}/git/trees/${encodeURIComponent(branch)}?recursive=1`);
   if (!tree.ok) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', errors: [tree.error] };
+  if (tree.data.truncated) {
+    const root = await request(`${base}/git/trees/${encodeURIComponent(branch)}`);
+    if (!root.ok) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', truncated: true, errors: [root.error] };
+    const files = [];
+    const queue = [...(root.data.tree || []).map((item) => ({ ...item, path: item.path }))];
+    while (queue.length) {
+      const item = queue.shift();
+      if (item.type === 'blob') { files.push(item); continue; }
+      if (item.type !== 'tree' || !item.sha) continue;
+      const child = await request(`${base}/git/trees/${encodeURIComponent(item.sha)}`);
+      if (!child.ok) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', truncated: true, errors: [child.error] };
+      queue.push(...(child.data.tree || []).map((entry) => ({ ...entry, path: `${item.path}/${entry.path}` })));
+    }
+    tree = { ok: true, data: { tree: files, truncated: false } };
+  }
   const files = (tree.data.tree || []).filter((item) => item.type === 'blob' && classifyPath(item.path).category !== 'other');
   const artifacts = [];
   for (const [index, file] of files.entries()) {
@@ -58,5 +73,5 @@ export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, 
     const result = validate(type, decoded, file.path);
     artifacts.push({ id: artifactId(candidate.fullName, file.path), type, category: classification.category, categoryLabel: classification.label, path: file.path, status: result.valid ? 'verified' : 'unknown', verification: result.valid ? 'passed' : 'failed', note: result.note, source: 'github-tree', ...(result.metadata || {}) });
   }
-  return { repository: { ...candidate, defaultBranch: branch, archived: repo.data.archived, stars: repo.data.stargazers_count, forks: repo.data.forks_count, license: repo.data.license?.spdx_id || candidate.license }, artifacts, status: tree.data.truncated ? 'partial' : 'fresh', truncated: Boolean(tree.data.truncated), verifiedArtifacts: Math.min(files.length, maxArtifacts), deferredArtifacts: Math.max(0, files.length - maxArtifacts), errors: tree.data.truncated ? ['GitHub recursive tree response was truncated.'] : [] };
+  return { repository: { ...candidate, defaultBranch: branch, archived: repo.data.archived, stars: repo.data.stargazers_count, forks: repo.data.forks_count, license: repo.data.license?.spdx_id || candidate.license }, artifacts, status: 'fresh', truncated: false, verifiedArtifacts: Math.min(files.length, maxArtifacts), deferredArtifacts: Math.max(0, files.length - maxArtifacts), errors: [] };
 }

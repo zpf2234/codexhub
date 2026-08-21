@@ -56,6 +56,37 @@ test('GitHub search date partitions remain mutually exclusive across recursion',
   assert.equal(first[0].range.to < first[1].range.from, true);
 });
 
+test('GitHub repository search resumes an unfinished partition queue across batches', async () => {
+  const fetchImpl = async (url) => {
+    const query = new URL(url).searchParams.get('q');
+    if (!query.includes('created:')) return response({ total_count: 1500, incomplete_results: false, items: [] });
+    return response({ total_count: 1, incomplete_results: false, items: [{ full_name: `owner/${query.includes('2008-01-01') ? 'left' : 'right'}`, name: 'repo', owner: { login: 'owner' }, html_url: 'https://github.com/owner/repo' }] });
+  };
+  const client = new GithubClient({ fetchImpl });
+  const first = await client.collectQueryBatch('topic:large', { id: 'large', kind: 'skill' }, {}, { maxSegments: 1 });
+  assert.equal(first.complete, false);
+  assert.equal(first.state.queue.length, 2);
+  const second = await client.collectQueryBatch('topic:large', { id: 'large', kind: 'skill' }, first.state, { maxSegments: 2 });
+  assert.equal(second.complete, true);
+  assert.deepEqual(second.items.map((item) => item.full_name).sort(), ['owner/left', 'owner/right']);
+  assert.ok(second.partitions[0].into.every((query) => (query.match(/created:/g) || []).length === 1));
+});
+
+test('GitHub repository search keeps failed segments queued for retry', async () => {
+  let attempts = 0;
+  const client = new GithubClient({ fetchImpl: async () => {
+    attempts += 1;
+    if (attempts === 1) return response({ message: 'rate limited' }, 403);
+    return response({ total_count: 0, incomplete_results: false, items: [] });
+  }, maxRetries: 0 });
+  const first = await client.collectQueryBatch('topic:test', { id: 'test', kind: 'skill' }, {}, { maxSegments: 1 });
+  assert.equal(first.complete, false);
+  assert.equal(first.state.queue.length, 1);
+  const second = await client.collectQueryBatch('topic:test', { id: 'test', kind: 'skill' }, first.state, { maxSegments: 1 });
+  assert.equal(second.complete, true);
+  assert.equal(second.state.queue.length, 0);
+});
+
 test('GitHub code search paginates and collapses multiple files from one repository', async () => {
   const fetchImpl = async (url) => {
     const parsed = new URL(url);
@@ -132,6 +163,28 @@ test('checkpoint writes atomically and survives a reload', async () => {
   assert.equal(checkpoint.repositories['a/b'].fullName, 'a/b');
   assert.equal(checkpoint.sourceReports[0].id, 'one');
   assert.equal(checkpoint.sourceAlgorithmVersion, 1);
+  assert.deepEqual(checkpoint.sourceAttempts, {});
+  assert.deepEqual(checkpoint.sourceStates, {});
+});
+
+test('repository tree scan falls back to walking subtrees when the recursive tree is truncated', async () => {
+  const fetchImpl = async (url) => {
+    if (url === 'https://api.github.com/repos/a/huge') return response({ default_branch: 'main', archived: false });
+    if (url.endsWith('/git/trees/main?recursive=1')) return response({ truncated: true, tree: [] });
+    if (url.endsWith('/git/trees/main')) return response({ tree: [{ type: 'tree', path: 'skills', sha: 'skills-sha' }] });
+    if (url.endsWith('/git/trees/skills-sha')) return response({ tree: [{ type: 'blob', path: 'demo/SKILL.md', sha: 'file' }] });
+    return response({ content: Buffer.from('---\nname: demo\ndescription: useful\n---').toString('base64') });
+  };
+  const result = await scanRepository({ fullName: 'a/huge', owner: 'a', name: 'huge' }, { fetchImpl });
+  assert.equal(result.status, 'fresh');
+  assert.equal(result.truncated, false);
+  assert.equal(result.artifacts[0].path, 'skills/demo/SKILL.md');
+});
+
+test('repository tree scan treats deleted repositories as terminally unavailable', async () => {
+  const result = await scanRepository({ fullName: 'a/deleted', owner: 'a', name: 'deleted' }, { fetchImpl: async () => response({ message: 'not found' }, 404) });
+  assert.equal(result.status, 'terminal-unavailable');
+  assert.equal(result.terminal, true);
 });
 
 test('registry server merge key is stable across resumed pages', () => {
