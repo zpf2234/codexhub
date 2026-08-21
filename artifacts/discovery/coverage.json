@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-21T22:23:22.806Z",
-  "startedAt": "2026-08-21T22:22:08.781Z",
-  "completedAt": "2026-08-21T22:23:22.806Z",
+  "generatedAt": "2026-08-21T22:41:33.128Z",
+  "startedAt": "2026-08-21T22:40:18.287Z",
+  "completedAt": "2026-08-21T22:41:33.128Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -821,6 +821,23 @@
       "rate": {
         "remaining": 0,
         "reset": 1787350989,
+        "retryAfter": null
+      }
+    },
+    {
+      "id": "github-code-codex-config",
+      "kind": "config",
+      "coverage": "supplemental",
+      "query": "filename:config.toml path:.codex",
+      "mode": "code-search",
+      "total": 7312,
+      "pages": 10,
+      "results": 896,
+      "truncated": true,
+      "errors": [],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787352078,
         "retryAfter": null
       }
     }
@@ -1713,16 +1730,76 @@
         "count": 100,
         "nextCursor": "io.github.0rkz/byte-protocol:0.7.2",
         "cursor": "io.frihet/erp:1.5.3"
+      },
+      {
+        "page": 148,
+        "count": 100,
+        "nextCursor": "io.github.1clawAI/1claw-mcp:0.53.3",
+        "cursor": "io.github.0rkz/byte-protocol:0.7.2"
+      },
+      {
+        "page": 149,
+        "count": 100,
+        "nextCursor": "io.github.2s-io/mcp:1.80.4",
+        "cursor": "io.github.1clawAI/1claw-mcp:0.53.3"
+      },
+      {
+        "page": 150,
+        "count": 100,
+        "nextCursor": "io.github.8infinitelabs/scoreflow:0.2.1",
+        "cursor": "io.github.2s-io/mcp:1.80.4"
+      },
+      {
+        "page": 151,
+        "count": 100,
+        "nextCursor": "io.github.AINative-Studio/ainative-postgres-mcp:1.0.1",
+        "cursor": "io.github.8infinitelabs/scoreflow:0.2.1"
+      },
+      {
+        "page": 152,
+        "count": 100,
+        "nextCursor": "io.github.AIops-tools/firewall-aiops:0.1.0",
+        "cursor": "io.github.AINative-Studio/ainative-postgres-mcp:1.0.1"
+      },
+      {
+        "page": 153,
+        "count": 100,
+        "nextCursor": "io.github.AIops-tools/nutanix-aiops:0.6.0",
+        "cursor": "io.github.AIops-tools/firewall-aiops:0.1.0"
+      },
+      {
+        "page": 154,
+        "count": 100,
+        "nextCursor": "io.github.AKR1166/rules-mcp:0.3.1",
+        "cursor": "io.github.AIops-tools/nutanix-aiops:0.6.0"
+      },
+      {
+        "page": 155,
+        "count": 100,
+        "nextCursor": "io.github.AVIDS2/memorix:1.7.2",
+        "cursor": "io.github.AKR1166/rules-mcp:0.3.1"
+      },
+      {
+        "page": 156,
+        "count": 100,
+        "nextCursor": "io.github.AceDataCloud/mcp-fish:2026.8.10.0",
+        "cursor": "io.github.AVIDS2/memorix:1.7.2"
+      },
+      {
+        "page": 157,
+        "count": 100,
+        "nextCursor": "io.github.AceDataCloud/mcp-hailuo:2026.6.9.2",
+        "cursor": "io.github.AceDataCloud/mcp-fish:2026.8.10.0"
       }
     ],
-    "results": 14700,
+    "results": 15700,
     "complete": false,
     "errors": []
   },
   "scans": [],
-  "repositoriesDiscovered": 28113,
+  "repositoriesDiscovered": 29166,
   "repositoriesScanned": 200,
-  "repositoriesNotScanned": 20203,
+  "repositoriesNotScanned": 21234,
   "scanOffset": 2047,
   "repositoriesScannedTotal": 2047,
   "cycleComplete": false,
@@ -1730,14 +1807,14 @@
   "terminalUnavailableRepositories": 36,
   "rateLimitedRepositories": 35,
   "rateLimitedScanEvents": 4,
-  "artifactsDiscovered": 87324,
+  "artifactsDiscovered": 88323,
   "errors": 0,
   "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
     "skill": 59004,
     "plugin": 1516,
-    "mcp": 16169,
+    "mcp": 17168,
     "marketplace": 922,
     "hook": 363,
     "config": 14,
@@ -1752,7 +1829,7 @@
   "verificationCounts": {
     "verified": 1080,
     "discovered": 71531,
-    "registry": 14699,
+    "registry": 15698,
     "unknown": 14
   }
 }
