@@ -10,10 +10,12 @@ export async function loadCheckpoint(filePath) {
       repositories: value.repositories && typeof value.repositories === 'object' ? value.repositories : {},
       registry: value.registry && typeof value.registry === 'object' ? value.registry : {},
       sourceReports: Array.isArray(value.sourceReports) ? value.sourceReports : [],
-      registryReport: value.registryReport && typeof value.registryReport === 'object' ? value.registryReport : null
+      registryReport: value.registryReport && typeof value.registryReport === 'object' ? value.registryReport : null,
+      scanOffset: Number.isInteger(value.scanOffset) && value.scanOffset >= 0 ? value.scanOffset : 0,
+      cycleComplete: value.cycleComplete === true
     };
   } catch {
-    return { version: 1, completedSources: [], repositories: {}, registry: {}, sourceReports: [], registryReport: null };
+    return { version: 1, completedSources: [], repositories: {}, registry: {}, sourceReports: [], registryReport: null, scanOffset: 0, cycleComplete: false };
   }
 }
 

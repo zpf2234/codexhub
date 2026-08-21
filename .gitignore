@@ -6,6 +6,5 @@ playwright-report/
 artifacts/*
 !artifacts/discovery/
 !artifacts/discovery/*.json
-artifacts/discovery/checkpoint.json
 .DS_Store
 npm-debug.log*

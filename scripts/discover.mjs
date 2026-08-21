@@ -16,7 +16,15 @@ const maxArtifactsPerRepository = Number(process.env.DISCOVERY_MAX_ARTIFACTS_PER
 const selectedSources = process.env.DISCOVERY_SOURCES ? new Set(process.env.DISCOVERY_SOURCES.split(',').map((value) => value.trim()).filter(Boolean)) : null;
 const startedAt = new Date().toISOString();
 const client = new GithubClient();
-const checkpoint = resume ? await loadCheckpoint(checkpointPath) : { version: 1, completedSources: [], repositories: {}, registry: {}, sourceReports: [], registryReport: null };
+const checkpoint = resume ? await loadCheckpoint(checkpointPath) : { version: 1, completedSources: [], repositories: {}, registry: {}, sourceReports: [], registryReport: null, scanOffset: 0, cycleComplete: false };
+if (resume && checkpoint.cycleComplete) {
+  checkpoint.completedSources = [];
+  checkpoint.sourceReports = [];
+  checkpoint.registry = {};
+  checkpoint.registryReport = null;
+  checkpoint.scanOffset = 0;
+  checkpoint.cycleComplete = false;
+}
 const entries = await readEntries();
 const repositories = new Map(Object.entries(checkpoint.repositories));
 for (const entry of entries) {
@@ -87,7 +95,7 @@ for (const source of GITHUB_CODE_SOURCES) {
 let registryReport = { source: MCP_REGISTRY_SOURCE.id, pages: [], results: 0, complete: false, errors: [] };
 if (checkpoint.registryReport) registryReport = checkpoint.registryReport;
 if (!process.env.DISCOVERY_SKIP_REGISTRY && (!selectedSources || selectedSources.has(MCP_REGISTRY_SOURCE.id)) && !checkpoint.completedSources.includes(MCP_REGISTRY_SOURCE.id)) {
-  const registry = await crawlMcpRegistry({ endpoint: process.env.MCP_REGISTRY_ENDPOINT || MCP_REGISTRY_SOURCE.endpoint, token: process.env.MCP_REGISTRY_TOKEN, initialCursor: checkpoint.registry?.nextCursor || null, initialServers: checkpoint.registry?.servers || [], initialPages: checkpoint.registry?.pages || [], onPage: async ({ page, cursor, nextCursor, count, servers, pages, complete }) => { checkpoint.registry = { page, cursor, nextCursor, count, servers, pages, complete }; await saveCheckpoint(checkpointPath, checkpoint); } });
+  const registry = await crawlMcpRegistry({ endpoint: process.env.MCP_REGISTRY_ENDPOINT || MCP_REGISTRY_SOURCE.endpoint, token: process.env.MCP_REGISTRY_TOKEN, maxPages: Number(process.env.MCP_REGISTRY_MAX_PAGES || 20), initialCursor: checkpoint.registry?.nextCursor || null, initialServers: checkpoint.registry?.servers || [], initialPages: checkpoint.registry?.pages || [], onPage: async ({ page, cursor, nextCursor, count, servers, pages, complete }) => { checkpoint.registry = { page, cursor, nextCursor, count, servers, pages, complete }; await saveCheckpoint(checkpointPath, checkpoint); } });
   registryReport = { source: MCP_REGISTRY_SOURCE.id, pages: registry.pages, results: registry.servers.length, complete: registry.complete, errors: registry.errors };
   checkpoint.registryReport = registryReport;
   for (const server of registry.servers) {
@@ -105,11 +113,12 @@ if (!process.env.DISCOVERY_SKIP_REGISTRY && (!selectedSources || selectedSources
 }
 
 const allRepositories = [...repositories.values()].filter((candidate) => candidate.owner && candidate.name);
-const scanList = maxRepositories > 0 ? allRepositories.slice(0, maxRepositories) : allRepositories;
+const scanOffset = Math.min(checkpoint.scanOffset || 0, allRepositories.length);
+const scanList = maxRepositories > 0 ? allRepositories.slice(scanOffset, scanOffset + maxRepositories) : allRepositories.slice(scanOffset);
 const artifacts = [];
 const scanReports = [];
 if (scanEnabled) {
-  for (const candidate of scanList) {
+  for (const [batchIndex, candidate] of scanList.entries()) {
     const key = candidate.fullName.toLowerCase();
     const cached = checkpoint.repositories[key]?.scan;
     let scanned = cached;
@@ -117,12 +126,18 @@ if (scanEnabled) {
       scanned = await scanRepository(candidate, { maxArtifacts: maxArtifactsPerRepository });
       const stored = checkpoint.repositories[key] || candidate;
       checkpoint.repositories[key] = { ...stored, scan: scanned };
+      checkpoint.scanOffset = scanOffset + batchIndex + 1;
       await saveCheckpoint(checkpointPath, checkpoint);
     }
     scanReports.push({ repository: candidate.fullName, status: scanned.status, artifacts: scanned.artifacts.length, truncated: scanned.truncated || false, errors: scanned.errors || [] });
     artifacts.push(...scanned.artifacts.map((artifact) => ({ ...artifact, repository: candidate.fullName, repositoryUrl: candidate.url, stars: candidate.stars, discoveredBy: candidate.discoveredBy, sourceKinds: candidate.sourceKinds })));
     errors.push(...(scanned.errors || []).map((error) => ({ source: 'github-tree-scan', repository: candidate.fullName, error })));
   }
+}
+if (scanEnabled) {
+  checkpoint.scanOffset = scanOffset + scanList.length;
+  checkpoint.cycleComplete = checkpoint.scanOffset >= allRepositories.length;
+  await saveCheckpoint(checkpointPath, checkpoint);
 }
 
 const generatedAt = new Date().toISOString();
@@ -138,7 +153,9 @@ const coverage = {
   scans: scanReports,
   repositoriesDiscovered: candidateList.length,
   repositoriesScanned: scanEnabled ? scanList.length : 0,
-  repositoriesNotScanned: scanEnabled ? Math.max(0, candidateList.length - scanList.length) : candidateList.length,
+  repositoriesNotScanned: scanEnabled ? Math.max(0, allRepositories.length - scanOffset - scanList.length) : candidateList.length,
+  scanOffset: scanEnabled ? checkpoint.scanOffset : 0,
+  cycleComplete: scanEnabled ? checkpoint.cycleComplete : false,
   artifactsDiscovered: artifacts.length,
   errors: errors.length,
   scanDisabled: !scanEnabled,
