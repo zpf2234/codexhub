@@ -2,7 +2,7 @@ name: Discover candidates
 
 on:
   schedule:
-    - cron: "41 */6 * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -26,8 +26,8 @@ jobs:
       - run: npm run discover
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DISCOVERY_MAX_REPOSITORIES: 200
-          DISCOVERY_MAX_ARTIFACTS_PER_REPOSITORY: 1
+          DISCOVERY_MAX_REPOSITORIES: 350
+          DISCOVERY_MAX_ARTIFACTS_PER_REPOSITORY: 0
           GITHUB_DISCOVERY_TIMEOUT_MS: 10000
           GITHUB_DISCOVERY_RETRIES: 1
           GITHUB_DISCOVERY_MAX_SEGMENTS_PER_RUN: 8
