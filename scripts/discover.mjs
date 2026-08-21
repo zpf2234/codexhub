@@ -7,6 +7,7 @@ import { scanRepository } from './discovery/github-tree-scan.mjs';
 import { crawlMcpRegistry } from './discovery/mcp-registry.mjs';
 import { loadCheckpoint, saveCheckpoint } from './discovery/checkpoint.mjs';
 import { normalizeDiscovery } from './discovery/model.mjs';
+import { selectScanBatch } from './discovery/scan-queue.mjs';
 
 const outputDir = path.join(ROOT, 'artifacts', 'discovery');
 const checkpointPath = path.join(outputDir, 'checkpoint.json');
@@ -157,13 +158,12 @@ const successfullyScanned = (candidate) => {
   const scan = checkpoint.repositories[candidate.fullName.toLowerCase()]?.scan;
   return (scan?.status === 'fresh' && scan.truncated !== true && (scan.errors || []).length === 0) || scan?.terminal === true;
 };
-const pendingRepositories = allRepositories
-  .filter((candidate) => !successfullyScanned(candidate))
-  .sort((a, b) => (checkpoint.repositories[a.fullName.toLowerCase()]?.scan?.attempts || 0) - (checkpoint.repositories[b.fullName.toLowerCase()]?.scan?.attempts || 0));
-const scanList = maxRepositories > 0 ? pendingRepositories.slice(0, maxRepositories) : pendingRepositories;
+const scanCandidates = allRepositories.map((candidate) => ({ ...candidate, scan: checkpoint.repositories[candidate.fullName.toLowerCase()]?.scan }));
+const scanList = selectScanBatch(scanCandidates, { limit: maxRepositories, retryShare: Number(process.env.DISCOVERY_SCAN_RETRY_SHARE || 0.25), isComplete: successfullyScanned });
 const artifacts = [];
 const scanReports = [];
 if (scanEnabled) {
+  let rateLimited = false;
   for (let batchStart = 0; batchStart < scanList.length; batchStart += scanConcurrency) {
     const batch = scanList.slice(batchStart, batchStart + scanConcurrency);
     const results = await Promise.all(batch.map(async (candidate) => {
@@ -173,11 +173,19 @@ if (scanEnabled) {
       return { candidate, key, scanned };
     }));
     for (const { candidate, key, scanned } of results) {
+      if (scanned.rateLimited === true) {
+        rateLimited = true;
+        continue;
+      }
       const stored = checkpoint.repositories[key] || candidate;
       checkpoint.repositories[key] = { ...stored, scan: scanned };
       scanReports.push({ repository: candidate.fullName, status: scanned.status, artifacts: scanned.artifacts.length, verifiedArtifacts: scanned.verifiedArtifacts ?? scanned.artifacts.filter((artifact) => artifact.verification === 'passed').length, deferredArtifacts: scanned.deferredArtifacts ?? scanned.artifacts.filter((artifact) => artifact.verification === 'deferred').length, truncated: scanned.truncated || false, errors: scanned.errors || [] });
       artifacts.push(...scanned.artifacts.map((artifact) => ({ ...artifact, repository: candidate.fullName, repositoryUrl: candidate.url, stars: candidate.stars, discoveredBy: candidate.discoveredBy, sourceKinds: candidate.sourceKinds })));
       if (scanned.terminal !== true) errors.push(...(scanned.errors || []).map((error) => ({ source: 'github-tree-scan', repository: candidate.fullName, error })));
+    }
+    if (rateLimited) {
+      errors.push({ source: 'github-tree-scan', error: 'GitHub API rate limit exhausted; remaining repository scans are deferred to a later run.' });
+      break;
     }
     checkpoint.scanOffset = allRepositories.filter(successfullyScanned).length;
     await saveCheckpoint(checkpointPath, checkpoint);

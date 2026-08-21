@@ -35,15 +35,16 @@ export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, 
     while (true) {
       try {
         const response = await fetchImpl(url, { ...init, signal: AbortSignal.timeout(timeoutMs), headers: { ...headers, ...(init.headers || {}) } });
+        const remaining = Number(response.headers?.get?.('x-ratelimit-remaining') ?? NaN);
+        const reset = Number(response.headers?.get?.('x-ratelimit-reset') ?? NaN);
         if ((response.status === 403 || response.status === 429) && attempt < maxRetries) {
           const retryAfter = Number(response.headers?.get?.('retry-after') || 0);
-          const reset = Number(response.headers?.get?.('x-ratelimit-reset') || 0);
-          const delay = retryAfter > 0 ? retryAfter * 1000 : reset > 0 ? Math.max(1000, reset * 1000 - Date.now()) : 500 * 2 ** attempt;
+          const delay = retryAfter > 0 ? retryAfter * 1000 : Number.isFinite(reset) && reset > 0 ? Math.max(1000, reset * 1000 - Date.now()) : 500 * 2 ** attempt;
           attempt += 1;
           await sleep(Math.min(delay, 30_000));
           continue;
         }
-        if (!response.ok) return { ok: false, error: `GitHub API ${response.status}`, status: response.status };
+        if (!response.ok) return { ok: false, error: `GitHub API ${response.status}`, status: response.status, rateLimited: (response.status === 403 || response.status === 429) && remaining === 0, rateRemaining: Number.isFinite(remaining) ? remaining : null, rateReset: Number.isFinite(reset) ? reset : null };
         return { ok: true, data: await response.json() };
       } catch (error) {
         if (attempt++ < maxRetries) {
@@ -55,10 +56,10 @@ export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, 
     }
   };
   const repo = await request(base);
-  if (!repo.ok) return { repository: candidate, artifacts: [], status: repo.status === 404 || repo.status === 451 ? 'terminal-unavailable' : 'unavailable', terminal: repo.status === 404 || repo.status === 451, errors: [repo.error] };
+  if (!repo.ok) return { repository: candidate, artifacts: [], status: repo.rateLimited ? 'rate-limited' : repo.status === 404 || repo.status === 451 ? 'terminal-unavailable' : 'unavailable', terminal: repo.status === 404 || repo.status === 451, rateLimited: repo.rateLimited === true, rateRemaining: repo.rateRemaining, rateReset: repo.rateReset, errors: [repo.error] };
   const branch = repo.data.default_branch || candidate.defaultBranch || 'main';
   let tree = await request(`${base}/git/trees/${encodeURIComponent(branch)}?recursive=1`);
-  if (!tree.ok) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', errors: [tree.error] };
+  if (!tree.ok) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: tree.rateLimited ? 'rate-limited' : 'partial', rateLimited: tree.rateLimited === true, rateRemaining: tree.rateRemaining, rateReset: tree.rateReset, errors: [tree.error] };
   if (tree.data.truncated) {
     const root = await request(`${base}/git/trees/${encodeURIComponent(branch)}`);
     if (!root.ok || root.data.truncated) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', truncated: true, errors: [root.error || 'GitHub subtree response was truncated.'] };

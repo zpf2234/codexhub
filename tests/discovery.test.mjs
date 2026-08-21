@@ -5,6 +5,7 @@ import { crawlMcpRegistry } from '../scripts/discovery/mcp-registry.mjs';
 import { scanRepository } from '../scripts/discovery/github-tree-scan.mjs';
 import { loadCheckpoint, saveCheckpoint } from '../scripts/discovery/checkpoint.mjs';
 import { classifyPath, createDashboardSnapshot, normalizeDiscovery } from '../scripts/discovery/model.mjs';
+import { selectScanBatch } from '../scripts/discovery/scan-queue.mjs';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
@@ -242,6 +243,28 @@ test('repository tree scan retries transient GitHub rate limits', async () => {
   });
   assert.equal(result.status, 'fresh');
   assert.equal(attempts, 3);
+});
+
+test('repository tree scan marks exhausted quota separately from repository failure', async () => {
+  const result = await scanRepository({ fullName: 'a/quota', owner: 'a', name: 'quota' }, {
+    maxRetries: 0,
+    fetchImpl: async () => response({ message: 'rate limited' }, 403, { 'x-ratelimit-remaining': '0', 'x-ratelimit-reset': '9999999999' })
+  });
+  assert.equal(result.status, 'rate-limited');
+  assert.equal(result.rateLimited, true);
+  assert.equal(result.terminal, false);
+});
+
+test('scan queue reserves a retry share while continuing with fresh repositories', () => {
+  const repositories = [
+    { fullName: 'retry/a', scan: { status: 'unavailable', attempts: 4 } },
+    { fullName: 'retry/b', scan: { status: 'unavailable', attempts: 1 } },
+    { fullName: 'fresh/a' },
+    { fullName: 'fresh/b' },
+    { fullName: 'fresh/c' }
+  ];
+  const batch = selectScanBatch(repositories, { limit: 4, retryShare: 0.25, isComplete: (repository) => repository.scan?.status === 'fresh' });
+  assert.deepEqual(batch.map((repository) => repository.fullName), ['retry/b', 'fresh/a', 'fresh/b', 'fresh/c']);
 });
 
 test('registry server merge key is stable across resumed pages', () => {
