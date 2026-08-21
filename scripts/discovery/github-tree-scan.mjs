@@ -44,11 +44,15 @@ export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, 
   const branch = repo.data.default_branch || candidate.defaultBranch || 'main';
   const tree = await request(`${base}/git/trees/${encodeURIComponent(branch)}?recursive=1`);
   if (!tree.ok) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', errors: [tree.error] };
-  const files = (tree.data.tree || []).filter((item) => item.type === 'blob' && classify(item.path)).slice(0, maxArtifacts);
+  const files = (tree.data.tree || []).filter((item) => item.type === 'blob' && classify(item.path));
   const artifacts = [];
-  for (const file of files) {
-    const content = await request(`${base}/contents/${file.path.split('/').map(encodeURIComponent).join('/')}?ref=${encodeURIComponent(branch)}`);
+  for (const [index, file] of files.entries()) {
     const type = classify(file.path);
+    if (index >= maxArtifacts) {
+      artifacts.push({ id: artifactId(candidate.fullName, file.path), type, path: file.path, status: 'discovered', verification: 'deferred', note: 'Artifact path was discovered from the complete repository tree; content verification is deferred.', source: 'github-tree' });
+      continue;
+    }
+    const content = await request(`${base}/contents/${file.path.split('/').map(encodeURIComponent).join('/')}?ref=${encodeURIComponent(branch)}`);
     if (!content.ok || !content.data?.content) {
       artifacts.push({ id: artifactId(candidate.fullName, file.path), type, path: file.path, status: 'unknown', verification: 'unavailable', note: content.error || 'Content unavailable.' });
       continue;
@@ -57,5 +61,5 @@ export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, 
     const result = validate(type, decoded, file.path);
     artifacts.push({ id: artifactId(candidate.fullName, file.path), type, path: file.path, status: result.valid ? 'verified' : 'unknown', verification: result.valid ? 'passed' : 'failed', note: result.note, source: 'github-tree' });
   }
-  return { repository: { ...candidate, defaultBranch: branch, archived: repo.data.archived, stars: repo.data.stargazers_count, forks: repo.data.forks_count, license: repo.data.license?.spdx_id || candidate.license }, artifacts, status: tree.data.truncated ? 'partial' : 'fresh', truncated: Boolean(tree.data.truncated), errors: tree.data.truncated ? ['GitHub recursive tree response was truncated.'] : [] };
+  return { repository: { ...candidate, defaultBranch: branch, archived: repo.data.archived, stars: repo.data.stargazers_count, forks: repo.data.forks_count, license: repo.data.license?.spdx_id || candidate.license }, artifacts, status: tree.data.truncated ? 'partial' : 'fresh', truncated: Boolean(tree.data.truncated), verifiedArtifacts: Math.min(files.length, maxArtifacts), deferredArtifacts: Math.max(0, files.length - maxArtifacts), errors: tree.data.truncated ? ['GitHub recursive tree response was truncated.'] : [] };
 }

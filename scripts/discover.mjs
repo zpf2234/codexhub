@@ -140,7 +140,7 @@ if (scanEnabled) {
     for (const { candidate, key, scanned } of results) {
       const stored = checkpoint.repositories[key] || candidate;
       checkpoint.repositories[key] = { ...stored, scan: scanned };
-      scanReports.push({ repository: candidate.fullName, status: scanned.status, artifacts: scanned.artifacts.length, truncated: scanned.truncated || false, errors: scanned.errors || [] });
+      scanReports.push({ repository: candidate.fullName, status: scanned.status, artifacts: scanned.artifacts.length, verifiedArtifacts: scanned.verifiedArtifacts ?? scanned.artifacts.filter((artifact) => artifact.verification === 'passed').length, deferredArtifacts: scanned.deferredArtifacts ?? scanned.artifacts.filter((artifact) => artifact.verification === 'deferred').length, truncated: scanned.truncated || false, errors: scanned.errors || [] });
       artifacts.push(...scanned.artifacts.map((artifact) => ({ ...artifact, repository: candidate.fullName, repositoryUrl: candidate.url, stars: candidate.stars, discoveredBy: candidate.discoveredBy, sourceKinds: candidate.sourceKinds })));
       errors.push(...(scanned.errors || []).map((error) => ({ source: 'github-tree-scan', repository: candidate.fullName, error })));
     }

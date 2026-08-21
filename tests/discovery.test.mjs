@@ -86,6 +86,20 @@ test('repository tree scan discovers and validates multiple artifact types witho
   assert.ok(result.artifacts.every((artifact) => artifact.status === 'verified'));
 });
 
+test('repository tree scan keeps every artifact path when content verification is capped', async () => {
+  const tree = Array.from({ length: 4 }, (_, index) => ({ type: 'blob', path: `skills/${index}/SKILL.md` }));
+  const fetchImpl = async (url) => {
+    if (url === 'https://api.github.com/repos/a/large') return response({ default_branch: 'main', archived: false });
+    if (url.includes('/git/trees/')) return response({ tree });
+    return response({ content: Buffer.from('---\nname: demo\ndescription: useful\n---').toString('base64') });
+  };
+  const result = await scanRepository({ fullName: 'a/large', owner: 'a', name: 'large' }, { fetchImpl, maxArtifacts: 1 });
+  assert.equal(result.artifacts.length, 4);
+  assert.equal(result.verifiedArtifacts, 1);
+  assert.equal(result.deferredArtifacts, 3);
+  assert.equal(result.artifacts.filter((artifact) => artifact.verification === 'deferred').length, 3);
+});
+
 test('checkpoint writes atomically and survives a reload', async () => {
   const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'codexhub-checkpoint-'));
   const filePath = path.join(directory, 'checkpoint.json');
