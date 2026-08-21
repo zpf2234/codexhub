@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-21T23:08:46.218Z",
-  "startedAt": "2026-08-21T23:07:25.942Z",
-  "completedAt": "2026-08-21T23:08:46.218Z",
+  "generatedAt": "2026-08-21T23:32:13.490Z",
+  "startedAt": "2026-08-21T23:31:01.671Z",
+  "completedAt": "2026-08-21T23:32:13.490Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -1074,12 +1074,29 @@
         "reset": 1787353706,
         "retryAfter": null
       }
+    },
+    {
+      "id": "github-code-codex-rules",
+      "kind": "rule",
+      "coverage": "supplemental",
+      "query": "path:.codex/rules extension:rules",
+      "mode": "code-search",
+      "total": 964,
+      "pages": 10,
+      "results": 684,
+      "truncated": false,
+      "errors": [],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787355122,
+        "retryAfter": null
+      }
     }
   ],
   "sourcesProcessedThisRun": 1,
-  "sourcesRemaining": 21,
+  "sourcesRemaining": 20,
   "exhaustiveSourcesRemaining": 5,
-  "supplementalSourcesRemaining": 16,
+  "supplementalSourcesRemaining": 15,
   "registry": {
     "source": "mcp-official-registry",
     "pages": [
@@ -2144,31 +2161,91 @@
         "count": 100,
         "nextCursor": "io.github.BoxLab-Ltd/yandex-metrica-mcp:0.1.3",
         "cursor": "io.github.BlockRunAI/blockrun-mcp:0.30.4"
+      },
+      {
+        "page": 178,
+        "count": 100,
+        "nextCursor": "io.github.Br0ski777/http-headers:1.1.0",
+        "cursor": "io.github.BoxLab-Ltd/yandex-metrica-mcp:0.1.3"
+      },
+      {
+        "page": 179,
+        "count": 100,
+        "nextCursor": "io.github.Br0ski777/text-classifier:1.1.0",
+        "cursor": "io.github.Br0ski777/http-headers:1.1.0"
+      },
+      {
+        "page": 180,
+        "count": 100,
+        "nextCursor": "io.github.Braynexservices/nigeria-nigsac-sanctions:0.1.0",
+        "cursor": "io.github.Br0ski777/text-classifier:1.1.0"
+      },
+      {
+        "page": 181,
+        "count": 100,
+        "nextCursor": "io.github.Byggarepop/unwritten:0.4.2",
+        "cursor": "io.github.Braynexservices/nigeria-nigsac-sanctions:0.1.0"
+      },
+      {
+        "page": 182,
+        "count": 100,
+        "nextCursor": "io.github.CSOAI-ORG/agent-data-residency-mcp:1.0.2",
+        "cursor": "io.github.Byggarepop/unwritten:0.4.2"
+      },
+      {
+        "page": 183,
+        "count": 100,
+        "nextCursor": "io.github.CSOAI-ORG/ai-gateway-mcp:1.0.11",
+        "cursor": "io.github.CSOAI-ORG/agent-data-residency-mcp:1.0.2"
+      },
+      {
+        "page": 184,
+        "count": 100,
+        "nextCursor": "io.github.CSOAI-ORG/calendar-ai-mcp:1.0.3",
+        "cursor": "io.github.CSOAI-ORG/ai-gateway-mcp:1.0.11"
+      },
+      {
+        "page": 185,
+        "count": 100,
+        "nextCursor": "io.github.CSOAI-ORG/content-calendar-ai-mcp:1.0.1",
+        "cursor": "io.github.CSOAI-ORG/calendar-ai-mcp:1.0.3"
+      },
+      {
+        "page": 186,
+        "count": 100,
+        "nextCursor": "io.github.CSOAI-ORG/dependency-updater-ai-mcp:1.0.4",
+        "cursor": "io.github.CSOAI-ORG/content-calendar-ai-mcp:1.0.1"
+      },
+      {
+        "page": 187,
+        "count": 100,
+        "nextCursor": "io.github.CSOAI-ORG/expense-tracker-ai-mcp:1.0.3",
+        "cursor": "io.github.CSOAI-ORG/dependency-updater-ai-mcp:1.0.4"
       }
     ],
-    "results": 17700,
+    "results": 18700,
     "complete": false,
     "errors": []
   },
   "scans": [],
-  "repositoriesDiscovered": 30050,
-  "repositoriesScanned": 200,
-  "repositoriesNotScanned": 22063,
+  "repositoriesDiscovered": 30890,
+  "repositoriesScanned": 600,
+  "repositoriesNotScanned": 22868,
   "scanOffset": 2047,
   "repositoriesScannedTotal": 2047,
   "cycleComplete": false,
   "persistedScanFailures": [],
   "terminalUnavailableRepositories": 36,
   "rateLimitedRepositories": 35,
-  "rateLimitedScanEvents": 4,
-  "artifactsDiscovered": 90323,
+  "rateLimitedScanEvents": 8,
+  "artifactsDiscovered": 91323,
   "errors": 0,
   "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
     "skill": 59004,
     "plugin": 1516,
-    "mcp": 19168,
+    "mcp": 20168,
     "marketplace": 922,
     "hook": 363,
     "config": 14,
@@ -2183,7 +2260,7 @@
   "verificationCounts": {
     "verified": 1080,
     "discovered": 71531,
-    "registry": 17698,
+    "registry": 18698,
     "unknown": 14
   }
 }
