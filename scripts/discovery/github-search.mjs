@@ -23,6 +23,15 @@ function withCreatedRange(query, from, to) {
   return `${base} created:${from}..${to}`;
 }
 
+function withStarsRange(query, from, to) {
+  const base = query.replace(/\sstars:(?:[^\s]+)/gi, '').trim();
+  return `${base} stars:${from}..${to}`;
+}
+
+function uniqueTasks(tasks = []) {
+  return [...new Map(tasks.map((task) => [task.query, task])).values()];
+}
+
 function rangeFromQuery(query) {
   const match = String(query).match(/\bcreated:(\d{4}-\d{2}-\d{2})\.\.(\d{4}-\d{2}-\d{2})\b/i);
   return match ? { from: match[1], to: match[2] } : null;
@@ -160,9 +169,9 @@ export class GithubClient {
   async collectQueryBatch(query, source, state = {}, options = {}) {
     const perPage = Math.min(100, options.perPage ?? 100);
     const maxSegments = Math.max(1, options.maxSegments ?? Number(process.env.GITHUB_DISCOVERY_MAX_SEGMENTS || 32));
-    const queue = Array.isArray(state.queue) && state.queue.length ? [...state.queue] : [{ query, depth: 0, range: null }];
-    const segments = [...(state.segments || [])];
-    const partitions = [...(state.partitions || [])];
+    const queue = Array.isArray(state.queue) && state.queue.length ? uniqueTasks(state.queue) : [{ query, depth: 0, range: null, starRange: null }];
+    const segmentMap = new Map((state.segments || []).map((segment) => [segment.query, segment]));
+    const partitionMap = new Map((state.partitions || []).map((partition) => [partition.from, partition]));
     const repositories = new Map();
     const errors = [];
     const unresolved = [];
@@ -180,19 +189,42 @@ export class GithubClient {
       processed += 1;
       const total = Number(probe.data.total_count || 0);
       const incomplete = Boolean(probe.data.incomplete_results);
-      segments.push({ query: segmentQuery, total, incomplete });
+      segmentMap.set(segmentQuery, { query: segmentQuery, total, incomplete });
       if (incomplete) {
         errors.push({ query: segmentQuery, error: 'GitHub returned incomplete repository search results.' });
-        unresolved.push(task, ...queue);
+        unresolved.push(task);
         break;
       }
       if (total > 1000) {
         const split = this.splitQuery(query, task.range || rangeFromQuery(segmentQuery));
         if (split) {
-          partitions.push({ from: segmentQuery, into: split.map((item) => item.query) });
-          queue.unshift({ query: split[0].query, depth: task.depth + 1, range: split[0].range }, { query: split[1].query, depth: task.depth + 1, range: split[1].range });
+          partitionMap.set(segmentQuery, { from: segmentQuery, dimension: 'created', into: split.map((item) => item.query) });
+          queue.unshift({ query: split[0].query, depth: task.depth + 1, range: split[0].range, starRange: null }, { query: split[1].query, depth: task.depth + 1, range: split[1].range, starRange: null });
           continue;
         }
+        let starRange = task.starRange;
+        if (!starRange) {
+          const boundary = await this.boundary(segmentQuery, 'stars', 'desc');
+          if (!boundary.result.ok) {
+            errors.push({ query: segmentQuery, error: boundary.result.error, status: boundary.result.status });
+            unresolved.push(task);
+            break;
+          }
+          starRange = { from: 0, to: Number(boundary.item?.stargazers_count || 0) };
+        }
+        if (starRange.from < starRange.to) {
+          const pivot = Math.floor((starRange.from + starRange.to) / 2);
+          const split = [
+            { query: withStarsRange(segmentQuery, starRange.from, pivot), range: { from: starRange.from, to: pivot } },
+            { query: withStarsRange(segmentQuery, pivot + 1, starRange.to), range: { from: pivot + 1, to: starRange.to } }
+          ];
+          partitionMap.set(segmentQuery, { from: segmentQuery, dimension: 'stars', into: split.map((item) => item.query) });
+          queue.unshift({ query: split[0].query, depth: task.depth + 1, range: task.range, starRange: split[0].range }, { query: split[1].query, depth: task.depth + 1, range: task.range, starRange: split[1].range });
+          continue;
+        }
+        errors.push({ query: segmentQuery, error: 'Repository search bucket exceeds 1,000 results and cannot be partitioned further by created date or stars.' });
+        unresolved.push(task);
+        break;
       }
       const pages = Math.min(Math.ceil(Math.min(total, 1000) / perPage), 10);
       let failed = false;
@@ -210,7 +242,9 @@ export class GithubClient {
       if (total > 1000) unresolved.push(task);
     }
 
-    const nextQueue = [...unresolved, ...queue];
+    const segments = [...segmentMap.values()];
+    const partitions = [...partitionMap.values()];
+    const nextQueue = uniqueTasks([...unresolved, ...queue]);
     const complete = nextQueue.length === 0 && errors.length === 0;
     return {
       source,

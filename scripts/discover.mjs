@@ -41,7 +41,11 @@ if (resume && checkpoint.cycleComplete) {
   checkpoint.sourceCursor = 0;
   checkpoint.sourceStates = {};
   checkpoint.cycleComplete = false;
-  for (const repository of Object.values(checkpoint.repositories)) {
+  for (const [key, repository] of Object.entries(checkpoint.repositories)) {
+    if (repository.registryOnly === true && !repository.owner) {
+      delete checkpoint.repositories[key];
+      continue;
+    }
     delete repository.scan;
     delete repository.registryServers;
     delete repository.registryOnly;
@@ -173,7 +177,7 @@ if (scanEnabled) {
       checkpoint.repositories[key] = { ...stored, scan: scanned };
       scanReports.push({ repository: candidate.fullName, status: scanned.status, artifacts: scanned.artifacts.length, verifiedArtifacts: scanned.verifiedArtifacts ?? scanned.artifacts.filter((artifact) => artifact.verification === 'passed').length, deferredArtifacts: scanned.deferredArtifacts ?? scanned.artifacts.filter((artifact) => artifact.verification === 'deferred').length, truncated: scanned.truncated || false, errors: scanned.errors || [] });
       artifacts.push(...scanned.artifacts.map((artifact) => ({ ...artifact, repository: candidate.fullName, repositoryUrl: candidate.url, stars: candidate.stars, discoveredBy: candidate.discoveredBy, sourceKinds: candidate.sourceKinds })));
-      errors.push(...(scanned.errors || []).map((error) => ({ source: 'github-tree-scan', repository: candidate.fullName, error })));
+      if (scanned.terminal !== true) errors.push(...(scanned.errors || []).map((error) => ({ source: 'github-tree-scan', repository: candidate.fullName, error })));
     }
     checkpoint.scanOffset = allRepositories.filter(successfullyScanned).length;
     await saveCheckpoint(checkpointPath, checkpoint);
@@ -211,7 +215,7 @@ const supplementalSourcesRemaining = supplementalSources.filter((source) => !che
 const repositoriesNotScanned = allRepositories.filter((candidate) => !successfullyScanned(candidate)).length;
 const allSourceReportsReady = githubSources.every((source) => {
   const report = sourceReports.find((value) => value.id === source.id);
-  if (!report || report.errors.length > 0) return false;
+  if (!report || (report.errors || []).length > 0) return false;
   return source.coverage === 'supplemental' || report.truncated === false;
 });
 const coverage = {
@@ -231,6 +235,7 @@ const coverage = {
   repositoriesScanned: scanEnabled ? scanList.length : 0,
   repositoriesNotScanned: scanEnabled ? repositoriesNotScanned : candidateList.length,
   scanOffset: scanEnabled ? checkpoint.scanOffset : 0,
+  repositoriesScannedTotal: scanEnabled ? checkpoint.scanOffset : 0,
   cycleComplete: scanEnabled ? checkpoint.cycleComplete : false,
   persistedScanFailures,
   terminalUnavailableRepositories,

@@ -95,6 +95,19 @@ test('GitHub repository search does not duplicate queued segments after a failed
   assert.equal(new Set(result.state.queue.map((item) => item.query)).size, 3);
 });
 
+test('GitHub repository search uses star ranges when one day still exceeds 1,000 results', async () => {
+  const client = new GithubClient({ fetchImpl: async (url) => {
+    const parsed = new URL(url);
+    if (parsed.searchParams.get('sort') === 'stars') return response({ total_count: 1500, incomplete_results: false, items: [{ full_name: 'top/repo', stargazers_count: 9 }] });
+    return response({ total_count: 1500, incomplete_results: false, items: [] });
+  } });
+  const task = { query: 'topic:test created:2026-01-01..2026-01-01', depth: 1, range: { from: '2026-01-01', to: '2026-01-01' }, starRange: null };
+  const result = await client.collectQueryBatch('topic:test', { id: 'test', kind: 'skill' }, { queue: [task] }, { maxSegments: 1 });
+  assert.equal(result.state.queue.length, 2);
+  assert.equal(result.partitions[0].dimension, 'stars');
+  assert.ok(result.partitions[0].into.every((query) => (query.match(/stars:/g) || []).length === 1));
+});
+
 test('GitHub code search paginates and collapses multiple files from one repository', async () => {
   const fetchImpl = async (url) => {
     const parsed = new URL(url);
