@@ -303,7 +303,8 @@ test('artifact classifier recognizes Codex component paths', () => {
   assert.equal(classifyPath('.codex/requirements.toml').category, 'config');
   assert.equal(classifyPath('.codex/agents/reviewer.toml').type, 'agent-config');
   assert.equal(classifyPath('.codex/rules/default.rules').category, 'rule');
-  assert.equal(classifyPath('.codex/prompts/release.md').category, 'prompt');
+  assert.equal(classifyPath('.github/codex/prompts/release.md').type, 'action-prompt');
+  assert.equal(classifyPath('.codex/prompts/release.md').category, 'other');
   assert.equal(classifyPath('services/AGENTS.override.md').category, 'agents');
   assert.equal(classifyPath('.agents/plugins/marketplace.json').category, 'marketplace');
   assert.equal(classifyPath('hooks/hooks.json').category, 'hook');
