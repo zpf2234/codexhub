@@ -243,6 +243,7 @@ const coverage = {
   completedAt: generatedAt,
   scope: 'Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.',
   limitations: ['GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.', 'GitHub Code Search exposes at most 1,000 results per query and cannot be exhaustively enumerated; these manifest searches are reported as supplemental coverage.', 'GitHub API rate limits, deleted/private repositories, and search indexing lag prevent claims of absolute internet-wide completeness.', 'Discovery never executes repository code, installs dependencies, or connects to MCP servers.'],
+  declaredSources: githubSources.map(({ id, kind, coverage: sourceCoverage, query }) => ({ id, kind, coverage: sourceCoverage, query })),
   sources: sourceReports,
   sourcesProcessedThisRun: processedSources,
   sourcesRemaining,

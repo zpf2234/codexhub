@@ -79,12 +79,15 @@ function renderCoverage() {
 
 function renderSources(coverage) {
   const sources = coverage.sources || [];
-  document.querySelector('#coverage-source-count').textContent = `${formatNumber(sources.length)} GitHub sources | ${formatNumber(coverage.registry?.pages?.length || 0)} Registry pages`;
-  const rows = sources.map((source) => {
+  const reports = new Map(sources.map((source) => [source.id, source]));
+  const declaredSources = coverage.declaredSources || sources;
+  document.querySelector('#coverage-source-count').textContent = `${formatNumber(declaredSources.length)} GitHub sources | ${formatNumber(coverage.registry?.pages?.length || 0)} Registry pages`;
+  const rows = declaredSources.map((declared) => {
+    const source = reports.get(declared.id) || declared;
     const row = el('article', 'source-row');
     const identity = el('div', 'source-identity'); identity.append(el('strong', '', source.id), el('small', '', `${source.mode === 'code-search' ? 'GitHub code search' : 'GitHub repository search'} | ${source.coverage || 'exhaustive'}`));
     const numbers = el('div', 'source-numbers'); numbers.append(el('span', '', `${formatNumber(source.results)} results`), el('span', '', `${formatNumber(source.segments?.length || source.pages || 0)} pages/segments`));
-    const sourceState = source.errors?.length ? el('span', 'verification verification-unknown', `${source.errors.length} errors`) : source.truncated && source.coverage === 'supplemental' ? el('span', 'verification verification-discovered', 'API-capped sample') : source.truncated ? el('span', 'verification verification-discovered', `${formatNumber(source.pendingSegments || 0)} segments pending`) : el('span', 'verification verification-verified', 'Covered');
+    const sourceState = !reports.has(declared.id) ? el('span', 'verification verification-discovered', 'Pending') : source.errors?.length ? el('span', 'verification verification-unknown', `${source.errors.length} errors`) : source.truncated && source.coverage === 'supplemental' ? el('span', 'verification verification-discovered', 'API-capped sample') : source.truncated ? el('span', 'verification verification-discovered', `${formatNumber(source.pendingSegments || 0)} segments pending`) : el('span', 'verification verification-verified', 'Covered');
     row.append(identity, numbers, sourceState); return row;
   });
   const registry = el('article', 'source-row');

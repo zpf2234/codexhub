@@ -54,6 +54,7 @@ test('discovery dashboard loads, filters artifacts, and switches to repositories
   await page.locator('#discovery-view').selectOption('repositories');
   await expect(page.locator('#discovery-results .repository-card').first()).toBeVisible();
   await expect(page.locator('#verification-filter')).toBeDisabled();
+  await expect(page.locator('#source-coverage-list .source-row')).toHaveCount((discovery.coverage.declaredSources ?? discovery.coverage.sources).length + 1);
 });
 
 test('discovery dashboard has no mobile horizontal overflow', async ({ page }) => {
