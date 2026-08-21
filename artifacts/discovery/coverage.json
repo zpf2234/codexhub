@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-21T21:44:56.869Z",
-  "startedAt": "2026-08-21T21:41:41.036Z",
-  "completedAt": "2026-08-21T21:44:56.869Z",
+  "generatedAt": "2026-08-21T22:13:25.778Z",
+  "startedAt": "2026-08-21T21:59:26.499Z",
+  "completedAt": "2026-08-21T22:13:25.778Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -789,12 +789,29 @@
         "reset": 1787348686,
         "retryAfter": null
       }
+    },
+    {
+      "id": "github-code-project-hooks",
+      "kind": "hook",
+      "coverage": "supplemental",
+      "query": "filename:hooks.json path:.codex",
+      "mode": "code-search",
+      "total": 3228,
+      "pages": 10,
+      "results": 908,
+      "truncated": true,
+      "errors": [],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787349627,
+        "retryAfter": null
+      }
     }
   ],
   "sourcesProcessedThisRun": 1,
-  "sourcesRemaining": 21,
+  "sourcesRemaining": 24,
   "exhaustiveSourcesRemaining": 5,
-  "supplementalSourcesRemaining": 16,
+  "supplementalSourcesRemaining": 19,
   "registry": {
     "source": "mcp-official-registry",
     "pages": [
@@ -1559,485 +1576,75 @@
         "count": 100,
         "nextCursor": "dev.aic0rt3x.memory/mcp:1.0.0",
         "cursor": "de.kalender-sync/kalender-sync:1.0.0"
+      },
+      {
+        "page": 128,
+        "count": 100,
+        "nextCursor": "dev.cz-agents/eu-registry:0.1.1",
+        "cursor": "dev.aic0rt3x.memory/mcp:1.0.0"
+      },
+      {
+        "page": 129,
+        "count": 100,
+        "nextCursor": "dev.depscope/mcp:0.7.74",
+        "cursor": "dev.cz-agents/eu-registry:0.1.1"
+      },
+      {
+        "page": 130,
+        "count": 100,
+        "nextCursor": "dev.draugr/draugr:0.80.0",
+        "cursor": "dev.depscope/mcp:0.7.74"
+      },
+      {
+        "page": 131,
+        "count": 100,
+        "nextCursor": "dev.ezstat/ezstat-mcp-server:0.6.2",
+        "cursor": "dev.draugr/draugr:0.80.0"
+      },
+      {
+        "page": 132,
+        "count": 100,
+        "nextCursor": "dev.homespun/homespun:1.6.45",
+        "cursor": "dev.ezstat/ezstat-mcp-server:0.6.2"
+      },
+      {
+        "page": 133,
+        "count": 100,
+        "nextCursor": "dev.mantlekit/launch-planner:0.1.1",
+        "cursor": "dev.homespun/homespun:1.6.45"
+      },
+      {
+        "page": 134,
+        "count": 100,
+        "nextCursor": "dev.pepita.mcp/mcp:0.5.0",
+        "cursor": "dev.mantlekit/launch-planner:0.1.1"
+      },
+      {
+        "page": 135,
+        "count": 100,
+        "nextCursor": "dev.servonaut/servonaut:2.21.0",
+        "cursor": "dev.pepita.mcp/mcp:0.5.0"
+      },
+      {
+        "page": 136,
+        "count": 100,
+        "nextCursor": "dev.svelte/mcp:0.1.22",
+        "cursor": "dev.servonaut/servonaut:2.21.0"
+      },
+      {
+        "page": 137,
+        "count": 100,
+        "nextCursor": "dev.whiteintel/whiteintel:0.7.9",
+        "cursor": "dev.svelte/mcp:0.1.22"
       }
     ],
-    "results": 12700,
+    "results": 13700,
     "complete": false,
     "errors": []
   },
   "scans": [
     {
-      "repository": "hitSlop/shots",
-      "status": "fresh",
-      "artifacts": 7,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 7,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "hogancv/coordinate-agents",
-      "status": "fresh",
-      "artifacts": 10,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 10,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "huntingrin/handoff",
-      "status": "fresh",
-      "artifacts": 5,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "HYEXE/codex-plugins",
-      "status": "fresh",
-      "artifacts": 27,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 27,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "hyhunss/sg-semicon-us-expansion-plugin",
-      "status": "fresh",
-      "artifacts": 11,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 11,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "icesixgod/codex-trajectory",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "IngvarConsulting/unica",
-      "status": "fresh",
-      "artifacts": 88,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 88,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "isdou/branch-keeper",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "j7an/superpowers-manager",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "jakelongvu-bot/Vucar-AI-Plugin",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "jiangkoumo/agenttape",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "jinny51/codex-deepseek-subagent",
-      "status": "fresh",
-      "artifacts": 7,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 7,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "JMET04/aicad-agent",
-      "status": "fresh",
-      "artifacts": 15,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 15,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "joeaoe-hash/harmonyos-mobile-app-research",
-      "status": "fresh",
-      "artifacts": 16,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 16,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "jonit-dev/linchpin",
-      "status": "fresh",
-      "artifacts": 5,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "JordanReighn/design-reference-library",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "jxpeng98/qiongli",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "kadaba/claude-bridge",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "keli-wen/agy-staff",
-      "status": "fresh",
-      "artifacts": 10,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 10,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "kennyzhaoo/codex-screenpet",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "kingcharleslzy-ai/bizhub-installer",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "kora-projects/kora-skills",
-      "status": "fresh",
-      "artifacts": 45,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 45,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "KoreaNirsa/spec-guard",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "kreek/consult",
-      "status": "fresh",
-      "artifacts": 150,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 150,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "langchain-ai/langsmith-codex-plugins",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "legal-expert-ai/marketplace",
-      "status": "fresh",
-      "artifacts": 17,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 17,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "lennney/stop-that-shit",
-      "status": "fresh",
-      "artifacts": 8,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 8,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "linsong-dev/checkpush",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "linsong-dev/mindol",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "LOLer001/workflow-manager",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "lql341/codex-scnet-hpc",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ly95/verified-development",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "magic2goodil/studioops",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Maksim-Burtsev/simple-man",
-      "status": "fresh",
-      "artifacts": 7,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 7,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "mallarylabs/chatgpt-plugin",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "MalphtieYU/skillscout",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "MarcoRossini96/build-macos-apps-browser-mirror",
-      "status": "fresh",
-      "artifacts": 26,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 26,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "MarvinSunnnn/codex-svg-review",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "matlab/simulink-agentic-toolkit",
-      "status": "fresh",
-      "artifacts": 26,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 26,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "mbackschat/a12-dmtool-releases",
-      "status": "fresh",
-      "artifacts": 10,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 10,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "MedAdemBHA/docflow",
-      "status": "fresh",
-      "artifacts": 15,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 15,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "medvertical/records-agent-tools",
-      "status": "fresh",
-      "artifacts": 10,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 10,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "MelnixDev/codex-ymt",
-      "status": "fresh",
-      "artifacts": 5,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "memorylake-ai/memorylake-harness",
-      "status": "fresh",
-      "artifacts": 9,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 9,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "MetaFloor-AI/metafloor-scm-plugin-openai",
-      "status": "fresh",
-      "artifacts": 76,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 76,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "mihhhir08/projectpilot",
-      "status": "fresh",
-      "artifacts": 7,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 7,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "mihirkavi/reddit-agent",
-      "status": "fresh",
-      "artifacts": 5,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "MohamedAbdallah-14/unslop",
-      "status": "fresh",
-      "artifacts": 23,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 23,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "msmorgan/jj-kata",
-      "status": "fresh",
-      "artifacts": 10,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 10,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "mushanyoung/property-tax-appeal-skll",
-      "status": "fresh",
-      "artifacts": 8,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 8,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "0-don/unorouter-mcp",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "0xgonzalo/music-artist-os",
-      "status": "fresh",
-      "artifacts": 21,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 21,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "0xprogrammable/hookbuilder",
+      "repository": "NaCr05/project-preflight",
       "status": "fresh",
       "artifacts": 12,
       "verifiedArtifacts": 0,
@@ -2046,63 +1653,7 @@
       "errors": []
     },
     {
-      "repository": "13eholder/zflow",
-      "status": "fresh",
-      "artifacts": 31,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 31,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "199ocero/google-sheets-mcp",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "1genadam/pilotgentic",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "2389-research/firebase-development",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "2389-research/remote-system-maintenance",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "2389-research/review-squad",
-      "status": "fresh",
-      "artifacts": 5,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "2rami/kasaterm",
+      "repository": "naliduoyuhang/deepseek-harness-bridge-codex-plugin",
       "status": "fresh",
       "artifacts": 4,
       "verifiedArtifacts": 0,
@@ -2111,25 +1662,7 @@
       "errors": []
     },
     {
-      "repository": "3A2DEV/ansible-designer",
-      "status": "fresh",
-      "artifacts": 15,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 15,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "3D-Stories/design-doc-publish",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "3D-Stories/rawgentic-memorypalace",
+      "repository": "nimbold/codex-consultants",
       "status": "fresh",
       "artifacts": 7,
       "verifiedArtifacts": 0,
@@ -2138,16 +1671,7 @@
       "errors": []
     },
     {
-      "repository": "60fps-Design/plugin",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "89jobrien/orca-strait",
+      "repository": "OpenNekoPaw/codex-dsh-web",
       "status": "fresh",
       "artifacts": 4,
       "verifiedArtifacts": 0,
@@ -2156,243 +1680,34 @@
       "errors": []
     },
     {
-      "repository": "8dp6brm9hp-svg/lion-mcp-public",
+      "repository": "OrenAshkenazy/gh-review-loop",
       "status": "fresh",
-      "artifacts": 1,
+      "artifacts": 6,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
+      "deferredArtifacts": 6,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "8lampard8/claude-science-cn",
+      "repository": "pactflow/pactflow-agent-skills",
       "status": "fresh",
-      "artifacts": 1,
+      "artifacts": 14,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
+      "deferredArtifacts": 14,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "8manos/No-Al-Poliducto",
+      "repository": "papperrollinggery/codex-workspace-enhancer",
       "status": "fresh",
-      "artifacts": 0,
+      "artifacts": 6,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
+      "deferredArtifacts": 6,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "911218sky/mcp-cursor-message",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "911218sky/mechrevo-amd-restart-fix",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "917Dhj/DeepPaperNote",
-      "status": "fresh",
-      "artifacts": 7,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 7,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "9398-haha/douyin-benchmark",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "9cb14c1ec0/gitea-codex-action",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "9csg956r89-droid/agents-in-sdlc",
-      "status": "fresh",
-      "artifacts": 8,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 8,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "9Ninety/MCPNotes",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "9thLevelSoftware/Daem0n-MCP",
-      "status": "fresh",
-      "artifacts": 5,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "a-ariff/canvas-instant-mcp",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "A-EVO-Lab/a-evolve",
-      "status": "fresh",
-      "artifacts": 24,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 24,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "a-latyshev/dolfinx-external-operator",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "A-Locke/a-locke",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "A-Mateen03/skills-copilot-codespaces-vscode",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "a-oleynik/testng-workshop",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "A-PachecoT/uni-beamer-claude",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "a-pasquale/wordpress-www.elytra.net",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "A1-x-Tech/mcp-yandex-audience",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "A1-x-Tech/mcp-yandex-dostavka",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "A1-x-Tech/mcp-yandex-merchants",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "A1-x-Tech/mcp-yango-delivery",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "A1-x-Tech/mcp-yango-retail",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "a11s11/word-latex-mathtype-skill",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "a1627418541/-",
-      "status": "fresh",
-      "artifacts": 685,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 685,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "a16z/jolt",
+      "repository": "patrickschiller/sourcebraid",
       "status": "fresh",
       "artifacts": 9,
       "verifiedArtifacts": 0,
@@ -2401,7 +1716,169 @@
       "errors": []
     },
     {
-      "repository": "a1yama/dotfiles",
+      "repository": "Peytontalismanic424/paper-share-skills",
+      "status": "fresh",
+      "artifacts": 8,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 8,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "plaid-ai/opscale-codex-plugin",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "PostHog/ai-plugin",
+      "status": "fresh",
+      "artifacts": 144,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 144,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "PouLJenny/trundle",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "psh4607/notion-multi-workspace",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 4,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "pushnoi/skills-internet-codex",
+      "status": "fresh",
+      "artifacts": 9,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 9,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "pzzld-org/shepherd",
+      "status": "fresh",
+      "artifacts": 50,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 50,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "qmy0423-coder/epub-visual-to-markdown",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "rainthousand/agentshell",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 4,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ReflexioAI/claude-smart",
+      "status": "fresh",
+      "artifacts": 25,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 25,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "reshuibuduo/tmcra",
+      "status": "fresh",
+      "artifacts": 7,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 7,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "reshuibuduo/tmcra-memory",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "reshuibuduo/tmcra-plugin-codex",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 6,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "reymondmeking-dot/nvwa-Chinese-character-open",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 4,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "rhein1/fable5-codex",
+      "status": "fresh",
+      "artifacts": 9,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 9,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "rogue-shadowdancer/codex-hyperv-clean-room-plugin",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "s977043/PlanGate",
+      "status": "fresh",
+      "artifacts": 248,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 248,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "s977043/river-review",
+      "status": "fresh",
+      "artifacts": 152,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 152,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "samihalawa/linkedin-godmode-plugin",
       "status": "fresh",
       "artifacts": 12,
       "verifiedArtifacts": 0,
@@ -2410,7 +1887,16 @@
       "errors": []
     },
     {
-      "repository": "a20070322/everything-claude-code-zh",
+      "repository": "seojun03/cheongnyeon-telecom-plugins",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 4,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "seokhoonj/pydatagokr",
       "status": "fresh",
       "artifacts": 13,
       "verifiedArtifacts": 0,
@@ -2419,128 +1905,43 @@
       "errors": []
     },
     {
-      "repository": "a5c-ai/babysitter-claude",
+      "repository": "SethGammon/Citadel",
       "status": "fresh",
-      "artifacts": 4,
+      "artifacts": 62,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
+      "deferredArtifacts": 62,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "a6996660/codex-claude",
+      "repository": "sgroy10/speclock",
       "status": "fresh",
-      "artifacts": 3,
+      "artifacts": 15,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 3,
+      "deferredArtifacts": 15,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "a8hok/DevOps-Study-Guide",
+      "repository": "shigella520/MindTrain",
       "status": "fresh",
-      "artifacts": 0,
+      "artifacts": 6,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
+      "deferredArtifacts": 6,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "aa1143/aa1143",
+      "repository": "Shilo/pixellab-pip",
       "status": "fresh",
-      "artifacts": 0,
+      "artifacts": 6,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
+      "deferredArtifacts": 6,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "aa191723422/yaohu",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aaaaninja/moneyforward-cloud-agent-browser",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aAAaqwq/openclaw-team",
-      "status": "fresh",
-      "artifacts": 1066,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1066,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aaayersss/doomscrollr",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "aaayersss/doomscrollr-mcp",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "AAAZZZR/Trading_Agent_MCP",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aac920/portcullis",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aaddrick/attention-control",
-      "status": "fresh",
-      "artifacts": 7,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 7,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aadilmallick/aadilmallick",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aadilr/changethisfile-mcp",
+      "repository": "shixinnt/codex-image-context-runtime",
       "status": "fresh",
       "artifacts": 5,
       "verifiedArtifacts": 0,
@@ -2549,169 +1950,16 @@
       "errors": []
     },
     {
-      "repository": "aadilr/costbench-mcp",
+      "repository": "shrekshrek/project-workflow",
       "status": "fresh",
-      "artifacts": 5,
+      "artifacts": 29,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 5,
+      "deferredArtifacts": 29,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "aadityajs/wpMu",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aaearon/mcp-privilege-cloud",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aahil62/unslop",
-      "status": "fresh",
-      "artifacts": 7,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 7,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aahlijia/dekko",
-      "status": "fresh",
-      "artifacts": 9,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 9,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aaires/Solar",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aakanshajain0898/demo",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aalfie/CV-Site",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aalston004/SkioKnD2.0",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aamangeldi/dad-jokes-mcp",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aamedina/mtg",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aamirmanisa/onenomad",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aangulocr/skills-copilot-codespaces-vscode",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aaron-ai/istio",
-      "status": "fresh",
-      "artifacts": 28,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 28,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aaron-he-zhu/aaron-marketing-skills",
-      "status": "fresh",
-      "artifacts": 124,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 124,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "AaronBerman/canasta-mobile",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aaroncampbell/twitter-widget-pro",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aaronedev/aaronedev",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Aarong365/Enterprise-Knowledge-Hub",
+      "repository": "skoskov/serp-bot",
       "status": "fresh",
       "artifacts": 13,
       "verifiedArtifacts": 0,
@@ -2720,529 +1968,43 @@
       "errors": []
     },
     {
-      "repository": "aarongillett/B22-151217",
+      "repository": "Soulize/Sol-Luna-Orchestrator",
       "status": "fresh",
-      "artifacts": 0,
+      "artifacts": 6,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
+      "deferredArtifacts": 6,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "aaronguostudio/aaronguoblog",
+      "repository": "squarepots/claude-seo-for-codex",
       "status": "fresh",
-      "artifacts": 0,
+      "artifacts": 35,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
+      "deferredArtifacts": 35,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "aaronjorbin/accessu",
+      "repository": "sturlese/build-squad",
       "status": "fresh",
-      "artifacts": 0,
+      "artifacts": 22,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
+      "deferredArtifacts": 22,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "aaronkpickrell/openagent-registry",
+      "repository": "surrealdb/ai-codex-plugin",
       "status": "fresh",
-      "artifacts": 0,
+      "artifacts": 19,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
+      "deferredArtifacts": 19,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "Aaronlves/paper-analysis-skill",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aaronsb/google-workspace-mcp",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aarora79/aws-cost-explorer-mcp-server",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aaryasharma2/lot",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aashari/boilerplate-mcp-server",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aashari/mcp-server-atlassian-bitbucket",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aashari/mcp-server-atlassian-confluence",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aashari/mcp-server-atlassian-jira",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aashish-thapa/craftwright",
-      "status": "fresh",
-      "artifacts": 5,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Aayush9029/mcp-server",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abalad/skills-copilot-codespaces-vscode",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abandon888/HappyBirthday",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abanik0831/wordpress",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Abbiirr/mcp-agent-qa",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abbychao/Wordpress-Lab",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abdielou/discovery-skill",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abdlx/HomiOS",
-      "status": "fresh",
-      "artifacts": 31,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 31,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abdodeeksleem/NeTest",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abdoulihideya86/Understand-Anything",
-      "status": "fresh",
-      "artifacts": 12,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 12,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abdulahad16/John",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abdulbasit742/anydesk",
-      "status": "fresh",
-      "artifacts": 1023,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1023,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abdullah-c9/proj2",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abduvik/abduvik",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abegit/vital",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abel-2333-org/geist-nuxt",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abel9851/mcp-server-mariadb",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abelanaya/.dotfiles",
-      "status": "fresh",
-      "artifacts": 60,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 60,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "aben1188/my-star-repos",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abenassi/calculadora-inflacion-ar",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abenchannel/Socratic",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhay-byte/abhay-byte",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhaykatyan96/abhaykatyan96.github.io",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhicoder29/Bookstore_user",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhijithk1/ai-agent-with-mcp-gateway",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhijithk1/omni-server",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhijithvijayan/awesome-stars",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhinav1602/claude-code-notify",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhinavrana/davidlevin",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhisekjha/pith",
-      "status": "fresh",
-      "artifacts": 15,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 15,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhishekambad-leapswitch/openstack-mcp",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhishekmsingh/Chaoss-Gsoc2020",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhishekphalle/wp_apache",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhishekphalle/wp_nginx",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhisheksharma026/abhisheksharma026",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhishekyadav2000/codebase-memory-mcp-enhanced",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhitekula/GetHog",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhiunix/AgentHarbor",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "AbhiVarde/syncui",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abhxhekrathore5/AI-Vibe-Check",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abicheck/abicheck",
-      "status": "fresh",
-      "artifacts": 15,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 15,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abigailcherry/project",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Abilityai/agent-cornelius",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Abilityai/agent-ruby",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abishkar123/abishkar123",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "abitwise/grugops",
+      "repository": "suxrobGM/jobpilot",
       "status": "fresh",
       "artifacts": 34,
       "verifiedArtifacts": 0,
@@ -3251,25 +2013,160 @@
       "errors": []
     },
     {
-      "repository": "abl030/nixosconfig",
+      "repository": "svy04/ballast",
       "status": "fresh",
-      "artifacts": 32,
+      "artifacts": 16,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 32,
+      "deferredArtifacts": 16,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "abluva/mcp-catalog",
+      "repository": "Syh1906/openai-compatible-imagegen",
       "status": "fresh",
-      "artifacts": 0,
+      "artifacts": 7,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
+      "deferredArtifacts": 7,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "ably77/solo-enterprise-agentregistry-workshop",
+      "repository": "Syoong-s/Superplan",
+      "status": "fresh",
+      "artifacts": 8,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 8,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "TerenceLiu98/prewalk",
+      "status": "fresh",
+      "artifacts": 24,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 24,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "tessaryai/plugins",
+      "status": "fresh",
+      "artifacts": 18,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 18,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "tetracoralla/armorial",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 6,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "tetracoralla/decision-table",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 6,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "tetracoralla/laniakea",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 6,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "tetracoralla/math-anchor",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 6,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "01056649000yoo/vibe_agit",
+      "status": "fresh",
+      "artifacts": 8,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 8,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "0Bu/daikin-altherma-esp32",
+      "status": "fresh",
+      "artifacts": 24,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 24,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "0maru/gh-zen",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "0p9b/TLDR",
+      "status": "fresh",
+      "artifacts": 15,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 15,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "0xHoneyJar/loa-constructs",
+      "status": "fresh",
+      "artifacts": 147,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 147,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "1707049684/v2_myproject",
+      "status": "fresh",
+      "artifacts": 8,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 8,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "1visio/calibration_tool",
+      "status": "fresh",
+      "artifacts": 9,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 9,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "23Maestro/singleton-systems",
+      "status": "fresh",
+      "artifacts": 38,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 38,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "3M1RY33T/MyBlog",
       "status": "fresh",
       "artifacts": 2,
       "verifiedArtifacts": 0,
@@ -3278,7 +2175,25 @@
       "errors": []
     },
     {
-      "repository": "abmc2/skills-copilot-codespaces-vscode",
+      "repository": "45ck/prompt-language",
+      "status": "fresh",
+      "artifacts": 41,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 41,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "6rzan/ai-helpdesk-agent",
+      "status": "fresh",
+      "artifacts": 14,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 14,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "78degrees/mcp-server",
       "status": "fresh",
       "artifacts": 0,
       "verifiedArtifacts": 0,
@@ -3287,7 +2202,232 @@
       "errors": []
     },
     {
-      "repository": "abmwine/tilwhen",
+      "repository": "8beeeaaat/touchdesigner-mcp",
+      "status": "fresh",
+      "artifacts": 8,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 8,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "abhijeet-codes/ai-avatar-video-generation",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "AbhinandIdikayil/jobhuntly-client",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "aborczuk/app-foundation",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Abstraxn-Labs/abstraxn-agent-layer",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ABTdomain/domainkits-mcp",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "abu-talha-codex/Abu-Develops",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "abu-talha-codex/HTML-CSS-Codes",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "abue-ammar/abue-ammar",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "abuiles/codex-whatsapp-relay",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "abukamila/category-post-shortcode",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "AC287/en-bac",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ac3xx/mcp-servers-kagi",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "acabezashSkillChallenge/skills-copilot-codespaces-vscode",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "academe/csv-importer-improved",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "academy-codex/codexwebsite",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "acafourek/maidstone",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "acartag7/mcp-sso",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "acastineiraf/wordpress_0",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Accal/.dotfiles",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "AccelAnalysis/AK9I-Customer-Pipeline",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "AccelerationConsortium/ac-organic-lab",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "AccessLint/skills",
+      "status": "fresh",
+      "artifacts": 8,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 8,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "accrescent/console",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "aceanwar424-jpg/onelab-platform",
+      "status": "fresh",
+      "artifacts": 28,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 28,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "acebot712/promptguard",
       "status": "terminal-unavailable",
       "artifacts": 0,
       "verifiedArtifacts": 0,
@@ -3298,7 +2438,25 @@
       ]
     },
     {
-      "repository": "AbnerSoto/blues",
+      "repository": "AceDataCloud/KlingMCP",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "AceDataCloud/MCPs",
+      "status": "fresh",
+      "artifacts": 26,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 26,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "AceIDE/editor",
       "status": "fresh",
       "artifacts": 0,
       "verifiedArtifacts": 0,
@@ -3307,7 +2465,25 @@
       "errors": []
     },
     {
-      "repository": "abordage/awesome-mcp",
+      "repository": "AceyAdapter/knap",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "acgetchell/dotfiles",
+      "status": "fresh",
+      "artifacts": 119,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 119,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "achappey/aihappey-agents",
       "status": "fresh",
       "artifacts": 0,
       "verifiedArtifacts": 0,
@@ -3316,7 +2492,43 @@
       "errors": []
     },
     {
-      "repository": "aboynamedstacey/companyforge-plugin",
+      "repository": "achappey/aihappey-ai",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "achappey/aihappey-mcp",
+      "status": "fresh",
+      "artifacts": 570,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 570,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "acheetham/inclusivedesign.ca",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "achriom/achriom-mcp",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Achuan-2/pandoc_docx_template",
       "status": "fresh",
       "artifacts": 2,
       "verifiedArtifacts": 0,
@@ -3325,7 +2537,7 @@
       "errors": []
     },
     {
-      "repository": "abrahamgalue/mcp-practice",
+      "repository": "achuthasubhash/Complete-Life-Cycle-of-a-Data-Science-Project",
       "status": "fresh",
       "artifacts": 0,
       "verifiedArtifacts": 0,
@@ -3334,7 +2546,7 @@
       "errors": []
     },
     {
-      "repository": "abrahemy319-png/mcp-webasyst-codex-toolkit",
+      "repository": "acidonper/openshift4-mesh-architecture-multiple-controlplanes",
       "status": "fresh",
       "artifacts": 0,
       "verifiedArtifacts": 0,
@@ -3343,7 +2555,7 @@
       "errors": []
     },
     {
-      "repository": "Abrar2003/Abrar2003",
+      "repository": "acjlabs/catalog-normalizer",
       "status": "fresh",
       "artifacts": 0,
       "verifiedArtifacts": 0,
@@ -3352,7 +2564,7 @@
       "errors": []
     },
     {
-      "repository": "AbriantoLabs/smartschool-mcp",
+      "repository": "acjlabs/receipt-extraction",
       "status": "fresh",
       "artifacts": 0,
       "verifiedArtifacts": 0,
@@ -3361,7 +2573,7 @@
       "errors": []
     },
     {
-      "repository": "abruzzim/wordpress",
+      "repository": "acjlabs/x402-listing-monitor",
       "status": "fresh",
       "artifacts": 0,
       "verifiedArtifacts": 0,
@@ -3370,45 +2582,257 @@
       "errors": []
     },
     {
-      "repository": "Abstract-Foundation/abstract-skills",
+      "repository": "Ackerman-00/opensuse-nexus",
       "status": "fresh",
-      "artifacts": 8,
+      "artifacts": 1,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 8,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "AckermannJan/FFW-TR",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "acorn421/acorn421.github.io",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "acornprover/acornlib",
+      "status": "fresh",
+      "artifacts": 10,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 10,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "acquia/nebula",
+      "status": "fresh",
+      "artifacts": 25,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 25,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "AcTePuKc/bg-game-translation-qa",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 6,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "actionhero/keryx",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ActionProxy/actionproxy",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "actions-marketplace-validations/Codex-_return-dispatch",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "actions-marketplace-validations/codex-team_action-codexbot-notify",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "actions-marketplace-validations/ewels_rich-codex",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "actions-marketplace-validations/vmactions_dragonflybsd-vm",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "actions-marketplace-validations/vmactions_netbsd-vm",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "actions-marketplace-validations/vmactions_openbsd-vm",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ActivateNY/activateny.org",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "active-interest/seo-ultimate",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "active-interest/xml-sitemap-feed",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ActiveCampaign/postmark-mcp",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ActiveCodex/ActiveCodex",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ActiveInferenceInstitute/COGANT",
+      "status": "fresh",
+      "artifacts": 165,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 165,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ActiveInferenceInstitute/courses",
+      "status": "partial",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": true,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ActiveInferenceInstitute/GeneralizedNotationNotation",
+      "status": "fresh",
+      "artifacts": 279,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 279,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ActiveInferenceInstitute/GEO-INFER",
+      "status": "fresh",
+      "artifacts": 888,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 888,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ActiveInferenceInstitute/pymcp",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
       "truncated": false,
       "errors": []
     }
   ],
-  "repositoriesDiscovered": 25695,
+  "repositoriesDiscovered": 26959,
   "repositoriesScanned": 200,
-  "repositoriesNotScanned": 18539,
-  "scanOffset": 1920,
-  "repositoriesScannedTotal": 1920,
+  "repositoriesNotScanned": 19452,
+  "scanOffset": 2047,
+  "repositoriesScannedTotal": 2047,
   "cycleComplete": false,
   "persistedScanFailures": [],
-  "terminalUnavailableRepositories": 35,
-  "rateLimitedRepositories": 84,
-  "rateLimitedScanEvents": 0,
-  "artifactsDiscovered": 81709,
-  "errors": 0,
+  "terminalUnavailableRepositories": 36,
+  "rateLimitedRepositories": 35,
+  "rateLimitedScanEvents": 4,
+  "artifactsDiscovered": 86324,
+  "errors": 1,
   "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
-    "skill": 57797,
-    "plugin": 1435,
-    "mcp": 13533,
-    "marketplace": 864,
-    "hook": 307,
-    "config": 5,
-    "plugin-metadata": 6572,
-    "agents": 1140,
-    "action": 56,
+    "skill": 59004,
+    "plugin": 1516,
+    "mcp": 15169,
+    "marketplace": 922,
+    "hook": 363,
+    "config": 14,
+    "agent-config": 41,
+    "rule": 0,
+    "prompt": 0,
+    "plugin-metadata": 6768,
+    "agents": 2458,
+    "action": 69,
     "other": 0
   },
   "verificationCounts": {
     "verified": 1080,
-    "discovered": 67916,
-    "registry": 12699,
+    "discovered": 71531,
+    "registry": 13699,
     "unknown": 14
   }
 }
