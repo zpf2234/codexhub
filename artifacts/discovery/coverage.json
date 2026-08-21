@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-21T23:32:13.490Z",
-  "startedAt": "2026-08-21T23:31:01.671Z",
-  "completedAt": "2026-08-21T23:32:13.490Z",
+  "generatedAt": "2026-08-21T23:43:09.652Z",
+  "startedAt": "2026-08-21T23:41:58.970Z",
+  "completedAt": "2026-08-21T23:43:09.652Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -1091,12 +1091,29 @@
         "reset": 1787355122,
         "retryAfter": null
       }
+    },
+    {
+      "id": "github-code-action-prompts",
+      "kind": "prompt",
+      "coverage": "supplemental",
+      "query": "path:.github/codex/prompts extension:md",
+      "mode": "code-search",
+      "total": 489,
+      "pages": 5,
+      "results": 272,
+      "truncated": false,
+      "errors": [],
+      "rate": {
+        "remaining": 5,
+        "reset": 1787355779,
+        "retryAfter": null
+      }
     }
   ],
   "sourcesProcessedThisRun": 1,
-  "sourcesRemaining": 20,
+  "sourcesRemaining": 19,
   "exhaustiveSourcesRemaining": 5,
-  "supplementalSourcesRemaining": 15,
+  "supplementalSourcesRemaining": 14,
   "registry": {
     "source": "mcp-official-registry",
     "pages": [
@@ -2221,16 +2238,76 @@
         "count": 100,
         "nextCursor": "io.github.CSOAI-ORG/expense-tracker-ai-mcp:1.0.3",
         "cursor": "io.github.CSOAI-ORG/dependency-updater-ai-mcp:1.0.4"
+      },
+      {
+        "page": 188,
+        "count": 100,
+        "nextCursor": "io.github.CSOAI-ORG/healthcare-ai-governance-mcp:1.0.3",
+        "cursor": "io.github.CSOAI-ORG/expense-tracker-ai-mcp:1.0.3"
+      },
+      {
+        "page": 189,
+        "count": 100,
+        "nextCursor": "io.github.CSOAI-ORG/license-checker-ai-mcp:1.0.3",
+        "cursor": "io.github.CSOAI-ORG/healthcare-ai-governance-mcp:1.0.3"
+      },
+      {
+        "page": 190,
+        "count": 100,
+        "nextCursor": "io.github.CSOAI-ORG/meok-eu-ai-act-art-26-fria-mcp:1.0.0",
+        "cursor": "io.github.CSOAI-ORG/license-checker-ai-mcp:1.0.3"
+      },
+      {
+        "page": 191,
+        "count": 100,
+        "nextCursor": "io.github.CSOAI-ORG/muckaway-ai-mcp:1.0.3",
+        "cursor": "io.github.CSOAI-ORG/meok-eu-ai-act-art-26-fria-mcp:1.0.0"
+      },
+      {
+        "page": 192,
+        "count": 100,
+        "nextCursor": "io.github.CSOAI-ORG/planthire-ai-mcp:1.0.1",
+        "cursor": "io.github.CSOAI-ORG/muckaway-ai-mcp:1.0.3"
+      },
+      {
+        "page": 193,
+        "count": 100,
+        "nextCursor": "io.github.CSOAI-ORG/self-healing-infrastructure-mcp:1.0.3",
+        "cursor": "io.github.CSOAI-ORG/planthire-ai-mcp:1.0.1"
+      },
+      {
+        "page": 194,
+        "count": 100,
+        "nextCursor": "io.github.CSOAI-ORG/webhook-ai-mcp:1.0.9",
+        "cursor": "io.github.CSOAI-ORG/self-healing-infrastructure-mcp:1.0.3"
+      },
+      {
+        "page": 195,
+        "count": 100,
+        "nextCursor": "io.github.ChiR24/unreal-engine-mcp:0.5.17",
+        "cursor": "io.github.CSOAI-ORG/webhook-ai-mcp:1.0.9"
+      },
+      {
+        "page": 196,
+        "count": 100,
+        "nextCursor": "io.github.ChromeDevTools/chrome-devtools-mcp:1.1.1",
+        "cursor": "io.github.ChiR24/unreal-engine-mcp:0.5.17"
+      },
+      {
+        "page": 197,
+        "count": 100,
+        "nextCursor": "io.github.CoReason-AI/coreason-ecosystem:0.53.0",
+        "cursor": "io.github.ChromeDevTools/chrome-devtools-mcp:1.1.1"
       }
     ],
-    "results": 18700,
+    "results": 19700,
     "complete": false,
     "errors": []
   },
   "scans": [],
-  "repositoriesDiscovered": 30890,
+  "repositoriesDiscovered": 31460,
   "repositoriesScanned": 600,
-  "repositoriesNotScanned": 22868,
+  "repositoriesNotScanned": 23391,
   "scanOffset": 2047,
   "repositoriesScannedTotal": 2047,
   "cycleComplete": false,
@@ -2238,14 +2315,14 @@
   "terminalUnavailableRepositories": 36,
   "rateLimitedRepositories": 35,
   "rateLimitedScanEvents": 8,
-  "artifactsDiscovered": 91323,
+  "artifactsDiscovered": 92323,
   "errors": 0,
   "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
     "skill": 59004,
     "plugin": 1516,
-    "mcp": 20168,
+    "mcp": 21168,
     "marketplace": 922,
     "hook": 363,
     "config": 14,
@@ -2260,7 +2337,7 @@
   "verificationCounts": {
     "verified": 1080,
     "discovered": 71531,
-    "registry": 18698,
+    "registry": 19698,
     "unknown": 14
   }
 }
