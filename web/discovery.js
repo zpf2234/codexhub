@@ -5,8 +5,8 @@ const labels = { all: 'All artifacts', skill: 'Skills', plugin: 'Plugins', mcp: 
 const statusLabels = { verified: 'Verified', discovered: 'Deferred', registry: 'Registry', unknown: 'Unknown' };
 const el = (tag, className, text) => { const node = document.createElement(tag); if (className) node.className = className; if (text != null) node.textContent = text; return node; };
 const safeUrl = (value) => { try { const url = new URL(value); return ['http:', 'https:'].includes(url.protocol) ? url.href : '#'; } catch { return '#'; } };
-const formatNumber = (value) => value == null ? '—' : new Intl.NumberFormat('en', { notation: value > 9999 ? 'compact' : 'standard', maximumFractionDigits: 1 }).format(value);
-const formatExact = (value) => value == null ? '—' : new Intl.NumberFormat('en').format(value);
+const formatNumber = (value) => value == null ? 'n/a' : new Intl.NumberFormat('en', { notation: value > 9999 ? 'compact' : 'standard', maximumFractionDigits: 1 }).format(value);
+const formatExact = (value) => value == null ? 'n/a' : new Intl.NumberFormat('en').format(value);
 
 function syncUrl() {
   const next = new URLSearchParams();
@@ -32,11 +32,11 @@ function artifactCard(artifact) {
   const name = artifact.name || String(artifact.path).split('/').at(-2) || String(artifact.path).split('/').at(-1);
   const title = el('h3', '', name);
   const repo = el('p', 'owner', artifact.repository || 'Registry-only server');
-  const path = el('code', 'artifact-path', artifact.path || artifact.name || '—');
+  const path = el('code', 'artifact-path', artifact.path || artifact.name || 'n/a');
   const summary = el('p', 'summary', artifact.description || artifact.note || 'Artifact discovered from repository metadata.');
   const meta = el('div', 'artifact-meta');
   if (artifact.version) meta.append(el('span', '', `v${artifact.version}`));
-  if (artifact.stars != null) meta.append(el('span', '', `★ ${formatNumber(artifact.stars)}`));
+  if (artifact.stars != null) meta.append(el('span', '', `Stars ${formatNumber(artifact.stars)}`));
   meta.append(el('span', '', artifact.source === 'mcp-registry' ? 'Official registry' : artifact.verification || 'discovered'));
   const link = el('a', 'card-link', artifact.source === 'mcp-registry' ? 'Open source' : 'View artifact');
   link.href = artifactLink(artifact); link.target = '_blank'; link.rel = 'noreferrer';
@@ -54,7 +54,7 @@ function repositoryCard(repository) {
   const title = el('h3', '', repository.fullName || repository.name);
   const summary = el('p', 'summary', repository.description || 'No repository description.');
   const meta = el('div', 'artifact-meta');
-  meta.append(el('span', '', `★ ${formatNumber(repository.stars)}`), el('span', '', `Forks ${formatNumber(repository.forks)}`), el('span', '', repository.license || 'NOASSERTION'));
+  meta.append(el('span', '', `Stars ${formatNumber(repository.stars)}`), el('span', '', `Forks ${formatNumber(repository.forks)}`), el('span', '', repository.license || 'NOASSERTION'));
   const source = el('p', 'source-line', `Sources: ${(repository.discoveredBy || []).join(', ') || 'unknown'}`);
   const link = el('a', 'card-link', 'View repository'); link.href = safeUrl(repository.url); link.target = '_blank'; link.rel = 'noreferrer';
   article.append(header, title, summary, meta, source, link);
@@ -78,10 +78,10 @@ function renderCoverage() {
 
 function renderSources(coverage) {
   const sources = coverage.sources || [];
-  document.querySelector('#coverage-source-count').textContent = `${formatNumber(sources.length)} GitHub sources · ${formatNumber(coverage.registry?.pages?.length || 0)} Registry pages`;
+  document.querySelector('#coverage-source-count').textContent = `${formatNumber(sources.length)} GitHub sources | ${formatNumber(coverage.registry?.pages?.length || 0)} Registry pages`;
   const rows = sources.map((source) => {
     const row = el('article', 'source-row');
-    const identity = el('div', 'source-identity'); identity.append(el('strong', '', source.id), el('small', '', `${source.mode === 'code-search' ? 'GitHub code search' : 'GitHub repository search'} · ${source.coverage || 'exhaustive'}`));
+    const identity = el('div', 'source-identity'); identity.append(el('strong', '', source.id), el('small', '', `${source.mode === 'code-search' ? 'GitHub code search' : 'GitHub repository search'} | ${source.coverage || 'exhaustive'}`));
     const numbers = el('div', 'source-numbers'); numbers.append(el('span', '', `${formatNumber(source.results)} results`), el('span', '', `${formatNumber(source.segments?.length || source.pages || 0)} pages/segments`));
     const sourceState = source.errors?.length ? el('span', 'verification verification-unknown', `${source.errors.length} errors`) : source.truncated && source.coverage === 'supplemental' ? el('span', 'verification verification-discovered', 'API-capped sample') : source.truncated ? el('span', 'verification verification-discovered', `${formatNumber(source.pendingSegments || 0)} segments pending`) : el('span', 'verification verification-verified', 'Covered');
     row.append(identity, numbers, sourceState); return row;
@@ -135,7 +135,7 @@ function render() {
   const items = sortItems(state.view === 'artifacts' ? filteredArtifacts() : filteredRepositories());
   const visible = items.slice(0, state.visible);
   document.querySelector('#verification-filter').disabled = state.view === 'repositories';
-  document.querySelector('#discovery-result-count').textContent = `${formatNumber(items.length)} ${state.view} · showing ${formatNumber(visible.length)}`;
+  document.querySelector('#discovery-result-count').textContent = `${formatNumber(items.length)} ${state.view} | showing ${formatNumber(visible.length)}`;
   document.querySelector('#discovery-results').replaceChildren(...visible.map(state.view === 'artifacts' ? artifactCard : repositoryCard));
   const loadMore = document.querySelector('#discovery-load-more');
   loadMore.hidden = visible.length >= items.length;

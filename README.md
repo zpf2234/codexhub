@@ -34,6 +34,8 @@ npm run dashboard
 
 Then open `http://127.0.0.1:4173/discovery.html`. The command builds from the latest local checkpoint and starts a no-cache local server without crawling the network.
 
+If that port is already occupied, choose another one with `npm run dashboard -- --port 4174`.
+
 To advance the local discovery snapshot first, run one bounded batch and then open the dashboard:
 
 ```powershell
