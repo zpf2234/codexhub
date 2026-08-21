@@ -71,7 +71,7 @@ for (const source of GITHUB_SOURCES) {
   const reportIndex = sourceReports.findIndex((report) => report.id === source.id);
   if (reportIndex >= 0) sourceReports[reportIndex] = sourceReport; else sourceReports.push(sourceReport);
   errors.push(...result.errors.map((error) => ({ source: source.id, ...error })));
-  if (result.errors.length === 0) checkpoint.completedSources.push(source.id);
+  if (!checkpoint.completedSources.includes(source.id)) checkpoint.completedSources.push(source.id);
   checkpoint.repositories = Object.fromEntries(repositories);
   checkpoint.sourceReports = sourceReports;
   await saveCheckpoint(checkpointPath, checkpoint);
@@ -97,7 +97,7 @@ for (const source of GITHUB_CODE_SOURCES) {
   const reportIndex = sourceReports.findIndex((report) => report.id === source.id);
   if (reportIndex >= 0) sourceReports[reportIndex] = sourceReport; else sourceReports.push(sourceReport);
   errors.push(...result.errors.map((error) => ({ source: source.id, ...error })));
-  if (result.errors.length === 0) checkpoint.completedSources.push(source.id);
+  if (!checkpoint.completedSources.includes(source.id)) checkpoint.completedSources.push(source.id);
   checkpoint.repositories = Object.fromEntries(repositories);
   checkpoint.sourceReports = sourceReports;
   await saveCheckpoint(checkpointPath, checkpoint);
@@ -150,7 +150,7 @@ if (scanEnabled) {
 }
 if (scanEnabled) {
   checkpoint.scanOffset = scanOffset + scanList.length;
-  checkpoint.cycleComplete = checkpoint.scanOffset >= allRepositories.length;
+  checkpoint.cycleComplete = checkpoint.scanOffset >= allRepositories.length && checkpoint.completedSources.filter((id) => id !== MCP_REGISTRY_SOURCE.id).length >= GITHUB_SOURCES.length + GITHUB_CODE_SOURCES.length && registryReport.complete;
   await saveCheckpoint(checkpointPath, checkpoint);
 }
 
