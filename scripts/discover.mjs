@@ -10,6 +10,7 @@ import { normalizeDiscovery } from './discovery/model.mjs';
 
 const outputDir = path.join(ROOT, 'artifacts', 'discovery');
 const checkpointPath = path.join(outputDir, 'checkpoint.json');
+const SOURCE_ALGORITHM_VERSION = 2;
 const resume = !process.argv.includes('--fresh');
 const scanEnabled = !process.argv.includes('--no-scan');
 const maxRepositories = Number(process.env.DISCOVERY_MAX_REPOSITORIES || 0);
@@ -20,6 +21,12 @@ const selectedSources = process.env.DISCOVERY_SOURCES ? new Set(process.env.DISC
 const startedAt = new Date().toISOString();
 const client = new GithubClient();
 const checkpoint = resume ? await loadCheckpoint(checkpointPath) : { version: 1, completedSources: [], repositories: {}, registry: {}, sourceReports: [], registryReport: null, scanOffset: 0, cycleComplete: false };
+if (checkpoint.sourceAlgorithmVersion !== SOURCE_ALGORITHM_VERSION) {
+  checkpoint.completedSources = checkpoint.completedSources.filter((id) => id === MCP_REGISTRY_SOURCE.id);
+  checkpoint.sourceReports = [];
+  checkpoint.sourceAlgorithmVersion = SOURCE_ALGORITHM_VERSION;
+  checkpoint.cycleComplete = false;
+}
 if (resume && checkpoint.cycleComplete) {
   checkpoint.completedSources = [];
   checkpoint.sourceReports = [];
@@ -65,6 +72,7 @@ for (const source of GITHUB_SOURCES) {
     const candidate = repositoryCandidate(item, source);
     const previous = repositories.get(key);
     if (previous) {
+      Object.assign(previous, Object.fromEntries(Object.entries(candidate).filter(([, value]) => value != null)));
       previous.discoveredBy = [...new Set([...(previous.discoveredBy || []), source.id])].sort();
       previous.sourceKinds = [...new Set([...(previous.sourceKinds || []), source.kind])].sort();
     } else repositories.set(key, candidate);

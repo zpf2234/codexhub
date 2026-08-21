@@ -131,6 +131,7 @@ test('checkpoint writes atomically and survives a reload', async () => {
   assert.deepEqual(checkpoint.completedSources, ['one']);
   assert.equal(checkpoint.repositories['a/b'].fullName, 'a/b');
   assert.equal(checkpoint.sourceReports[0].id, 'one');
+  assert.equal(checkpoint.sourceAlgorithmVersion, 1);
 });
 
 test('registry server merge key is stable across resumed pages', () => {
