@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-21T18:10:39.057Z",
+  "generatedAt": "2026-08-21T18:27:54.276Z",
   "errors": [
     {
-      "source": "github-tree-scan",
-      "repository": "sodanyx/codebase-baseline-planner",
-      "status": "partial",
-      "truncated": false,
-      "error": "fetch failed"
+      "source": "github-topic-model-context-protocol",
+      "query": "topic:model-context-protocol fork:false archived:false created:2024-04-23..2025-06-22",
+      "page": 5,
+      "error": "GitHub API 403",
+      "status": 403
     }
   ]
 }

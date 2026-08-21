@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-21T18:10:39.057Z",
-  "startedAt": "2026-08-21T18:10:13.904Z",
-  "completedAt": "2026-08-21T18:10:39.057Z",
-  "scope": "Declared GitHub search sources plus official MCP Registry at crawl time.",
+  "generatedAt": "2026-08-21T18:27:54.276Z",
+  "startedAt": "2026-08-21T18:26:27.959Z",
+  "completedAt": "2026-08-21T18:27:54.276Z",
+  "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
     "GitHub Code Search exposes at most 1,000 results per query and cannot be exhaustively enumerated; these manifest searches are reported as supplemental coverage.",
@@ -40,11 +40,222 @@
         "reset": 1787335879,
         "retryAfter": null
       }
+    },
+    {
+      "id": "github-topic-codex-plugin",
+      "kind": "plugin",
+      "coverage": "exhaustive",
+      "query": "topic:codex-plugin fork:false archived:false",
+      "segments": [
+        {
+          "query": "topic:codex-plugin fork:false archived:false",
+          "total": 925,
+          "incomplete": false
+        }
+      ],
+      "partitions": [],
+      "pendingSegments": 0,
+      "results": 925,
+      "truncated": false,
+      "errors": [],
+      "rate": {
+        "remaining": 20,
+        "reset": 1787336848,
+        "retryAfter": null
+      }
+    },
+    {
+      "id": "github-topic-mcp-server",
+      "kind": "mcp",
+      "coverage": "exhaustive",
+      "query": "topic:mcp-server fork:false archived:false",
+      "segments": [
+        {
+          "query": "topic:mcp-server fork:false archived:false",
+          "total": 24749,
+          "incomplete": false
+        },
+        {
+          "query": "topic:mcp-server fork:false archived:false created:2008-01-01..2017-04-26",
+          "total": 31,
+          "incomplete": false
+        },
+        {
+          "query": "topic:mcp-server fork:false archived:false created:2017-04-27..2026-08-21",
+          "total": 24718,
+          "incomplete": false
+        },
+        {
+          "query": "topic:mcp-server fork:false archived:false created:2017-04-27..2021-12-23",
+          "total": 79,
+          "incomplete": false
+        },
+        {
+          "query": "topic:mcp-server fork:false archived:false created:2021-12-24..2026-08-21",
+          "total": 24639,
+          "incomplete": false
+        },
+        {
+          "query": "topic:mcp-server fork:false archived:false created:2021-12-24..2024-04-22",
+          "total": 130,
+          "incomplete": false
+        },
+        {
+          "query": "topic:mcp-server fork:false archived:false created:2024-04-23..2026-08-21",
+          "total": 24509,
+          "incomplete": false
+        },
+        {
+          "query": "topic:mcp-server fork:false archived:false created:2024-04-23..2025-06-22",
+          "total": 2719,
+          "incomplete": false
+        }
+      ],
+      "partitions": [
+        {
+          "from": "topic:mcp-server fork:false archived:false",
+          "into": [
+            "topic:mcp-server fork:false archived:false created:2008-01-01..2017-04-26",
+            "topic:mcp-server fork:false archived:false created:2017-04-27..2026-08-21"
+          ]
+        },
+        {
+          "from": "topic:mcp-server fork:false archived:false created:2017-04-27..2026-08-21",
+          "into": [
+            "topic:mcp-server fork:false archived:false created:2017-04-27..2021-12-23",
+            "topic:mcp-server fork:false archived:false created:2021-12-24..2026-08-21"
+          ]
+        },
+        {
+          "from": "topic:mcp-server fork:false archived:false created:2021-12-24..2026-08-21",
+          "into": [
+            "topic:mcp-server fork:false archived:false created:2021-12-24..2024-04-22",
+            "topic:mcp-server fork:false archived:false created:2024-04-23..2026-08-21"
+          ]
+        },
+        {
+          "from": "topic:mcp-server fork:false archived:false created:2024-04-23..2026-08-21",
+          "into": [
+            "topic:mcp-server fork:false archived:false created:2024-04-23..2025-06-22",
+            "topic:mcp-server fork:false archived:false created:2025-06-23..2026-08-21"
+          ]
+        },
+        {
+          "from": "topic:mcp-server fork:false archived:false created:2024-04-23..2025-06-22",
+          "into": [
+            "topic:mcp-server fork:false archived:false created:2024-04-23..2024-11-21",
+            "topic:mcp-server fork:false archived:false created:2024-11-22..2025-06-22"
+          ]
+        }
+      ],
+      "pendingSegments": 3,
+      "results": 240,
+      "truncated": true,
+      "errors": [],
+      "rate": {
+        "remaining": 11,
+        "reset": 1787336848,
+        "retryAfter": null
+      }
+    },
+    {
+      "id": "github-topic-model-context-protocol",
+      "kind": "mcp",
+      "coverage": "exhaustive",
+      "query": "topic:model-context-protocol fork:false archived:false",
+      "segments": [
+        {
+          "query": "topic:model-context-protocol fork:false archived:false",
+          "total": 22652,
+          "incomplete": false
+        },
+        {
+          "query": "topic:model-context-protocol fork:false archived:false created:2008-01-01..2017-04-26",
+          "total": 9,
+          "incomplete": false
+        },
+        {
+          "query": "topic:model-context-protocol fork:false archived:false created:2017-04-27..2026-08-21",
+          "total": 22643,
+          "incomplete": false
+        },
+        {
+          "query": "topic:model-context-protocol fork:false archived:false created:2017-04-27..2021-12-23",
+          "total": 20,
+          "incomplete": false
+        },
+        {
+          "query": "topic:model-context-protocol fork:false archived:false created:2021-12-24..2026-08-21",
+          "total": 22623,
+          "incomplete": false
+        },
+        {
+          "query": "topic:model-context-protocol fork:false archived:false created:2021-12-24..2024-04-22",
+          "total": 50,
+          "incomplete": false
+        },
+        {
+          "query": "topic:model-context-protocol fork:false archived:false created:2024-04-23..2026-08-21",
+          "total": 22573,
+          "incomplete": false
+        },
+        {
+          "query": "topic:model-context-protocol fork:false archived:false created:2024-04-23..2025-06-22",
+          "total": 913,
+          "incomplete": false
+        }
+      ],
+      "partitions": [
+        {
+          "from": "topic:model-context-protocol fork:false archived:false",
+          "into": [
+            "topic:model-context-protocol fork:false archived:false created:2008-01-01..2017-04-26",
+            "topic:model-context-protocol fork:false archived:false created:2017-04-27..2026-08-21"
+          ]
+        },
+        {
+          "from": "topic:model-context-protocol fork:false archived:false created:2017-04-27..2026-08-21",
+          "into": [
+            "topic:model-context-protocol fork:false archived:false created:2017-04-27..2021-12-23",
+            "topic:model-context-protocol fork:false archived:false created:2021-12-24..2026-08-21"
+          ]
+        },
+        {
+          "from": "topic:model-context-protocol fork:false archived:false created:2021-12-24..2026-08-21",
+          "into": [
+            "topic:model-context-protocol fork:false archived:false created:2021-12-24..2024-04-22",
+            "topic:model-context-protocol fork:false archived:false created:2024-04-23..2026-08-21"
+          ]
+        },
+        {
+          "from": "topic:model-context-protocol fork:false archived:false created:2024-04-23..2026-08-21",
+          "into": [
+            "topic:model-context-protocol fork:false archived:false created:2024-04-23..2025-06-22",
+            "topic:model-context-protocol fork:false archived:false created:2025-06-23..2026-08-21"
+          ]
+        }
+      ],
+      "pendingSegments": 3,
+      "results": 479,
+      "truncated": true,
+      "errors": [
+        {
+          "query": "topic:model-context-protocol fork:false archived:false created:2024-04-23..2025-06-22",
+          "page": 5,
+          "error": "GitHub API 403",
+          "status": 403
+        }
+      ],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787336848,
+        "retryAfter": null
+      }
     }
   ],
-  "sourcesProcessedThisRun": 1,
-  "sourcesRemaining": 22,
-  "exhaustiveSourcesRemaining": 6,
+  "sourcesProcessedThisRun": 3,
+  "sourcesRemaining": 21,
+  "exhaustiveSourcesRemaining": 5,
   "supplementalSourcesRemaining": 16,
   "registry": {
     "source": "mcp-official-registry",
@@ -210,57 +421,1900 @@
         "count": 100,
         "nextCursor": "ai.testiv/mcp:0.5.3",
         "cursor": "ai.spritecook/generate:0.2.17"
+      },
+      {
+        "page": 28,
+        "count": 100,
+        "nextCursor": "ai.trendsmcp/competitor-tracking:1.0.2",
+        "cursor": "ai.testiv/mcp:0.5.3"
+      },
+      {
+        "page": 29,
+        "count": 100,
+        "nextCursor": "ai.trustysquire/trusty-squire:1.0.49",
+        "cursor": "ai.trendsmcp/competitor-tracking:1.0.2"
+      },
+      {
+        "page": 30,
+        "count": 100,
+        "nextCursor": "ai.verificate/mcp:1.8.3",
+        "cursor": "ai.trustysquire/trusty-squire:1.0.49"
+      },
+      {
+        "page": 31,
+        "count": 100,
+        "nextCursor": "ai.wiplash/wiplash:0.7.5",
+        "cursor": "ai.verificate/mcp:1.8.3"
+      },
+      {
+        "page": 32,
+        "count": 100,
+        "nextCursor": "app.causely/causely:1.0.0",
+        "cursor": "ai.wiplash/wiplash:0.7.5"
+      },
+      {
+        "page": 33,
+        "count": 100,
+        "nextCursor": "app.flowral.mcp/planner:1.0.2",
+        "cursor": "app.causely/causely:1.0.0"
+      },
+      {
+        "page": 34,
+        "count": 100,
+        "nextCursor": "app.marketgenius/mcp:2026-04-13",
+        "cursor": "app.flowral.mcp/planner:1.0.2"
+      },
+      {
+        "page": 35,
+        "count": 100,
+        "nextCursor": "app.meistron/meistron:1.0.0",
+        "cursor": "app.marketgenius/mcp:2026-04-13"
+      },
+      {
+        "page": 36,
+        "count": 100,
+        "nextCursor": "app.racecalendar/f1:1.1.0",
+        "cursor": "app.meistron/meistron:1.0.0"
+      },
+      {
+        "page": 37,
+        "count": 100,
+        "nextCursor": "app.scfcontrolsplatform/mcp-server-scf:1.0.11",
+        "cursor": "app.racecalendar/f1:1.1.0"
       }
     ],
-    "results": 2700,
+    "results": 3700,
     "complete": false,
     "errors": []
   },
   "scans": [
     {
-      "repository": "a798221115-byte/Book-Video-Factory",
+      "repository": "sodanyx/codebase-baseline-planner",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "SEKKAIE/scourgify",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "quietmill/respeak",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ryanshi1103/confera-media-skills",
+      "status": "fresh",
+      "artifacts": 20,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 19,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "SEKKAIE/the-crucible",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "thePlannerIvan/planners-quali-box",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "blessleon/electron-cdp-automation",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "SeanX16/HR-toolkit",
+      "status": "fresh",
+      "artifacts": 20,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 19,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "zibo-chen/codex-defer-and-resume",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "z1h0426/wechat-official-account-growth",
+      "status": "fresh",
+      "artifacts": 8,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 7,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "rad1092/resume-application-harness",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "hlky/rgp-inspect",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "aiaaaa4/video-translate",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "aiaaaa4/video-download",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "AndreXes03/reference-to-system",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "itstarts/development-workflow",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 4,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "3716319-dot/interaction-portfolio-mentors",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "xuedai-mayi/envi-classic-remote-sensing",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ai-studying-man/youtube_auto",
+      "status": "fresh",
+      "artifacts": 10,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 9,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "genezo13/monadvault-skills",
+      "status": "fresh",
+      "artifacts": 18,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 17,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "godzhiwzz-create/sci-research-codex-skills",
+      "status": "fresh",
+      "artifacts": 17,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 16,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Lego1997/pretty-memo",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "qiweiyang248/china-ecommerce-codex-skills",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Star-957/multi-ai-hub",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Star-957/vrm-avatar-polish-loop",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "George930502/curated-codex-skills",
+      "status": "fresh",
+      "artifacts": 11,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 10,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "jukkau/yuki-skills",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Kingslayer-bot/ieee-trans-skill",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Sunwood-ai-labs/design-with-apple-hig",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "charliechenye/SkillGate",
+      "status": "fresh",
+      "artifacts": 65,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 64,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Gu-ZT/skills",
+      "status": "fresh",
+      "artifacts": 8,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 7,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "aaf2tbz/native-arm64-development-skills",
+      "status": "fresh",
+      "artifacts": 35,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 34,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Lzy599775/agent-auto-sci-skills",
+      "status": "fresh",
+      "artifacts": 65,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 64,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "dpearson2699/swift-ios-skills",
+      "status": "fresh",
+      "artifacts": 89,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 88,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "somnus-J-307/project-handoff-skill",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Eldergenix/SUPER-DESIGN",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "nihal1294/karnataka-2002-sir-search-skill",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "xiaoliangliang/seedance-2.5-prompt-skill",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "oh-summy/skills",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "motherduckdb/agent-skills",
+      "status": "fresh",
+      "artifacts": 68,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 67,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "JsonLee12138/mentor-meng-skill",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "cyberpinkman/awesome-capture",
+      "status": "fresh",
+      "artifacts": 9,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 8,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "nicshik/linear-skills",
+      "status": "fresh",
+      "artifacts": 24,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 23,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "when2buy/trading-skills",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Leonewu/indie-keyword-finder",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "siroccomask/micro-motive-games",
       "status": "fresh",
       "artifacts": 7,
       "verifiedArtifacts": 1,
       "deferredArtifacts": 6,
       "truncated": false,
       "errors": []
-    }
-  ],
-  "repositoriesDiscovered": 14144,
-  "repositoriesScanned": 1,
-  "repositoriesNotScanned": 12718,
-  "scanOffset": 504,
-  "cycleComplete": false,
-  "persistedScanFailures": [
+    },
     {
-      "repository": "sodanyx/codebase-baseline-planner",
-      "status": "partial",
+      "repository": "yujieelena0831/personal-workbench-builder",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
       "truncated": false,
-      "errors": [
-        "fetch failed"
-      ]
+      "errors": []
+    },
+    {
+      "repository": "QundaiCai314/Constructivist_paper_cai",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "envokeME/tprm-risk-management-skills",
+      "status": "fresh",
+      "artifacts": 16,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 15,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ViGi-P/skillshilp",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Nancy-517/college-final-exam-ai-skill",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Khojasteh/degardis-skills",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Yash-Kavaiya/appsheet-agent-skill",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "byteswalk/thinkbuddy-coding-skills",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "kvachikk/ai-toolbox",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "amduwcwt/agent-cli-workers",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "M1nt-Ch0c0/lark-channel-bridge-skills",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "waittim/MemoryCustodian",
+      "status": "fresh",
+      "artifacts": 7,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 6,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "djs5635/codex-skills",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "savanna0425/skillhot",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "jaychou805/save-github",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "reagin/agent-skills",
+      "status": "fresh",
+      "artifacts": 8,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 7,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "jaychou805/make-song-skill",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "pejmanjohn/cc-plugin-codex",
+      "status": "fresh",
+      "artifacts": 18,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 17,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "manibordev/formloop",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "yikunluo92/bluffing",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "blark/mapkit-js-skill",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "proflead/codex-skills-library",
+      "status": "fresh",
+      "artifacts": 63,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 62,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "jpoindexter/design-case-study-skills",
+      "status": "fresh",
+      "artifacts": 25,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 24,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "aiaaaa4/ai-landing-skills",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ycpiglet/editorial-publishing-kit",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Frog1205/evaluate-deployment-options",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "cku3987/svn-precommit-review",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "garcon-drinks/garcon-ai-skills",
+      "status": "fresh",
+      "artifacts": 27,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 26,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "nnu-sky/gpu-training-infra",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 4,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "xiaopixuan/skills-public",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "konglong87/wechat-download-skill",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Li-stones/ai-product-manager-skills",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "tidewatch-fish/ai-eval-toolkit",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "gabriel-rcpereira/task-tool",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 4,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "howshannon/slop-cop",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "denysdovhan/agents",
+      "status": "fresh",
+      "artifacts": 11,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 10,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "eds-labs/eds-hyperevm-dev-skills",
+      "status": "fresh",
+      "artifacts": 16,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 15,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Javon0-0/claude-skills",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "d0hx4n2503/Agent-Skills",
+      "status": "fresh",
+      "artifacts": 25,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 24,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Vikindor/ai-agent-toolkit",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ljunnan24-hash/x-insight-cards",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "realsee-developer/skills",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 4,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "simone-sestili/brand-agency-skill",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "jiangbao00000/matplotlib-seaborn-to-matlab",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Tang1206cc/Codex-Device-Migration-Assistant",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 4,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "siuserxiaowei/codex-efficiency-skills",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "doublesq97-ui/su-ai-short-drama",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "shizaishiwo323/rebuild-scientific-poster-ppt",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "glichtenthal/ground-truth",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "glichtenthal/the-quorum",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "glichtenthal/test-drive",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "glichtenthal/briefing-room",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "justin-haffey/swe-plugin",
+      "status": "fresh",
+      "artifacts": 48,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 47,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "SetraTheXX/Codex-Engineering-Workflow-Pack",
+      "status": "fresh",
+      "artifacts": 18,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 17,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "wjb127/codex-midline-slash-completion",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "LOVAHE/JustDoIt",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "bukowski777/power-automate-authoring-skill",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "992640451/codex-desktop-theme-builder",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Lucas-Fong/html-report-stable-base",
+      "status": "fresh",
+      "artifacts": 8,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 7,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "gloria2creator/project-canon",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "MarkShawn2020/macos-swift-binary-research",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "PaolaShultz/shr-skills",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "cpt13-g/clarify-research-idea",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "sayeed1999/agent-skills",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "metaforismo/app-icon-design-skill",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "chrichuang218/cpa-stack-updater",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "50sotero/chatgpt-sol-pro-chrome",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "CODE-SAURABH/OpenSkills",
+      "status": "fresh",
+      "artifacts": 49,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 48,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "justin-haffey/email-manager",
+      "status": "fresh",
+      "artifacts": 16,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 15,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "composio-community/awesome-codex-skills",
+      "status": "fresh",
+      "artifacts": 882,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 881,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "gzh246/codex-skills",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "octivi/skills",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Wiplash-ai/wiplash-agent-skill",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "waldency2000-maker/reviewpilot-medical-ai",
+      "status": "fresh",
+      "artifacts": 58,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 57,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "pengkane/aiden-post-skill",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "applora/agent-skills",
+      "status": "fresh",
+      "artifacts": 16,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 15,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "McXiao1/task-planning",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "dydtjr1128/claude-bridge",
+      "status": "fresh",
+      "artifacts": 8,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 7,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "dydtjr1128/antigravity-bridge",
+      "status": "fresh",
+      "artifacts": 8,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 7,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "maiconlara/design-system-extraction",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "samo33ddd/dotnet-mentor-skill",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "matteuzdev/agentic-site-sales-os",
+      "status": "fresh",
+      "artifacts": 8,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 7,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ehzawad/claude-coterie",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "agentpipe/pipebuilder",
+      "status": "fresh",
+      "artifacts": 10,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 9,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "PaodingAI/skills",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "JenayNing/safe-project-rules",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "blackblue-labs/zeroplot",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Charles-Donne/Research-Paper-Skills",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "hypawave/skills",
+      "status": "fresh",
+      "artifacts": 11,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 10,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "happygoluckydev/c2",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "galyarderlabs/galyarder-framework",
+      "status": "fresh",
+      "artifacts": 1386,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1385,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "nexiuslabspublic/nexius-vendor-due-diligence-starter",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "nexiuslabspublic/nexius-rfp-response-starter",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "TerminallyLazy/tree-ring-memory-codex-plugin",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "nexiuslabspublic/nexius-project-triage-starter",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "nexiuslabspublic/nexius-meeting-preparation-starter",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "nexiuslabspublic/nexius-invoice-reconciliation-starter",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "nexiuslabspublic/nexius-inbound-lead-triage-starter",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "nexiuslabspublic/nexius-document-intake-starter",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "nexiuslabspublic/nexius-crm-pipeline-intelligence-starter",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "nexiuslabspublic/nexius-content-repurposing-starter",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Bhanunamikaze/Agentic-SEO-Skill",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Victory-7291/project-scaffold-setup-skills",
+      "status": "fresh",
+      "artifacts": 8,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 7,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ETOLucy/codex-workflow-skills",
+      "status": "fresh",
+      "artifacts": 13,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 12,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Uniloco-Studios/uniloco-skills",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "gjoranv/claude-plan-skills",
+      "status": "fresh",
+      "artifacts": 7,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 6,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "divyanshu-iitian/agent-website-design-skills",
+      "status": "fresh",
+      "artifacts": 11,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 10,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "wangxinyu20429-dotcom/zotero-obsidian-research-skills",
+      "status": "fresh",
+      "artifacts": 8,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 7,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "tzachbon/smart-ralph",
+      "status": "fresh",
+      "artifacts": 52,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 51,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "veritasian/Ecommerce-skills",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Crazy-MT/video-subtitle",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "mMo66666/Unreal-MCP-Skills",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "TanChuping/codex-task-watchdog",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "JimmyJiang967/feishu-sync-transcripts",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "yongge-ai/personal-action-review",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Lum1104/prove-me-wrong",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Lum1104/no-vibes",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Lum1104/red-button",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Lum1104/bet-on-it",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Lum1104/archaeologist",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "nikola-wd/vibe-agentic-coding-llm-council-skill",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "kennethkhoocy/legal-scholarship-skills",
+      "status": "fresh",
+      "artifacts": 19,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 18,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "kennethkhoocy/applied-micro-skills",
+      "status": "fresh",
+      "artifacts": 29,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 28,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Banyango/scalpel",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 4,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "EijiAC24/ui-clarity",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "bowenkj/time-travel-history-production-system",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "jacobtop-tcg/review-award-caliber-art-direction",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "liyuan-labs/literature-pdf-acquire",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "sarath53/tpm-agentic-automation-skills",
+      "status": "fresh",
+      "artifacts": 14,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 13,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "2025chunxi/github-check",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "2025chunxi/make-skill",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Beichen-H/Loopower",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ai-run-businesses/time-travel-history-production-system",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "jpoindexter/reward-seeking-safety-skills",
+      "status": "fresh",
+      "artifacts": 12,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 11,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "lelelelelelelelelelelelele/paper-reading-workflow",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 4,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "jiao20050114-coder/fintrace",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "mkhsu2002/ai-content-operations-skill",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "vutifi0-collab/babylon-seedance-storyboard-master",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "haifengl874-cpu/wechat-cover-designer",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "iamcc30/codexm",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "bubbleviki404/ship-real-mvp",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "mikielek/consult",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Entropy-R/codex-skills",
+      "status": "fresh",
+      "artifacts": 22,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 21,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Foster1202/cad-modeling-fusion-skill",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Khxxxxd/wahed-flow",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "DivyeshJayswal/minimalist",
+      "status": "fresh",
+      "artifacts": 16,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 15,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "lixuvip/codex-agent-orchestration-skill",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 4,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "AgriciDaniel/codex-seo",
+      "status": "fresh",
+      "artifacts": 33,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 32,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "charlieviettq/awesome-agent-skill",
+      "status": "fresh",
+      "artifacts": 1361,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1360,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "vascodegraaff/recording-to-app-flow",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "jieChris/analyze-color-in-context",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "zizhanovo/mp-ark",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ecoder-4002/codex-skills",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ArabianCowboy/minto-executive-communication",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
     }
   ],
-  "artifactsDiscovered": 29984,
+  "repositoriesDiscovered": 14994,
+  "repositoriesScanned": 200,
+  "repositoriesNotScanned": 12885,
+  "scanOffset": 704,
+  "cycleComplete": false,
+  "persistedScanFailures": [],
+  "terminalUnavailableRepositories": 0,
+  "artifactsDiscovered": 36191,
   "errors": 1,
   "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
-    "skill": 22386,
-    "plugin": 546,
-    "mcp": 3068,
-    "marketplace": 202,
-    "hook": 100,
-    "plugin-metadata": 3338,
-    "agents": 319,
-    "action": 25,
+    "skill": 27004,
+    "plugin": 577,
+    "mcp": 4101,
+    "marketplace": 236,
+    "hook": 112,
+    "plugin-metadata": 3739,
+    "agents": 396,
+    "action": 26,
     "other": 0
   },
   "verificationCounts": {
-    "verified": 545,
-    "discovered": 26735,
-    "registry": 2700,
-    "unknown": 4
+    "verified": 741,
+    "discovered": 31745,
+    "registry": 3700,
+    "unknown": 5
   }
 }
