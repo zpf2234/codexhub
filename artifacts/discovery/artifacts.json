@@ -1,0 +1,1085 @@
+{
+  "generatedAt": "2026-08-21T15:20:29.437Z",
+  "artifacts": [
+    {
+      "id": "github:addyosmani/agent-skills#.codex-plugin/plugin.json",
+      "type": "plugin",
+      "path": ".codex-plugin/plugin.json",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Valid JSON metadata.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#AGENTS.md",
+      "type": "agents",
+      "path": "AGENTS.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Non-empty evidence file.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#docs/agents.md",
+      "type": "agents",
+      "path": "docs/agents.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Non-empty evidence file.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/api-and-interface-design/SKILL.md",
+      "type": "skill",
+      "path": "skills/api-and-interface-design/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/browser-testing-with-devtools/SKILL.md",
+      "type": "skill",
+      "path": "skills/browser-testing-with-devtools/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/ci-cd-and-automation/SKILL.md",
+      "type": "skill",
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/code-review-and-quality/SKILL.md",
+      "type": "skill",
+      "path": "skills/code-review-and-quality/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/code-simplification/SKILL.md",
+      "type": "skill",
+      "path": "skills/code-simplification/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/context-engineering/SKILL.md",
+      "type": "skill",
+      "path": "skills/context-engineering/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/debugging-and-error-recovery/SKILL.md",
+      "type": "skill",
+      "path": "skills/debugging-and-error-recovery/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/deprecation-and-migration/SKILL.md",
+      "type": "skill",
+      "path": "skills/deprecation-and-migration/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/documentation-and-adrs/SKILL.md",
+      "type": "skill",
+      "path": "skills/documentation-and-adrs/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/doubt-driven-development/SKILL.md",
+      "type": "skill",
+      "path": "skills/doubt-driven-development/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/frontend-ui-engineering/SKILL.md",
+      "type": "skill",
+      "path": "skills/frontend-ui-engineering/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/git-workflow-and-versioning/SKILL.md",
+      "type": "skill",
+      "path": "skills/git-workflow-and-versioning/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/idea-refine/SKILL.md",
+      "type": "skill",
+      "path": "skills/idea-refine/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/incremental-implementation/SKILL.md",
+      "type": "skill",
+      "path": "skills/incremental-implementation/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/interview-me/SKILL.md",
+      "type": "skill",
+      "path": "skills/interview-me/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/observability-and-instrumentation/SKILL.md",
+      "type": "skill",
+      "path": "skills/observability-and-instrumentation/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/performance-optimization/SKILL.md",
+      "type": "skill",
+      "path": "skills/performance-optimization/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/planning-and-task-breakdown/SKILL.md",
+      "type": "skill",
+      "path": "skills/planning-and-task-breakdown/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/security-and-hardening/SKILL.md",
+      "type": "skill",
+      "path": "skills/security-and-hardening/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/shipping-and-launch/SKILL.md",
+      "type": "skill",
+      "path": "skills/shipping-and-launch/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/source-driven-development/SKILL.md",
+      "type": "skill",
+      "path": "skills/source-driven-development/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/spec-driven-development/SKILL.md",
+      "type": "skill",
+      "path": "skills/spec-driven-development/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/test-driven-development/SKILL.md",
+      "type": "skill",
+      "path": "skills/test-driven-development/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:addyosmani/agent-skills#skills/using-agent-skills/SKILL.md",
+      "type": "skill",
+      "path": "skills/using-agent-skills/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "addyosmani/agent-skills",
+      "repositoryUrl": "https://github.com/addyosmani/agent-skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "plugin"
+      ]
+    },
+    {
+      "id": "github:agent0ai/dox#AGENTS.md",
+      "type": "agents",
+      "path": "AGENTS.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Non-empty evidence file.",
+      "source": "github-tree",
+      "repository": "agent0ai/dox",
+      "repositoryUrl": "https://github.com/agent0ai/dox",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "agents"
+      ]
+    },
+    {
+      "id": "github:agentsmd/agents.md#AGENTS.md",
+      "type": "agents",
+      "path": "AGENTS.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Non-empty evidence file.",
+      "source": "github-tree",
+      "repository": "agentsmd/agents.md",
+      "repositoryUrl": "https://github.com/agentsmd/agents.md",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "agents"
+      ]
+    },
+    {
+      "id": "github:awslabs/mcp#.github/actions/build-and-push-container-image/action.yml",
+      "type": "action",
+      "path": ".github/actions/build-and-push-container-image/action.yml",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires name and runs keys.",
+      "source": "github-tree",
+      "repository": "awslabs/mcp",
+      "repositoryUrl": "https://github.com/awslabs/mcp",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "github:awslabs/mcp#src/aurora-dsql-mcp-server/kiro_power/mcp.json",
+      "type": "mcp",
+      "path": "src/aurora-dsql-mcp-server/kiro_power/mcp.json",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Valid JSON metadata.",
+      "source": "github-tree",
+      "repository": "awslabs/mcp",
+      "repositoryUrl": "https://github.com/awslabs/mcp",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "github:awslabs/mcp#src/aurora-dsql-mcp-server/skills/amazon-aurora-dsql-skill/SKILL.md",
+      "type": "skill",
+      "path": "src/aurora-dsql-mcp-server/skills/amazon-aurora-dsql-skill/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "awslabs/mcp",
+      "repositoryUrl": "https://github.com/awslabs/mcp",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "github:awslabs/mcp#src/aurora-dsql-mcp-server/skills/aurora-dsql-skill/SKILL.md",
+      "type": "skill",
+      "path": "src/aurora-dsql-mcp-server/skills/aurora-dsql-skill/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "awslabs/mcp",
+      "repositoryUrl": "https://github.com/awslabs/mcp",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "github:awslabs/mcp#src/aurora-dsql-mcp-server/skills/aws-dsql-skill/SKILL.md",
+      "type": "skill",
+      "path": "src/aurora-dsql-mcp-server/skills/aws-dsql-skill/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "awslabs/mcp",
+      "repositoryUrl": "https://github.com/awslabs/mcp",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "github:awslabs/mcp#src/aurora-dsql-mcp-server/skills/distributed-postgres-skill/SKILL.md",
+      "type": "skill",
+      "path": "src/aurora-dsql-mcp-server/skills/distributed-postgres-skill/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "awslabs/mcp",
+      "repositoryUrl": "https://github.com/awslabs/mcp",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "github:awslabs/mcp#src/aurora-dsql-mcp-server/skills/distributed-sql-skill/SKILL.md",
+      "type": "skill",
+      "path": "src/aurora-dsql-mcp-server/skills/distributed-sql-skill/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "awslabs/mcp",
+      "repositoryUrl": "https://github.com/awslabs/mcp",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "github:awslabs/mcp#src/aurora-dsql-mcp-server/skills/dsql-skill/SKILL.md",
+      "type": "skill",
+      "path": "src/aurora-dsql-mcp-server/skills/dsql-skill/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "awslabs/mcp",
+      "repositoryUrl": "https://github.com/awslabs/mcp",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "github:awslabs/mcp#src/aurora-dsql-mcp-server/skills/dsql-skill/mcp/.mcp.json",
+      "type": "mcp",
+      "path": "src/aurora-dsql-mcp-server/skills/dsql-skill/mcp/.mcp.json",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Valid JSON metadata.",
+      "source": "github-tree",
+      "repository": "awslabs/mcp",
+      "repositoryUrl": "https://github.com/awslabs/mcp",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "github:awslabs/mcp#src/cloudwatch-mcp-server/skills/agentcore-investigation/SKILL.md",
+      "type": "skill",
+      "path": "src/cloudwatch-mcp-server/skills/agentcore-investigation/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "awslabs/mcp",
+      "repositoryUrl": "https://github.com/awslabs/mcp",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "github:awslabs/mcp#src/cloudwatch-mcp-server/skills/agentcore-investigation/mcp/.mcp.json",
+      "type": "mcp",
+      "path": "src/cloudwatch-mcp-server/skills/agentcore-investigation/mcp/.mcp.json",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "awslabs/mcp",
+      "repositoryUrl": "https://github.com/awslabs/mcp",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "github:awslabs/mcp#src/dynamodb-mcp-server/AGENTS.md",
+      "type": "agents",
+      "path": "src/dynamodb-mcp-server/AGENTS.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "awslabs/mcp",
+      "repositoryUrl": "https://github.com/awslabs/mcp",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "github:awslabs/mcp#src/ecs-mcp-server/server.json",
+      "type": "mcp",
+      "path": "src/ecs-mcp-server/server.json",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "awslabs/mcp",
+      "repositoryUrl": "https://github.com/awslabs/mcp",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "github:awslabs/mcp#src/mysql-mcp-server/kiro_power/mcp.json",
+      "type": "mcp",
+      "path": "src/mysql-mcp-server/kiro_power/mcp.json",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "awslabs/mcp",
+      "repositoryUrl": "https://github.com/awslabs/mcp",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "github:awslabs/mcp#src/postgres-mcp-server/kiro_power/mcp.json",
+      "type": "mcp",
+      "path": "src/postgres-mcp-server/kiro_power/mcp.json",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "awslabs/mcp",
+      "repositoryUrl": "https://github.com/awslabs/mcp",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "mcp"
+      ]
+    },
+    {
+      "id": "github:dimillian/skills#app-store-changelog/SKILL.md",
+      "type": "skill",
+      "path": "app-store-changelog/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "Dimillian/Skills",
+      "repositoryUrl": "https://github.com/Dimillian/Skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "skill"
+      ]
+    },
+    {
+      "id": "github:dimillian/skills#bug-hunt-swarm/SKILL.md",
+      "type": "skill",
+      "path": "bug-hunt-swarm/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "Dimillian/Skills",
+      "repositoryUrl": "https://github.com/Dimillian/Skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "skill"
+      ]
+    },
+    {
+      "id": "github:dimillian/skills#github/SKILL.md",
+      "type": "skill",
+      "path": "github/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "Dimillian/Skills",
+      "repositoryUrl": "https://github.com/Dimillian/Skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "skill"
+      ]
+    },
+    {
+      "id": "github:dimillian/skills#ios-debugger-agent/SKILL.md",
+      "type": "skill",
+      "path": "ios-debugger-agent/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "Dimillian/Skills",
+      "repositoryUrl": "https://github.com/Dimillian/Skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "skill"
+      ]
+    },
+    {
+      "id": "github:dimillian/skills#macos-menubar-tuist-app/SKILL.md",
+      "type": "skill",
+      "path": "macos-menubar-tuist-app/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "Dimillian/Skills",
+      "repositoryUrl": "https://github.com/Dimillian/Skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "skill"
+      ]
+    },
+    {
+      "id": "github:dimillian/skills#macos-spm-app-packaging/SKILL.md",
+      "type": "skill",
+      "path": "macos-spm-app-packaging/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "Dimillian/Skills",
+      "repositoryUrl": "https://github.com/Dimillian/Skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "skill"
+      ]
+    },
+    {
+      "id": "github:dimillian/skills#orchestrate-batch-refactor/SKILL.md",
+      "type": "skill",
+      "path": "orchestrate-batch-refactor/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "Dimillian/Skills",
+      "repositoryUrl": "https://github.com/Dimillian/Skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "skill"
+      ]
+    },
+    {
+      "id": "github:dimillian/skills#project-skill-audit/SKILL.md",
+      "type": "skill",
+      "path": "project-skill-audit/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "Dimillian/Skills",
+      "repositoryUrl": "https://github.com/Dimillian/Skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "skill"
+      ]
+    },
+    {
+      "id": "github:dimillian/skills#react-component-performance/SKILL.md",
+      "type": "skill",
+      "path": "react-component-performance/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "Dimillian/Skills",
+      "repositoryUrl": "https://github.com/Dimillian/Skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "skill"
+      ]
+    },
+    {
+      "id": "github:dimillian/skills#review-and-simplify-changes/SKILL.md",
+      "type": "skill",
+      "path": "review-and-simplify-changes/SKILL.md",
+      "status": "verified",
+      "verification": "passed",
+      "note": "Requires YAML frontmatter with name and description.",
+      "source": "github-tree",
+      "repository": "Dimillian/Skills",
+      "repositoryUrl": "https://github.com/Dimillian/Skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "skill"
+      ]
+    },
+    {
+      "id": "github:dimillian/skills#review-swarm/SKILL.md",
+      "type": "skill",
+      "path": "review-swarm/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "Dimillian/Skills",
+      "repositoryUrl": "https://github.com/Dimillian/Skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "skill"
+      ]
+    },
+    {
+      "id": "github:dimillian/skills#swift-concurrency-expert/SKILL.md",
+      "type": "skill",
+      "path": "swift-concurrency-expert/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "Dimillian/Skills",
+      "repositoryUrl": "https://github.com/Dimillian/Skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "skill"
+      ]
+    },
+    {
+      "id": "github:dimillian/skills#swiftui-liquid-glass/SKILL.md",
+      "type": "skill",
+      "path": "swiftui-liquid-glass/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "Dimillian/Skills",
+      "repositoryUrl": "https://github.com/Dimillian/Skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "skill"
+      ]
+    },
+    {
+      "id": "github:dimillian/skills#swiftui-performance-audit/SKILL.md",
+      "type": "skill",
+      "path": "swiftui-performance-audit/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "Dimillian/Skills",
+      "repositoryUrl": "https://github.com/Dimillian/Skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "skill"
+      ]
+    },
+    {
+      "id": "github:dimillian/skills#swiftui-ui-patterns/SKILL.md",
+      "type": "skill",
+      "path": "swiftui-ui-patterns/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "Dimillian/Skills",
+      "repositoryUrl": "https://github.com/Dimillian/Skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "skill"
+      ]
+    },
+    {
+      "id": "github:dimillian/skills#swiftui-view-refactor/SKILL.md",
+      "type": "skill",
+      "path": "swiftui-view-refactor/SKILL.md",
+      "status": "discovered",
+      "verification": "deferred",
+      "note": "Artifact path was discovered from the complete repository tree; content verification is deferred.",
+      "source": "github-tree",
+      "repository": "Dimillian/Skills",
+      "repositoryUrl": "https://github.com/Dimillian/Skills",
+      "stars": null,
+      "discoveredBy": [
+        "curated-catalog"
+      ],
+      "sourceKinds": [
+        "skill"
+      ]
+    }
+  ]
+}

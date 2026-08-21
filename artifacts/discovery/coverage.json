@@ -1,0 +1,236 @@
+{
+  "generatedAt": "2026-08-21T15:20:29.437Z",
+  "startedAt": "2026-08-21T15:18:19.294Z",
+  "completedAt": "2026-08-21T15:20:29.437Z",
+  "scope": "Declared GitHub search sources plus official MCP Registry at crawl time.",
+  "limitations": [
+    "GitHub repository search exposes at most 1,000 results per query; recursive stars/date partitions are used where possible.",
+    "GitHub API rate limits, deleted/private repositories, search indexing lag, and truncated repository trees can prevent absolute internet-wide completeness.",
+    "Discovery never executes repository code, installs dependencies, or connects to MCP servers."
+  ],
+  "sources": [
+    {
+      "id": "github-topic-codex-skills",
+      "kind": "skill",
+      "query": "topic:codex-skills fork:false archived:false",
+      "segments": [
+        {
+          "query": "topic:codex-skills fork:false archived:false",
+          "total": 1214,
+          "incomplete": false
+        },
+        {
+          "query": "topic:codex-skills fork:false archived:false stars:0..40002",
+          "total": 1212,
+          "incomplete": false
+        },
+        {
+          "query": "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189",
+          "total": 1212,
+          "incomplete": false
+        },
+        {
+          "query": "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189 stars:0..18189",
+          "total": 1212,
+          "incomplete": false
+        },
+        {
+          "query": "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189 stars:0..18189 stars:0..18189",
+          "total": 1212,
+          "incomplete": false
+        },
+        {
+          "query": "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189 stars:0..18189 stars:18190..*",
+          "total": 1214,
+          "incomplete": false
+        },
+        {
+          "query": "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189 stars:18190..*",
+          "total": 1214,
+          "incomplete": false
+        },
+        {
+          "query": "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189 stars:18190..* stars:0..40002",
+          "total": 1214,
+          "incomplete": false
+        },
+        {
+          "query": "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189 stars:18190..* stars:40003..*",
+          "total": 1214,
+          "incomplete": false
+        },
+        {
+          "query": "topic:codex-skills fork:false archived:false stars:0..40002 stars:18190..*",
+          "total": 1214,
+          "incomplete": false
+        },
+        {
+          "query": "topic:codex-skills fork:false archived:false stars:0..40002 stars:18190..* stars:0..40002",
+          "total": 1214,
+          "incomplete": false
+        },
+        {
+          "query": "topic:codex-skills fork:false archived:false stars:0..40002 stars:18190..* stars:0..40002 stars:0..40002",
+          "total": 1214,
+          "incomplete": false
+        }
+      ],
+      "partitions": [
+        {
+          "from": "topic:codex-skills fork:false archived:false",
+          "into": [
+            "topic:codex-skills fork:false archived:false stars:0..40002",
+            "topic:codex-skills fork:false archived:false stars:40003..*"
+          ]
+        },
+        {
+          "from": "topic:codex-skills fork:false archived:false stars:0..40002",
+          "into": [
+            "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189",
+            "topic:codex-skills fork:false archived:false stars:0..40002 stars:18190..*"
+          ]
+        },
+        {
+          "from": "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189",
+          "into": [
+            "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189 stars:0..18189",
+            "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189 stars:18190..*"
+          ]
+        },
+        {
+          "from": "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189 stars:0..18189",
+          "into": [
+            "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189 stars:0..18189 stars:0..18189",
+            "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189 stars:0..18189 stars:18190..*"
+          ]
+        },
+        {
+          "from": "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189 stars:18190..*",
+          "into": [
+            "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189 stars:18190..* stars:0..40002",
+            "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189 stars:18190..* stars:40003..*"
+          ]
+        },
+        {
+          "from": "topic:codex-skills fork:false archived:false stars:0..40002 stars:18190..*",
+          "into": [
+            "topic:codex-skills fork:false archived:false stars:0..40002 stars:18190..* stars:0..40002",
+            "topic:codex-skills fork:false archived:false stars:0..40002 stars:18190..* stars:40003..*"
+          ]
+        },
+        {
+          "from": "topic:codex-skills fork:false archived:false stars:0..40002 stars:18190..* stars:0..40002",
+          "into": [
+            "topic:codex-skills fork:false archived:false stars:0..40002 stars:18190..* stars:0..40002 stars:0..40002",
+            "topic:codex-skills fork:false archived:false stars:0..40002 stars:18190..* stars:0..40002 stars:40003..*"
+          ]
+        }
+      ],
+      "results": 1002,
+      "truncated": true,
+      "errors": [
+        {
+          "query": "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189 stars:0..18189 stars:18190..*",
+          "page": 9,
+          "error": "GitHub API 403",
+          "status": 403
+        },
+        {
+          "query": "topic:codex-skills fork:false archived:false stars:0..40002 stars:18190..* stars:0..40002 stars:0..40002",
+          "page": 2,
+          "error": "GitHub API 403",
+          "status": 403
+        }
+      ],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787325620,
+        "retryAfter": null
+      }
+    }
+  ],
+  "sourcesProcessedThisRun": 1,
+  "sourcesRemaining": 12,
+  "registry": {
+    "source": "mcp-official-registry",
+    "pages": [
+      {
+        "page": 1,
+        "count": 100,
+        "nextCursor": "ai.ankimcp/anki-mcp-server:0.18.4",
+        "cursor": null
+      },
+      {
+        "page": 2,
+        "count": 100,
+        "nextCursor": "ai.benroberts/b4-index:3.3.0",
+        "cursor": "ai.ankimcp/anki-mcp-server:0.18.4"
+      },
+      {
+        "page": 3,
+        "count": 100,
+        "nextCursor": "ai.bowmark/bowmark:3.106.6",
+        "cursor": "ai.benroberts/b4-index:3.3.0"
+      }
+    ],
+    "results": 300,
+    "complete": false,
+    "errors": []
+  },
+  "scans": [
+    {
+      "repository": "addyosmani/agent-skills",
+      "status": "fresh",
+      "artifacts": 27,
+      "verifiedArtifacts": 10,
+      "deferredArtifacts": 17,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "agent0ai/dox",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "agentsmd/agents.md",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 1,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "awslabs/mcp",
+      "status": "fresh",
+      "artifacts": 15,
+      "verifiedArtifacts": 10,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Dimillian/Skills",
+      "status": "fresh",
+      "artifacts": 16,
+      "verifiedArtifacts": 10,
+      "deferredArtifacts": 6,
+      "truncated": false,
+      "errors": []
+    }
+  ],
+  "repositoriesDiscovered": 1220,
+  "repositoriesScanned": 5,
+  "repositoriesNotScanned": 1076,
+  "scanOffset": 5,
+  "cycleComplete": false,
+  "artifactsDiscovered": 60,
+  "errors": 2,
+  "scanDisabled": false,
+  "complete": false
+}

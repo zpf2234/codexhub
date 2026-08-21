@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-08-21T15:20:29.437Z",
+  "errors": [
+    {
+      "source": "github-topic-codex-skills",
+      "query": "topic:codex-skills fork:false archived:false stars:0..40002 stars:0..18189 stars:0..18189 stars:18190..*",
+      "page": 9,
+      "error": "GitHub API 403",
+      "status": 403
+    },
+    {
+      "source": "github-topic-codex-skills",
+      "query": "topic:codex-skills fork:false archived:false stars:0..40002 stars:18190..* stars:0..40002 stars:0..40002",
+      "page": 2,
+      "error": "GitHub API 403",
+      "status": 403
+    }
+  ]
+}
