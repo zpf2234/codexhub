@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: codexhub-discovery
+  cancel-in-progress: false
+
 jobs:
   discover:
     runs-on: ubuntu-latest

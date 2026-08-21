@@ -77,3 +77,37 @@ export function normalizeDiscovery(payload = {}) {
   const coverage = { ...(payload.coverage || {}), categoryCounts, verificationCounts, artifactsDiscovered: artifacts.length };
   return { ...payload, schemaVersion: '1.1.0', repositories, artifacts, coverage };
 }
+
+export function createDashboardSnapshot(discovery) {
+  const repositories = discovery.repositories.map((repository) => ({
+    fullName: repository.fullName,
+    name: repository.name,
+    url: repository.url,
+    description: repository.description,
+    stars: repository.stars,
+    forks: repository.forks,
+    license: repository.license,
+    defaultBranch: repository.defaultBranch,
+    categories: repository.categories,
+    discoveredBy: repository.discoveredBy,
+    reviewed: repository.reviewed === true
+  }));
+  const artifacts = discovery.artifacts.map((artifact) => ({
+    id: artifact.id,
+    category: artifact.category,
+    categoryLabel: artifact.categoryLabel,
+    path: artifact.path,
+    status: artifact.status,
+    verification: artifact.verification,
+    source: artifact.source,
+    repository: artifact.repository,
+    repositoryUrl: artifact.repositoryUrl,
+    defaultBranch: artifact.defaultBranch,
+    stars: artifact.stars,
+    name: artifact.name,
+    version: artifact.version,
+    description: artifact.description,
+    note: artifact.note
+  }));
+  return { schemaVersion: discovery.schemaVersion, generatedAt: discovery.generatedAt, coverage: discovery.coverage, repositories, artifacts, errors: discovery.errors || [] };
+}

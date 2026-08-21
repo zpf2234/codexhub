@@ -53,6 +53,7 @@ The local crawler defaults to one source, 25 repository trees, two content valid
 - `coverage.json`: source queries, partitions, page counts, completion state, and known limitations.
 - `errors.json`: rate-limit, unavailable, and truncated-source errors.
 - `schema.json`: JSON Schema for the normalized discovery snapshot.
+- `dashboard.json`: compact projection used by the visual dashboard; raw Registry and checkpoint metadata stay in the full API.
 
 The dataset is complete only relative to its declared sources and the crawl time. GitHub search indexing, rate limits, private/deleted repositories, and recursive-tree truncation remain explicit limitations. Discovery never executes indexed code or connects to MCP servers. Use `npm run discover -- --fresh` to discard the previous checkpoint, or `DISCOVERY_MAX_REPOSITORIES=100 npm run discover` for a bounded test run.
 

@@ -143,7 +143,7 @@ function render() {
 }
 
 async function start() {
-  const response = await fetch('./api/v1/discovery/discovery.json');
+  const response = await fetch('./api/v1/discovery/dashboard.json');
   if (!response.ok) throw new Error('Discovery snapshot unavailable');
   state.data = await response.json();
   renderCoverage();

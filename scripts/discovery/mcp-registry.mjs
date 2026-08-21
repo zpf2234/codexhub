@@ -20,7 +20,8 @@ export async function crawlMcpRegistry({ endpoint = 'https://registry.modelconte
   const pages = [...initialPages];
   const errors = [];
   let cursor = initialCursor;
-  for (let page = pages.length + 1; page <= maxPages; page += 1) {
+  const lastPage = pages.length + maxPages;
+  for (let page = pages.length + 1; page <= lastPage; page += 1) {
     const url = new URL(endpoint);
     url.searchParams.set('limit', String(pageSize));
     url.searchParams.set('pageSize', String(pageSize));

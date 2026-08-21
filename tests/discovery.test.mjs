@@ -4,7 +4,7 @@ import { GithubClient } from '../scripts/discovery/github-search.mjs';
 import { crawlMcpRegistry } from '../scripts/discovery/mcp-registry.mjs';
 import { scanRepository } from '../scripts/discovery/github-tree-scan.mjs';
 import { loadCheckpoint, saveCheckpoint } from '../scripts/discovery/checkpoint.mjs';
-import { classifyPath, normalizeDiscovery } from '../scripts/discovery/model.mjs';
+import { classifyPath, createDashboardSnapshot, normalizeDiscovery } from '../scripts/discovery/model.mjs';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
@@ -96,6 +96,19 @@ test('repository tree scan discovers and validates multiple artifact types witho
   assert.ok(result.artifacts.every((artifact) => artifact.status === 'verified'));
 });
 
+test('MCP Registry resumes for another page budget after a checkpoint', async () => {
+  const cursors = [];
+  const fetchImpl = async (url) => {
+    const cursor = new URL(url).searchParams.get('cursor');
+    cursors.push(cursor);
+    return response({ servers: [{ name: `server-${cursor}`, version: '1' }], metadata: { nextCursor: cursor === 'second' ? null : 'second' } });
+  };
+  const result = await crawlMcpRegistry({ fetchImpl, maxPages: 1, initialCursor: 'first', initialServers: [{ id: 'mcp-registry:old@1', name: 'old', version: '1' }], initialPages: [{ page: 1, count: 1, nextCursor: 'first' }] });
+  assert.deepEqual(cursors, ['first']);
+  assert.equal(result.pages.length, 2);
+  assert.equal(result.servers.length, 2);
+});
+
 test('repository tree scan keeps every artifact path when content verification is capped', async () => {
   const tree = Array.from({ length: 4 }, (_, index) => ({ type: 'blob', path: `skills/${index}/SKILL.md` }));
   const fetchImpl = async (url) => {
@@ -150,4 +163,11 @@ test('normalized discovery payload satisfies the public schema', async () => {
   const payload = normalizeDiscovery({ generatedAt: '2026-01-01T00:00:00Z', coverage: { repositoriesDiscovered: 1, complete: false }, repositories: [{ fullName: 'a/b', name: 'b', categories: ['skill'] }], artifacts: [{ id: 'github:a/b#SKILL.md', repository: 'a/b', path: 'SKILL.md', type: 'skill', status: 'verified', source: 'github-tree' }], errors: [] });
   const ajv = new Ajv2020({ strict: false }); addFormats(ajv);
   assert.equal(ajv.validate(schema, payload), true, ajv.errorsText());
+});
+
+test('dashboard snapshot removes raw Registry payloads', () => {
+  const discovery = normalizeDiscovery({ generatedAt: '2026-01-01T00:00:00Z', coverage: {}, repositories: [{ fullName: 'a/b', name: 'b', categories: ['mcp'], registryServers: [{ id: 'mcp-registry:demo@1', name: 'demo', version: '1', server: { huge: 'raw' } }] }], artifacts: [], errors: [] });
+  const dashboard = createDashboardSnapshot(discovery);
+  assert.equal('registryServers' in dashboard.repositories[0], false);
+  assert.equal('server' in dashboard.artifacts[0], false);
 });
