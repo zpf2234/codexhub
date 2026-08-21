@@ -1,12 +1,4 @@
 {
-  "generatedAt": "2026-08-21T18:27:54.276Z",
-  "errors": [
-    {
-      "source": "github-topic-model-context-protocol",
-      "query": "topic:model-context-protocol fork:false archived:false created:2024-04-23..2025-06-22",
-      "page": 5,
-      "error": "GitHub API 403",
-      "status": 403
-    }
-  ]
+  "generatedAt": "2026-08-21T18:31:35.443Z",
+  "errors": []
 }
