@@ -293,7 +293,14 @@ test('registry server merge key is stable across resumed pages', () => {
 test('artifact classifier recognizes Codex component paths', () => {
   assert.equal(classifyPath('.agents/skills/review/SKILL.md').category, 'skill');
   assert.equal(classifyPath('.codex-plugin/plugin.json').category, 'plugin');
+  assert.equal(classifyPath('.claude-plugin/plugin.json').category, 'plugin');
+  assert.equal(classifyPath('.agent-plugin/plugin.json').category, 'plugin');
   assert.equal(classifyPath('.mcp.json').category, 'mcp');
+  assert.equal(classifyPath('.app.json').type, 'mcp-app');
+  assert.equal(classifyPath('.codex/hooks.json').category, 'hook');
+  assert.equal(classifyPath('hooks.json').category, 'hook');
+  assert.equal(classifyPath('.codex/config.toml').type, 'codex-config');
+  assert.equal(classifyPath('.codex/requirements.toml').category, 'config');
   assert.equal(classifyPath('.agents/plugins/marketplace.json').category, 'marketplace');
   assert.equal(classifyPath('hooks/hooks.json').category, 'hook');
   assert.equal(classifyPath('agents/openai.yaml').category, 'plugin-metadata');
@@ -309,6 +316,12 @@ test('discovery normalization adds registry artifacts and coverage counts', () =
   assert.equal(result.coverage.categoryCounts.mcp, 1);
 });
 
+test('discovery normalization refreshes improved path classifications', () => {
+  const result = normalizeDiscovery({ generatedAt: '2026-01-01T00:00:00Z', coverage: {}, repositories: [], artifacts: [{ id: 'github:a/b#.app.json', category: 'mcp', type: 'mcp', path: '.app.json', status: 'discovered', source: 'github-tree' }] });
+  assert.equal(result.artifacts[0].category, 'mcp');
+  assert.equal(result.artifacts[0].artifactType, 'mcp-app');
+});
+
 test('normalized discovery payload satisfies the public schema', async () => {
   const schema = JSON.parse(await fs.readFile(new URL('../schemas/discovery.schema.json', import.meta.url), 'utf8'));
   const payload = normalizeDiscovery({ generatedAt: '2026-01-01T00:00:00Z', coverage: { repositoriesDiscovered: 1, complete: false }, repositories: [{ fullName: 'a/b', name: 'b', categories: ['skill'] }], artifacts: [{ id: 'github:a/b#SKILL.md', repository: 'a/b', path: 'SKILL.md', type: 'skill', status: 'verified', source: 'github-tree' }], errors: [] });
@@ -321,4 +334,11 @@ test('dashboard snapshot removes raw Registry payloads', () => {
   const dashboard = createDashboardSnapshot(discovery);
   assert.equal('registryServers' in dashboard.repositories[0], false);
   assert.equal('server' in dashboard.artifacts[0], false);
+});
+
+test('dashboard snapshot retains the precise artifact type for presentation', () => {
+  const discovery = normalizeDiscovery({ generatedAt: '2026-01-01T00:00:00Z', coverage: {}, repositories: [], artifacts: [{ id: 'github:a/b#.app.json', path: '.app.json', status: 'discovered', source: 'github-tree' }] });
+  const dashboard = createDashboardSnapshot(discovery);
+  assert.equal(dashboard.artifacts[0].artifactType, 'mcp-app');
+  assert.equal(dashboard.artifacts[0].categoryLabel, 'MCP app mapping');
 });

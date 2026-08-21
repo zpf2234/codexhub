@@ -1,15 +1,17 @@
 const PATH_RULES = [
   { category: 'skill', type: 'skill', label: 'Skill', test: (path) => /(?:^|\/)skill\.md$/i.test(path) },
-  { category: 'plugin', type: 'plugin', label: 'Plugin manifest', test: (path) => /(?:^|\/)\.codex-plugin\/plugin\.json$/i.test(path) },
-  { category: 'mcp', type: 'mcp', label: 'MCP configuration', test: (path) => /(?:^|\/)(?:\.mcp\.json|\.app\.json)$/i.test(path) || /(?:^|\/)(?:mcp|mcp-server|server|servers)\.(?:json|ya?ml|toml)$/i.test(path) },
+  { category: 'plugin', type: 'plugin', label: 'Plugin manifest', test: (path) => /(?:^|\/)(?:\.codex-plugin|\.agent-plugin|\.claude-plugin)\/plugin\.json$/i.test(path) },
+  { category: 'mcp', type: 'mcp-app', label: 'MCP app mapping', test: (path) => /(?:^|\/)\.app\.json$/i.test(path) },
+  { category: 'mcp', type: 'mcp', label: 'MCP configuration', test: (path) => /(?:^|\/)\.mcp\.json$/i.test(path) || /(?:^|\/)(?:mcp|mcp-server|server|servers)\.(?:json|ya?ml|toml)$/i.test(path) },
   { category: 'marketplace', type: 'marketplace', label: 'Plugin marketplace', test: (path) => /(?:^|\/)(?:\.agents\/plugins|\.claude-plugin)\/marketplace\.json$/i.test(path) },
-  { category: 'hook', type: 'hook', label: 'Codex hook', test: (path) => /(?:^|\/)hooks\/hooks\.json$/i.test(path) || /(?:^|\/)hooks\/[^/]+\.json$/i.test(path) },
+  { category: 'hook', type: 'hook', label: 'Codex hook', test: (path) => /(?:^|\/)(?:\.codex\/)?hooks\.json$/i.test(path) || /(?:^|\/)hooks\/[^/]+\.json$/i.test(path) },
+  { category: 'config', type: 'codex-config', label: 'Codex configuration', test: (path) => /(?:^|\/)\.codex\/(?:config|requirements)\.toml$/i.test(path) },
   { category: 'plugin-metadata', type: 'plugin-metadata', label: 'Plugin metadata', test: (path) => /(?:^|\/)agents\/openai\.ya?ml$/i.test(path) },
   { category: 'agents', type: 'agents', label: 'AGENTS guidance', test: (path) => /(?:^|\/)(?:agents|agents\.override)\.md$/i.test(path) },
   { category: 'action', type: 'action', label: 'GitHub Action', test: (path) => /(?:^|\/)action\.ya?ml$/i.test(path) }
 ];
 
-export const CATEGORY_ORDER = ['skill', 'plugin', 'mcp', 'marketplace', 'hook', 'plugin-metadata', 'agents', 'action', 'other'];
+export const CATEGORY_ORDER = ['skill', 'plugin', 'mcp', 'marketplace', 'hook', 'config', 'plugin-metadata', 'agents', 'action', 'other'];
 export const CATEGORY_LABELS = {
   all: 'All artifacts',
   skill: 'Skills',
@@ -17,6 +19,7 @@ export const CATEGORY_LABELS = {
   mcp: 'MCP',
   marketplace: 'Marketplaces',
   hook: 'Hooks',
+  config: 'Codex config',
   'plugin-metadata': 'Plugin metadata',
   agents: 'AGENTS.md',
   action: 'Actions',
@@ -29,8 +32,10 @@ export function classifyPath(filePath = '') {
 }
 
 export function classifyArtifact(artifact = {}) {
-  if (artifact.category && CATEGORY_LABELS[artifact.category]) return { category: artifact.category, type: artifact.type || artifact.category, label: CATEGORY_LABELS[artifact.category] };
   if (artifact.source === 'mcp-registry' || artifact.type === 'mcp-registry') return { category: 'mcp', type: 'mcp-registry', label: 'MCP Registry' };
+  const pathClassification = artifact.path ? classifyPath(artifact.path) : null;
+  if (pathClassification && pathClassification.category !== 'other') return pathClassification;
+  if (artifact.category && CATEGORY_LABELS[artifact.category]) return { category: artifact.category, type: artifact.type || artifact.category, label: CATEGORY_LABELS[artifact.category] };
   return classifyPath(artifact.path || '');
 }
 
@@ -96,6 +101,7 @@ export function createDashboardSnapshot(discovery) {
     id: artifact.id,
     category: artifact.category,
     categoryLabel: artifact.categoryLabel,
+    artifactType: artifact.artifactType || artifact.type,
     path: artifact.path,
     status: artifact.status,
     verification: artifact.verification,

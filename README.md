@@ -49,7 +49,7 @@ The local crawler defaults to one source, 25 repository trees, two content valid
 
 - `discovery.json`: combined repository, artifact, source, and error data.
 - `repositories.json`: deduplicated repository candidates and source provenance.
-- `artifacts.json`: individual `SKILL.md`, Plugin manifest, `AGENTS.md`, Action, and MCP metadata matches.
+- `artifacts.json`: individual `SKILL.md`, Plugin manifest, MCP configuration/app mappings, `AGENTS.md`, Action, and related metadata matches.
 - `coverage.json`: source queries, partitions, page counts, completion state, and known limitations.
 - `errors.json`: rate-limit, unavailable, and truncated-source errors.
 - `schema.json`: JSON Schema for the normalized discovery snapshot.
@@ -62,14 +62,17 @@ For operational recovery, `GITHUB_DISCOVERY_TIMEOUT_MS` and `GITHUB_DISCOVERY_RE
 ### Supported artifacts
 
 - **Skill**: a `SKILL.md` with YAML frontmatter containing `name` and `description`.
-- **Plugin**: `.codex-plugin/plugin.json` with `name`, `version`, and `description`.
+- **Plugin**: `.codex-plugin/plugin.json` with `name`, `version`, and `description`; compatible `.agent-plugin/plugin.json` and `.claude-plugin/plugin.json` manifests are also indexed.
+- **MCP**: `.mcp.json` bundled server configuration; `.app.json` is retained as the `mcp-app` type for registered MCP app mappings.
+- **Hooks**: `hooks/hooks.json`, other `hooks/*.json`, and project `.codex/hooks.json` lifecycle configuration.
+- **Codex config**: project `.codex/config.toml` and `.codex/requirements.toml`, which may declare MCP servers, hooks, and managed requirements.
 - **AGENTS**: a declared `AGENTS.md` or `AGENTS.override.md` path.
 - **Action**: a repository `action.yml` or `action.yaml` describing a GitHub Action.
 - **Tool**: a first-party or community tool listed for ecosystem context.
-- **MCP**: metadata-only listings in v0.1. CodexHub never launches or connects to a server.
 - **Marketplace**: `.agents/plugins/marketplace.json` and compatible marketplace manifests.
-- **Hook**: plugin or project `hooks/*.json` lifecycle definitions.
 - **Plugin metadata**: `agents/openai.yaml` skill/plugin interface metadata.
+
+CodexHub treats these as metadata only: it never launches indexed code or connects to an MCP server.
 
 See [the catalog format](docs/catalog-format.md), [the scoring rubric](docs/scoring.md), and [the security model](docs/security-model.md).
 
