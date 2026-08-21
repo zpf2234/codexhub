@@ -1,4 +1,161 @@
 {
-  "generatedAt": "2026-08-21T18:31:35.443Z",
-  "errors": []
+  "generatedAt": "2026-08-21T18:38:57.972Z",
+  "errors": [
+    {
+      "source": "github-code-repo-skills",
+      "query": "filename:SKILL.md path:.agents/skills",
+      "page": 5,
+      "error": "GitHub API 429",
+      "status": 429
+    },
+    {
+      "source": "github-code-plugin-manifest",
+      "query": "filename:plugin.json path:.codex-plugin",
+      "page": 2,
+      "error": "GitHub API 429",
+      "status": 429
+    },
+    {
+      "source": "github-code-plugin-mcp",
+      "query": "filename:.mcp.json",
+      "page": 2,
+      "error": "GitHub API 429",
+      "status": 429
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "goji-agency/website",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "mindsightventures/lona",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "1325ai/1325ai",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "abmeter/abmeter",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "DIGIBIZ360-COM/adoraads",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "stylemi-co/adramp",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "Agentberg/agentberg",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "agentdmai/agentdm",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "u00dxk2/agentic-news",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "vboykoCTO/agentic-shelf",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "rooz21/x402",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "AInoAKARI/arigatou-kawaii-lp",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "haf/glimt",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "ambix-ai/mcp",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "andrewjgaber-commits/empire-distribution",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "alex-hoyeol-choi/headless-commerce",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "auteng/auteng",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "autoblocksai/ctxl",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "Autonomad1/autonomad1",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "kipmcc/aviado-mcp",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "Bankee-ai/inferventis",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "opspot-ai/betslipdoctor",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "kipmcc/blast-radius-live",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "lukasbudrys2/legendary-carnival",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "alainsvrd/platform",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "skvcool-rgb/BoundaryAI",
+      "error": "GitHub API 404"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "Metroxe/bowmark",
+      "error": "GitHub API 404"
+    }
+  ]
 }
