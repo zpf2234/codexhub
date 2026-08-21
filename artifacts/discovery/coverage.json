@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-21T21:07:06.853Z",
-  "startedAt": "2026-08-21T21:03:32.046Z",
-  "completedAt": "2026-08-21T21:07:06.853Z",
+  "generatedAt": "2026-08-21T21:27:21.861Z",
+  "startedAt": "2026-08-21T21:26:12.812Z",
+  "completedAt": "2026-08-21T21:27:21.861Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -755,12 +755,29 @@
         "reset": 1787346272,
         "retryAfter": 736
       }
+    },
+    {
+      "id": "github-code-agent-plugin-manifest",
+      "kind": "plugin",
+      "coverage": "supplemental",
+      "query": "filename:plugin.json path:.agent-plugin",
+      "mode": "code-search",
+      "total": 1,
+      "pages": 1,
+      "results": 1,
+      "truncated": false,
+      "errors": [],
+      "rate": {
+        "remaining": 9,
+        "reset": 1787347633,
+        "retryAfter": null
+      }
     }
   ],
   "sourcesProcessedThisRun": 1,
-  "sourcesRemaining": 17,
+  "sourcesRemaining": 22,
   "exhaustiveSourcesRemaining": 5,
-  "supplementalSourcesRemaining": 12,
+  "supplementalSourcesRemaining": 17,
   "registry": {
     "source": "mcp-official-registry",
     "pages": [
@@ -1405,91 +1422,76 @@
         "count": 100,
         "nextCursor": "com.scopeblind/protect-mcp:0.7.1",
         "cursor": "com.santosautomation/site-audit:2.9.0"
+      },
+      {
+        "page": 108,
+        "count": 100,
+        "nextCursor": "com.senzing/mcp:0.17.6",
+        "cursor": "com.scopeblind/protect-mcp:0.7.1"
+      },
+      {
+        "page": 109,
+        "count": 100,
+        "nextCursor": "com.senzing/mcp:0.41.4",
+        "cursor": "com.senzing/mcp:0.17.6"
+      },
+      {
+        "page": 110,
+        "count": 100,
+        "nextCursor": "com.seoapi/meta:1.0.0",
+        "cursor": "com.senzing/mcp:0.41.4"
+      },
+      {
+        "page": 111,
+        "count": 100,
+        "nextCursor": "com.shipstatic/mcp:1.0.0",
+        "cursor": "com.seoapi/meta:1.0.0"
+      },
+      {
+        "page": 112,
+        "count": 100,
+        "nextCursor": "com.smartbear/smartbear-mcp:0.30.0",
+        "cursor": "com.shipstatic/mcp:1.0.0"
+      },
+      {
+        "page": 113,
+        "count": 100,
+        "nextCursor": "com.soundgtm/partner-tracker:1.0.0",
+        "cursor": "com.smartbear/smartbear-mcp:0.30.0"
+      },
+      {
+        "page": 114,
+        "count": 100,
+        "nextCursor": "com.statisticsoftheworld/sotw:1.0.0",
+        "cursor": "com.soundgtm/partner-tracker:1.0.0"
+      },
+      {
+        "page": 115,
+        "count": 100,
+        "nextCursor": "com.supovia/supovia:0.1.0",
+        "cursor": "com.statisticsoftheworld/sotw:1.0.0"
+      },
+      {
+        "page": 116,
+        "count": 100,
+        "nextCursor": "com.teamwork/mcp:1.18.0",
+        "cursor": "com.supovia/supovia:0.1.0"
+      },
+      {
+        "page": 117,
+        "count": 100,
+        "nextCursor": "com.textmine/textmine-mcp:1.0.0",
+        "cursor": "com.teamwork/mcp:1.18.0"
       }
     ],
-    "results": 10700,
+    "results": 11700,
     "complete": false,
     "errors": []
   },
-  "scans": [
-    {
-      "repository": "handong66/grok-plugin-codex",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "handong66/opencode-plugin-codex",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "hanhuark/mechanical-engineering-research-skill",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "hcsdtk/novel-to-wechat",
-      "status": "fresh",
-      "artifacts": 5,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Heretyc/subagent-mcp",
-      "status": "fresh",
-      "artifacts": 14,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 14,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "hermercy77/shadow-review",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "heyzeyu/docmost-knowledge",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "HIDORAKAI002/ai-workspace-archive",
-      "status": "partial",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": true,
-      "errors": [
-        "GitHub API 403"
-      ]
-    }
-  ],
-  "repositoriesDiscovered": 23425,
+  "scans": [],
+  "repositoriesDiscovered": 24070,
   "repositoriesScanned": 200,
-  "repositoriesNotScanned": 17561,
+  "repositoriesNotScanned": 17681,
   "scanOffset": 1720,
   "repositoriesScannedTotal": 1720,
   "cycleComplete": false,
@@ -1497,16 +1499,17 @@
   "terminalUnavailableRepositories": 29,
   "rateLimitedRepositories": 134,
   "rateLimitedScanEvents": 4,
-  "artifactsDiscovered": 75521,
-  "errors": 2,
+  "artifactsDiscovered": 76521,
+  "errors": 0,
   "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
     "skill": 54205,
     "plugin": 1323,
-    "mcp": 11455,
+    "mcp": 12455,
     "marketplace": 783,
     "hook": 280,
+    "config": 0,
     "plugin-metadata": 6378,
     "agents": 1051,
     "action": 46,
@@ -1515,7 +1518,7 @@
   "verificationCounts": {
     "verified": 1080,
     "discovered": 63728,
-    "registry": 10699,
+    "registry": 11699,
     "unknown": 14
   }
 }

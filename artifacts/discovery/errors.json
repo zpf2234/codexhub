@@ -1,16 +1,4 @@
 {
-  "generatedAt": "2026-08-21T21:07:06.853Z",
-  "errors": [
-    {
-      "source": "github-code-mcp-yml",
-      "query": "filename:mcp.yml",
-      "error": "GitHub API 429",
-      "status": 429
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "HIDORAKAI002/ai-workspace-archive",
-      "error": "GitHub API 403"
-    }
-  ]
+  "generatedAt": "2026-08-21T21:27:21.861Z",
+  "errors": []
 }
