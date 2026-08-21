@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-21T23:00:53.166Z",
-  "startedAt": "2026-08-21T22:59:38.227Z",
-  "completedAt": "2026-08-21T23:00:53.166Z",
+  "generatedAt": "2026-08-21T23:08:46.218Z",
+  "startedAt": "2026-08-21T23:07:25.942Z",
+  "completedAt": "2026-08-21T23:08:46.218Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -1057,12 +1057,29 @@
         "reset": 1787353239,
         "retryAfter": null
       }
+    },
+    {
+      "id": "github-code-codex-agents",
+      "kind": "agent-config",
+      "coverage": "supplemental",
+      "query": "path:.codex/agents extension:toml",
+      "mode": "code-search",
+      "total": 21792,
+      "pages": 10,
+      "results": 575,
+      "truncated": true,
+      "errors": [],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787353706,
+        "retryAfter": null
+      }
     }
   ],
   "sourcesProcessedThisRun": 1,
-  "sourcesRemaining": 22,
+  "sourcesRemaining": 21,
   "exhaustiveSourcesRemaining": 5,
-  "supplementalSourcesRemaining": 17,
+  "supplementalSourcesRemaining": 16,
   "registry": {
     "source": "mcp-official-registry",
     "pages": [
@@ -2067,16 +2084,76 @@
         "count": 100,
         "nextCursor": "io.github.Alfanous-team/alfanous:1.7.13",
         "cursor": "io.github.Ainode-tech/accounting-mcp:0.1.1"
+      },
+      {
+        "page": 168,
+        "count": 100,
+        "nextCursor": "io.github.AllocContext/alloc-context:0.2.4",
+        "cursor": "io.github.Alfanous-team/alfanous:1.7.13"
+      },
+      {
+        "page": 169,
+        "count": 100,
+        "nextCursor": "io.github.AnthonyPuggs/ausecon-mcp-server:1.14.2",
+        "cursor": "io.github.AllocContext/alloc-context:0.2.4"
+      },
+      {
+        "page": 170,
+        "count": 100,
+        "nextCursor": "io.github.Arjun0606/smolanalytics:0.32.0",
+        "cursor": "io.github.AnthonyPuggs/ausecon-mcp-server:1.14.2"
+      },
+      {
+        "page": 171,
+        "count": 100,
+        "nextCursor": "io.github.Arrayo/smart-context-mcp:1.16.5",
+        "cursor": "io.github.Arjun0606/smolanalytics:0.32.0"
+      },
+      {
+        "page": 172,
+        "count": 100,
+        "nextCursor": "io.github.AshutoshRaj97/agentready-mcp:1.3.1",
+        "cursor": "io.github.Arrayo/smart-context-mcp:1.16.5"
+      },
+      {
+        "page": 173,
+        "count": 100,
+        "nextCursor": "io.github.AutomateLab-tech/seo-performance-mcp:1.0.0",
+        "cursor": "io.github.AshutoshRaj97/agentready-mcp:1.3.1"
+      },
+      {
+        "page": 174,
+        "count": 100,
+        "nextCursor": "io.github.Bahamas1717/aibvf-mcp:0.8.0",
+        "cursor": "io.github.AutomateLab-tech/seo-performance-mcp:1.0.0"
+      },
+      {
+        "page": 175,
+        "count": 100,
+        "nextCursor": "io.github.Belius303/frappe-inspector:1.3.2",
+        "cursor": "io.github.Bahamas1717/aibvf-mcp:0.8.0"
+      },
+      {
+        "page": 176,
+        "count": 100,
+        "nextCursor": "io.github.BlockRunAI/blockrun-mcp:0.30.4",
+        "cursor": "io.github.Belius303/frappe-inspector:1.3.2"
+      },
+      {
+        "page": 177,
+        "count": 100,
+        "nextCursor": "io.github.BoxLab-Ltd/yandex-metrica-mcp:0.1.3",
+        "cursor": "io.github.BlockRunAI/blockrun-mcp:0.30.4"
       }
     ],
-    "results": 16700,
+    "results": 17700,
     "complete": false,
     "errors": []
   },
   "scans": [],
-  "repositoriesDiscovered": 29310,
+  "repositoriesDiscovered": 30050,
   "repositoriesScanned": 200,
-  "repositoriesNotScanned": 21358,
+  "repositoriesNotScanned": 22063,
   "scanOffset": 2047,
   "repositoriesScannedTotal": 2047,
   "cycleComplete": false,
@@ -2084,14 +2161,14 @@
   "terminalUnavailableRepositories": 36,
   "rateLimitedRepositories": 35,
   "rateLimitedScanEvents": 4,
-  "artifactsDiscovered": 89323,
+  "artifactsDiscovered": 90323,
   "errors": 0,
   "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
     "skill": 59004,
     "plugin": 1516,
-    "mcp": 18168,
+    "mcp": 19168,
     "marketplace": 922,
     "hook": 363,
     "config": 14,
@@ -2106,7 +2183,7 @@
   "verificationCounts": {
     "verified": 1080,
     "discovered": 71531,
-    "registry": 16698,
+    "registry": 17698,
     "unknown": 14
   }
 }
