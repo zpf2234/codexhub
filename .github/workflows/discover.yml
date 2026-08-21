@@ -15,7 +15,7 @@ concurrency:
 jobs:
   discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v7
@@ -26,7 +26,7 @@ jobs:
       - run: npm run discover
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DISCOVERY_MAX_REPOSITORIES: 350
+          DISCOVERY_MAX_REPOSITORIES: 200
           DISCOVERY_MAX_ARTIFACTS_PER_REPOSITORY: 0
           GITHUB_DISCOVERY_TIMEOUT_MS: 10000
           GITHUB_DISCOVERY_RETRIES: 1
