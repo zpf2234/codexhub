@@ -2,12 +2,25 @@ const DEFAULT_HEADERS = { 'User-Agent': 'CodexHub/0.2', Accept: 'application/vnd
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-function withConstraint(query, constraint) {
-  return `${query} ${constraint}`.trim();
-}
-
 function dateOnly(value) {
   return new Date(value).toISOString().slice(0, 10);
+}
+
+function addDays(value, days) {
+  const date = new Date(`${value}T00:00:00Z`);
+  date.setUTCDate(date.getUTCDate() + days);
+  return dateOnly(date);
+}
+
+function midpointDate(from, to) {
+  const start = new Date(`${from}T00:00:00Z`).getTime();
+  const end = new Date(`${to}T00:00:00Z`).getTime();
+  return dateOnly(new Date(start + Math.floor((end - start) / 2)));
+}
+
+function withCreatedRange(query, from, to) {
+  const base = query.replace(/\screated:(?:[^\s]+)/gi, '').trim();
+  return `${base} created:${from}..${to}`;
 }
 
 export class GithubClient {
@@ -93,7 +106,7 @@ export class GithubClient {
     const results = new Map();
     const visited = new Set();
     let truncated = false;
-    const collect = async (segmentQuery, depth = 0) => {
+    const collect = async (segmentQuery, depth = 0, createdRange = null) => {
       if (segments.length >= maxSegments) { truncated = true; return; }
       if (visited.has(segmentQuery)) return;
       visited.add(segmentQuery);
@@ -103,15 +116,12 @@ export class GithubClient {
       if (probe.data.incomplete_results) truncated = true;
       segments.push({ query: segmentQuery, total, incomplete: Boolean(probe.data.incomplete_results) });
       if (total > 1000 && depth < maxDepth) {
-        const split = await this.splitQuery(segmentQuery);
+        const split = this.splitQuery(query, createdRange);
         if (split) {
-          partitions.push({ from: segmentQuery, into: split });
-          if (split[0] !== segmentQuery && split[1] !== segmentQuery && split[0] !== split[1]) {
-            await collect(split[0], depth + 1);
-            await collect(split[1], depth + 1);
-            return;
-          }
-          truncated = true;
+          partitions.push({ from: segmentQuery, into: split.map((item) => item.query) });
+          await collect(split[0].query, depth + 1, split[0].range);
+          await collect(split[1].query, depth + 1, split[1].range);
+          return;
         }
         truncated = true;
       }
@@ -129,25 +139,17 @@ export class GithubClient {
     return { source, items: [...results.values()], segments, partitions, errors, truncated, rate: this.lastRate };
   }
 
-  async splitQuery(query) {
-    const low = await this.boundary(query, 'stars', 'asc');
-    const high = await this.boundary(query, 'stars', 'desc');
-    const minStars = Number(low.item?.stargazers_count);
-    const maxStars = Number(high.item?.stargazers_count);
-    if (Number.isFinite(minStars) && Number.isFinite(maxStars) && minStars < maxStars) {
-      const pivot = Math.floor((minStars + maxStars) / 2);
-      return [withConstraint(query, `stars:0..${pivot}`), withConstraint(query, `stars:${pivot + 1}..*`)];
-    }
-    const oldest = await this.boundary(query, 'updated', 'asc');
-    const newest = await this.boundary(query, 'updated', 'desc');
-    const oldDate = oldest.item?.pushed_at || oldest.item?.updated_at;
-    const newDate = newest.item?.pushed_at || newest.item?.updated_at;
-    if (oldDate && newDate && dateOnly(oldDate) < dateOnly(newDate)) {
-      const midpoint = new Date((new Date(oldDate).getTime() + new Date(newDate).getTime()) / 2);
-      const pivot = dateOnly(midpoint);
-      return [withConstraint(query, `pushed:<=${pivot}`), withConstraint(query, `pushed:>${pivot}`)];
-    }
-    return null;
+  splitQuery(baseQuery, range = null) {
+    const from = range?.from || '2008-01-01';
+    const to = range?.to || dateOnly(new Date());
+    if (from >= to) return null;
+    const pivot = midpointDate(from, to);
+    const rightFrom = addDays(pivot, 1);
+    if (rightFrom > to) return null;
+    return [
+      { query: withCreatedRange(baseQuery, from, pivot), range: { from, to: pivot } },
+      { query: withCreatedRange(baseQuery, rightFrom, to), range: { from: rightFrom, to } }
+    ];
   }
 }
 

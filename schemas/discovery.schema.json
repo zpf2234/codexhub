@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zpf2234.github.io/codexhub/api/v1/discovery/schema.json",
+  "title": "CodexHub discovery snapshot",
+  "type": "object",
+  "required": ["schemaVersion", "generatedAt", "coverage", "repositories", "artifacts", "errors"],
+  "properties": {
+    "schemaVersion": { "const": "1.1.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "coverage": {
+      "type": "object",
+      "required": ["repositoriesDiscovered", "artifactsDiscovered", "categoryCounts", "verificationCounts", "complete"],
+      "properties": {
+        "repositoriesDiscovered": { "type": "integer", "minimum": 0 },
+        "artifactsDiscovered": { "type": "integer", "minimum": 0 },
+        "categoryCounts": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+        "verificationCounts": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+        "complete": { "type": "boolean" }
+      },
+      "additionalProperties": true
+    },
+    "repositories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["fullName", "name", "categories"],
+        "properties": {
+          "fullName": { "type": "string", "minLength": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "url": { "type": ["string", "null"] },
+          "categories": { "type": "array", "items": { "enum": ["skill", "plugin", "mcp", "marketplace", "hook", "plugin-metadata", "agents", "action", "other"] } }
+        },
+        "additionalProperties": true
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "category", "path", "status", "source"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "category": { "enum": ["skill", "plugin", "mcp", "marketplace", "hook", "plugin-metadata", "agents", "action", "other"] },
+          "path": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["verified", "discovered", "registry", "unknown"] },
+          "source": { "enum": ["github-tree", "mcp-registry"] }
+        },
+        "additionalProperties": true
+      }
+    },
+    "errors": { "type": "array", "items": { "type": "object" } }
+  },
+  "additionalProperties": true
+}

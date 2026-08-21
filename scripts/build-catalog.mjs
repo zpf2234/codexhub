@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { ROOT, readEntries, fetchMetadata, scoreEntry } from './lib.mjs';
+import { normalizeDiscovery } from './discovery/model.mjs';
 
 const offline = process.argv.includes('--offline');
 const cachedOnly = process.argv.includes('--cached');
@@ -34,9 +35,13 @@ const discoveryDir = path.join(ROOT, 'artifacts', 'discovery');
 const publicDiscoveryDir = path.join(output, 'api', 'v1', 'discovery');
 try {
   await fs.mkdir(publicDiscoveryDir, { recursive: true });
-  for (const name of ['discovery.json', 'repositories.json', 'artifacts.json', 'coverage.json', 'errors.json']) {
-    await fs.copyFile(path.join(discoveryDir, name), path.join(publicDiscoveryDir, name));
-  }
+  const discovery = normalizeDiscovery(JSON.parse(await fs.readFile(path.join(discoveryDir, 'discovery.json'), 'utf8')));
+  await fs.writeFile(path.join(publicDiscoveryDir, 'discovery.json'), JSON.stringify(discovery, null, 2) + '\n');
+  await fs.writeFile(path.join(publicDiscoveryDir, 'repositories.json'), JSON.stringify({ generatedAt: discovery.generatedAt, repositories: discovery.repositories }, null, 2) + '\n');
+  await fs.writeFile(path.join(publicDiscoveryDir, 'artifacts.json'), JSON.stringify({ generatedAt: discovery.generatedAt, artifacts: discovery.artifacts }, null, 2) + '\n');
+  await fs.writeFile(path.join(publicDiscoveryDir, 'coverage.json'), JSON.stringify(discovery.coverage, null, 2) + '\n');
+  await fs.writeFile(path.join(publicDiscoveryDir, 'errors.json'), JSON.stringify({ generatedAt: discovery.generatedAt, errors: discovery.errors || [] }, null, 2) + '\n');
+  await fs.copyFile(path.join(ROOT, 'schemas', 'discovery.schema.json'), path.join(publicDiscoveryDir, 'schema.json'));
 } catch {
   // Discovery is an independent, optionally scheduled dataset.
 }

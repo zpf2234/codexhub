@@ -6,6 +6,7 @@ import { GithubClient, repositoryCandidate } from './discovery/github-search.mjs
 import { scanRepository } from './discovery/github-tree-scan.mjs';
 import { crawlMcpRegistry } from './discovery/mcp-registry.mjs';
 import { loadCheckpoint, saveCheckpoint } from './discovery/checkpoint.mjs';
+import { normalizeDiscovery } from './discovery/model.mjs';
 
 const outputDir = path.join(ROOT, 'artifacts', 'discovery');
 const checkpointPath = path.join(outputDir, 'checkpoint.json');
@@ -26,6 +27,7 @@ if (resume && checkpoint.cycleComplete) {
   checkpoint.registryReport = null;
   checkpoint.scanOffset = 0;
   checkpoint.cycleComplete = false;
+  for (const repository of Object.values(checkpoint.repositories)) delete repository.scan;
 }
 const entries = await readEntries();
 const repositories = new Map(Object.entries(checkpoint.repositories));
@@ -113,7 +115,7 @@ if (!process.env.DISCOVERY_SKIP_REGISTRY && (!selectedSources || selectedSources
     const parsed = parseGithubRepository(server.repositoryUrl);
     const key = parsed?.fullName.toLowerCase() || server.id;
     const previous = repositories.get(key);
-    if (previous) previous.registryServers = [...(previous.registryServers || []), server];
+    if (previous) previous.registryServers = [...new Map([...(previous.registryServers || []), server].map((value) => [value.id, value])).values()];
     else repositories.set(key, { fullName: parsed?.fullName || server.id, owner: parsed?.owner || null, name: parsed?.name || server.name, url: parsed?.url || server.repositoryUrl, description: server.description, stars: null, forks: null, license: 'NOASSERTION', discoveredBy: [MCP_REGISTRY_SOURCE.id], sourceKinds: ['mcp'], registryServers: [server], registryOnly: !parsed });
   }
   errors.push(...registry.errors.map((error) => ({ source: MCP_REGISTRY_SOURCE.id, ...error })));
@@ -155,7 +157,12 @@ if (scanEnabled) {
 }
 
 const generatedAt = new Date().toISOString();
-const candidateList = [...repositories.values()].map(({ scan, ...candidate }) => candidate).sort((a, b) => (b.stars ?? -1) - (a.stars ?? -1) || String(a.fullName).localeCompare(String(b.fullName)));
+const candidateList = [...repositories.values()].map(({ scan, ...candidate }) => ({ ...candidate, ...(scan?.repository || {}) })).sort((a, b) => (b.stars ?? -1) - (a.stars ?? -1) || String(a.fullName).localeCompare(String(b.fullName)));
+const repositoryIndex = new Map(candidateList.map((repository) => [String(repository.fullName).toLowerCase(), repository]));
+const accumulatedArtifacts = Object.values(checkpoint.repositories).flatMap((stored) => (stored.scan?.artifacts || []).map((artifact) => {
+  const repository = repositoryIndex.get(String(stored.fullName).toLowerCase()) || stored;
+  return { ...artifact, repository: stored.fullName, repositoryUrl: repository.url, defaultBranch: repository.defaultBranch || stored.scan?.repository?.defaultBranch, stars: repository.stars, discoveredBy: repository.discoveredBy, sourceKinds: repository.sourceKinds };
+}));
 const coverage = {
   generatedAt,
   startedAt,
@@ -172,16 +179,16 @@ const coverage = {
   repositoriesNotScanned: scanEnabled ? Math.max(0, allRepositories.length - scanOffset - scanList.length) : candidateList.length,
   scanOffset: scanEnabled ? checkpoint.scanOffset : 0,
   cycleComplete: scanEnabled ? checkpoint.cycleComplete : false,
-  artifactsDiscovered: artifacts.length,
+  artifactsDiscovered: accumulatedArtifacts.length,
   errors: errors.length,
   scanDisabled: !scanEnabled,
   complete: !selectedSources && !process.env.DISCOVERY_SKIP_REGISTRY && scanEnabled && errors.length === 0 && sourceReports.length === GITHUB_SOURCES.length + GITHUB_CODE_SOURCES.length && sourceReports.every((source) => !source.truncated && source.errors.length === 0) && registryReport.complete
 };
-const payload = { schemaVersion: '1.0.0', generatedAt, coverage, repositories: candidateList, artifacts, errors };
+const payload = normalizeDiscovery({ schemaVersion: '1.1.0', generatedAt, coverage, repositories: candidateList, artifacts: accumulatedArtifacts, errors });
 await fs.mkdir(outputDir, { recursive: true });
-await fs.writeFile(path.join(outputDir, 'repositories.json'), JSON.stringify({ generatedAt, repositories: candidateList }, null, 2) + '\n');
-await fs.writeFile(path.join(outputDir, 'artifacts.json'), JSON.stringify({ generatedAt, artifacts }, null, 2) + '\n');
-await fs.writeFile(path.join(outputDir, 'coverage.json'), JSON.stringify(coverage, null, 2) + '\n');
+await fs.writeFile(path.join(outputDir, 'repositories.json'), JSON.stringify({ generatedAt, repositories: payload.repositories }, null, 2) + '\n');
+await fs.writeFile(path.join(outputDir, 'artifacts.json'), JSON.stringify({ generatedAt, artifacts: payload.artifacts }, null, 2) + '\n');
+await fs.writeFile(path.join(outputDir, 'coverage.json'), JSON.stringify(payload.coverage, null, 2) + '\n');
 await fs.writeFile(path.join(outputDir, 'errors.json'), JSON.stringify({ generatedAt, errors }, null, 2) + '\n');
 await fs.writeFile(path.join(outputDir, 'discovery.json'), JSON.stringify(payload, null, 2) + '\n');
-console.log(`Discovered ${candidateList.length} repositories and ${artifacts.length} artifacts. Coverage: ${coverage.complete ? 'complete' : 'partial'}; errors: ${errors.length}.`);
+console.log(`Discovered ${candidateList.length} repositories and ${payload.artifacts.length} artifacts. Coverage: ${coverage.complete ? 'complete' : 'partial'}; errors: ${errors.length}.`);

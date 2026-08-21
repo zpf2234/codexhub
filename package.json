@@ -18,6 +18,8 @@
     "build:offline": "node scripts/build-catalog.mjs --offline",
     "refresh": "node scripts/build-catalog.mjs --write-cache",
     "discover": "node scripts/discover.mjs",
+    "crawl:local": "node scripts/crawl-local.mjs",
+    "dashboard": "node scripts/dashboard.mjs",
     "check": "node scripts/validate-entry.mjs",
     "preview": "node scripts/serve.mjs",
     "test": "node --test tests/*.test.mjs",

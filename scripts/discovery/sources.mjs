@@ -13,7 +13,13 @@ export const GITHUB_CODE_SOURCES = [
   { id: 'github-code-skill-manifest', kind: 'skill', query: 'filename:SKILL.md' },
   { id: 'github-code-repo-skills', kind: 'skill', query: 'filename:SKILL.md path:.agents/skills' },
   { id: 'github-code-plugin-manifest', kind: 'plugin', query: 'filename:plugin.json path:.codex-plugin' },
-  { id: 'github-code-plugin-mcp', kind: 'mcp', query: 'filename:.mcp.json' }
+  { id: 'github-code-plugin-mcp', kind: 'mcp', query: 'filename:.mcp.json' },
+  { id: 'github-code-plugin-app', kind: 'mcp', query: 'filename:.app.json' },
+  { id: 'github-code-marketplace', kind: 'marketplace', query: 'filename:marketplace.json path:.agents/plugins' },
+  { id: 'github-code-hooks', kind: 'hook', query: 'filename:hooks.json path:hooks' },
+  { id: 'github-code-plugin-metadata', kind: 'plugin-metadata', query: 'filename:openai.yaml path:agents' },
+  { id: 'github-code-agents', kind: 'agents', query: 'filename:AGENTS.md' },
+  { id: 'github-code-codex-action', kind: 'action', query: 'filename:action.yml codex' }
 ];
 
 export const MCP_REGISTRY_SOURCE = {

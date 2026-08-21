@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Local-first visual explorer for Codex Skills, Plugins, MCP servers, and related artifacts." />
+    <title>CodexHub Discovery</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./"><span class="brand-mark">CH</span><span>CodexHub</span></a>
+      <nav><a href="./">Reviewed catalog</a><a class="active-link" href="./discovery.html">Discovery</a><a href="./api/v1/discovery/discovery.json">JSON API</a></nav>
+    </header>
+    <main>
+      <section class="discovery-hero">
+        <div>
+          <p class="eyebrow">Local-first ecosystem crawler</p>
+          <h1>See what Codex can load.</h1>
+          <p class="lede">Explore discovered Skills, Plugins, MCP servers, marketplaces, hooks, AGENTS.md guidance, and Actions. Candidate discovery is separate from the reviewed quality ranking.</p>
+        </div>
+        <aside id="coverage-card" class="coverage-card" aria-live="polite"><p>Loading discovery snapshot…</p></aside>
+      </section>
+
+      <section class="discovery-metrics" aria-label="Discovery statistics">
+        <div><strong id="discovery-repositories">—</strong><span>repositories</span></div>
+        <div><strong id="discovery-artifacts">—</strong><span>artifacts</span></div>
+        <div><strong id="discovery-registry">—</strong><span>MCP Registry records</span></div>
+        <div><strong id="discovery-scanned">—</strong><span>repository trees scanned</span></div>
+      </section>
+
+      <section class="discovery-workspace">
+        <div class="discovery-toolbar">
+          <label class="search"><span>Search</span><input id="discovery-search" type="search" placeholder="Artifact, path, repository, or description" autocomplete="off" /></label>
+          <label class="sort"><span>View</span><select id="discovery-view"><option value="artifacts">Artifacts</option><option value="repositories">Repositories</option></select></label>
+          <label class="sort"><span>Sort</span><select id="discovery-sort"><option value="repository">Repository</option><option value="category">Category</option><option value="status">Verification</option><option value="stars">Stars</option></select></label>
+        </div>
+        <div id="discovery-filters" class="filters discovery-filters" aria-label="Discovery category filters"></div>
+        <div class="discovery-status-row">
+          <p id="discovery-result-count" aria-live="polite"></p>
+          <label><span>Verification</span><select id="verification-filter"><option value="all">All states</option><option value="verified">Verified</option><option value="discovered">Deferred</option><option value="registry">Registry</option><option value="unknown">Unknown</option></select></label>
+        </div>
+        <div id="discovery-results" class="discovery-results"></div>
+        <div class="load-more-row"><button id="discovery-load-more" type="button" hidden>Load more</button></div>
+        <div id="discovery-empty" class="empty" hidden><h3>No matches</h3><p>Try another category, state, or search term.</p></div>
+      </section>
+
+      <section class="method discovery-method">
+        <div><p class="eyebrow">Coverage contract</p><h2>Complete means auditable.</h2></div>
+        <div class="method-grid"><p><strong>Discovery</strong> records every matching path returned by complete repository trees, even when content verification is deferred.</p><p><strong>Classification</strong> separates Skills, Plugins, MCP, marketplaces, hooks, plugin metadata, AGENTS.md, and Actions.</p><p><strong>Boundaries</strong> reports source truncation, API limits, errors, and remaining work instead of claiming internet-wide completeness.</p></div>
+      </section>
+      <section class="source-coverage" aria-labelledby="source-coverage-title">
+        <div class="section-title"><div><p class="eyebrow">Source diagnostics</p><h2 id="source-coverage-title">Crawler coverage</h2></div><p id="coverage-source-count"></p></div>
+        <div id="source-coverage-list" class="source-coverage-list"></div>
+      </section>
+    </main>
+    <footer><p>Run locally with <code>npm run build:cached</code> and <code>npm run preview</code>.</p><a href="https://github.com/zpf2234/codexhub">Source and methodology</a></footer>
+    <script type="module" src="./discovery.js"></script>
+  </body>
+</html>

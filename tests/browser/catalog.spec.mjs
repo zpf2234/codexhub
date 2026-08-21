@@ -43,3 +43,22 @@ test('compares two projects side by side', async ({ page }) => {
   await expect(page.locator('.compare-table')).toContainText('Quality score');
   await expect(page.locator('.compare-table thead th')).toHaveCount(3);
 });
+
+test('discovery dashboard loads, filters artifacts, and switches to repositories', async ({ page }) => {
+  const discovery = await (await page.request.get('/api/v1/discovery/discovery.json')).json();
+  await page.goto('/discovery.html');
+  await expect(page.locator('#discovery-repositories')).toHaveText(new Intl.NumberFormat('en').format(discovery.coverage.repositoriesDiscovered));
+  await expect(page.locator('#discovery-results .discovery-card').first()).toBeVisible();
+  await page.locator('#discovery-search').fill('skill.md');
+  await expect(page.locator('#discovery-result-count')).toContainText('artifact');
+  await page.locator('#discovery-view').selectOption('repositories');
+  await expect(page.locator('#discovery-results .repository-card').first()).toBeVisible();
+  await expect(page.locator('#verification-filter')).toBeDisabled();
+});
+
+test('discovery dashboard has no mobile horizontal overflow', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 1200 });
+  await page.goto('/discovery.html');
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+  expect(overflow).toBeLessThanOrEqual(1);
+});

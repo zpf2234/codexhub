@@ -1,28 +1,24 @@
 const DEFAULT_HEADERS = { 'User-Agent': 'CodexHub/0.2', Accept: 'application/vnd.github+json' };
+import { classifyPath } from './model.mjs';
 
 const artifactId = (fullName, filePath) => `github:${fullName.toLowerCase()}#${filePath}`;
-const pathName = (value) => value.split('/').at(-1).toLowerCase();
-
-function classify(filePath) {
-  const lower = filePath.toLowerCase();
-  if (pathName(filePath) === 'skill.md') return 'skill';
-  if (lower.endsWith('/.codex-plugin/plugin.json') || lower === '.codex-plugin/plugin.json') return 'plugin';
-  if (pathName(filePath) === '.mcp.json' || pathName(filePath) === '.app.json') return 'mcp';
-  if (pathName(filePath) === 'agents.md' || pathName(filePath) === 'agents.override.md') return 'agents';
-  if (pathName(filePath) === 'action.yml' || pathName(filePath) === 'action.yaml') return 'action';
-  if (/^(.+\/)?(?:mcp|mcp-server|server|servers)\.(json|ya?ml|toml)$/i.test(filePath)) return 'mcp';
-  return null;
-}
-
 function validate(type, content, filePath) {
   if (!content.trim()) return { valid: false, note: 'File is empty.' };
   if (type === 'skill') {
     const match = content.match(/^---\s*\n([\s\S]*?)\n---/);
     const frontmatter = match?.[1] || '';
-    return { valid: Boolean(match && /^name:\s*\S+/m.test(frontmatter) && /^description:\s*\S+/m.test(frontmatter)), note: 'Requires YAML frontmatter with name and description.' };
+    const name = frontmatter.match(/^name:\s*["']?([^\n"']+)/m)?.[1]?.trim();
+    const description = frontmatter.match(/^description:\s*["']?([^\n"']+)/m)?.[1]?.trim();
+    return { valid: Boolean(match && name && description), note: 'Requires YAML frontmatter with name and description.', metadata: { name, description } };
   }
-  if (type === 'plugin' || (type === 'mcp' && filePath.toLowerCase().endsWith('.json'))) {
-    try { JSON.parse(content); return { valid: true, note: 'Valid JSON metadata.' }; }
+  if (['plugin', 'mcp', 'marketplace', 'hook'].includes(type) && filePath.toLowerCase().endsWith('.json')) {
+    try {
+      const value = JSON.parse(content);
+      if (type === 'plugin') return { valid: Boolean(value.name && value.version && value.description), note: 'Requires name, version, and description.', metadata: { name: value.name, version: value.version, description: value.description, bundles: ['skills', 'mcpServers', 'apps', 'hooks'].filter((key) => value[key]) } };
+      if (type === 'marketplace') return { valid: Boolean(value.name && Array.isArray(value.plugins)), note: 'Requires marketplace name and plugins array.', metadata: { name: value.name, pluginCount: value.plugins?.length || 0 } };
+      if (type === 'hook') return { valid: Boolean(value.hooks && typeof value.hooks === 'object'), note: 'Requires a hooks object.', metadata: { events: Object.keys(value.hooks || {}) } };
+      return { valid: true, note: 'Valid JSON metadata.', metadata: { serverCount: Object.keys(value.mcp_servers || value).length } };
+    }
     catch { return { valid: false, note: 'Metadata is not valid JSON.' }; }
   }
   if (type === 'action') return { valid: /^name:\s*\S+/m.test(content) && /^runs:\s*$/m.test(content), note: 'Requires name and runs keys.' };
@@ -44,22 +40,23 @@ export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, 
   const branch = repo.data.default_branch || candidate.defaultBranch || 'main';
   const tree = await request(`${base}/git/trees/${encodeURIComponent(branch)}?recursive=1`);
   if (!tree.ok) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: 'partial', errors: [tree.error] };
-  const files = (tree.data.tree || []).filter((item) => item.type === 'blob' && classify(item.path));
+  const files = (tree.data.tree || []).filter((item) => item.type === 'blob' && classifyPath(item.path).category !== 'other');
   const artifacts = [];
   for (const [index, file] of files.entries()) {
-    const type = classify(file.path);
+    const classification = classifyPath(file.path);
+    const type = classification.type;
     if (index >= maxArtifacts) {
-      artifacts.push({ id: artifactId(candidate.fullName, file.path), type, path: file.path, status: 'discovered', verification: 'deferred', note: 'Artifact path was discovered from the complete repository tree; content verification is deferred.', source: 'github-tree' });
+      artifacts.push({ id: artifactId(candidate.fullName, file.path), type, category: classification.category, categoryLabel: classification.label, path: file.path, status: 'discovered', verification: 'deferred', note: 'Artifact path was discovered from the complete repository tree; content verification is deferred.', source: 'github-tree' });
       continue;
     }
     const content = await request(`${base}/contents/${file.path.split('/').map(encodeURIComponent).join('/')}?ref=${encodeURIComponent(branch)}`);
     if (!content.ok || !content.data?.content) {
-      artifacts.push({ id: artifactId(candidate.fullName, file.path), type, path: file.path, status: 'unknown', verification: 'unavailable', note: content.error || 'Content unavailable.' });
+      artifacts.push({ id: artifactId(candidate.fullName, file.path), type, category: classification.category, categoryLabel: classification.label, path: file.path, status: 'unknown', verification: 'unavailable', note: content.error || 'Content unavailable.' });
       continue;
     }
     const decoded = Buffer.from(content.data.content.replace(/\s/g, ''), 'base64').toString('utf8');
     const result = validate(type, decoded, file.path);
-    artifacts.push({ id: artifactId(candidate.fullName, file.path), type, path: file.path, status: result.valid ? 'verified' : 'unknown', verification: result.valid ? 'passed' : 'failed', note: result.note, source: 'github-tree' });
+    artifacts.push({ id: artifactId(candidate.fullName, file.path), type, category: classification.category, categoryLabel: classification.label, path: file.path, status: result.valid ? 'verified' : 'unknown', verification: result.valid ? 'passed' : 'failed', note: result.note, source: 'github-tree', ...(result.metadata || {}) });
   }
   return { repository: { ...candidate, defaultBranch: branch, archived: repo.data.archived, stars: repo.data.stargazers_count, forks: repo.data.forks_count, license: repo.data.license?.spdx_id || candidate.license }, artifacts, status: tree.data.truncated ? 'partial' : 'fresh', truncated: Boolean(tree.data.truncated), verifiedArtifacts: Math.min(files.length, maxArtifacts), deferredArtifacts: Math.max(0, files.length - maxArtifacts), errors: tree.data.truncated ? ['GitHub recursive tree response was truncated.'] : [] };
 }
