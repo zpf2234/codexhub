@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-21T18:38:57.972Z",
-  "startedAt": "2026-08-21T18:37:49.634Z",
-  "completedAt": "2026-08-21T18:38:57.972Z",
+  "generatedAt": "2026-08-21T19:18:42.816Z",
+  "startedAt": "2026-08-21T19:14:00.671Z",
+  "completedAt": "2026-08-21T19:18:42.816Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -514,6 +514,78 @@
         "reset": 1787337530,
         "retryAfter": 1
       }
+    },
+    {
+      "id": "github-code-plugin-app",
+      "kind": "mcp",
+      "coverage": "supplemental",
+      "query": "filename:.app.json",
+      "mode": "code-search",
+      "total": 573440,
+      "pages": 10,
+      "results": 86,
+      "truncated": true,
+      "errors": [
+        {
+          "query": "filename:.app.json",
+          "page": 2,
+          "error": "GitHub API 429",
+          "status": 429
+        }
+      ],
+      "rate": {
+        "remaining": 9,
+        "reset": 1787339701,
+        "retryAfter": 1
+      }
+    },
+    {
+      "id": "github-code-marketplace-agents",
+      "kind": "marketplace",
+      "coverage": "supplemental",
+      "query": "filename:marketplace.json path:.agents/plugins",
+      "mode": "code-search",
+      "total": 5328,
+      "pages": 10,
+      "results": 100,
+      "truncated": true,
+      "errors": [
+        {
+          "query": "filename:marketplace.json path:.agents/plugins",
+          "page": 2,
+          "error": "GitHub API 429",
+          "status": 429
+        }
+      ],
+      "rate": {
+        "remaining": 8,
+        "reset": 1787339701,
+        "retryAfter": 1
+      }
+    },
+    {
+      "id": "github-code-marketplace-claude",
+      "kind": "marketplace",
+      "coverage": "supplemental",
+      "query": "filename:marketplace.json path:.claude-plugin",
+      "mode": "code-search",
+      "total": 29952,
+      "pages": 10,
+      "results": 100,
+      "truncated": true,
+      "errors": [
+        {
+          "query": "filename:marketplace.json path:.claude-plugin",
+          "page": 2,
+          "error": "GitHub API 429",
+          "status": 429
+        }
+      ],
+      "rate": {
+        "remaining": 7,
+        "reset": 1787339701,
+        "retryAfter": 1
+      }
     }
   ],
   "sourcesProcessedThisRun": 3,
@@ -864,1894 +936,3812 @@
         "count": 100,
         "nextCursor": "com.blazesportsintel/college-baseball:3.1.0",
         "cursor": "com.blackswancausallabs/target-mcp:0.1.2"
+      },
+      {
+        "page": 58,
+        "count": 100,
+        "nextCursor": "com.butterflydelta/preflight:1.0.0",
+        "cursor": "com.blazesportsintel/college-baseball:3.1.0"
+      },
+      {
+        "page": 59,
+        "count": 100,
+        "nextCursor": "com.choosemylo/mind-of-mylo-quotes:1.19.5",
+        "cursor": "com.butterflydelta/preflight:1.0.0"
+      },
+      {
+        "page": 60,
+        "count": 100,
+        "nextCursor": "com.clauderecall/recall:0.96.3",
+        "cursor": "com.choosemylo/mind-of-mylo-quotes:1.19.5"
+      },
+      {
+        "page": 61,
+        "count": 100,
+        "nextCursor": "com.codmir/mcp:0.2.3",
+        "cursor": "com.clauderecall/recall:0.96.3"
+      },
+      {
+        "page": 62,
+        "count": 100,
+        "nextCursor": "com.contrastcyber/api:1.33.13",
+        "cursor": "com.codmir/mcp:0.2.3"
+      },
+      {
+        "page": 63,
+        "count": 100,
+        "nextCursor": "com.daedalmap/currency:1.0.1",
+        "cursor": "com.contrastcyber/api:1.33.13"
+      },
+      {
+        "page": 64,
+        "count": 100,
+        "nextCursor": "com.debugbundle/mcp:1.6.1",
+        "cursor": "com.daedalmap/currency:1.0.1"
+      },
+      {
+        "page": 65,
+        "count": 100,
+        "nextCursor": "com.divineapi/western:1.4.1",
+        "cursor": "com.debugbundle/mcp:1.6.1"
+      },
+      {
+        "page": 66,
+        "count": 100,
+        "nextCursor": "com.dropwatchhq/bio-catalyst:1.0.0",
+        "cursor": "com.divineapi/western:1.4.1"
+      },
+      {
+        "page": 67,
+        "count": 100,
+        "nextCursor": "com.echosaw/mcp-server:1.2.8",
+        "cursor": "com.dropwatchhq/bio-catalyst:1.0.0"
       }
     ],
-    "results": 5700,
+    "results": 6700,
     "complete": false,
     "errors": []
   },
   "scans": [
     {
-      "repository": "rksharma-owg/Codex-Skills",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "NPJigaK/unified-adversarial-review-skill",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "NPJigaK/jq-cli-skill",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "FloydTang/FloydTang",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "jvogan/symphony-claude-lane",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "jvogan/symphony-linear-starter",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "mirogate/web-performance-skill-cascade",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "GuiBibeau/deployless",
-      "status": "fresh",
-      "artifacts": 12,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 11,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "zgroves24/agent-operator-skills",
-      "status": "fresh",
-      "artifacts": 15,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 14,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "TenWalk/ieee-skills",
-      "status": "fresh",
-      "artifacts": 35,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 34,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "dyngai/handoffkit",
-      "status": "fresh",
-      "artifacts": 7,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Retourflow/project-memory-for-codex",
-      "status": "fresh",
-      "artifacts": 7,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "austinsonger/GRC-Mapping-Analyst",
+      "repository": "See-Sol-Lab/ai-companion-time-anchor",
       "status": "fresh",
       "artifacts": 5,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "caggursoy/biopsych-prereg-skill",
-      "status": "fresh",
-      "artifacts": 7,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "dreambloomdesign-code/DESIGNOSFORGE",
-      "status": "fresh",
-      "artifacts": 18,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 17,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "vandordev/skills-api-flow-tester",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "lunashia/code-generation-skill",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "srinivasa-vasu/agent-skills",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "browoz/agentic-sdlc-skills",
-      "status": "fresh",
-      "artifacts": 8,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 7,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "PodcastAPI/skills",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "athola/skrills",
-      "status": "fresh",
-      "artifacts": 10,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 9,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "litong865-arch/codex-13-plugin-suite",
-      "status": "fresh",
-      "artifacts": 28,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 27,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "2023Anita/scientific-visual-skills",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "FloydTang/trade-skills-collection",
-      "status": "fresh",
-      "artifacts": 15,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 14,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Gary06868/repo-proof",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "lynseylee-ones/transcript-clean-translate-en",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "whobat/AI-Agent-skills",
-      "status": "fresh",
-      "artifacts": 22,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 21,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "LEON-gittech/Skill2Poster",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "lijingda/memory-skill",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "tompinataro/tixpy-agent-skills",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "MaxFabian25/codex-real-engineering-skills",
-      "status": "fresh",
-      "artifacts": 37,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 36,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "rundrill/rundrill",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "uuoov/ppt-image-share-builder",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "nishimoto265/anthropic-dev-loop",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ripred/arduino-cli-skills",
-      "status": "fresh",
-      "artifacts": 27,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 26,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Next2D/next2d-development-assistant",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "onyx679/automotive-ve-ai-skills-kit",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 1,
+      "verifiedArtifacts": 0,
       "deferredArtifacts": 5,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "krun55/nscc-aspire-skills",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "pauloportella/codex-dots",
-      "status": "fresh",
-      "artifacts": 8,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 7,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "HPSummer/question-to-prompt-pack",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "HPSummer/skill-router-registry",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "wenxin097-ship-it/legal-ip-skills-cn",
-      "status": "fresh",
-      "artifacts": 36,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 35,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Ottili-ONE/skills",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "VikashLoomba/copilot-mcp",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "mirogate/secure-code-skill-cascade",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "chuyanchu/my-skills",
-      "status": "fresh",
-      "artifacts": 10,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 9,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "frankzch/ai-news-skill",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "G-xps/weekly-report-gxp",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "glichtenthal/awesome-judgment-infrastructure",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "wangyz1999/paper-list-outreach-skill",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "smnandre/symfony-ux-skills",
-      "status": "fresh",
-      "artifacts": 9,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 8,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "magic-25/ReviewMatrix",
-      "status": "fresh",
-      "artifacts": 20,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 19,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "mospira/walkforward-audit",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "bcorfman/gui-workflow-guardrails",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "kbelasheuski/ios-architecture-skills",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "eClip8e-coder/do-think-twice",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "jomeswang/agnes-ai-skill",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "quysto/QUYQUY-AntigravityAwesomeSkills-GodVersion-bumbum",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "quzhiii/thesis-skills",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "JonesPitkin/3x-ui-skills",
-      "status": "fresh",
-      "artifacts": 14,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 13,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "sinhoneyy/master-skills",
-      "status": "fresh",
-      "artifacts": 4957,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 4956,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "jeffcryder/skills",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "zydo/skills",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ddalgrande/dining-places-skill",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Frankatvan/looplens-codex-skills",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "scottconverse/codex-audit-skills",
-      "status": "fresh",
-      "artifacts": 7,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "sergekostenchuk/seo-llm-skill-cluster",
-      "status": "fresh",
-      "artifacts": 27,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 26,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "panjose/Co-Scientist",
-      "status": "fresh",
-      "artifacts": 50,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 49,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "169884902hzl/engineering-paper-skills",
-      "status": "fresh",
-      "artifacts": 16,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 15,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "AA8j/codex-skills",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "TenWalk/multi-agent-coordinator-skill",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "libenxier-beep/codex-memory-system-public",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "xxzxzmai-droid/dify-builder-skills",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Dezoff-max/codex-ui-board-skills",
-      "status": "fresh",
-      "artifacts": 10,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 9,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "RokyYTR2/BetterThink",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "souljorje/agent-skills",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "fanggeek/xiaolu-house",
-      "status": "fresh",
-      "artifacts": 58,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 57,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "QZhang2111/Research-Pilot",
-      "status": "fresh",
-      "artifacts": 18,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 17,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "GX-Alex/html2pptx",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "KraitDev/skiLL.Md",
-      "status": "fresh",
-      "artifacts": 14,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 13,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Zsun79/LitReviewSkill",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "drmhse/authos_skill",
-      "status": "fresh",
-      "artifacts": 24,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 23,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Shellishack/3d-web-game-dev-skills",
-      "status": "fresh",
-      "artifacts": 11,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 10,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "LXR110-bit/codex-session-bridge",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "pengqianhan/NZ-life-skills",
+      "repository": "peterwangze/software-project-governance",
       "status": "fresh",
       "artifacts": 32,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 31,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 32,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "redasdm/hwpx-skills",
+      "repository": "Ambush-AI/codex-plugins",
       "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 1,
+      "artifacts": 5,
+      "verifiedArtifacts": 0,
       "deferredArtifacts": 5,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "haihui121/xiao-luo-student",
+      "repository": "adhit-r/codecanopy",
       "status": "fresh",
-      "artifacts": 0,
+      "artifacts": 4,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "mvdmakesthings/skills",
-      "status": "fresh",
-      "artifacts": 14,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 13,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "syzkillall/comprehensive-thinking-skill",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "nomanfoundhere/overleaf-mcp",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Moonweave-Systems/decision-kernel",
-      "status": "fresh",
-      "artifacts": 5,
-      "verifiedArtifacts": 1,
       "deferredArtifacts": 4,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "thislzm/SKILL",
+      "repository": "Looted/kibi",
       "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "toyme/storyboard-skill",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Yuya-Ishibashi0/hospital-workflow-codex-skills",
-      "status": "fresh",
-      "artifacts": 22,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 21,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "AlekseiSeleznev/intent-driven-codex",
-      "status": "fresh",
-      "artifacts": 21,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 20,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "imoling/iml-skills",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ArthurZakirov/AgentDesk",
-      "status": "fresh",
-      "artifacts": 25,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 24,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "H-Build-223/operators-praxis",
-      "status": "fresh",
-      "artifacts": 13,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 12,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "sp-daewoon/chronicle",
-      "status": "fresh",
-      "artifacts": 7,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "RegionallyFamous/youish",
-      "status": "fresh",
-      "artifacts": 9,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 8,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Moonweave-Research/research-wiki-motion-skill",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "bitofacoder/shortsmith",
-      "status": "fresh",
-      "artifacts": 12,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 11,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "realraelrr/handoff-skill",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "guorunjie/skillpack-forge",
-      "status": "fresh",
-      "artifacts": 40,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 39,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "guorunjie/skillpack-forge-demo",
-      "status": "fresh",
-      "artifacts": 5,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "qtnx/golang-effective-skills",
-      "status": "fresh",
-      "artifacts": 13,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 12,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ash1794/vibe-engineering",
-      "status": "fresh",
-      "artifacts": 40,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 39,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Colvin-Y/kubernetes-ontology",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "HaloForgeAI/adac-skills",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "htdxd/codemap-skill",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ltczding-gif/ref-downloader",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "realraelrr/docling-skill",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "kabatan/guardian",
-      "status": "fresh",
-      "artifacts": 12,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 11,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "dpan538/infographic-editorial-design-skill",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "sickn33/agentic-awesome-skills",
-      "status": "fresh",
-      "artifacts": 6639,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 6638,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Egonex-AI/Understand-Anything",
-      "status": "fresh",
-      "artifacts": 11,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 10,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "frumu-ai/tandem",
-      "status": "fresh",
-      "artifacts": 123,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 122,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "goji-agency/website",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
+      "artifacts": 30,
       "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "goji-agency/goji-mcp",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "mindsightventures/lona",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "1325ai/1325ai",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "abmeter/abmeter",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "dealfluence/adeu",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "DIGIBIZ360-COM/adoraads",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "stylemi-co/adramp",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "Agentberg/agentberg",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "agentdmai/agentdm",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "u00dxk2/agentic-news",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "bobberrisford/affiliatemcp",
-      "status": "fresh",
-      "artifacts": 41,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 40,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "vboykoCTO/agentic-shelf",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "observer-protocol/at-directory",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "matebenyovszky/agentplaybooks",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "agenttrust/mcp-server",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "rooz21/x402",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "AInoAKARI/AInoAKARI",
-      "status": "fresh",
-      "artifacts": 9,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 8,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "AInoAKARI/arigatou-kawaii-lp",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "haf/glimt",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "aliengiraffe/spotdb",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ambix-ai/mcp",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "analyticslegends/analytics-legends-mcp",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ankimcp/anki-mcp-server",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ankimcp/anki-mcp-server-addon",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "anomalyarmor/agents",
-      "status": "fresh",
-      "artifacts": 17,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 16,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "andrewjgaber-commits/empire-distribution",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "arpi-ai/arpi-mcp",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "alex-hoyeol-choi/headless-commerce",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "atlaso-labs/mcp",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "auralogs-ai/auralogs-mcp",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "auteng/auteng",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "autoblocksai/ctxl",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "Autonomad1/computeback-mcp",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Autonomad1/autonomad1",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "AutoRFP/mcp",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Samp2Alex/auxen-mcp",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "auxen-ai/auxen-mcp",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "kipmcc/aviado-mcp",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "MediaZione/AwrAiter",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "BackEngine-ai/backengine-mcp",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Bankee-ai/inferventis",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "gih2yun/bareun-mcp",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "navbuildz/basethread-mcp",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "opspot-ai/betslipdoctor",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "betterpost/betterpost-plugin",
-      "status": "fresh",
-      "artifacts": 9,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 8,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "breverdbidder/cli-anything-biddeed",
-      "status": "fresh",
-      "artifacts": 90,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 89,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "TechDocsStudio/biel-mcp",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "bitroadai/bitroad-mcp",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "bittlebitsai/bittlebits-plugin",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "kipmcc/blast-radius-live",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "lukasbudrys2/legendary-carnival",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "BloopodotAI/bloopo-marketplace",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "signaltech-org/bolthub-sdk",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Boolsai-ai/mcp",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "alainsvrd/platform",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "alainsvrd/borealhost-mcp",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "skvcool-rgb/BoundaryAI",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "Metroxe/bowmark",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 404"
-      ]
-    },
-    {
-      "repository": "bowmark-ai/skill",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ArcQian-bit/codex-real-engineer-skills",
-      "status": "fresh",
-      "artifacts": 20,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 19,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ramosvimos/douyin-content-research-skills",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "zaixincheng174-ai/codex-agent-governance-skills",
-      "status": "fresh",
-      "artifacts": 21,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 20,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Tassoi/mobile-store-release-skills",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "zzj2004/minimax-hub",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "zhao123xiao/openvino-skills",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "nospicyplease/amazon-ppc-advanced-skills",
-      "status": "fresh",
-      "artifacts": 14,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 13,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "mturac/hermes-supercode-skills-codex",
-      "status": "fresh",
-      "artifacts": 14,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 13,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "realraelrr/knot-skills",
-      "status": "fresh",
-      "artifacts": 5,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "hideaway007/codex-skill-packs",
-      "status": "fresh",
-      "artifacts": 22,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 21,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "marmbiz/humanizer-de",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Knnmm/nullcost-inventory",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "chuspeeism/dashi-taskboard",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "seroja01ajores/knowledge-space-codex-toolkit",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "PablitoPJ/drifter-blueprint-vault",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "corezoid/corezoid-ai-plugin",
-      "status": "fresh",
-      "artifacts": 31,
-      "verifiedArtifacts": 1,
       "deferredArtifacts": 30,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "gurutersesat24/ai-site-forge",
-      "status": "fresh",
+      "repository": "HIDORAKAI002/ai-workspace-archive",
+      "status": "partial",
       "artifacts": 0,
       "verifiedArtifacts": 0,
       "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
+      "truncated": true,
+      "errors": [
+        "GitHub API 403"
+      ]
     },
     {
-      "repository": "AndreIgarzabal/vibekit-halt-guard",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "sakshisantoshthorat/artisan-dev-handbook",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "tianwdong/codex-continuity",
-      "status": "fresh",
-      "artifacts": 22,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 21,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "getaxonflow/axonflow-codex-plugin",
-      "status": "fresh",
-      "artifacts": 16,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 15,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "andreilungeanu/cursor-delegate-mcp",
+      "repository": "linsong-dev/diegin-skill",
       "status": "fresh",
       "artifacts": 6,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 5,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 6,
       "truncated": false,
       "errors": []
     },
     {
-      "repository": "Devin-AXIS/iPolloWork",
+      "repository": "TheOGFlyingTesla/Cody",
       "status": "fresh",
-      "artifacts": 81,
-      "verifiedArtifacts": 1,
-      "deferredArtifacts": 80,
+      "artifacts": 7,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 7,
       "truncated": false,
       "errors": []
+    },
+    {
+      "repository": "geldmacher/workflow",
+      "status": "fresh",
+      "artifacts": 31,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 31,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "GuraQwQ/codex-dynamic-bridge",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "kingcharleslzy-ai/bizhub-installer",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "rogue-shadowdancer/codex-hyperv-clean-room-plugin",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "benteigland11/cartograph-plugin",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "svy04/ballast",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "seokhoonj/pydatagokr",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "jiangkoumo/agenttape",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "boshu2/agentops",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "MelnixDev/codex-ymt",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "zhongwangquan/multica-agent-sync",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "hogancv/coordinate-agents",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "andreilungeanu/codex-delegate-mcp",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "JMET04/aicad-agent",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "PostHog/ai-plugin",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "medvertical/records-agent-tools",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "shrekshrek/project-workflow",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "trelio-ru/agent-workspaces",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "zjunlp/AutoSciRub",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ddtcorex/agent-dev-skills",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "sturlese/build-squad",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "icesixgod/codex-trajectory",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "cch96/happycodex",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "joeaoe-hash/harmonyos-mobile-app-research",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Fish121380/auto-mouse",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ly95/verified-development",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "jonit-dev/linchpin",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Besty0728/sub-agy",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "heyzeyu/docmost-knowledge",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "jakelongvu-bot/Vucar-AI-Plugin",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "j7an/superpowers-manager",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "rhein1/fable5-codex",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "gaelic-ghost/socket",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "suxrobGM/jobpilot",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Demonbane18/astral-orchestrator",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "MohamedAbdallah-14/unslop",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tetracoralla/armorial",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "DeployGate/deploygate-agent-plugin",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Today-Hbw/codex-dev-workflow",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "XiangyuSu611/claimmate",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "linsong-dev/mindol",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "cosmobimetal956/Layntra",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "pzzld-org/shepherd",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "IngvarConsulting/unica",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "MarcoRossini96/build-macos-apps-browser-mirror",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "kreek/consult",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Peytontalismanic424/paper-share-skills",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ajhcs/Codex-Co-Engineer",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "wearshoes/release-ops",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "nimbold/codex-consultants",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "OrenAshkenazy/gh-review-loop",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "douglasmonsky/codex-usage-tracker",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "hyhunss/sg-semicon-us-expansion-plugin",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "0xenzyme/agent-harness",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "freedom-winds/CodexMux",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "entr-engineering/planned-codex-plugin",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "SethGammon/Citadel",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "LOLer001/workflow-manager",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "pushnoi/skills-internet-codex",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "FFriends/GPT-Helper",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "GML-MMGroup/Diverter",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "hermercy77/shadow-review",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "samihalawa/linkedin-godmode-plugin",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "xsoc1/rigorous-open-math-research",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Maksim-Burtsev/simple-man",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "reshuibuduo/tmcra",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "AMAP-ML/LongHorizon-Harness",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "TerenceLiu98/prewalk",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "s977043/river-review",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "s977043/PlanGate",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Syh1906/openai-compatible-imagegen",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tetracoralla/migratory-time",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "wei-b0/codexbar-lite",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "axing100/project-workflow",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "lql341/codex-scnet-hpc",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "w1661884010-jpg/automation-learning-workbench",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "squarepots/claude-seo-for-codex",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Bene-2020/plane-codex-mcp",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "lennney/stop-that-shit",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "linsong-dev/checkpush",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "zedarvates/botte-secrete",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "huntingrin/handoff",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tetracoralla/math-anchor",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "rainthousand/agentshell",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ulpi-io/marketplace",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "KoreaNirsa/spec-guard",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Syoong-s/Superplan",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "FaxanFM/chronos",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tetracoralla/decision-table",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "seojun03/cheongnyeon-telecom-plugins",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "mallarylabs/chatgpt-plugin",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "mihirkavi/reddit-agent",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "mushanyoung/property-tax-appeal-skll",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Heretyc/subagent-mcp",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "matlab/simulink-agentic-toolkit",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "hitSlop/shots",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "dequn/personal-finance-planner",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "handong66/opencode-plugin-codex",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "keli-wen/agy-staff",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "kora-projects/kora-skills",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tractorjuice/arckit-codex",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "papperrollinggery/codex-workspace-enhancer",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "chiphoton/MiniMax-H3-Codex-Drama",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "JordanReighn/design-reference-library",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tian2-ai/sts-research-suite",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tian2-ai/yau-research-suite",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tian2-ai/conrad-research-suite",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "19Chris19/china-travel-assistant",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "jinny51/codex-deepseek-subagent",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "skoskov/serp-bot",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "shigella520/MindTrain",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "fatmo666/Caushell",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "plaid-ai/opscale-codex-plugin",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Arindaag760/humanizer-cli",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Dtgam7689/claude-skill-critique",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Vit129/agy-plugin-codex",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tetracoralla/laniakea",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Shilo/pixellab-pip",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Cusnd/agent-docs",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "GZ-L/agent-cardroom",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "w93139/github-radar",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "pactflow/pactflow-agent-skills",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "jxpeng98/qiongli",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "kennyzhaoo/codex-screenpet",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ValerianXXX/billfit",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "surrealdb/ai-codex-plugin",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Fish121380/csc-agent-guard-v1",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "AbhiiGatty/cld-flare-maxxing",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "cloudyview/structure-preserving-doc-converter",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "memorylake-ai/memorylake-harness",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "xDylanLong/xiaomi-band-codex-notify",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "CJhuochai/cp-memory",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "HYEXE/codex-plugins",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "vishesh9131/elephant",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tessaryai/plugins",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ViszCham/RepoSeiri",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "goodbotbadbot/goodbotbadbot",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "YG-creator-ai/flagzy-community",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "reshuibuduo/tmcra-memory",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "reshuibuduo/tmcra-plugin-codex",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "sgroy10/speclock",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "MetaFloor-AI/metafloor-scm-plugin-openai",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "langchain-ai/langsmith-codex-plugins",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "mihhhir08/projectpilot",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Soulize/Sol-Luna-Orchestrator",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "cavi-ai/obsidian-agent",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "magic2goodil/studioops",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "XINGchi0130/dsh-base-plugin",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "NaCr05/project-preflight",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ReflexioAI/claude-smart",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "fn-opt/dryforge",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "PouLJenny/trundle",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "MalphtieYU/skillscout",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "foggykitchen/foggykitchen-mcp",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "frabcd/codex-ai-game-studio",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "psh4607/notion-multi-workspace",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "good-boy4069/Deepseek-omnimodal",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "gaofeng21cn/opl-relay",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "gaofeng21cn/opl-persona",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "cyberlesterr/paper-collage-video",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "mbackschat/a12-dmtool-releases",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "handong66/grok-plugin-codex",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "gongzhang9396-ui/codex-multi-model-workflow",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "vadim-chiriac/worldkeep",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "AgentTanuki/agent-guild",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "reymondmeking-dot/nvwa-Chinese-character-open",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Czarnak/totally-integrated-claude",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "OpenNekoPaw/codex-dsh-web",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "chromapaw/codex-chromapaw",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "isdou/branch-keeper",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tian2-ai/isef-research-suite",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "hanhuark/mechanical-engineering-research-skill",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "naliduoyuhang/deepseek-harness-bridge-codex-plugin",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "zebbern/agent-collab",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "totolstoy/rehydrate-codex-plugin",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "msmorgan/jj-kata",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "qmy0423-coder/epub-visual-to-markdown",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "hcsdtk/novel-to-wechat",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "patrickschiller/sourcebraid",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "6Kmfi6HP/avoid-overkill",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "BlueSkyXN/Codex-is-all-you-need",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "legal-expert-ai/marketplace",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "MedAdemBHA/docflow",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "kadaba/claude-bridge",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "wvdsh/ai",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "w1661884010-jpg/feibi-codex-pet",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "shixinnt/codex-image-context-runtime",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "weathour/ismism-system",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "twanonymous/agent-dispatch-cli",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "MarvinSunnnn/codex-svg-review",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "dingyiyi0226/fantasy-baseball-mcp",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ulofiai/codex-context-rollover",
+      "status": "unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
     }
   ],
-  "repositoriesDiscovered": 17530,
+  "repositoriesDiscovered": 18425,
   "repositoriesScanned": 200,
-  "repositoriesNotScanned": 14129,
-  "scanOffset": 1104,
+  "repositoriesNotScanned": 14611,
+  "scanOffset": 1113,
+  "repositoriesScannedTotal": 1113,
   "cycleComplete": false,
-  "persistedScanFailures": [],
+  "persistedScanFailures": [
+    {
+      "repository": "HIDORAKAI002/ai-workspace-archive",
+      "status": "partial",
+      "truncated": true,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "kingcharleslzy-ai/bizhub-installer",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "rogue-shadowdancer/codex-hyperv-clean-room-plugin",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "benteigland11/cartograph-plugin",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "svy04/ballast",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "seokhoonj/pydatagokr",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "jiangkoumo/agenttape",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "boshu2/agentops",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "MelnixDev/codex-ymt",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "zhongwangquan/multica-agent-sync",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "hogancv/coordinate-agents",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "andreilungeanu/codex-delegate-mcp",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "JMET04/aicad-agent",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "PostHog/ai-plugin",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "medvertical/records-agent-tools",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "shrekshrek/project-workflow",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "trelio-ru/agent-workspaces",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "zjunlp/AutoSciRub",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ddtcorex/agent-dev-skills",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "sturlese/build-squad",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "icesixgod/codex-trajectory",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "cch96/happycodex",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "joeaoe-hash/harmonyos-mobile-app-research",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Fish121380/auto-mouse",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ly95/verified-development",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "jonit-dev/linchpin",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Besty0728/sub-agy",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "heyzeyu/docmost-knowledge",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "jakelongvu-bot/Vucar-AI-Plugin",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "j7an/superpowers-manager",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "rhein1/fable5-codex",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "gaelic-ghost/socket",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "suxrobGM/jobpilot",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Demonbane18/astral-orchestrator",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "MohamedAbdallah-14/unslop",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tetracoralla/armorial",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "DeployGate/deploygate-agent-plugin",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Today-Hbw/codex-dev-workflow",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "XiangyuSu611/claimmate",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "linsong-dev/mindol",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "cosmobimetal956/Layntra",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "pzzld-org/shepherd",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "IngvarConsulting/unica",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "MarcoRossini96/build-macos-apps-browser-mirror",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "kreek/consult",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Peytontalismanic424/paper-share-skills",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ajhcs/Codex-Co-Engineer",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "wearshoes/release-ops",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "nimbold/codex-consultants",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "OrenAshkenazy/gh-review-loop",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "douglasmonsky/codex-usage-tracker",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "hyhunss/sg-semicon-us-expansion-plugin",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "0xenzyme/agent-harness",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "freedom-winds/CodexMux",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "entr-engineering/planned-codex-plugin",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "SethGammon/Citadel",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "LOLer001/workflow-manager",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "pushnoi/skills-internet-codex",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "FFriends/GPT-Helper",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "GML-MMGroup/Diverter",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "hermercy77/shadow-review",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "samihalawa/linkedin-godmode-plugin",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "xsoc1/rigorous-open-math-research",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Maksim-Burtsev/simple-man",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "reshuibuduo/tmcra",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "AMAP-ML/LongHorizon-Harness",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "TerenceLiu98/prewalk",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "s977043/river-review",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "s977043/PlanGate",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Syh1906/openai-compatible-imagegen",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tetracoralla/migratory-time",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "wei-b0/codexbar-lite",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "axing100/project-workflow",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "lql341/codex-scnet-hpc",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "w1661884010-jpg/automation-learning-workbench",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "squarepots/claude-seo-for-codex",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Bene-2020/plane-codex-mcp",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "lennney/stop-that-shit",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "linsong-dev/checkpush",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "zedarvates/botte-secrete",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "huntingrin/handoff",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tetracoralla/math-anchor",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "rainthousand/agentshell",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ulpi-io/marketplace",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "KoreaNirsa/spec-guard",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Syoong-s/Superplan",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "FaxanFM/chronos",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tetracoralla/decision-table",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "seojun03/cheongnyeon-telecom-plugins",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "mallarylabs/chatgpt-plugin",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "mihirkavi/reddit-agent",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "mushanyoung/property-tax-appeal-skll",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Heretyc/subagent-mcp",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "matlab/simulink-agentic-toolkit",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "hitSlop/shots",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "dequn/personal-finance-planner",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "handong66/opencode-plugin-codex",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "keli-wen/agy-staff",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "kora-projects/kora-skills",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tractorjuice/arckit-codex",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "papperrollinggery/codex-workspace-enhancer",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "chiphoton/MiniMax-H3-Codex-Drama",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "JordanReighn/design-reference-library",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tian2-ai/sts-research-suite",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tian2-ai/yau-research-suite",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tian2-ai/conrad-research-suite",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "19Chris19/china-travel-assistant",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "jinny51/codex-deepseek-subagent",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "skoskov/serp-bot",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "shigella520/MindTrain",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "fatmo666/Caushell",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "plaid-ai/opscale-codex-plugin",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Arindaag760/humanizer-cli",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Dtgam7689/claude-skill-critique",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Vit129/agy-plugin-codex",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tetracoralla/laniakea",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Shilo/pixellab-pip",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Cusnd/agent-docs",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "GZ-L/agent-cardroom",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "w93139/github-radar",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "pactflow/pactflow-agent-skills",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "jxpeng98/qiongli",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "kennyzhaoo/codex-screenpet",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ValerianXXX/billfit",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "surrealdb/ai-codex-plugin",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Fish121380/csc-agent-guard-v1",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "AbhiiGatty/cld-flare-maxxing",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "cloudyview/structure-preserving-doc-converter",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "memorylake-ai/memorylake-harness",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "xDylanLong/xiaomi-band-codex-notify",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "CJhuochai/cp-memory",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "HYEXE/codex-plugins",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "vishesh9131/elephant",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tessaryai/plugins",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ViszCham/RepoSeiri",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "goodbotbadbot/goodbotbadbot",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "YG-creator-ai/flagzy-community",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "reshuibuduo/tmcra-memory",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "reshuibuduo/tmcra-plugin-codex",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "sgroy10/speclock",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "MetaFloor-AI/metafloor-scm-plugin-openai",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "langchain-ai/langsmith-codex-plugins",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "mihhhir08/projectpilot",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Soulize/Sol-Luna-Orchestrator",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "cavi-ai/obsidian-agent",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "magic2goodil/studioops",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "XINGchi0130/dsh-base-plugin",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "NaCr05/project-preflight",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ReflexioAI/claude-smart",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "fn-opt/dryforge",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "PouLJenny/trundle",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "MalphtieYU/skillscout",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "foggykitchen/foggykitchen-mcp",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "frabcd/codex-ai-game-studio",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "psh4607/notion-multi-workspace",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "good-boy4069/Deepseek-omnimodal",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "gaofeng21cn/opl-relay",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "gaofeng21cn/opl-persona",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "cyberlesterr/paper-collage-video",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "mbackschat/a12-dmtool-releases",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "handong66/grok-plugin-codex",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "gongzhang9396-ui/codex-multi-model-workflow",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "vadim-chiriac/worldkeep",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "AgentTanuki/agent-guild",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "reymondmeking-dot/nvwa-Chinese-character-open",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Czarnak/totally-integrated-claude",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "OpenNekoPaw/codex-dsh-web",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "chromapaw/codex-chromapaw",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "isdou/branch-keeper",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "tian2-ai/isef-research-suite",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "hanhuark/mechanical-engineering-research-skill",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "naliduoyuhang/deepseek-harness-bridge-codex-plugin",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "zebbern/agent-collab",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "totolstoy/rehydrate-codex-plugin",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "msmorgan/jj-kata",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "qmy0423-coder/epub-visual-to-markdown",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "hcsdtk/novel-to-wechat",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "patrickschiller/sourcebraid",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "6Kmfi6HP/avoid-overkill",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "BlueSkyXN/Codex-is-all-you-need",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "legal-expert-ai/marketplace",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "MedAdemBHA/docflow",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "kadaba/claude-bridge",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "wvdsh/ai",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "w1661884010-jpg/feibi-codex-pet",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "shixinnt/codex-image-context-runtime",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "weathour/ismism-system",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "twanonymous/agent-dispatch-cli",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "MarvinSunnnn/codex-svg-review",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "dingyiyi0226/fantasy-baseball-mcp",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "ulofiai/codex-context-rollover",
+      "status": "unavailable",
+      "truncated": false,
+      "errors": [
+        "GitHub API 403"
+      ]
+    }
+  ],
   "terminalUnavailableRepositories": 27,
-  "artifactsDiscovered": 53396,
-  "errors": 30,
+  "artifactsDiscovered": 54518,
+  "errors": 385,
   "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
-    "skill": 40772,
-    "plugin": 696,
-    "mcp": 6152,
-    "marketplace": 312,
-    "hook": 137,
-    "plugin-metadata": 4717,
-    "agents": 574,
+    "skill": 40851,
+    "plugin": 705,
+    "mcp": 7160,
+    "marketplace": 319,
+    "hook": 142,
+    "plugin-metadata": 4724,
+    "agents": 581,
     "action": 36,
     "other": 0
   },
   "verificationCounts": {
     "verified": 1080,
-    "discovered": 46602,
-    "registry": 5700,
+    "discovered": 46725,
+    "registry": 6699,
     "unknown": 14
   }
 }
