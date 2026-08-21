@@ -28,7 +28,7 @@
           "fullName": { "type": "string", "minLength": 1 },
           "name": { "type": "string", "minLength": 1 },
           "url": { "type": ["string", "null"] },
-          "categories": { "type": "array", "items": { "enum": ["skill", "plugin", "mcp", "marketplace", "hook", "config", "plugin-metadata", "agents", "action", "other"] } }
+          "categories": { "type": "array", "items": { "enum": ["skill", "plugin", "mcp", "marketplace", "hook", "config", "agent-config", "rule", "prompt", "plugin-metadata", "agents", "action", "other"] } }
         },
         "additionalProperties": true
       }
@@ -40,7 +40,7 @@
         "required": ["id", "category", "path", "status", "source"],
         "properties": {
           "id": { "type": "string", "minLength": 1 },
-          "category": { "enum": ["skill", "plugin", "mcp", "marketplace", "hook", "config", "plugin-metadata", "agents", "action", "other"] },
+          "category": { "enum": ["skill", "plugin", "mcp", "marketplace", "hook", "config", "agent-config", "rule", "prompt", "plugin-metadata", "agents", "action", "other"] },
           "path": { "type": "string", "minLength": 1 },
           "status": { "enum": ["verified", "discovered", "registry", "unknown"] },
           "source": { "enum": ["github-tree", "mcp-registry"] }

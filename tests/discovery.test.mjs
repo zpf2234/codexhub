@@ -301,6 +301,10 @@ test('artifact classifier recognizes Codex component paths', () => {
   assert.equal(classifyPath('hooks.json').category, 'hook');
   assert.equal(classifyPath('.codex/config.toml').type, 'codex-config');
   assert.equal(classifyPath('.codex/requirements.toml').category, 'config');
+  assert.equal(classifyPath('.codex/agents/reviewer.toml').type, 'agent-config');
+  assert.equal(classifyPath('.codex/rules/default.rules').category, 'rule');
+  assert.equal(classifyPath('.codex/prompts/release.md').category, 'prompt');
+  assert.equal(classifyPath('services/AGENTS.override.md').category, 'agents');
   assert.equal(classifyPath('.agents/plugins/marketplace.json').category, 'marketplace');
   assert.equal(classifyPath('hooks/hooks.json').category, 'hook');
   assert.equal(classifyPath('agents/openai.yaml').category, 'plugin-metadata');

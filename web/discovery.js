@@ -1,7 +1,7 @@
 const params = new URLSearchParams(location.search);
 const state = { data: null, query: params.get('q') || '', category: params.get('category') || 'all', verification: params.get('verification') || 'all', view: params.get('view') || 'artifacts', sort: params.get('sort') || 'repository', visible: 60 };
-const categories = ['all', 'skill', 'plugin', 'mcp', 'marketplace', 'hook', 'config', 'plugin-metadata', 'agents', 'action', 'other'];
-const labels = { all: 'All artifacts', skill: 'Skills', plugin: 'Plugins', mcp: 'MCP', marketplace: 'Marketplaces', hook: 'Hooks', config: 'Codex config', 'plugin-metadata': 'Plugin metadata', agents: 'AGENTS.md', action: 'Actions', other: 'Other' };
+const categories = ['all', 'skill', 'plugin', 'mcp', 'marketplace', 'hook', 'config', 'agent-config', 'rule', 'prompt', 'plugin-metadata', 'agents', 'action', 'other'];
+const labels = { all: 'All artifacts', skill: 'Skills', plugin: 'Plugins', mcp: 'MCP', marketplace: 'Marketplaces', hook: 'Hooks', config: 'Codex config', 'agent-config': 'Custom agents', rule: 'Execpolicy rules', prompt: 'Custom prompts', 'plugin-metadata': 'Plugin metadata', agents: 'AGENTS.md', action: 'Actions', other: 'Other' };
 const statusLabels = { verified: 'Verified', discovered: 'Deferred', registry: 'Registry', unknown: 'Unknown' };
 const el = (tag, className, text) => { const node = document.createElement(tag); if (className) node.className = className; if (text != null) node.textContent = text; return node; };
 const safeUrl = (value) => { try { const url = new URL(value); return ['http:', 'https:'].includes(url.protocol) ? url.href : '#'; } catch { return '#'; } };

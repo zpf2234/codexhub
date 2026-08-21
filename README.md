@@ -68,7 +68,10 @@ For operational recovery, `GITHUB_DISCOVERY_TIMEOUT_MS` and `GITHUB_DISCOVERY_RE
 - **MCP**: `.mcp.json` bundled server configuration; `.app.json` is retained as the `mcp-app` type for registered MCP app mappings.
 - **Hooks**: `hooks/hooks.json`, other `hooks/*.json`, and project `.codex/hooks.json` lifecycle configuration.
 - **Codex config**: project `.codex/config.toml` and `.codex/requirements.toml`, which may declare MCP servers, hooks, and managed requirements.
-- **AGENTS**: a declared `AGENTS.md` or `AGENTS.override.md` path.
+- **Custom agents**: project `.codex/agents/*.toml` subagent definitions.
+- **Execpolicy rules**: project `.codex/rules/*.rules` command policy files.
+- **Custom prompts**: project `.codex/prompts/*.md` prompt commands.
+- **AGENTS**: a declared `AGENTS.md` or `AGENTS.override.md` path; both are searched independently.
 - **Action**: a repository `action.yml` or `action.yaml` describing a GitHub Action.
 - **Tool**: a first-party or community tool listed for ecosystem context.
 - **Marketplace**: `.agents/plugins/marketplace.json` and compatible marketplace manifests.

@@ -6,12 +6,15 @@ const PATH_RULES = [
   { category: 'marketplace', type: 'marketplace', label: 'Plugin marketplace', test: (path) => /(?:^|\/)(?:\.agents\/plugins|\.claude-plugin)\/marketplace\.json$/i.test(path) },
   { category: 'hook', type: 'hook', label: 'Codex hook', test: (path) => /(?:^|\/)(?:\.codex\/)?hooks\.json$/i.test(path) || /(?:^|\/)hooks\/[^/]+\.json$/i.test(path) },
   { category: 'config', type: 'codex-config', label: 'Codex configuration', test: (path) => /(?:^|\/)\.codex\/(?:config|requirements)\.toml$/i.test(path) },
+  { category: 'agent-config', type: 'agent-config', label: 'Custom agent', test: (path) => /(?:^|\/)\.codex\/agents\/[^/]+\.toml$/i.test(path) },
+  { category: 'rule', type: 'rule', label: 'Execpolicy rule', test: (path) => /(?:^|\/)\.codex\/rules\/[^/]+\.rules$/i.test(path) },
+  { category: 'prompt', type: 'prompt', label: 'Custom prompt', test: (path) => /(?:^|\/)\.codex\/prompts\/[^/]+\.md$/i.test(path) },
   { category: 'plugin-metadata', type: 'plugin-metadata', label: 'Plugin metadata', test: (path) => /(?:^|\/)agents\/openai\.ya?ml$/i.test(path) },
   { category: 'agents', type: 'agents', label: 'AGENTS guidance', test: (path) => /(?:^|\/)(?:agents|agents\.override)\.md$/i.test(path) },
   { category: 'action', type: 'action', label: 'GitHub Action', test: (path) => /(?:^|\/)action\.ya?ml$/i.test(path) }
 ];
 
-export const CATEGORY_ORDER = ['skill', 'plugin', 'mcp', 'marketplace', 'hook', 'config', 'plugin-metadata', 'agents', 'action', 'other'];
+export const CATEGORY_ORDER = ['skill', 'plugin', 'mcp', 'marketplace', 'hook', 'config', 'agent-config', 'rule', 'prompt', 'plugin-metadata', 'agents', 'action', 'other'];
 export const CATEGORY_LABELS = {
   all: 'All artifacts',
   skill: 'Skills',
@@ -20,6 +23,9 @@ export const CATEGORY_LABELS = {
   marketplace: 'Marketplaces',
   hook: 'Hooks',
   config: 'Codex config',
+  'agent-config': 'Custom agents',
+  rule: 'Execpolicy rules',
+  prompt: 'Custom prompts',
   'plugin-metadata': 'Plugin metadata',
   agents: 'AGENTS.md',
   action: 'Actions',
