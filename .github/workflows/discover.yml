@@ -22,7 +22,7 @@ jobs:
       - run: npm run discover
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DISCOVERY_MAX_REPOSITORIES: 50
+          DISCOVERY_MAX_REPOSITORIES: 5
           GITHUB_DISCOVERY_TIMEOUT_MS: 10000
           GITHUB_DISCOVERY_RETRIES: 1
           MCP_REGISTRY_MAX_PAGES: 3
