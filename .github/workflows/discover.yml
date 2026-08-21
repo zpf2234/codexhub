@@ -26,6 +26,8 @@ jobs:
           GITHUB_DISCOVERY_TIMEOUT_MS: 10000
           GITHUB_DISCOVERY_RETRIES: 1
           MCP_REGISTRY_MAX_PAGES: 20
+          DISCOVERY_MAX_SOURCES_PER_RUN: 3
+          DISCOVERY_SCAN_CONCURRENCY: 4
       - run: npm run build:cached
       - name: Commit discovery dataset
         run: |

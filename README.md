@@ -47,7 +47,7 @@ Then open `http://localhost:4173`.
 
 The dataset is complete only relative to its declared sources and the crawl time. GitHub search indexing, rate limits, private/deleted repositories, and recursive-tree truncation remain explicit limitations. Discovery never executes indexed code or connects to MCP servers. Use `npm run discover -- --fresh` to discard the previous checkpoint, or `DISCOVERY_MAX_REPOSITORIES=100 npm run discover` for a bounded test run.
 
-For operational recovery, `GITHUB_DISCOVERY_TIMEOUT_MS` and `GITHUB_DISCOVERY_RETRIES` bound individual GitHub requests. The scheduled job scans at most 50 repositories and 20 MCP Registry pages per day; `DISCOVERY_MAX_REPOSITORIES` and `MCP_REGISTRY_MAX_PAGES` can tune those batches, and the checkpoint stores the next repository/cursor position so later runs continue the same cycle. `DISCOVERY_SOURCES=github-topic-codex-skills` can isolate one source while diagnosing a failed scheduled run.
+For operational recovery, `GITHUB_DISCOVERY_TIMEOUT_MS` and `GITHUB_DISCOVERY_RETRIES` bound individual GitHub requests. The scheduled job processes at most three GitHub sources, 50 repositories, and 20 MCP Registry pages per day. `DISCOVERY_MAX_SOURCES_PER_RUN`, `DISCOVERY_MAX_REPOSITORIES`, and `MCP_REGISTRY_MAX_PAGES` tune those batches; the checkpoint stores source completion plus repository/cursor positions so later runs continue the same cycle. Repository trees use bounded concurrency configured by `DISCOVERY_SCAN_CONCURRENCY`. `DISCOVERY_SOURCES=github-topic-codex-skills` can isolate one source while diagnosing a failed scheduled run.
 
 ### Supported artifacts
 
