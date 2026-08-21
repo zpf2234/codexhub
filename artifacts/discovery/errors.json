@@ -1,17 +1,16 @@
 {
-  "generatedAt": "2026-08-21T19:35:14.449Z",
+  "generatedAt": "2026-08-21T19:44:38.513Z",
   "errors": [
     {
-      "source": "github-code-hooks",
-      "query": "filename:hooks.json path:hooks",
-      "page": 10,
-      "error": "GitHub API 403",
-      "status": 403
+      "source": "github-code-codex-action-yml",
+      "query": "filename:action.yml codex",
+      "page": 3,
+      "error": "GitHub API 429",
+      "status": 429
     },
     {
-      "source": "github-code-plugin-metadata-yaml",
-      "query": "filename:openai.yaml path:agents",
-      "page": 10,
+      "source": "github-code-codex-action-yaml",
+      "query": "filename:action.yaml codex",
       "error": "GitHub API 429",
       "status": 429
     },
