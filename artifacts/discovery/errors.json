@@ -1,4 +1,10 @@
 {
-  "generatedAt": "2026-08-21T23:43:09.652Z",
-  "errors": []
+  "generatedAt": "2026-08-22T00:30:19.849Z",
+  "errors": [
+    {
+      "source": "github-tree-scan",
+      "repository": "ActiveInferenceInstitute/courses",
+      "error": "GitHub API 403"
+    }
+  ]
 }
