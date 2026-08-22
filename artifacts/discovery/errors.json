@@ -1,20 +1,11 @@
 {
-  "generatedAt": "2026-08-22T09:07:04.355Z",
+  "generatedAt": "2026-08-22T09:45:03.187Z",
   "errors": [
     {
-      "source": "github-tree-scan",
-      "repository": "AgentNOMOS/nomos-crossborder-broker",
-      "error": "GitHub API 409"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "ahmedwakil66/codex-skills",
-      "error": "GitHub API 409"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "aimoda/claude-code-codex-plugin",
-      "error": "GitHub API 409"
+      "source": "github-code-plugin-manifest",
+      "query": "filename:plugin.json path:.codex-plugin",
+      "error": "GitHub API 403",
+      "status": 403
     },
     {
       "source": "github-tree-scan",
