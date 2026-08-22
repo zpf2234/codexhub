@@ -187,7 +187,8 @@ if (scanEnabled) {
         continue;
       }
       const stored = checkpoint.repositories[key] || candidate;
-      checkpoint.repositories[key] = { ...stored, scan: scanned };
+      const { repository: scannedRepository, ...scan } = scanned;
+      checkpoint.repositories[key] = { ...stored, ...(scannedRepository || {}), scan };
       scanReports.push({ repository: candidate.fullName, status: scanned.status, artifacts: scanned.artifacts.length, verifiedArtifacts: scanned.verifiedArtifacts ?? scanned.artifacts.filter((artifact) => artifact.verification === 'passed').length, deferredArtifacts: scanned.deferredArtifacts ?? scanned.artifacts.filter((artifact) => artifact.verification === 'deferred').length, truncated: scanned.truncated || false, errors: scanned.errors || [] });
       artifacts.push(...scanned.artifacts.map((artifact) => ({ ...artifact, repository: candidate.fullName, repositoryUrl: candidate.url, stars: candidate.stars, discoveredBy: candidate.discoveredBy, sourceKinds: candidate.sourceKinds })));
       if (scanned.terminal !== true) errors.push(...(scanned.errors || []).map((error) => ({ source: 'github-tree-scan', repository: candidate.fullName, error })));
@@ -207,11 +208,11 @@ if (scanEnabled) {
 }
 
 const generatedAt = new Date().toISOString();
-const candidateList = [...repositories.values()].map(({ scan, ...candidate }) => ({ ...candidate, ...(scan?.repository || {}) })).sort((a, b) => (b.stars ?? -1) - (a.stars ?? -1) || String(a.fullName).localeCompare(String(b.fullName)));
+const candidateList = [...repositories.values()].map(({ scan, ...candidate }) => ({ ...candidate })).sort((a, b) => (b.stars ?? -1) - (a.stars ?? -1) || String(a.fullName).localeCompare(String(b.fullName)));
 const repositoryIndex = new Map(candidateList.map((repository) => [String(repository.fullName).toLowerCase(), repository]));
 const accumulatedArtifacts = Object.values(checkpoint.repositories).flatMap((stored) => (stored.scan?.artifacts || []).map((artifact) => {
   const repository = repositoryIndex.get(String(stored.fullName).toLowerCase()) || stored;
-  return { ...artifact, repository: stored.fullName, repositoryUrl: repository.url, defaultBranch: repository.defaultBranch || stored.scan?.repository?.defaultBranch, stars: repository.stars, discoveredBy: repository.discoveredBy, sourceKinds: repository.sourceKinds };
+  return { ...artifact, repository: stored.fullName, repositoryUrl: repository.url, defaultBranch: repository.defaultBranch, stars: repository.stars, discoveredBy: repository.discoveredBy, sourceKinds: repository.sourceKinds };
 }));
 const isRateLimitedScan = (scan) => scan?.status === 'rate-limited' || ((scan?.errors || []).length > 0 && scan.errors.every((error) => /^GitHub API (?:403|429)$/.test(error)));
 const persistedScanFailures = allRepositories

@@ -14,6 +14,18 @@ function repositoryUrl(server) {
   return candidates.find((value) => typeof value === 'string' && /^https:\/\/github\.com\//.test(value)) || null;
 }
 
+function compactServer(server, id, name, version) {
+  return {
+    id,
+    source: 'mcp-registry',
+    name,
+    version,
+    ...(server.title || name ? { title: server.title || name } : {}),
+    ...(server.description ? { description: server.description } : {}),
+    ...(repositoryUrl(server) ? { repositoryUrl: repositoryUrl(server) } : {})
+  };
+}
+
 export async function crawlMcpRegistry({ endpoint = 'https://registry.modelcontextprotocol.io/v0/servers', fetchImpl = globalThis.fetch, token, pageSize = 100, maxPages = 10_000, timeoutMs = Number(process.env.MCP_REGISTRY_TIMEOUT_MS || 20_000), initialCursor = null, initialServers = [], initialPages = [], onPage } = {}) {
   const headers = { ...DEFAULT_HEADERS, ...(token ? { Authorization: `Bearer ${token}` } : {}) };
   const servers = new Map(initialServers.map((server) => [server.id, server]));
@@ -40,7 +52,7 @@ export async function crawlMcpRegistry({ endpoint = 'https://registry.modelconte
       if (!name) continue;
       const version = String(server.version || server._meta?.version || 'unknown');
       const id = `mcp-registry:${name}@${version}`.toLowerCase();
-      servers.set(id, { id, source: 'mcp-registry', name, version, title: server.title || name, description: server.description || '', repositoryUrl: repositoryUrl(server), server });
+      servers.set(id, compactServer(server, id, name, version));
     }
     const next = getNextCursor(payload);
     pages.push({ page, count: batch.length, nextCursor: next, cursor });

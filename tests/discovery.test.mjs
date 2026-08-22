@@ -150,6 +150,7 @@ test('MCP Registry follows cursors and deduplicates versions', async () => {
   assert.equal(result.pages.length, 2);
   assert.equal(result.servers.length, 2);
   assert.equal(result.complete, true);
+  assert.equal('server' in result.servers[0], false);
 });
 
 test('repository tree scan discovers and validates multiple artifact types without executing code', async () => {
@@ -227,6 +228,26 @@ test('checkpoint writes atomically and survives a reload', async () => {
   assert.equal(checkpoint.sourceAlgorithmVersion, 1);
   assert.deepEqual(checkpoint.sourceAttempts, {});
   assert.deepEqual(checkpoint.sourceStates, {});
+});
+
+test('checkpoint migration removes duplicated scan and raw Registry payloads', async () => {
+  const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'codexhub-checkpoint-migration-'));
+  const filePath = path.join(directory, 'checkpoint.json');
+  await fs.writeFile(filePath, JSON.stringify({
+    repositories: {
+      'a/b': {
+        fullName: 'a/b',
+        scan: { repository: { defaultBranch: 'main', stars: 5 }, status: 'fresh', artifacts: [] },
+        registryServers: [{ id: 'mcp-registry:demo@1', name: 'demo', version: '1', server: { raw: true } }]
+      }
+    },
+    registry: { servers: [{ id: 'mcp-registry:demo@1', name: 'demo', version: '1', server: { raw: true } }] }
+  }));
+  const checkpoint = await loadCheckpoint(filePath);
+  assert.equal(checkpoint.repositories['a/b'].defaultBranch, 'main');
+  assert.equal('repository' in checkpoint.repositories['a/b'].scan, false);
+  assert.equal('server' in checkpoint.repositories['a/b'].registryServers[0], false);
+  assert.equal('server' in checkpoint.registry.servers[0], false);
 });
 
 test('repository tree scan falls back to walking subtrees when the recursive tree is truncated', async () => {

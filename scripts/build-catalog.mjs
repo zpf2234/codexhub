@@ -35,7 +35,24 @@ const discoveryDir = path.join(ROOT, 'artifacts', 'discovery');
 const publicDiscoveryDir = path.join(output, 'api', 'v1', 'discovery');
 try {
   await fs.mkdir(publicDiscoveryDir, { recursive: true });
-  const discovery = normalizeDiscovery(JSON.parse(await fs.readFile(path.join(discoveryDir, 'discovery.json'), 'utf8')));
+  const readDiscoveryPart = async (name) => JSON.parse(await fs.readFile(path.join(discoveryDir, name), 'utf8'));
+  let discovery;
+  try {
+    const repositories = await readDiscoveryPart('repositories.json');
+    const artifacts = await readDiscoveryPart('artifacts.json');
+    const coverage = await readDiscoveryPart('coverage.json');
+    const errors = await readDiscoveryPart('errors.json');
+    discovery = normalizeDiscovery({
+      schemaVersion: '1.1.0',
+      generatedAt: coverage.generatedAt || repositories.generatedAt || artifacts.generatedAt,
+      coverage,
+      repositories: repositories.repositories || [],
+      artifacts: artifacts.artifacts || [],
+      errors: errors.errors || []
+    });
+  } catch {
+    discovery = normalizeDiscovery(JSON.parse(await fs.readFile(path.join(discoveryDir, 'discovery.json'), 'utf8')));
+  }
   try {
     const local = JSON.parse(await fs.readFile(path.join(discoveryDir, 'local.json'), 'utf8'));
     discovery.repositories.push(...(local.repositories || []));
