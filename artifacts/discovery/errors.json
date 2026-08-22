@@ -1,25 +1,11 @@
 {
-  "generatedAt": "2026-08-22T19:18:31.607Z",
+  "generatedAt": "2026-08-22T19:38:49.764Z",
   "errors": [
     {
-      "source": "github-tree-scan",
-      "repository": "Arnie016/codex-agent-skills",
-      "error": "GitHub API 409"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "Arpasoft/Codex",
-      "error": "GitHub API 409"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "Ashvr87/codex-skills-public",
-      "error": "GitHub API 409"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "athinklmonroee/winget-pkgs",
-      "error": "GitHub API 403"
+      "source": "github-code-plugin-metadata-yml",
+      "query": "filename:openai.yml path:agents",
+      "error": "GitHub API 403",
+      "status": 403
     },
     {
       "source": "github-tree-scan",
