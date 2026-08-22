@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-22T20:43:05.679Z",
-  "startedAt": "2026-08-22T20:42:50.816Z",
-  "completedAt": "2026-08-22T20:43:05.679Z",
+  "generatedAt": "2026-08-22T21:13:17.445Z",
+  "startedAt": "2026-08-22T21:00:24.231Z",
+  "completedAt": "2026-08-22T21:13:17.445Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -1293,7 +1293,7 @@
       }
     }
   ],
-  "sourcesProcessedThisRun": 2,
+  "sourcesProcessedThisRun": 0,
   "sourcesRemaining": 27,
   "exhaustiveSourcesRemaining": 5,
   "supplementalSourcesRemaining": 22,
@@ -5907,13 +5907,94 @@
     "complete": false,
     "errors": []
   },
-  "scans": [],
+  "scans": [
+    {
+      "repository": "Arnie016/codex-agent-skills",
+      "status": "partial",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 409"
+      ]
+    },
+    {
+      "repository": "Arpasoft/Codex",
+      "status": "partial",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 409"
+      ]
+    },
+    {
+      "repository": "Ashvr87/codex-skills-public",
+      "status": "partial",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 409"
+      ]
+    },
+    {
+      "repository": "athinklmonroee/winget-pkgs",
+      "status": "partial",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": true,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "SnoopyKim/Outsource",
+      "status": "fresh",
+      "artifacts": 14,
+      "verifiedArtifacts": 5,
+      "deferredArtifacts": 4,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "sodanyx/codebase-baseline-planner",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "sogitec-br/aya-plugins",
+      "status": "fresh",
+      "artifacts": 31,
+      "verifiedArtifacts": 4,
+      "deferredArtifacts": 21,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "SoliEstre/idd",
+      "status": "fresh",
+      "artifacts": 9,
+      "verifiedArtifacts": 3,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    }
+  ],
   "repositoriesDiscovered": 58516,
-  "repositoriesSelected": 0,
-  "repositoriesScanned": 0,
-  "repositoriesNotScanned": 43127,
-  "scanOffset": 5286,
-  "repositoriesScannedTotal": 5286,
+  "repositoriesSelected": 1000,
+  "repositoriesScanned": 16,
+  "repositoriesNotScanned": 43123,
+  "scanOffset": 5290,
+  "repositoriesScannedTotal": 5290,
   "cycleComplete": false,
   "persistedScanFailures": [
     {
@@ -6002,12 +6083,6 @@
     },
     {
       "repository": "vandordev/skills-api-flow-tester",
-      "status": "fresh",
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "sodanyx/codebase-baseline-planner",
       "status": "fresh",
       "truncated": false,
       "errors": []
@@ -7387,12 +7462,6 @@
       "errors": []
     },
     {
-      "repository": "sogitec-br/aya-plugins",
-      "status": "fresh",
-      "truncated": false,
-      "errors": []
-    },
-    {
       "repository": "Tang1206cc/Codex-Device-Migration-Assistant",
       "status": "fresh",
       "truncated": false,
@@ -7582,12 +7651,6 @@
     },
     {
       "repository": "pzzld-org/shepherd",
-      "status": "fresh",
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "SnoopyKim/Outsource",
       "status": "fresh",
       "truncated": false,
       "errors": []
@@ -7818,12 +7881,6 @@
     },
     {
       "repository": "6Kmfi6HP/avoid-overkill",
-      "status": "fresh",
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "SoliEstre/idd",
       "status": "fresh",
       "truncated": false,
       "errors": []
@@ -8307,16 +8364,16 @@
   ],
   "terminalUnavailableRepositories": 315,
   "rateLimitedRepositories": 6,
-  "rateLimitedScanEvents": 0,
-  "artifactsDiscovered": 271345,
-  "errors": 393,
-  "scanDisabled": true,
+  "rateLimitedScanEvents": 8,
+  "artifactsDiscovered": 271249,
+  "errors": 392,
+  "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
-    "skill": 144185,
+    "skill": 144191,
     "skill-metadata": 20429,
-    "plugin": 8185,
-    "mcp": 82190,
+    "plugin": 8194,
+    "mcp": 82079,
     "marketplace": 2334,
     "hook": 2269,
     "config": 1065,
@@ -8328,9 +8385,9 @@
     "other": 0
   },
   "verificationCounts": {
-    "verified": 8230,
-    "discovered": 186235,
-    "registry": 76698,
+    "verified": 8248,
+    "discovered": 186234,
+    "registry": 76585,
     "unknown": 182
   }
 }
