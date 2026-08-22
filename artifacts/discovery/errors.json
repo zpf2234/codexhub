@@ -1,15 +1,18 @@
 {
-  "generatedAt": "2026-08-22T12:23:22.997Z",
+  "generatedAt": "2026-08-22T13:03:35.179Z",
   "errors": [
     {
-      "source": "github-tree-scan",
-      "repository": "acedergren/sqry-codex-plugin",
-      "error": "GitHub API 404"
+      "source": "github-code-plugin-app",
+      "query": "filename:.app.json",
+      "page": 2,
+      "error": "GitHub API 429",
+      "status": 429
     },
     {
-      "source": "github-tree-scan",
-      "repository": "adham-younes/Adham-AgriTech-Sentinel-v2.0",
-      "error": "GitHub API 403"
+      "source": "github-code-project-hooks",
+      "query": "filename:hooks.json path:.codex",
+      "error": "GitHub API 429",
+      "status": 429
     },
     {
       "source": "github-tree-scan",
