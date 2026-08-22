@@ -1,5 +1,5 @@
 const params = new URLSearchParams(location.search);
-const state = { data: null, loading: true, query: params.get('q') || '', category: params.get('category') || 'all', verification: params.get('verification') || 'all', view: params.get('view') || 'artifacts', sort: params.get('sort') || 'repository', visible: 60 };
+const state = { data: null, loading: true, shardErrors: [], query: params.get('q') || '', category: params.get('category') || 'all', verification: params.get('verification') || 'all', view: params.get('view') || 'artifacts', sort: params.get('sort') || 'repository', visible: 60 };
 const categories = ['all', 'skill', 'skill-metadata', 'plugin', 'mcp', 'marketplace', 'hook', 'config', 'agent-config', 'rule', 'prompt', 'agents', 'action', 'other'];
 const labels = { all: 'All artifacts', skill: 'Skills', 'skill-metadata': 'Skill metadata', plugin: 'Plugins', mcp: 'MCP', marketplace: 'Marketplaces', hook: 'Hooks', config: 'Codex config', 'agent-config': 'Custom agents', rule: 'Execpolicy rules', prompt: 'Custom prompts', agents: 'Agent guidance', action: 'Actions', other: 'Other' };
 const artifactTypeLabels = { 'skill-metadata': 'Skill metadata', 'mcp-app': 'MCP app mapping', 'mcp-server-manifest': 'MCP server manifest', mcp: 'MCP configuration', 'mcp-registry': 'MCP Registry', 'mcp-config-entry': 'Configured MCP server', 'hook-config-entry': 'Configured hook event', 'agent-role-entry': 'Configured agent role', 'skill-config-entry': 'Skill configuration', 'codex-config': 'Codex configuration', 'agent-config': 'Custom agent', rule: 'Execpolicy rule', 'action-prompt': 'Codex Action prompt', 'custom-prompt': 'Custom prompt' };
@@ -66,9 +66,10 @@ function repositoryCard(repository) {
 function renderCoverage() {
   const coverage = state.data.coverage || {};
   const card = document.querySelector('#coverage-card');
-  const status = el('span', `coverage-pill ${coverage.complete ? 'complete' : 'partial'}`, coverage.complete ? 'Complete cycle' : 'Scanning in progress');
-  const title = el('h2', '', coverage.complete ? 'Declared sources covered' : `${formatNumber(coverage.exhaustiveSourcesRemaining ?? coverage.sourcesRemaining)} exhaustive sources remain`);
-  const text = el('p', '', coverage.complete ? 'Every exhaustive source, official Registry page, and discovered repository tree completed without unresolved errors.' : `${formatNumber(coverage.repositoriesNotScanned)} repository trees remain. ${formatNumber(coverage.rateLimitedRepositories || 0)} are waiting for GitHub quota recovery; ${formatNumber(coverage.supplementalSourcesRemaining || 0)} supplemental searches remain.`);
+  const partialShards = state.shardErrors.length > 0;
+  const status = el('span', `coverage-pill ${coverage.complete && !partialShards ? 'complete' : 'partial'}`, partialShards ? 'Partial snapshot' : coverage.complete ? 'Complete cycle' : 'Scanning in progress');
+  const title = el('h2', '', partialShards ? `${state.shardErrors.length} artifact shard${state.shardErrors.length === 1 ? '' : 's'} unavailable` : coverage.complete ? 'Declared sources covered' : `${formatNumber(coverage.exhaustiveSourcesRemaining ?? coverage.sourcesRemaining)} exhaustive sources remain`);
+  const text = el('p', '', partialShards ? 'Loaded artifact shards remain available. Retry the page after the next dashboard build to retrieve the missing data.' : coverage.complete ? 'Every exhaustive source, official Registry page, and discovered repository tree completed without unresolved errors.' : `${formatNumber(coverage.repositoriesNotScanned)} repository trees remain. ${formatNumber(coverage.rateLimitedRepositories || 0)} are waiting for GitHub quota recovery; ${formatNumber(coverage.supplementalSourcesRemaining || 0)} supplemental searches remain.`);
   const time = el('small', '', `Snapshot ${new Date(state.data.generatedAt).toLocaleString()}`);
   card.replaceChildren(status, title, text, time);
   document.querySelector('#discovery-repositories').textContent = formatExact(coverage.repositoriesDiscovered ?? state.data.repositories.length);
@@ -174,10 +175,14 @@ async function start() {
   document.querySelector('#discovery-load-more').onclick = () => { state.visible += 60; render(); };
   render();
   const loadShard = async (index) => {
-    const response = await fetch(`./api/v1/discovery/artifacts-${String(index).padStart(4, '0')}.json`);
-    if (!response.ok) throw new Error(`Discovery artifact shard ${index} unavailable`);
-    state.data.artifacts.push(...((await response.json()).artifacts || []));
-    state.loading = index < shardCount;
+    try {
+      const response = await fetch(`./api/v1/discovery/artifacts-${String(index).padStart(4, '0')}.json`);
+      if (!response.ok) throw new Error(`Discovery artifact shard ${index} unavailable`);
+      state.data.artifacts.push(...((await response.json()).artifacts || []));
+    } catch (error) {
+      state.shardErrors.push(error instanceof Error ? error.message : String(error));
+    }
+    state.loading = index < shardCount && state.shardErrors.length === 0;
     renderCoverage();
     render();
   };

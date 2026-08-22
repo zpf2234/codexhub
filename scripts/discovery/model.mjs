@@ -88,7 +88,7 @@ export function normalizeDiscovery(payload = {}) {
   for (const repository of repositories) repository.categories.sort((a, b) => CATEGORY_ORDER.indexOf(a) - CATEGORY_ORDER.indexOf(b));
   const categoryCounts = Object.fromEntries(CATEGORY_ORDER.map((category) => [category, artifacts.filter((artifact) => artifact.category === category).length]));
   const verificationCounts = Object.fromEntries(['verified', 'discovered', 'registry', 'unknown'].map((status) => [status, artifacts.filter((artifact) => artifact.status === status).length]));
-  const coverage = { ...(payload.coverage || {}), categoryCounts, verificationCounts, artifactsDiscovered: artifacts.length };
+  const coverage = { ...(payload.coverage || {}), categoryCounts, verificationCounts, repositoriesDiscovered: repositories.length, artifactsDiscovered: artifacts.length };
   return { ...payload, schemaVersion: '1.1.0', repositories, artifacts, coverage };
 }
 

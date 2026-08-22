@@ -34,11 +34,14 @@ await fs.copyFile(path.join(ROOT, 'schemas', 'catalog.schema.json'), path.join(o
 await fs.copyFile(path.join(ROOT, 'schemas', 'submission.schema.json'), path.join(output, 'api', 'v1', 'submission.schema.json'));
 const discoveryDir = path.join(ROOT, 'artifacts', 'discovery');
 const publicDiscoveryDir = path.join(output, 'api', 'v1', 'discovery');
-try {
+const discoveryDirectoryExists = await fs.stat(discoveryDir).then((stat) => stat.isDirectory()).catch(() => false);
+if (discoveryDirectoryExists) {
   await fs.mkdir(publicDiscoveryDir, { recursive: true });
   const readDiscoveryPart = async (name) => JSON.parse(await fs.readFile(path.join(discoveryDir, name), 'utf8'));
+  const splitFiles = ['repositories.json', 'coverage.json', 'errors.json'];
+  const splitPresence = await Promise.all(splitFiles.map(async (name) => fs.access(path.join(discoveryDir, name)).then(() => true).catch(() => false)));
   let discovery;
-  try {
+  if (splitPresence.every(Boolean)) {
     const repositories = await readDiscoveryPart('repositories.json');
     const coverage = await readDiscoveryPart('coverage.json');
     const errors = await readDiscoveryPart('errors.json');
@@ -51,26 +54,32 @@ try {
       artifacts: artifacts.artifacts || [],
       errors: errors.errors || []
     });
-  } catch {
+  } else if (splitPresence.some(Boolean)) {
+    throw new Error(`Incomplete discovery snapshot in ${discoveryDir}; refusing legacy fallback.`);
+  } else if (await fs.access(path.join(discoveryDir, 'discovery.json')).then(() => true).catch(() => false)) {
     discovery = normalizeDiscovery(JSON.parse(await fs.readFile(path.join(discoveryDir, 'discovery.json'), 'utf8')));
+  } else {
+    console.warn(`No discovery snapshot found in ${discoveryDir}; skipping Discovery API build.`);
   }
-  try {
-    const local = JSON.parse(await fs.readFile(path.join(discoveryDir, 'local.json'), 'utf8'));
-    discovery.repositories.push(...(local.repositories || []));
-    discovery.artifacts.push(...(local.artifacts || []));
-    const merged = normalizeDiscovery(discovery);
-    Object.assign(discovery, merged, { coverage: { ...merged.coverage, local: local.coverage || { artifacts: local.artifacts?.length || 0 } } });
-  } catch {}
-  await fs.writeFile(path.join(publicDiscoveryDir, 'discovery.json'), JSON.stringify(discovery) + '\n');
-  await fs.writeFile(path.join(publicDiscoveryDir, 'repositories.json'), JSON.stringify({ generatedAt: discovery.generatedAt, repositories: discovery.repositories }) + '\n');
-  const artifactShardNames = await writeArtifactShards(publicDiscoveryDir, { generatedAt: discovery.generatedAt, artifacts: discovery.artifacts });
-  await fs.writeFile(path.join(publicDiscoveryDir, 'coverage.json'), JSON.stringify(discovery.coverage, null, 2) + '\n');
-  await fs.writeFile(path.join(publicDiscoveryDir, 'errors.json'), JSON.stringify({ generatedAt: discovery.generatedAt, errors: discovery.errors || [] }, null, 2) + '\n');
-  await fs.writeFile(path.join(publicDiscoveryDir, 'dashboard-meta.json'), JSON.stringify({ schemaVersion: discovery.schemaVersion, generatedAt: discovery.generatedAt, artifactShardCount: artifactShardNames.length, coverage: discovery.coverage, errors: discovery.errors || [] }) + '\n');
-  await fs.writeFile(path.join(publicDiscoveryDir, 'dashboard-repositories.json'), JSON.stringify({ generatedAt: discovery.generatedAt, repositories: createDashboardRepositories(discovery.repositories) }) + '\n');
-  await fs.copyFile(path.join(ROOT, 'schemas', 'discovery.schema.json'), path.join(publicDiscoveryDir, 'schema.json'));
-} catch {
-  // Discovery is an independent, optionally scheduled dataset.
+  if (discovery) {
+    try {
+      const local = JSON.parse(await fs.readFile(path.join(discoveryDir, 'local.json'), 'utf8'));
+      discovery.repositories.push(...(local.repositories || []));
+      discovery.artifacts.push(...(local.artifacts || []));
+      const merged = normalizeDiscovery(discovery);
+      Object.assign(discovery, merged, { coverage: { ...merged.coverage, local: local.coverage || { artifacts: local.artifacts?.length || 0 } } });
+    } catch (error) {
+      if (error?.code !== 'ENOENT') throw error;
+    }
+    await fs.writeFile(path.join(publicDiscoveryDir, 'discovery.json'), JSON.stringify(discovery) + '\n');
+    await fs.writeFile(path.join(publicDiscoveryDir, 'repositories.json'), JSON.stringify({ generatedAt: discovery.generatedAt, repositories: discovery.repositories }) + '\n');
+    const artifactShardNames = await writeArtifactShards(publicDiscoveryDir, { generatedAt: discovery.generatedAt, artifacts: discovery.artifacts });
+    await fs.writeFile(path.join(publicDiscoveryDir, 'coverage.json'), JSON.stringify(discovery.coverage, null, 2) + '\n');
+    await fs.writeFile(path.join(publicDiscoveryDir, 'errors.json'), JSON.stringify({ generatedAt: discovery.generatedAt, errors: discovery.errors || [] }, null, 2) + '\n');
+    await fs.writeFile(path.join(publicDiscoveryDir, 'dashboard-meta.json'), JSON.stringify({ schemaVersion: discovery.schemaVersion, generatedAt: discovery.generatedAt, artifactShardCount: artifactShardNames.length, coverage: discovery.coverage, errors: discovery.errors || [] }) + '\n');
+    await fs.writeFile(path.join(publicDiscoveryDir, 'dashboard-repositories.json'), JSON.stringify({ generatedAt: discovery.generatedAt, repositories: createDashboardRepositories(discovery.repositories) }) + '\n');
+    await fs.copyFile(path.join(ROOT, 'schemas', 'discovery.schema.json'), path.join(publicDiscoveryDir, 'schema.json'));
+  }
 }
 if (writeCache) {
   const nextCache = { ...cache };

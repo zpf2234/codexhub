@@ -5,6 +5,16 @@ on:
     - cron: "17 * * * *"
     - cron: "47 * * * *"
   workflow_dispatch:
+    inputs:
+      phase:
+        description: "Run source crawling, repository scanning, or both"
+        required: false
+        default: all
+        type: choice
+        options:
+          - all
+          - sources
+          - scan
 
 permissions:
   contents: write
@@ -25,7 +35,7 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Advance search sources and Registry
-        if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '17 * * * *' }}
+        if: ${{ (github.event_name == 'workflow_dispatch' && (inputs.phase == 'all' || inputs.phase == 'sources')) || github.event.schedule == '17 * * * *' }}
         run: npm run discover -- --no-scan
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -36,7 +46,7 @@ jobs:
           MCP_REGISTRY_TIMEOUT_MS: 8000
           DISCOVERY_MAX_SOURCES_PER_RUN: 2
       - name: Scan repository trees
-        if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '47 * * * *' }}
+        if: ${{ (github.event_name == 'workflow_dispatch' && (inputs.phase == 'all' || inputs.phase == 'scan')) || github.event.schedule == '47 * * * *' }}
         run: npm run discover -- --scan-only
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
