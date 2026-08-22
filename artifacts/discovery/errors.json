@@ -1,30 +1,12 @@
 {
-  "generatedAt": "2026-08-22T10:14:23.479Z",
+  "generatedAt": "2026-08-22T10:43:30.240Z",
   "errors": [
     {
-      "source": "github-tree-scan",
-      "repository": "134679wnagluo/codex-skills",
-      "error": "GitHub API 409"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1jiang111/codex-skills",
-      "error": "GitHub API 409"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "7is7paris-FR/CodexSkills-",
-      "error": "GitHub API 409"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "94bnhktjtg-ctrl/codex-skills",
-      "error": "GitHub API 409"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "AlexanderDolgan/juliawp",
-      "error": "GitHub API 403"
+      "source": "github-code-claude-plugin-manifest",
+      "query": "filename:plugin.json path:.claude-plugin",
+      "page": 10,
+      "error": "GitHub API 403",
+      "status": 403
     },
     {
       "source": "github-tree-scan",
