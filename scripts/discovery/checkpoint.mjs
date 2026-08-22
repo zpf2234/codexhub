@@ -3,6 +3,7 @@ import path from 'node:path';
 
 const REPOSITORY_SHARD_PATTERN = /^checkpoint-repositories-\d+\.json$/i;
 const repositoryShardCache = new Map();
+const repositoryShardBuckets = new Map();
 
 function compactRegistryServer(server = {}) {
   const fields = ['id', 'source', 'name', 'version', 'title', 'description', 'repositoryUrl'];
@@ -35,25 +36,39 @@ async function loadRepositoryShards(filePath, value) {
     return { name, serialized, value: JSON.parse(serialized) };
   }));
   repositoryShardCache.set(path.resolve(directory), new Map(parts.map((part) => [part.name, part.serialized])));
+  repositoryShardBuckets.set(path.resolve(directory), new Map(parts.map((part) => [part.name, part.value.repositories || {}])));
   return Object.assign({}, ...parts.map((part) => part.value.repositories || {}));
 }
 
-async function writeRepositoryShards(directory, repositories) {
-  const bucketCount = 128;
-  const buckets = Array.from({ length: bucketCount }, () => ({}));
+async function writeRepositoryShards(directory, repositories, dirtyKeys = null) {
+  const bucketCount = 32;
+  const cacheKey = path.resolve(directory);
+  const cachedBuckets = repositoryShardBuckets.get(cacheKey);
+  const existingBuckets = cachedBuckets && cachedBuckets.size === bucketCount ? cachedBuckets : undefined;
+  const buckets = existingBuckets || new Map(Array.from({ length: bucketCount }, (_, index) => [`checkpoint-repositories-${String(index + 1).padStart(4, '0')}.json`, {}]));
   const bucketFor = (key) => {
     let hash = 2166136261;
     for (const character of key) hash = Math.imul(hash ^ character.charCodeAt(0), 16777619);
     return (hash >>> 0) % bucketCount;
   };
-  for (const [key, repository] of Object.entries(repositories || {})) buckets[bucketFor(key)][key] = repository;
-  const cacheKey = path.resolve(directory);
+  const keys = dirtyKeys === null ? Object.keys(repositories || {}) : dirtyKeys;
+  if (existingBuckets === undefined) {
+    for (const [key, repository] of Object.entries(repositories || {})) buckets.get(`checkpoint-repositories-${String(bucketFor(key) + 1).padStart(4, '0')}.json`)[key] = repository;
+  } else {
+    for (const key of keys) {
+      const name = `checkpoint-repositories-${String(bucketFor(key) + 1).padStart(4, '0')}.json`;
+      if (repositories?.[key]) buckets.get(name)[key] = repositories[key];
+      else delete buckets.get(name)[key];
+    }
+  }
   const previous = repositoryShardCache.get(cacheKey) || new Map();
-  const names = [];
-  for (let index = 0; index < buckets.length; index += 1) {
-    const name = `checkpoint-repositories-${String(index + 1).padStart(4, '0')}.json`;
-    const serialized = JSON.stringify({ repositories: buckets[index] }) + '\n';
-    names.push(name);
+  const names = [...buckets.keys()];
+  const dirtyNames = existingBuckets === undefined
+    ? names
+    : new Set((dirtyKeys || []).map((key) => `checkpoint-repositories-${String(bucketFor(key) + 1).padStart(4, '0')}.json`));
+  for (const name of dirtyNames) {
+    const bucket = buckets.get(name);
+    const serialized = JSON.stringify({ repositories: bucket }) + '\n';
     if (previous.get(name) === serialized) continue;
     const temporary = path.join(directory, `${name}.tmp`);
     await fs.writeFile(temporary, serialized);
@@ -61,6 +76,7 @@ async function writeRepositoryShards(directory, repositories) {
     previous.set(name, serialized);
   }
   repositoryShardCache.set(cacheKey, previous);
+  repositoryShardBuckets.set(cacheKey, buckets);
   const existing = (await fs.readdir(directory)).filter((name) => REPOSITORY_SHARD_PATTERN.test(name));
   for (const name of existing) if (!names.includes(name)) await fs.rm(path.join(directory, name), { force: true });
   return names;
@@ -92,8 +108,9 @@ export async function loadCheckpoint(filePath) {
 export async function saveCheckpoint(filePath, checkpoint) {
   const directory = path.dirname(filePath);
   await fs.mkdir(directory, { recursive: true });
-  const { repositories, ...metadata } = checkpoint;
-  const repositoryShards = await writeRepositoryShards(directory, repositories);
+  const { repositories, repositoryDirtyKeys, ...metadata } = checkpoint;
+  const repositoryShards = await writeRepositoryShards(directory, repositories, Array.isArray(repositoryDirtyKeys) ? repositoryDirtyKeys : null);
+  if (Array.isArray(repositoryDirtyKeys)) repositoryDirtyKeys.length = 0;
   const temporary = `${filePath}.tmp`;
   await fs.writeFile(temporary, JSON.stringify({ ...metadata, repositoryShards, version: 1 }) + '\n');
   await fs.rename(temporary, filePath);

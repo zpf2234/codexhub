@@ -24,6 +24,10 @@ const selectedSources = process.env.DISCOVERY_SOURCES ? new Set(process.env.DISC
 const startedAt = new Date().toISOString();
 const client = new GithubClient();
 const checkpoint = resume ? await loadCheckpoint(checkpointPath) : { version: 1, completedSources: [], sourceAttempts: {}, sourceCursor: 0, repositories: {}, registry: {}, sourceReports: [], scanOffset: 0, cycleComplete: false };
+checkpoint.repositoryDirtyKeys = [];
+function markRepositoryDirty(key) {
+  if (key && !checkpoint.repositoryDirtyKeys.includes(key)) checkpoint.repositoryDirtyKeys.push(key);
+}
 if (checkpoint.sourceAlgorithmVersion !== SOURCE_ALGORITHM_VERSION) {
   const registryComplete = checkpoint.registryReport?.complete === true && checkpoint.registry?.complete === true;
   checkpoint.completedSources = registryComplete ? [MCP_REGISTRY_SOURCE.id] : [];
@@ -47,6 +51,7 @@ if (resume && checkpoint.cycleComplete) {
   for (const [key, repository] of Object.entries(checkpoint.repositories)) {
     if (repository.registryOnly === true && !repository.owner) {
       delete checkpoint.repositories[key];
+      markRepositoryDirty(key);
       continue;
     }
     delete repository.scan;
@@ -61,6 +66,7 @@ for (const entry of entries) {
   const key = fullName.toLowerCase();
   const previous = repositories.get(key);
   repositories.set(key, { fullName, owner: entry.repository.owner, name: entry.repository.name, url: entry.repository.url, description: entry.summary, stars: previous?.stars ?? null, forks: previous?.forks ?? null, license: entry.license, defaultBranch: previous?.defaultBranch, archived: previous?.archived ?? false, discoveredBy: [...new Set([...(previous?.discoveredBy || []), 'curated-catalog'])].sort(), sourceKinds: [...new Set([...(previous?.sourceKinds || []), entry.kind])].sort(), reviewed: true, ...(previous?.scan ? { scan: previous.scan } : {}) });
+  markRepositoryDirty(key);
 }
 const sourceReports = [...(checkpoint.sourceReports || [])];
 const errors = [];
@@ -89,6 +95,7 @@ function mergeRepositories(items, source) {
       previous.discoveredBy = [...new Set([...(previous.discoveredBy || []), source.id])].sort();
       previous.sourceKinds = [...new Set([...(previous.sourceKinds || []), source.kind])].sort();
     } else repositories.set(key, candidate);
+    markRepositoryDirty(key);
   }
 }
 
@@ -147,6 +154,7 @@ if (!process.env.DISCOVERY_SKIP_REGISTRY && (!selectedSources || selectedSources
     const previous = repositories.get(key);
     if (previous) previous.registryServers = [...new Map([...(previous.registryServers || []), server].map((value) => [value.id, value])).values()];
     else repositories.set(key, { fullName: parsed?.fullName || server.id, owner: parsed?.owner || null, name: parsed?.name || server.name, url: parsed?.url || server.repositoryUrl, description: server.description, stars: null, forks: null, license: 'NOASSERTION', discoveredBy: [MCP_REGISTRY_SOURCE.id], sourceKinds: ['mcp'], registryServers: [server], registryOnly: !parsed });
+    markRepositoryDirty(key);
   }
   errors.push(...registry.errors.map((error) => ({ source: MCP_REGISTRY_SOURCE.id, ...error })));
   if (registry.errors.length === 0 && registry.complete) checkpoint.completedSources.push(MCP_REGISTRY_SOURCE.id);
@@ -191,6 +199,7 @@ if (scanEnabled) {
       const stored = checkpoint.repositories[key] || candidate;
       const { repository: scannedRepository, ...scan } = scanned;
       checkpoint.repositories[key] = { ...stored, ...(scannedRepository || {}), scan };
+      markRepositoryDirty(key);
       scanReports.push({ repository: candidate.fullName, status: scanned.status, artifacts: scanned.artifacts.length, verifiedArtifacts: scanned.verifiedArtifacts ?? scanned.artifacts.filter((artifact) => artifact.verification === 'passed').length, deferredArtifacts: scanned.deferredArtifacts ?? scanned.artifacts.filter((artifact) => artifact.verification === 'deferred').length, truncated: scanned.truncated || false, errors: scanned.errors || [] });
       artifacts.push(...scanned.artifacts.map((artifact) => ({ ...artifact, repository: candidate.fullName, repositoryUrl: candidate.url, stars: candidate.stars, discoveredBy: candidate.discoveredBy, sourceKinds: candidate.sourceKinds })));
       if (scanned.terminal !== true) errors.push(...(scanned.errors || []).map((error) => ({ source: 'github-tree-scan', repository: candidate.fullName, error })));
