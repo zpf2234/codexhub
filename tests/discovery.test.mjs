@@ -319,6 +319,7 @@ test('artifact classifier recognizes Codex component paths', () => {
   assert.equal(classifyPath('.claude-plugin/plugin.json').category, 'plugin');
   assert.equal(classifyPath('.agent-plugin/plugin.json').category, 'plugin');
   assert.equal(classifyPath('.mcp.json').category, 'mcp');
+  assert.equal(classifyPath('mcp.json').category, 'mcp');
   assert.equal(classifyPath('.app.json').type, 'mcp-app');
   assert.equal(classifyPath('.codex/hooks.json').category, 'hook');
   assert.equal(classifyPath('hooks.json').category, 'hook');

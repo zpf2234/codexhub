@@ -65,7 +65,7 @@ For operational recovery, `GITHUB_DISCOVERY_TIMEOUT_MS` and `GITHUB_DISCOVERY_RE
 
 - **Skill**: a `SKILL.md` with YAML frontmatter containing `name` and `description`.
 - **Plugin**: `.codex-plugin/plugin.json` with `name`, `version`, and `description`; compatible `.agent-plugin/plugin.json` and `.claude-plugin/plugin.json` manifests are also indexed.
-- **MCP**: `.mcp.json` bundled server configuration; `.app.json` is retained as the `mcp-app` type for registered MCP app mappings.
+- **MCP**: `.mcp.json` or `mcp.json` bundled/server configuration; `.app.json` is retained as the `mcp-app` type for registered MCP app mappings.
 - **Hooks**: `hooks/hooks.json`, other `hooks/*.json`, and project `.codex/hooks.json` lifecycle configuration.
 - **Codex config**: project `.codex/config.toml` and `.codex/requirements.toml`, which may declare MCP servers, hooks, and managed requirements.
 - **Custom agents**: project `.codex/agents/*.toml` subagent definitions.

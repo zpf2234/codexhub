@@ -14,6 +14,7 @@ export const GITHUB_CODE_SOURCES = [
   { id: 'github-code-agent-plugin-manifest', kind: 'plugin', coverage: 'supplemental', query: 'filename:plugin.json path:.agent-plugin' },
   { id: 'github-code-claude-plugin-manifest', kind: 'plugin', coverage: 'supplemental', query: 'filename:plugin.json path:.claude-plugin' },
   { id: 'github-code-plugin-mcp', kind: 'mcp', coverage: 'supplemental', query: 'filename:.mcp.json' },
+  { id: 'github-code-mcp-json', kind: 'mcp', coverage: 'supplemental', query: 'filename:mcp.json' },
   { id: 'github-code-plugin-app', kind: 'mcp', coverage: 'supplemental', query: 'filename:.app.json' },
   { id: 'github-code-project-hooks', kind: 'hook', coverage: 'supplemental', query: 'filename:hooks.json path:.codex' },
   { id: 'github-code-hooks-anywhere', kind: 'hook', coverage: 'supplemental', query: 'filename:hooks.json' },
