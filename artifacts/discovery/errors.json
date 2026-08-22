@@ -1,12 +1,6 @@
 {
-  "generatedAt": "2026-08-22T19:38:49.764Z",
+  "generatedAt": "2026-08-22T19:56:44.012Z",
   "errors": [
-    {
-      "source": "github-code-plugin-metadata-yml",
-      "query": "filename:openai.yml path:agents",
-      "error": "GitHub API 403",
-      "status": 403
-    },
     {
       "source": "github-tree-scan",
       "repository": "sp-daewoon/chronicle",
