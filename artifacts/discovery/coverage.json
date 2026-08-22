@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-22T00:38:55.104Z",
-  "startedAt": "2026-08-22T00:38:40.937Z",
-  "completedAt": "2026-08-22T00:38:55.104Z",
+  "generatedAt": "2026-08-22T01:32:12.951Z",
+  "startedAt": "2026-08-22T01:23:40.128Z",
+  "completedAt": "2026-08-22T01:32:12.951Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -1160,12 +1160,53 @@
         "reset": 1787359181,
         "retryAfter": null
       }
+    },
+    {
+      "id": "github-code-agents-override",
+      "kind": "agents",
+      "coverage": "supplemental",
+      "query": "filename:AGENTS.override.md",
+      "mode": "code-search",
+      "total": 662,
+      "pages": 7,
+      "results": 230,
+      "truncated": false,
+      "errors": [],
+      "rate": {
+        "remaining": 3,
+        "reset": 1787361880,
+        "retryAfter": null
+      }
+    },
+    {
+      "id": "github-code-team-guide",
+      "kind": "agents",
+      "coverage": "supplemental",
+      "query": "filename:TEAM_GUIDE.md",
+      "mode": "code-search",
+      "total": 494,
+      "pages": 5,
+      "results": 293,
+      "truncated": true,
+      "errors": [
+        {
+          "query": "filename:TEAM_GUIDE.md",
+          "page": 4,
+          "error": "GitHub API 403",
+          "status": 403
+        }
+      ],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787361880,
+        "retryAfter": null
+      }
     }
   ],
-  "sourcesProcessedThisRun": 1,
-  "sourcesRemaining": 20,
+  "sourcesProcessedThisRun": 2,
+  "sourcesRemaining": 19,
   "exhaustiveSourcesRemaining": 5,
-  "supplementalSourcesRemaining": 15,
+  "supplementalSourcesRemaining": 14,
   "registry": {
     "source": "mcp-official-registry",
     "pages": [
@@ -2470,46 +2511,491 @@
         "count": 100,
         "nextCursor": "io.github.FoundryNet/foundrynet-geo:1.0.1",
         "cursor": "io.github.FelixWaweru/code-fundi-mcp:0.1.4"
+      },
+      {
+        "page": 218,
+        "count": 100,
+        "nextCursor": "io.github.Furowu/brokre:0.2.10",
+        "cursor": "io.github.FoundryNet/foundrynet-geo:1.0.1"
+      },
+      {
+        "page": 219,
+        "count": 100,
+        "nextCursor": "io.github.Gentleelephant/project-brain:1.4.1",
+        "cursor": "io.github.Furowu/brokre:0.2.10"
+      },
+      {
+        "page": 220,
+        "count": 100,
+        "nextCursor": "io.github.Graphmaxer/gw1-mcp:1.0.0",
+        "cursor": "io.github.Gentleelephant/project-brain:1.4.1"
+      },
+      {
+        "page": 221,
+        "count": 100,
+        "nextCursor": "io.github.HMAKT99/akf:1.6.0",
+        "cursor": "io.github.Graphmaxer/gw1-mcp:1.0.0"
+      },
+      {
+        "page": 222,
+        "count": 100,
+        "nextCursor": "io.github.Harusame64/desktop-touch-mcp:1.7.0",
+        "cursor": "io.github.HMAKT99/akf:1.6.0"
+      },
+      {
+        "page": 223,
+        "count": 100,
+        "nextCursor": "io.github.Hebline/mcp-server:0.2.1",
+        "cursor": "io.github.Harusame64/desktop-touch-mcp:1.7.0"
+      },
+      {
+        "page": 224,
+        "count": 100,
+        "nextCursor": "io.github.Hormonaly-ai/hormonaly:1.0.4",
+        "cursor": "io.github.Hebline/mcp-server:0.2.1"
+      },
+      {
+        "page": 225,
+        "count": 100,
+        "nextCursor": "io.github.HrRodan/agent-workspace-mcp:1.4.32",
+        "cursor": "io.github.Hormonaly-ai/hormonaly:1.0.4"
+      },
+      {
+        "page": 226,
+        "count": 100,
+        "nextCursor": "io.github.HzaCode/onecite:0.0.11",
+        "cursor": "io.github.HrRodan/agent-workspace-mcp:1.4.32"
+      },
+      {
+        "page": 227,
+        "count": 100,
+        "nextCursor": "io.github.IBazylchuk/paparats-mcp:2.5.0",
+        "cursor": "io.github.HzaCode/onecite:0.0.11"
+      },
+      {
+        "page": 228,
+        "count": 100,
+        "nextCursor": "io.github.IgniteUI/mcp-server:15.2.0",
+        "cursor": "io.github.IBazylchuk/paparats-mcp:2.5.0"
+      },
+      {
+        "page": 229,
+        "count": 100,
+        "nextCursor": "io.github.IngTian/witness:0.7.6",
+        "cursor": "io.github.IgniteUI/mcp-server:15.2.0"
+      },
+      {
+        "page": 230,
+        "count": 100,
+        "nextCursor": "io.github.Islomzoda/termada:0.7.5",
+        "cursor": "io.github.IngTian/witness:0.7.6"
+      },
+      {
+        "page": 231,
+        "count": 100,
+        "nextCursor": "io.github.Janicezhhhh/agent-pulse:1.4.0",
+        "cursor": "io.github.Islomzoda/termada:0.7.5"
+      },
+      {
+        "page": 232,
+        "count": 100,
+        "nextCursor": "io.github.JoernBerkefeld/mcp-server-sfmc:0.5.0",
+        "cursor": "io.github.Janicezhhhh/agent-pulse:1.4.0"
+      },
+      {
+        "page": 233,
+        "count": 100,
+        "nextCursor": "io.github.JonathanRReed/apple-system-mcp:1.0.2",
+        "cursor": "io.github.JoernBerkefeld/mcp-server-sfmc:0.5.0"
+      },
+      {
+        "page": 234,
+        "count": 100,
+        "nextCursor": "io.github.JustinBeckwith/linkinator-mcp:1.0.2",
+        "cursor": "io.github.JonathanRReed/apple-system-mcp:1.0.2"
+      },
+      {
+        "page": 235,
+        "count": 100,
+        "nextCursor": "io.github.Keesan12/martin-loop:0.3.9",
+        "cursor": "io.github.JustinBeckwith/linkinator-mcp:1.0.2"
+      },
+      {
+        "page": 236,
+        "count": 100,
+        "nextCursor": "io.github.KevinRabun/judges:3.100.0",
+        "cursor": "io.github.Keesan12/martin-loop:0.3.9"
+      },
+      {
+        "page": 237,
+        "count": 100,
+        "nextCursor": "io.github.KevinRabun/judges:3.19.6",
+        "cursor": "io.github.KevinRabun/judges:3.100.0"
+      },
+      {
+        "page": 238,
+        "count": 100,
+        "nextCursor": "io.github.KevinRabun/judges:3.77.0",
+        "cursor": "io.github.KevinRabun/judges:3.19.6"
+      },
+      {
+        "page": 239,
+        "count": 100,
+        "nextCursor": "io.github.Khamel83/argus:1.3.3",
+        "cursor": "io.github.KevinRabun/judges:3.77.0"
+      },
+      {
+        "page": 240,
+        "count": 100,
+        "nextCursor": "io.github.Kochava/kochava-for-advertisers-mcp-server:1.0.45",
+        "cursor": "io.github.Khamel83/argus:1.3.3"
+      },
+      {
+        "page": 241,
+        "count": 100,
+        "nextCursor": "io.github.L337-org/docker-mcp-server:2.1.3",
+        "cursor": "io.github.Kochava/kochava-for-advertisers-mcp-server:1.0.45"
+      },
+      {
+        "page": 242,
+        "count": 100,
+        "nextCursor": "io.github.Larshiensch99/priceparse:0.1.0",
+        "cursor": "io.github.L337-org/docker-mcp-server:2.1.3"
       }
     ],
-    "results": 21700,
+    "results": 24200,
     "complete": false,
     "errors": []
   },
-  "scans": [],
-  "repositoriesDiscovered": 32705,
-  "repositoriesScanned": 600,
-  "repositoriesNotScanned": 24209,
-  "scanOffset": 2054,
-  "repositoriesScannedTotal": 2054,
+  "scans": [
+    {
+      "repository": "tractorjuice/arckit-codex",
+      "status": "fresh",
+      "artifacts": 521,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 521,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "trelio-ru/agent-workspaces",
+      "status": "fresh",
+      "artifacts": 17,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 17,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "twanonymous/agent-dispatch-cli",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 6,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ulofiai/codex-context-rollover",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ulpi-io/marketplace",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "vadim-chiriac/worldkeep",
+      "status": "fresh",
+      "artifacts": 12,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 12,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ValerianXXX/billfit",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "vishesh9131/elephant",
+      "status": "fresh",
+      "artifacts": 22,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 22,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ViszCham/RepoSeiri",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 4,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "Vit129/agy-plugin-codex",
+      "status": "fresh",
+      "artifacts": 11,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 11,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "w1661884010-jpg/automation-learning-workbench",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "w1661884010-jpg/feibi-codex-pet",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "w93139/github-radar",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 4,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "wearshoes/release-ops",
+      "status": "fresh",
+      "artifacts": 10,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 10,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "weathour/ismism-system",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "wei-b0/codexbar-lite",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "wvdsh/ai",
+      "status": "fresh",
+      "artifacts": 12,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 12,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "xDylanLong/xiaomi-band-codex-notify",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "XiangyuSu611/claimmate",
+      "status": "fresh",
+      "artifacts": 14,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 14,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "XINGchi0130/dsh-base-plugin",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "xsoc1/rigorous-open-math-research",
+      "status": "fresh",
+      "artifacts": 14,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 14,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "YG-creator-ai/flagzy-community",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "zebbern/agent-collab",
+      "status": "fresh",
+      "artifacts": 18,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 18,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "zedarvates/botte-secrete",
+      "status": "fresh",
+      "artifacts": 81,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 81,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "zhongwangquan/multica-agent-sync",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 6,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "zjunlp/AutoSciRub",
+      "status": "fresh",
+      "artifacts": 20,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 20,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "ActiveInferenceInstitute/courses",
+      "status": "partial",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": true,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "HIDORAKAI002/ai-workspace-archive",
+      "status": "partial",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": true,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "0-co/company",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "000safah000-ai/BlackHawkMCP",
+      "status": "terminal-unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 404"
+      ]
+    },
+    {
+      "repository": "00PrabalK00/OpenRosWarehouse",
+      "status": "fresh",
+      "artifacts": 8,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 8,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "06ketan/medium-ops",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    }
+  ],
+  "repositoriesDiscovered": 33920,
+  "repositoriesScanned": 1000,
+  "repositoriesNotScanned": 25188,
+  "scanOffset": 2084,
+  "repositoriesScannedTotal": 2084,
   "cycleComplete": false,
   "persistedScanFailures": [],
-  "terminalUnavailableRepositories": 36,
-  "rateLimitedRepositories": 28,
+  "terminalUnavailableRepositories": 37,
+  "rateLimitedRepositories": 2,
   "rateLimitedScanEvents": 8,
-  "artifactsDiscovered": 94412,
-  "errors": 0,
+  "artifactsDiscovered": 97721,
+  "errors": 3,
   "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
-    "skill": 59065,
-    "plugin": 1529,
-    "mcp": 23169,
-    "marketplace": 932,
-    "hook": 364,
-    "config": 14,
+    "skill": 59380,
+    "plugin": 1562,
+    "mcp": 25683,
+    "marketplace": 957,
+    "hook": 377,
+    "config": 15,
     "agent-config": 41,
     "rule": 0,
-    "prompt": 0,
-    "plugin-metadata": 6770,
-    "agents": 2459,
-    "action": 69,
+    "prompt": 186,
+    "plugin-metadata": 6978,
+    "agents": 2471,
+    "action": 71,
     "other": 0
   },
   "verificationCounts": {
     "verified": 1080,
-    "discovered": 71620,
-    "registry": 21698,
+    "discovered": 72429,
+    "registry": 24198,
     "unknown": 14
   }
 }

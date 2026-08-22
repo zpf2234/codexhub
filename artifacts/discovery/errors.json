@@ -1,4 +1,22 @@
 {
-  "generatedAt": "2026-08-22T00:38:55.104Z",
-  "errors": []
+  "generatedAt": "2026-08-22T01:32:12.951Z",
+  "errors": [
+    {
+      "source": "github-code-team-guide",
+      "query": "filename:TEAM_GUIDE.md",
+      "page": 4,
+      "error": "GitHub API 403",
+      "status": 403
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "ActiveInferenceInstitute/courses",
+      "error": "GitHub API 403"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "HIDORAKAI002/ai-workspace-archive",
+      "error": "GitHub API 403"
+    }
+  ]
 }
