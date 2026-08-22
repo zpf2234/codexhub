@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-22T16:43:18.383Z",
-  "startedAt": "2026-08-22T16:43:08.875Z",
-  "completedAt": "2026-08-22T16:43:18.383Z",
+  "generatedAt": "2026-08-22T17:19:27.308Z",
+  "startedAt": "2026-08-22T17:00:32.379Z",
+  "completedAt": "2026-08-22T17:19:27.308Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -1125,7 +1125,7 @@
       }
     }
   ],
-  "sourcesProcessedThisRun": 2,
+  "sourcesProcessedThisRun": 0,
   "sourcesRemaining": 31,
   "exhaustiveSourcesRemaining": 5,
   "supplementalSourcesRemaining": 26,
@@ -5139,13 +5139,92 @@
     "complete": false,
     "errors": []
   },
-  "scans": [],
+  "scans": [
+    {
+      "repository": "anony88888/wordpress",
+      "status": "partial",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 409"
+      ]
+    },
+    {
+      "repository": "Anumeet-git/lilbee",
+      "status": "partial",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 409"
+      ]
+    },
+    {
+      "repository": "ArcaneSS14/arcane",
+      "status": "partial",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": true,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "Lzy599775/agent-auto-sci-skills",
+      "status": "fresh",
+      "artifacts": 65,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 65,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "m174460635/architectural-render-guard",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "M1nt-Ch0c0/lark-channel-bridge-skills",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 6,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "macintog/codex-spine",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "MacWulf/claude-in-codex",
+      "status": "fresh",
+      "artifacts": 24,
+      "verifiedArtifacts": 2,
+      "deferredArtifacts": 19,
+      "truncated": false,
+      "errors": []
+    }
+  ],
   "repositoriesDiscovered": 54694,
-  "repositoriesSelected": 0,
-  "repositoriesScanned": 0,
-  "repositoriesNotScanned": 40990,
-  "scanOffset": 4381,
-  "repositoriesScannedTotal": 4381,
+  "repositoriesSelected": 1000,
+  "repositoriesScanned": 16,
+  "repositoriesNotScanned": 40985,
+  "scanOffset": 4386,
+  "repositoriesScannedTotal": 4386,
   "cycleComplete": false,
   "persistedScanFailures": [
     {
@@ -5446,12 +5525,6 @@
     },
     {
       "repository": "RamaAditya49/rama-marketing",
-      "status": "fresh",
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "M1nt-Ch0c0/lark-channel-bridge-skills",
       "status": "fresh",
       "truncated": false,
       "errors": []
@@ -5802,12 +5875,6 @@
     },
     {
       "repository": "zedarvates/botte-secrete",
-      "status": "fresh",
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "MacWulf/claude-in-codex",
       "status": "fresh",
       "truncated": false,
       "errors": []
@@ -7109,12 +7176,6 @@
       "errors": []
     },
     {
-      "repository": "macintog/codex-spine",
-      "status": "fresh",
-      "truncated": false,
-      "errors": []
-    },
-    {
       "repository": "yuanyuanyuan430/ganhuo-ai-discoverability",
       "status": "fresh",
       "truncated": false,
@@ -7128,12 +7189,6 @@
     },
     {
       "repository": "wangyz1999/paper-list-outreach-skill",
-      "status": "fresh",
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "m174460635/architectural-render-guard",
       "status": "fresh",
       "truncated": false,
       "errors": []
@@ -9007,12 +9062,6 @@
       "errors": []
     },
     {
-      "repository": "Lzy599775/agent-auto-sci-skills",
-      "status": "fresh",
-      "truncated": false,
-      "errors": []
-    },
-    {
       "repository": "proflead/codex-skills-library",
       "status": "fresh",
       "truncated": false,
@@ -9055,18 +9104,18 @@
   ],
   "terminalUnavailableRepositories": 280,
   "rateLimitedRepositories": 5,
-  "rateLimitedScanEvents": 0,
-  "artifactsDiscovered": 244098,
-  "errors": 644,
-  "scanDisabled": true,
+  "rateLimitedScanEvents": 8,
+  "artifactsDiscovered": 243990,
+  "errors": 642,
+  "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
-    "skill": 133599,
+    "skill": 133601,
     "skill-metadata": 19148,
-    "plugin": 6883,
-    "mcp": 71731,
+    "plugin": 6885,
+    "mcp": 71618,
     "marketplace": 1377,
-    "hook": 1996,
+    "hook": 1997,
     "config": 1047,
     "agent-config": 2010,
     "rule": 86,
@@ -9076,9 +9125,9 @@
     "other": 0
   },
   "verificationCounts": {
-    "verified": 6551,
-    "discovered": 170690,
-    "registry": 66698,
+    "verified": 6554,
+    "discovered": 170692,
+    "registry": 66585,
     "unknown": 159
   }
 }
