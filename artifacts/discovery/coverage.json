@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-22T10:59:18.275Z",
-  "startedAt": "2026-08-22T10:59:16.708Z",
-  "completedAt": "2026-08-22T10:59:18.275Z",
+  "generatedAt": "2026-08-22T11:37:33.464Z",
+  "startedAt": "2026-08-22T11:37:21.735Z",
+  "completedAt": "2026-08-22T11:37:33.464Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -870,12 +870,54 @@
         "reset": 1787395457,
         "retryAfter": null
       }
+    },
+    {
+      "id": "github-code-plugin-mcp",
+      "kind": "mcp",
+      "coverage": "supplemental",
+      "query": "filename:.mcp.json",
+      "mode": "code-search",
+      "total": 57216,
+      "pages": 10,
+      "matches": 1000,
+      "results": 948,
+      "truncated": true,
+      "errors": [],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787398702,
+        "retryAfter": null
+      }
+    },
+    {
+      "id": "github-code-mcp-json",
+      "kind": "mcp",
+      "coverage": "supplemental",
+      "query": "filename:mcp.json",
+      "mode": "code-search",
+      "total": 0,
+      "pages": 0,
+      "matches": 0,
+      "results": 287,
+      "truncated": true,
+      "errors": [
+        {
+          "query": "filename:mcp.json",
+          "error": "GitHub API 403",
+          "status": 403
+        }
+      ],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787398702,
+        "retryAfter": null
+      }
     }
   ],
-  "sourcesProcessedThisRun": 0,
-  "sourcesRemaining": 37,
+  "sourcesProcessedThisRun": 2,
+  "sourcesRemaining": 36,
   "exhaustiveSourcesRemaining": 5,
-  "supplementalSourcesRemaining": 32,
+  "supplementalSourcesRemaining": 31,
   "registry": {
     "source": "mcp-official-registry",
     "pages": [
@@ -3980,17 +4022,167 @@
         "count": 100,
         "nextCursor": "io.github.jztan/redmine-mcp-server:0.9.0",
         "cursor": "io.github.jyswee/a2a-trustgate:1.5.16"
+      },
+      {
+        "page": 518,
+        "count": 100,
+        "nextCursor": "io.github.kaneg/k8s-mcp-go:0.4.2",
+        "cursor": "io.github.jztan/redmine-mcp-server:0.9.0"
+      },
+      {
+        "page": 519,
+        "count": 100,
+        "nextCursor": "io.github.kayhendriksen/foehn:0.2.23",
+        "cursor": "io.github.kaneg/k8s-mcp-go:0.4.2"
+      },
+      {
+        "page": 520,
+        "count": 100,
+        "nextCursor": "io.github.keshrath/agent-discover:1.0.27",
+        "cursor": "io.github.kayhendriksen/foehn:0.2.23"
+      },
+      {
+        "page": 521,
+        "count": 100,
+        "nextCursor": "io.github.keshrath/agent-tasks:1.9.23",
+        "cursor": "io.github.keshrath/agent-discover:1.0.27"
+      },
+      {
+        "page": 522,
+        "count": 100,
+        "nextCursor": "io.github.kimnchai/korea-flight-mcp:1.1.1",
+        "cursor": "io.github.keshrath/agent-tasks:1.9.23"
+      },
+      {
+        "page": 523,
+        "count": 100,
+        "nextCursor": "io.github.kiro0x/five-mcp:1.0.1",
+        "cursor": "io.github.kimnchai/korea-flight-mcp:1.1.1"
+      },
+      {
+        "page": 524,
+        "count": 100,
+        "nextCursor": "io.github.kivanccakmak/yaver:1.99.109",
+        "cursor": "io.github.kiro0x/five-mcp:1.0.1"
+      },
+      {
+        "page": 525,
+        "count": 100,
+        "nextCursor": "io.github.kivanccakmak/yaver:1.99.218",
+        "cursor": "io.github.kivanccakmak/yaver:1.99.109"
+      },
+      {
+        "page": 526,
+        "count": 100,
+        "nextCursor": "io.github.kivanccakmak/yaver:1.99.39",
+        "cursor": "io.github.kivanccakmak/yaver:1.99.218"
+      },
+      {
+        "page": 527,
+        "count": 100,
+        "nextCursor": "io.github.kkjh0723/mcp-ldbd:0.2.1",
+        "cursor": "io.github.kivanccakmak/yaver:1.99.39"
+      },
+      {
+        "page": 528,
+        "count": 100,
+        "nextCursor": "io.github.kontent-ai/mcp-server:0.33.1",
+        "cursor": "io.github.kkjh0723/mcp-ldbd:0.2.1"
+      },
+      {
+        "page": 529,
+        "count": 100,
+        "nextCursor": "io.github.kryptobaseddev/cleo-mcp-server:2026.3.15",
+        "cursor": "io.github.kontent-ai/mcp-server:0.33.1"
+      },
+      {
+        "page": 530,
+        "count": 100,
+        "nextCursor": "io.github.kyrylopr/lenspr:0.1.1",
+        "cursor": "io.github.kryptobaseddev/cleo-mcp-server:2026.3.15"
+      },
+      {
+        "page": 531,
+        "count": 100,
+        "nextCursor": "io.github.labelgrid/labelgrid-mcp:0.2.2",
+        "cursor": "io.github.kyrylopr/lenspr:0.1.1"
+      },
+      {
+        "page": 532,
+        "count": 100,
+        "nextCursor": "io.github.lawp09/bitbucket-mcp:1.13.1",
+        "cursor": "io.github.labelgrid/labelgrid-mcp:0.2.2"
+      },
+      {
+        "page": 533,
+        "count": 100,
+        "nextCursor": "io.github.lazymac2x/api-schema-drift-detector:1.0.0",
+        "cursor": "io.github.lawp09/bitbucket-mcp:1.13.1"
+      },
+      {
+        "page": 534,
+        "count": 100,
+        "nextCursor": "io.github.learningloons-hash/lithtrix:0.7.0",
+        "cursor": "io.github.lazymac2x/api-schema-drift-detector:1.0.0"
+      },
+      {
+        "page": 535,
+        "count": 100,
+        "nextCursor": "io.github.levnikolaevich/hex-graph-mcp:0.3.4",
+        "cursor": "io.github.learningloons-hash/lithtrix:0.7.0"
+      },
+      {
+        "page": 536,
+        "count": 100,
+        "nextCursor": "io.github.liftli-ai/liftli:1.0.0",
+        "cursor": "io.github.levnikolaevich/hex-graph-mcp:0.3.4"
+      },
+      {
+        "page": 537,
+        "count": 100,
+        "nextCursor": "io.github.linnea-bakshi/gha-doctor:0.58.0",
+        "cursor": "io.github.liftli-ai/liftli:1.0.0"
+      },
+      {
+        "page": 538,
+        "count": 100,
+        "nextCursor": "io.github.ljcl/gaggiuino-mcp:1.1.0",
+        "cursor": "io.github.linnea-bakshi/gha-doctor:0.58.0"
+      },
+      {
+        "page": 539,
+        "count": 100,
+        "nextCursor": "io.github.longsizhuo/openinvest:0.30.1",
+        "cursor": "io.github.ljcl/gaggiuino-mcp:1.1.0"
+      },
+      {
+        "page": 540,
+        "count": 100,
+        "nextCursor": "io.github.lorismascio17/droste-memory:1.1.2",
+        "cursor": "io.github.longsizhuo/openinvest:0.30.1"
+      },
+      {
+        "page": 541,
+        "count": 100,
+        "nextCursor": "io.github.luoshu-echorune/echorune-radar:1.0.0",
+        "cursor": "io.github.lorismascio17/droste-memory:1.1.2"
+      },
+      {
+        "page": 542,
+        "count": 100,
+        "nextCursor": "io.github.majiayu000/remem:0.6.1",
+        "cursor": "io.github.luoshu-echorune/echorune-radar:1.0.0"
       }
     ],
-    "results": 51698,
+    "results": 54198,
     "complete": false,
     "errors": []
   },
   "scans": [],
-  "repositoriesDiscovered": 48364,
-  "repositoriesSelected": 1000,
-  "repositoriesScanned": 8,
-  "repositoriesNotScanned": 37386,
+  "repositoriesDiscovered": 49654,
+  "repositoriesSelected": 0,
+  "repositoriesScanned": 0,
+  "repositoriesNotScanned": 38569,
   "scanOffset": 2290,
   "repositoriesScannedTotal": 2290,
   "cycleComplete": false,
@@ -12258,16 +12450,16 @@
   ],
   "terminalUnavailableRepositories": 130,
   "rateLimitedRepositories": 4,
-  "rateLimitedScanEvents": 8,
-  "artifactsDiscovered": 196793,
-  "errors": 1364,
-  "scanDisabled": false,
+  "rateLimitedScanEvents": 0,
+  "artifactsDiscovered": 200191,
+  "errors": 1365,
+  "scanDisabled": true,
   "complete": false,
   "categoryCounts": {
     "skill": 111371,
     "skill-metadata": 18172,
     "plugin": 4963,
-    "mcp": 54452,
+    "mcp": 57850,
     "marketplace": 1168,
     "hook": 962,
     "config": 163,
@@ -12280,8 +12472,8 @@
   },
   "verificationCounts": {
     "verified": 4183,
-    "discovered": 140928,
-    "registry": 51593,
+    "discovered": 141721,
+    "registry": 54198,
     "unknown": 89
   }
 }
