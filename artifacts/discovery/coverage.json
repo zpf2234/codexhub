@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-22T05:45:27.332Z",
-  "startedAt": "2026-08-22T05:44:53.251Z",
-  "completedAt": "2026-08-22T05:45:27.332Z",
+  "generatedAt": "2026-08-22T06:09:38.467Z",
+  "startedAt": "2026-08-22T06:01:17.099Z",
+  "completedAt": "2026-08-22T06:09:38.467Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -355,7 +355,7 @@
       }
     }
   ],
-  "sourcesProcessedThisRun": 2,
+  "sourcesProcessedThisRun": 0,
   "sourcesRemaining": 37,
   "exhaustiveSourcesRemaining": 5,
   "supplementalSourcesRemaining": 32,
@@ -2719,41 +2719,120 @@
     "complete": false,
     "errors": []
   },
-  "scans": [],
+  "scans": [
+    {
+      "repository": "ActiveInferenceInstitute/courses",
+      "status": "partial",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": true,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "HIDORAKAI002/ai-workspace-archive",
+      "status": "partial",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": true,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "0ics-srls/ui-ticket-mcp_public",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "0langa/Web.de-Access",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "0maru/wezterm-agent-dashboard",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "0Mattias/bettermemory",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 6,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "0nork/0nMCP",
+      "status": "terminal-unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 404"
+      ]
+    },
+    {
+      "repository": "0rnot/DiscordClaudeCode",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    }
+  ],
   "repositoriesDiscovered": 44727,
-  "repositoriesSelected": 0,
-  "repositoriesScanned": 0,
-  "repositoriesNotScanned": 34819,
-  "scanOffset": 2096,
-  "repositoriesScannedTotal": 2096,
+  "repositoriesSelected": 1000,
+  "repositoriesScanned": 16,
+  "repositoriesNotScanned": 34813,
+  "scanOffset": 2102,
+  "repositoriesScannedTotal": 2102,
   "cycleComplete": false,
   "persistedScanFailures": [],
-  "terminalUnavailableRepositories": 37,
+  "terminalUnavailableRepositories": 38,
   "rateLimitedRepositories": 2,
-  "rateLimitedScanEvents": 0,
-  "artifactsDiscovered": 112871,
-  "errors": 0,
-  "scanDisabled": true,
+  "rateLimitedScanEvents": 8,
+  "artifactsDiscovered": 112832,
+  "errors": 2,
+  "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
-    "skill": 59412,
+    "skill": 59414,
     "skill-metadata": 6980,
-    "plugin": 1588,
-    "mcp": 40687,
-    "marketplace": 957,
-    "hook": 383,
+    "plugin": 1591,
+    "mcp": 40638,
+    "marketplace": 959,
+    "hook": 384,
     "config": 18,
     "agent-config": 50,
-    "rule": 2,
+    "rule": 3,
     "prompt": 249,
-    "agents": 2474,
+    "agents": 2475,
     "action": 71,
     "other": 0
   },
   "verificationCounts": {
     "verified": 1078,
-    "discovered": 72581,
-    "registry": 39198,
+    "discovered": 72594,
+    "registry": 39146,
     "unknown": 14
   }
 }
