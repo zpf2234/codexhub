@@ -171,6 +171,32 @@ test('repository tree scan discovers and validates multiple artifact types witho
   assert.ok(result.artifacts.every((artifact) => artifact.status === 'verified'));
 });
 
+test('repository tree scan exposes marketplace plugin references without downloading them', async () => {
+  const fetchImpl = async (url) => {
+    if (url === 'https://api.github.com/repos/a/marketplace') return response({ default_branch: 'main', archived: false });
+    if (url.endsWith('/git/trees/main?recursive=1')) return response({ tree: [{ type: 'blob', path: '.agents/plugins/marketplace.json' }] });
+    return response({ content: Buffer.from(JSON.stringify({ name: 'local', plugins: [{ name: 'demo-plugin', source: { source: 'npm', package: '@example/demo', version: '1.0.0' } }] })).toString('base64') });
+  };
+  const result = await scanRepository({ fullName: 'a/marketplace', owner: 'a', name: 'marketplace', defaultBranch: 'main' }, { fetchImpl });
+  const reference = result.artifacts.find((artifact) => artifact.type === 'marketplace-plugin-reference');
+  assert.equal(reference.category, 'plugin');
+  assert.equal(reference.name, 'demo-plugin');
+  assert.equal(reference.sourceType, 'npm');
+  assert.equal(reference.sourceValue, '@example/demo');
+});
+
+test('repository tree scan verifies plugin manifests when content verification is capped', async () => {
+  const fetchImpl = async (url) => {
+    if (url === 'https://api.github.com/repos/a/plugin-cap') return response({ default_branch: 'main', archived: false });
+    if (url.endsWith('/git/trees/main?recursive=1')) return response({ tree: [{ type: 'blob', path: '.codex-plugin/plugin.json' }, { type: 'blob', path: 'skills/demo/SKILL.md' }] });
+    if (url.includes('plugin.json')) return response({ content: Buffer.from('{"name":"demo","version":"1.0.0","description":"demo"}').toString('base64') });
+    return response({ content: Buffer.from('---\nname: demo\ndescription: demo\n---').toString('base64') });
+  };
+  const result = await scanRepository({ fullName: 'a/plugin-cap', owner: 'a', name: 'plugin-cap', defaultBranch: 'main' }, { fetchImpl, maxArtifacts: 1 });
+  assert.equal(result.artifacts.find((artifact) => artifact.type === 'plugin').verification, 'passed');
+  assert.equal(result.artifacts.find((artifact) => artifact.type === 'skill').verification, 'deferred');
+});
+
 test('repository tree scan reuses search metadata and skips the repository request', async () => {
   const calls = [];
   const result = await scanRepository({ fullName: 'a/known', owner: 'a', name: 'known', defaultBranch: 'main', stars: 5, forks: 2, archived: false, license: 'MIT' }, {
@@ -223,12 +249,13 @@ test('repository tree scan keeps every artifact path when content verification i
 test('checkpoint writes atomically and survives a reload', async () => {
   const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'codexhub-checkpoint-'));
   const filePath = path.join(directory, 'checkpoint.json');
-  await saveCheckpoint(filePath, { completedSources: ['one'], repositories: { 'a/b': { fullName: 'a/b' } }, sourceReports: [{ id: 'one' }] });
+  await saveCheckpoint(filePath, { completedSources: ['one'], repositories: { 'a/b': { fullName: 'a/b' } }, sourceReports: [{ id: 'one' }], scanAlgorithmVersion: 2 });
   const checkpoint = await loadCheckpoint(filePath);
   assert.deepEqual(checkpoint.completedSources, ['one']);
   assert.equal(checkpoint.repositories['a/b'].fullName, 'a/b');
   assert.equal(checkpoint.sourceReports[0].id, 'one');
   assert.equal(checkpoint.sourceAlgorithmVersion, 1);
+  assert.equal(checkpoint.scanAlgorithmVersion, 2);
   assert.deepEqual(checkpoint.sourceAttempts, {});
   assert.deepEqual(checkpoint.sourceStates, {});
   assert.ok((await fs.readdir(directory)).some((name) => /^checkpoint-repositories-\d+\.json$/.test(name)));
@@ -386,6 +413,7 @@ test('artifact classifier recognizes Codex component paths', () => {
   assert.equal(classifyPath('.agents.md').category, 'agents');
   assert.equal(classifyPath('.agents/plugins/marketplace.json').category, 'marketplace');
   assert.equal(classifyPath('hooks/hooks.json').category, 'hook');
+  assert.equal(classifyPath('hooks/session-start.json').category, 'hook');
   assert.equal(classifyPath('agents/openai.yaml').category, 'skill-metadata');
   assert.equal(classifyPath('server.json').type, 'mcp-server-manifest');
   assert.equal(classifyPath('random/server.json').type, 'mcp-server-manifest');
@@ -400,19 +428,31 @@ test('local inventory finds and classifies Codex component paths without executi
   await fs.mkdir(path.join(directory, '.agents', 'skills', 'demo'), { recursive: true });
   await fs.mkdir(path.join(directory, 'plugin', '.codex-plugin'), { recursive: true });
   await fs.writeFile(path.join(directory, '.agents', 'skills', 'demo', 'SKILL.md'), '---\nname: demo\ndescription: demo\n---\n');
-  await fs.writeFile(path.join(directory, 'plugin', '.codex-plugin', 'plugin.json'), '{}');
+  await fs.writeFile(path.join(directory, 'plugin', '.codex-plugin', 'plugin.json'), JSON.stringify({ name: 'demo', version: '1.0.0', description: 'demo', skills: './skills/', mcpServers: './.mcp.json', apps: './.app.json', hooks: './hooks/custom.json' }));
   await fs.writeFile(path.join(directory, '.mcp.json'), '{}');
+  await fs.mkdir(path.join(directory, '.agents', 'plugins'), { recursive: true });
+  await fs.writeFile(path.join(directory, '.agents', 'plugins', 'marketplace.json'), JSON.stringify({ name: 'fixture-marketplace', plugins: [{ name: 'external-plugin', source: { source: 'url', url: 'https://example.com/plugin.git' } }] }));
+  await fs.mkdir(path.join(directory, 'hooks'), { recursive: true });
+  await fs.writeFile(path.join(directory, 'hooks', 'session-start.json'), '{"hooks":{"SessionStart":[]}}');
+  await fs.mkdir(path.join(directory, '.github', 'codex', 'prompts'), { recursive: true });
+  await fs.writeFile(path.join(directory, '.github', 'codex', 'prompts', 'release.txt'), 'release prompt');
   const result = await discoverLocalComponents({ roots: [{ id: 'fixture', root: directory, include: ['.'] }], now: '2026-01-01T00:00:00.000Z' });
-  assert.deepEqual(result.artifacts.map((artifact) => artifact.category).sort(), ['mcp', 'plugin', 'skill']);
-  assert.ok(result.artifacts.every((artifact) => artifact.source === 'local-filesystem' && artifact.verification === 'deferred'));
+  const categories = result.artifacts.reduce((counts, artifact) => ({ ...counts, [artifact.category]: (counts[artifact.category] || 0) + 1 }), {});
+  assert.deepEqual(categories, { skill: 2, mcp: 3, plugin: 2, hook: 2, marketplace: 1, prompt: 1 });
+  assert.ok(result.artifacts.some((artifact) => artifact.type === 'marketplace-plugin-reference' && artifact.name === 'external-plugin'));
+  assert.ok(result.repositories.every((repository) => !repository.description.includes(directory)));
+  assert.ok(result.coverage.rootIds.every((rootId) => !rootId.includes(directory)));
+  assert.ok(result.artifacts.every((artifact) => artifact.source === 'local-filesystem' && ['deferred', 'configured', 'manifest-reference'].includes(artifact.verification)));
 
   const codexHome = await fs.mkdtemp(path.join(os.tmpdir(), 'codexhub-home-'));
   await fs.mkdir(path.join(codexHome, 'rules'), { recursive: true });
-  await fs.writeFile(path.join(codexHome, 'config.toml'), '[mcp_servers.demo]\nurl = "https://example.com/mcp"\n[hooks]\nSessionStart = []\n[agents.reviewer]\ndescription = "review"\n[[skills.config]]\npath = "/tmp/demo/SKILL.md"\nenabled = false\n');
+  await fs.writeFile(path.join(codexHome, 'config.toml'), '[mcp_servers.demo]\nurl = "https://example.com/mcp"\n[hooks]\nSessionStart = []\n[agents.reviewer]\ndescription = "review"\n[[skills.config]]\npath = "/tmp/demo/SKILL.md"\nenabled = false\n[plugins."demo-plugin"]\nenabled = true\n[plugins."demo-plugin".mcp_servers.docs]\nenabled = true\n');
   await fs.writeFile(path.join(codexHome, 'rules', 'default.rules'), 'prefix_rule(pattern=["git"], decision="allow")\n');
   const homeResult = await discoverLocalComponents({ roots: [{ id: 'codex-home', root: codexHome, include: ['config.toml', 'rules'] }], now: '2026-01-01T00:00:00.000Z' });
-  assert.deepEqual(homeResult.artifacts.map((artifact) => artifact.category).sort(), ['agent-config', 'config', 'hook', 'mcp', 'rule', 'skill']);
+  assert.deepEqual(homeResult.artifacts.map((artifact) => artifact.category).sort(), ['agent-config', 'config', 'hook', 'mcp', 'mcp', 'plugin', 'rule', 'skill']);
   assert.ok(homeResult.artifacts.some((artifact) => artifact.artifactType === 'mcp-config-entry' && artifact.name === 'demo'));
+  assert.ok(homeResult.artifacts.some((artifact) => artifact.artifactType === 'plugin-config-entry' && artifact.name === 'demo-plugin'));
+  assert.ok(homeResult.artifacts.some((artifact) => artifact.artifactType === 'mcp-config-entry' && artifact.name === 'demo-plugin/docs'));
   assert.ok(homeResult.artifacts.every((artifact) => !String(artifact.description || '').includes('https://example.com/mcp')));
 
   await fs.mkdir(path.join(codexHome, 'prompts'), { recursive: true });
@@ -435,6 +475,17 @@ test('discovery normalization refreshes improved path classifications', () => {
   const result = normalizeDiscovery({ generatedAt: '2026-01-01T00:00:00Z', coverage: {}, repositories: [], artifacts: [{ id: 'github:a/b#.app.json', category: 'mcp', type: 'mcp', path: '.app.json', status: 'discovered', source: 'github-tree' }] });
   assert.equal(result.artifacts[0].category, 'mcp');
   assert.equal(result.artifacts[0].artifactType, 'mcp-app');
+});
+
+test('discovery normalization migrates legacy metadata categories without a path', () => {
+  const result = normalizeDiscovery({ generatedAt: '2026-01-01T00:00:00Z', coverage: {}, repositories: [], artifacts: [{ id: 'legacy:metadata', category: 'plugin-metadata', type: 'plugin-metadata', status: 'discovered', source: 'github-tree' }] });
+  assert.equal(result.artifacts[0].category, 'skill-metadata');
+  assert.equal(result.artifacts[0].categoryLabel, 'Skill metadata');
+});
+
+test('discovery normalization preserves synthetic artifact labels', () => {
+  const result = normalizeDiscovery({ generatedAt: '2026-01-01T00:00:00Z', coverage: {}, repositories: [], artifacts: [{ id: 'local:marketplace#plugins.1', category: 'plugin', type: 'marketplace-plugin-reference', categoryLabel: 'Marketplace plugin', path: 'marketplace.json#plugins.1', status: 'discovered', source: 'local-filesystem' }] });
+  assert.equal(result.artifacts[0].categoryLabel, 'Marketplace plugin');
 });
 
 test('normalized discovery payload satisfies the public schema', async () => {

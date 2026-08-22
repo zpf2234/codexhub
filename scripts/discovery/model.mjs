@@ -5,7 +5,7 @@ const PATH_RULES = [
   { category: 'mcp', type: 'mcp-server-manifest', label: 'MCP server manifest', test: (path) => /(?:^|\/)server\.json$/i.test(path) },
   { category: 'mcp', type: 'mcp', label: 'MCP configuration', test: (path) => /(?:^|\/)\.mcp\.json$/i.test(path) || /(?:^|\/)(?:mcp|mcp-server)\.(?:json|ya?ml|toml)$/i.test(path) },
   { category: 'marketplace', type: 'marketplace', label: 'Plugin marketplace', test: (path) => /(?:^|\/)(?:\.agents\/plugins|\.claude-plugin)\/marketplace\.json$/i.test(path) },
-  { category: 'hook', type: 'hook', label: 'Codex hook', test: (path) => /(?:^|\/)(?:\.codex\/)?hooks\.json$/i.test(path) || /(?:^|\/)hooks\/[^/]+\.json$/i.test(path) },
+  { category: 'hook', type: 'hook', label: 'Codex hook', test: (path) => /(?:^|\/)(?:\.codex\/)?hooks\.json$/i.test(path) || /(?:^|\/)hooks\/.+\.json$/i.test(path) },
   { category: 'config', type: 'codex-config', label: 'Codex configuration', test: (path) => /(?:^|\/)\.codex\/(?:config|requirements)\.toml$/i.test(path) },
   { category: 'agent-config', type: 'agent-config', label: 'Custom agent', test: (path) => /(?:^|\/)\.codex\/agents\/[^/]+\.toml$/i.test(path) },
   { category: 'rule', type: 'rule', label: 'Execpolicy rule', test: (path) => /(?:^|\/)\.codex\/rules\/[^/]+\.rules$/i.test(path) },
@@ -33,6 +33,14 @@ export const CATEGORY_LABELS = {
   action: 'Actions',
   other: 'Other'
 };
+const ARTIFACT_TYPE_LABELS = {
+  'marketplace-plugin-reference': 'Marketplace plugin',
+  'mcp-config-entry': 'Configured MCP server',
+  'hook-config-entry': 'Configured hook event',
+  'agent-role-entry': 'Configured agent role',
+  'skill-config-entry': 'Skill configuration',
+  'plugin-config-entry': 'Configured plugin'
+};
 
 export function classifyPath(filePath = '') {
   const normalized = String(filePath).replaceAll('\\', '/');
@@ -43,7 +51,8 @@ export function classifyArtifact(artifact = {}) {
   if (artifact.source === 'mcp-registry' || artifact.type === 'mcp-registry') return { category: 'mcp', type: 'mcp-registry', label: 'MCP Registry' };
   const pathClassification = artifact.path ? classifyPath(artifact.path) : null;
   if (pathClassification && pathClassification.category !== 'other') return pathClassification;
-  if (artifact.category && CATEGORY_LABELS[artifact.category]) return { category: artifact.category, type: artifact.type || artifact.category, label: CATEGORY_LABELS[artifact.category] };
+  const category = artifact.category === 'plugin-metadata' ? 'skill-metadata' : artifact.category;
+  if (category && CATEGORY_LABELS[category]) return { category, type: artifact.type || category, label: artifact.categoryLabel || ARTIFACT_TYPE_LABELS[artifact.type] || CATEGORY_LABELS[category] };
   return classifyPath(artifact.path || '');
 }
 

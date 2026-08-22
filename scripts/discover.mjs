@@ -13,6 +13,7 @@ import { writeArtifactShards } from './discovery/artifact-shards.mjs';
 const outputDir = path.join(ROOT, 'artifacts', 'discovery');
 const checkpointPath = path.join(outputDir, 'checkpoint.json');
 const SOURCE_ALGORITHM_VERSION = 4;
+const SCAN_ALGORITHM_VERSION = 2;
 const resume = !process.argv.includes('--fresh');
 const scanEnabled = !process.argv.includes('--no-scan');
 const scanOnly = process.argv.includes('--scan-only');
@@ -38,6 +39,16 @@ if (checkpoint.sourceAlgorithmVersion !== SOURCE_ALGORITHM_VERSION) {
   checkpoint.sourceReports = [];
   checkpoint.sourceAlgorithmVersion = SOURCE_ALGORITHM_VERSION;
   checkpoint.cycleComplete = false;
+}
+if (checkpoint.scanAlgorithmVersion !== SCAN_ALGORITHM_VERSION) {
+  checkpoint.scanOffset = 0;
+  checkpoint.cycleComplete = false;
+  for (const [key, repository] of Object.entries(checkpoint.repositories)) {
+    if (!repository.scan) continue;
+    delete repository.scan;
+    markRepositoryDirty(key);
+  }
+  checkpoint.scanAlgorithmVersion = SCAN_ALGORITHM_VERSION;
 }
 if (resume && checkpoint.cycleComplete) {
   checkpoint.completedSources = [];

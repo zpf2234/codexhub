@@ -10,6 +10,7 @@ export const GITHUB_SOURCES = [
 export const GITHUB_CODE_SOURCES = [
   { id: 'github-code-skill-manifest', kind: 'skill', coverage: 'supplemental', query: 'filename:SKILL.md' },
   { id: 'github-code-repo-skills', kind: 'skill', coverage: 'supplemental', query: 'filename:SKILL.md path:.agents/skills' },
+  { id: 'github-code-plugin-skills', kind: 'skill', coverage: 'supplemental', query: 'filename:SKILL.md path:skills' },
   { id: 'github-code-plugin-manifest', kind: 'plugin', coverage: 'supplemental', query: 'filename:plugin.json path:.codex-plugin' },
   { id: 'github-code-agent-plugin-manifest', kind: 'plugin', coverage: 'supplemental', query: 'filename:plugin.json path:.agent-plugin' },
   { id: 'github-code-claude-plugin-manifest', kind: 'plugin', coverage: 'supplemental', query: 'filename:plugin.json path:.claude-plugin' },
@@ -18,6 +19,7 @@ export const GITHUB_CODE_SOURCES = [
   { id: 'github-code-plugin-app', kind: 'mcp', coverage: 'supplemental', query: 'filename:.app.json' },
   { id: 'github-code-project-hooks', kind: 'hook', coverage: 'supplemental', query: 'filename:hooks.json path:.codex' },
   { id: 'github-code-hooks-anywhere', kind: 'hook', coverage: 'supplemental', query: 'filename:hooks.json' },
+  { id: 'github-code-plugin-hooks', kind: 'hook', coverage: 'supplemental', query: 'path:hooks extension:json' },
   { id: 'github-code-codex-config', kind: 'config', coverage: 'supplemental', query: 'filename:config.toml path:.codex' },
   { id: 'github-code-codex-requirements', kind: 'config', coverage: 'supplemental', query: 'filename:requirements.toml path:.codex' },
   { id: 'github-code-codex-agents', kind: 'agent-config', coverage: 'supplemental', query: 'path:.codex/agents extension:toml' },
@@ -39,7 +41,8 @@ export const GITHUB_CODE_SOURCES = [
   { id: 'github-code-mcp-yaml', kind: 'mcp', coverage: 'supplemental', query: 'filename:mcp.yaml' },
   { id: 'github-code-mcp-yml', kind: 'mcp', coverage: 'supplemental', query: 'filename:mcp.yml' },
   { id: 'github-code-mcp-toml', kind: 'mcp', coverage: 'supplemental', query: 'filename:mcp.toml' },
-  { id: 'github-code-mcp-server-json', kind: 'mcp', coverage: 'supplemental', query: 'filename:server.json modelcontextprotocol.io' }
+  { id: 'github-code-mcp-server-json', kind: 'mcp', coverage: 'supplemental', query: 'filename:server.json modelcontextprotocol.io' },
+  { id: 'github-code-mcp-server-json-anywhere', kind: 'mcp', coverage: 'supplemental', query: 'filename:server.json' }
 ];
 
 export const MCP_REGISTRY_SOURCE = {

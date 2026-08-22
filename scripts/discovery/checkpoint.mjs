@@ -98,10 +98,11 @@ export async function loadCheckpoint(filePath) {
       registryReport: value.registryReport && typeof value.registryReport === 'object' ? value.registryReport : null,
       scanOffset: Number.isInteger(value.scanOffset) && value.scanOffset >= 0 ? value.scanOffset : 0,
       cycleComplete: value.cycleComplete === true,
-      sourceAlgorithmVersion: Number.isInteger(value.sourceAlgorithmVersion) ? value.sourceAlgorithmVersion : 1
+      sourceAlgorithmVersion: Number.isInteger(value.sourceAlgorithmVersion) ? value.sourceAlgorithmVersion : 1,
+      scanAlgorithmVersion: Number.isInteger(value.scanAlgorithmVersion) ? value.scanAlgorithmVersion : 1
     };
   } catch {
-    return { version: 1, completedSources: [], sourceAttempts: {}, sourceCursor: 0, sourceStates: {}, repositories: {}, registry: {}, sourceReports: [], registryReport: null, scanOffset: 0, cycleComplete: false, sourceAlgorithmVersion: 1 };
+    return { version: 1, completedSources: [], sourceAttempts: {}, sourceCursor: 0, sourceStates: {}, repositories: {}, registry: {}, sourceReports: [], registryReport: null, scanOffset: 0, cycleComplete: false, sourceAlgorithmVersion: 1, scanAlgorithmVersion: 1 };
   }
 }
 
