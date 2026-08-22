@@ -25,7 +25,7 @@ const scanConcurrency = Math.max(1, Number(process.env.DISCOVERY_SCAN_CONCURRENC
 const selectedSources = process.env.DISCOVERY_SOURCES ? new Set(process.env.DISCOVERY_SOURCES.split(',').map((value) => value.trim()).filter(Boolean)) : null;
 const startedAt = new Date().toISOString();
 const client = new GithubClient();
-const checkpoint = resume ? await loadCheckpoint(checkpointPath) : { version: 1, completedSources: [], sourceAttempts: {}, sourceCursor: 0, repositories: {}, registry: {}, sourceReports: [], scanOffset: 0, cycleComplete: false };
+const checkpoint = resume ? await loadCheckpoint(checkpointPath) : { version: 1, completedSources: [], sourceAttempts: {}, sourceCursor: 0, repositories: {}, registry: {}, sourceReports: [], scanOffset: 0, scanCycle: 1, cycleComplete: false };
 checkpoint.repositoryDirtyKeys = [];
 function markRepositoryDirty(key) {
   if (key && !checkpoint.repositoryDirtyKeys.includes(key)) checkpoint.repositoryDirtyKeys.push(key);
@@ -43,11 +43,6 @@ if (checkpoint.sourceAlgorithmVersion !== SOURCE_ALGORITHM_VERSION) {
 if (checkpoint.scanAlgorithmVersion !== SCAN_ALGORITHM_VERSION) {
   checkpoint.scanOffset = 0;
   checkpoint.cycleComplete = false;
-  for (const [key, repository] of Object.entries(checkpoint.repositories)) {
-    if (!repository.scan) continue;
-    delete repository.scan;
-    markRepositoryDirty(key);
-  }
   checkpoint.scanAlgorithmVersion = SCAN_ALGORITHM_VERSION;
 }
 if (resume && checkpoint.cycleComplete) {
@@ -56,21 +51,11 @@ if (resume && checkpoint.cycleComplete) {
   checkpoint.registry = {};
   checkpoint.registryReport = null;
   checkpoint.scanOffset = 0;
+  checkpoint.scanCycle = (checkpoint.scanCycle || 1) + 1;
   checkpoint.sourceAttempts = {};
   checkpoint.sourceCursor = 0;
   checkpoint.sourceStates = {};
   checkpoint.cycleComplete = false;
-  for (const [key, repository] of Object.entries(checkpoint.repositories)) {
-    if (repository.registryOnly === true && !repository.owner) {
-      delete checkpoint.repositories[key];
-      markRepositoryDirty(key);
-      continue;
-    }
-    delete repository.scan;
-    delete repository.discoveredArtifacts;
-    delete repository.registryServers;
-    delete repository.registryOnly;
-  }
 }
 const entries = await readEntries();
 const repositories = new Map(Object.entries(checkpoint.repositories));
@@ -199,7 +184,8 @@ if (!registryReport.complete && registryReport.errors?.length) {
 const allRepositories = [...repositories.values()].filter((candidate) => candidate.owner && candidate.name);
 const successfullyScanned = (candidate) => {
   const scan = checkpoint.repositories[candidate.fullName.toLowerCase()]?.scan;
-  return (scan?.status === 'fresh' && scan.truncated !== true && (scan.errors || []).length === 0) || scan?.terminal === true;
+  if (scan?.algorithmVersion !== SCAN_ALGORITHM_VERSION || scan?.cycle !== checkpoint.scanCycle) return false;
+  return (scan.status === 'fresh' && scan.truncated !== true && (scan.errors || []).length === 0) || scan.terminal === true;
 };
 const scanCandidates = allRepositories.map((candidate) => ({ ...candidate, scan: checkpoint.repositories[candidate.fullName.toLowerCase()]?.scan }));
 const scanList = selectScanBatch(scanCandidates, { limit: maxRepositories, retryShare: Number(process.env.DISCOVERY_SCAN_RETRY_SHARE || 0.25), isComplete: successfullyScanned });
@@ -216,6 +202,8 @@ if (scanEnabled) {
       const key = candidate.fullName.toLowerCase();
       const scanned = await scanRepository(candidate, { maxArtifacts: maxArtifactsPerRepository });
       scanned.attempts = (checkpoint.repositories[key]?.scan?.attempts || 0) + 1;
+      scanned.algorithmVersion = SCAN_ALGORITHM_VERSION;
+      scanned.cycle = checkpoint.scanCycle;
       return { candidate, key, scanned };
     }));
     for (const { candidate, key, scanned } of results) {

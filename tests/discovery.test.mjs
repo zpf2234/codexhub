@@ -249,13 +249,14 @@ test('repository tree scan keeps every artifact path when content verification i
 test('checkpoint writes atomically and survives a reload', async () => {
   const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'codexhub-checkpoint-'));
   const filePath = path.join(directory, 'checkpoint.json');
-  await saveCheckpoint(filePath, { completedSources: ['one'], repositories: { 'a/b': { fullName: 'a/b' } }, sourceReports: [{ id: 'one' }], scanAlgorithmVersion: 2 });
+  await saveCheckpoint(filePath, { completedSources: ['one'], repositories: { 'a/b': { fullName: 'a/b' } }, sourceReports: [{ id: 'one' }], scanAlgorithmVersion: 2, scanCycle: 3 });
   const checkpoint = await loadCheckpoint(filePath);
   assert.deepEqual(checkpoint.completedSources, ['one']);
   assert.equal(checkpoint.repositories['a/b'].fullName, 'a/b');
   assert.equal(checkpoint.sourceReports[0].id, 'one');
   assert.equal(checkpoint.sourceAlgorithmVersion, 1);
   assert.equal(checkpoint.scanAlgorithmVersion, 2);
+  assert.equal(checkpoint.scanCycle, 3);
   assert.deepEqual(checkpoint.sourceAttempts, {});
   assert.deepEqual(checkpoint.sourceStates, {});
   assert.ok((await fs.readdir(directory)).some((name) => /^checkpoint-repositories-\d+\.json$/.test(name)));
