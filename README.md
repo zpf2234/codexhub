@@ -34,7 +34,7 @@ npm run dashboard
 
 Then open `http://127.0.0.1:4173/discovery.html`. The command builds from the latest local checkpoint and starts a no-cache local server without crawling the network.
 
-If that port is already occupied, choose another one with `npm run dashboard -- --port 4174`.
+If port `4173` is already occupied, the dashboard automatically selects the next available local port. You can pin one explicitly with `npm run dashboard -- --port 4174`.
 
 To advance the local discovery snapshot first, run one bounded batch and then open the dashboard:
 
@@ -71,7 +71,7 @@ For operational recovery, `GITHUB_DISCOVERY_TIMEOUT_MS` and `GITHUB_DISCOVERY_RE
 - **Custom agents**: project `.codex/agents/*.toml` subagent definitions.
 - **Execpolicy rules**: project `.codex/rules/*.rules` command policy files.
 - **Codex Action prompts**: `.github/codex/prompts/*.md` or `.txt` files passed to `openai/codex-action`; private `~/.codex/prompts` files are not discoverable from GitHub.
-- **AGENTS**: a declared `AGENTS.md` or `AGENTS.override.md` path; both are searched independently.
+- **Agent guidance**: a declared `AGENTS.md`, `AGENTS.override.md`, `TEAM_GUIDE.md`, or `.agents.md` path; Codex's supported fallback guidance names are searched independently.
 - **Action**: a repository `action.yml` or `action.yaml` describing a GitHub Action.
 - **Tool**: a first-party or community tool listed for ecosystem context.
 - **Marketplace**: `.agents/plugins/marketplace.json` and compatible marketplace manifests.

@@ -1,9 +1,26 @@
 import { spawn } from 'node:child_process';
+import net from 'node:net';
 import process from 'node:process';
 
 const portIndex = process.argv.indexOf('--port');
-const port = Number(portIndex >= 0 ? process.argv[portIndex + 1] : process.env.PORT || 4173);
+const explicitPort = portIndex >= 0 || Boolean(process.env.PORT);
+let port = Number(portIndex >= 0 ? process.argv[portIndex + 1] : process.env.PORT || 4173);
 if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('Dashboard port must be an integer from 1 to 65535.');
+
+function portAvailable(candidate) {
+  return new Promise((resolve) => {
+    const probe = net.createServer();
+    probe.once('error', () => resolve(false));
+    probe.listen(candidate, '127.0.0.1', () => probe.close(() => resolve(true)));
+  });
+}
+
+if (!explicitPort && !(await portAvailable(port))) {
+  const firstPort = port;
+  while (port < 65535 && !(await portAvailable(++port))) {}
+  if (port >= 65535) throw new Error(`No available dashboard port after ${firstPort}.`);
+  console.log(`Dashboard port ${firstPort} is busy; using ${port}.`);
+}
 process.env.PORT = String(port);
 
 const run = (command, args) => new Promise((resolve, reject) => {

@@ -30,6 +30,8 @@ export const GITHUB_CODE_SOURCES = [
   { id: 'github-code-plugin-metadata-yml', kind: 'plugin-metadata', coverage: 'supplemental', query: 'filename:openai.yml path:agents' },
   { id: 'github-code-agents', kind: 'agents', coverage: 'supplemental', query: 'filename:AGENTS.md' },
   { id: 'github-code-agents-override', kind: 'agents', coverage: 'supplemental', query: 'filename:AGENTS.override.md' },
+  { id: 'github-code-team-guide', kind: 'agents', coverage: 'supplemental', query: 'filename:TEAM_GUIDE.md' },
+  { id: 'github-code-agents-dot', kind: 'agents', coverage: 'supplemental', query: 'filename:.agents.md' },
   { id: 'github-code-codex-action-yml', kind: 'action', coverage: 'supplemental', query: 'filename:action.yml codex' },
   { id: 'github-code-codex-action-yaml', kind: 'action', coverage: 'supplemental', query: 'filename:action.yaml codex' },
   { id: 'github-code-mcp-yaml', kind: 'mcp', coverage: 'supplemental', query: 'filename:mcp.yaml' },
