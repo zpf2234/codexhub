@@ -1,6 +1,12 @@
 {
-  "generatedAt": "2026-08-22T17:58:29.331Z",
+  "generatedAt": "2026-08-22T18:51:22.149Z",
   "errors": [
+    {
+      "source": "github-code-hooks",
+      "query": "filename:hooks.json path:hooks",
+      "error": "GitHub API 403",
+      "status": 403
+    },
     {
       "source": "github-tree-scan",
       "repository": "matteuzdev/agentic-site-sales-os",
