@@ -8,5 +8,6 @@ artifacts/*
 !artifacts/discovery/*.json
 artifacts/discovery/local.json
 artifacts/discovery/discovery.json
+artifacts/discovery/artifacts.json
 .DS_Store
 npm-debug.log*

@@ -8,6 +8,7 @@ import { crawlMcpRegistry } from './discovery/mcp-registry.mjs';
 import { loadCheckpoint, saveCheckpoint } from './discovery/checkpoint.mjs';
 import { normalizeDiscovery } from './discovery/model.mjs';
 import { selectScanBatch } from './discovery/scan-queue.mjs';
+import { writeArtifactShards } from './discovery/artifact-shards.mjs';
 
 const outputDir = path.join(ROOT, 'artifacts', 'discovery');
 const checkpointPath = path.join(outputDir, 'checkpoint.json');
@@ -16,6 +17,7 @@ const resume = !process.argv.includes('--fresh');
 const scanEnabled = !process.argv.includes('--no-scan');
 const maxRepositories = Number(process.env.DISCOVERY_MAX_REPOSITORIES || 0);
 const maxArtifactsPerRepository = Number(process.env.DISCOVERY_MAX_ARTIFACTS_PER_REPOSITORY || 500);
+const artifactShardBytes = Math.max(1_048_576, Number(process.env.DISCOVERY_ARTIFACT_SHARD_BYTES || 8 * 1024 * 1024));
 const maxSourcesPerRun = Number(process.env.DISCOVERY_MAX_SOURCES_PER_RUN || 0);
 const scanConcurrency = Math.max(1, Number(process.env.DISCOVERY_SCAN_CONCURRENCY || 4));
 const selectedSources = process.env.DISCOVERY_SOURCES ? new Set(process.env.DISCOVERY_SOURCES.split(',').map((value) => value.trim()).filter(Boolean)) : null;
@@ -273,7 +275,7 @@ const coverage = {
 const payload = normalizeDiscovery({ schemaVersion: '1.1.0', generatedAt, coverage, repositories: candidateList, artifacts: accumulatedArtifacts, errors: unresolvedErrors });
 await fs.mkdir(outputDir, { recursive: true });
 await fs.writeFile(path.join(outputDir, 'repositories.json'), JSON.stringify({ generatedAt, repositories: payload.repositories }) + '\n');
-await fs.writeFile(path.join(outputDir, 'artifacts.json'), JSON.stringify({ generatedAt, artifacts: payload.artifacts }) + '\n');
+await writeArtifactShards(outputDir, { generatedAt, artifacts: payload.artifacts }, { maxBytes: artifactShardBytes });
 await fs.writeFile(path.join(outputDir, 'coverage.json'), JSON.stringify(payload.coverage, null, 2) + '\n');
 await fs.writeFile(path.join(outputDir, 'errors.json'), JSON.stringify({ generatedAt, errors: unresolvedErrors }, null, 2) + '\n');
 await fs.writeFile(path.join(outputDir, 'discovery.json'), JSON.stringify(payload) + '\n');

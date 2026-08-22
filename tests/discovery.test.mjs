@@ -7,6 +7,7 @@ import { loadCheckpoint, saveCheckpoint } from '../scripts/discovery/checkpoint.
 import { classifyPath, createDashboardSnapshot, normalizeDiscovery } from '../scripts/discovery/model.mjs';
 import { selectScanBatch } from '../scripts/discovery/scan-queue.mjs';
 import { discoverLocalComponents } from '../scripts/discovery/local-inventory.mjs';
+import { readArtifactShards, writeArtifactShards } from '../scripts/discovery/artifact-shards.mjs';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
@@ -228,6 +229,7 @@ test('checkpoint writes atomically and survives a reload', async () => {
   assert.equal(checkpoint.sourceAlgorithmVersion, 1);
   assert.deepEqual(checkpoint.sourceAttempts, {});
   assert.deepEqual(checkpoint.sourceStates, {});
+  assert.ok((await fs.readdir(directory)).some((name) => /^checkpoint-repositories-\d+\.json$/.test(name)));
 });
 
 test('checkpoint migration removes duplicated scan and raw Registry payloads', async () => {
@@ -248,6 +250,17 @@ test('checkpoint migration removes duplicated scan and raw Registry payloads', a
   assert.equal('repository' in checkpoint.repositories['a/b'].scan, false);
   assert.equal('server' in checkpoint.repositories['a/b'].registryServers[0], false);
   assert.equal('server' in checkpoint.registry.servers[0], false);
+});
+
+test('artifact shards stay bounded and rebuild the complete artifact list', async () => {
+  const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'codexhub-artifact-shards-'));
+  await fs.writeFile(path.join(directory, 'artifacts.json'), '{"stale":true}\n');
+  const artifacts = Array.from({ length: 8 }, (_, index) => ({ id: `artifact-${index}`, description: 'x'.repeat(80) }));
+  const names = await writeArtifactShards(directory, { generatedAt: '2026-01-01T00:00:00Z', artifacts }, { maxBytes: 300 });
+  assert.ok(names.length > 1);
+  assert.equal((await fs.readdir(directory)).includes('artifacts.json'), false);
+  const rebuilt = await readArtifactShards(directory);
+  assert.deepEqual(rebuilt.artifacts, artifacts);
 });
 
 test('repository tree scan falls back to walking subtrees when the recursive tree is truncated', async () => {

@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { ROOT, readEntries, fetchMetadata, scoreEntry } from './lib.mjs';
 import { createDashboardSnapshot, normalizeDiscovery } from './discovery/model.mjs';
+import { readArtifactShards } from './discovery/artifact-shards.mjs';
 
 const offline = process.argv.includes('--offline');
 const cachedOnly = process.argv.includes('--cached');
@@ -39,9 +40,9 @@ try {
   let discovery;
   try {
     const repositories = await readDiscoveryPart('repositories.json');
-    const artifacts = await readDiscoveryPart('artifacts.json');
     const coverage = await readDiscoveryPart('coverage.json');
     const errors = await readDiscoveryPart('errors.json');
+    const artifacts = await readArtifactShards(discoveryDir);
     discovery = normalizeDiscovery({
       schemaVersion: '1.1.0',
       generatedAt: coverage.generatedAt || repositories.generatedAt || artifacts.generatedAt,
