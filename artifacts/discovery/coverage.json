@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-22T04:52:23.570Z",
-  "startedAt": "2026-08-22T04:52:12.999Z",
-  "completedAt": "2026-08-22T04:52:23.570Z",
+  "generatedAt": "2026-08-22T05:45:27.332Z",
+  "startedAt": "2026-08-22T05:44:53.251Z",
+  "completedAt": "2026-08-22T05:45:27.332Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -143,6 +143,12 @@
       "query": "path:.github/codex/prompts extension:txt"
     },
     {
+      "id": "github-code-custom-prompts",
+      "kind": "prompt",
+      "coverage": "supplemental",
+      "query": "path:.codex/prompts extension:md"
+    },
+    {
       "id": "github-code-marketplace-agents",
       "kind": "marketplace",
       "coverage": "supplemental",
@@ -162,13 +168,13 @@
     },
     {
       "id": "github-code-plugin-metadata-yaml",
-      "kind": "plugin-metadata",
+      "kind": "skill-metadata",
       "coverage": "supplemental",
       "query": "filename:openai.yaml path:agents"
     },
     {
       "id": "github-code-plugin-metadata-yml",
-      "kind": "plugin-metadata",
+      "kind": "skill-metadata",
       "coverage": "supplemental",
       "query": "filename:openai.yml path:agents"
     },
@@ -225,6 +231,12 @@
       "kind": "mcp",
       "coverage": "supplemental",
       "query": "filename:mcp.toml"
+    },
+    {
+      "id": "github-code-mcp-server-json",
+      "kind": "mcp",
+      "coverage": "supplemental",
+      "query": "filename:server.json modelcontextprotocol.io"
     }
   ],
   "sources": [
@@ -236,98 +248,86 @@
       "segments": [
         {
           "query": "topic:codex-skills fork:false archived:false",
-          "total": 1216,
+          "total": 1220,
           "incomplete": false
         },
         {
-          "query": "topic:codex-skills fork:false archived:false created:2008-01-01..2017-04-26",
+          "query": "topic:codex-skills fork:false archived:false created:2008-01-01..2017-04-27",
           "total": 1,
           "incomplete": false
         },
         {
-          "query": "topic:codex-skills fork:false archived:false created:2017-04-27..2026-08-21",
+          "query": "topic:codex-skills fork:false archived:false created:2017-04-28..2026-08-22",
           "total": 1219,
           "incomplete": false
         },
         {
-          "query": "topic:codex-skills fork:false archived:false created:2017-04-27..2021-12-23",
+          "query": "topic:codex-skills fork:false archived:false created:2017-04-28..2021-12-24",
           "total": 1,
           "incomplete": false
         },
         {
-          "query": "topic:codex-skills fork:false archived:false created:2021-12-24..2026-08-21",
+          "query": "topic:codex-skills fork:false archived:false created:2021-12-25..2026-08-22",
           "total": 1218,
           "incomplete": false
         },
         {
-          "query": "topic:codex-skills fork:false archived:false created:2021-12-24..2024-04-22",
+          "query": "topic:codex-skills fork:false archived:false created:2021-12-25..2024-04-23",
           "total": 3,
           "incomplete": false
         },
         {
-          "query": "topic:codex-skills fork:false archived:false created:2024-04-23..2026-08-21",
+          "query": "topic:codex-skills fork:false archived:false created:2024-04-24..2026-08-22",
           "total": 1215,
           "incomplete": false
         },
         {
-          "query": "topic:codex-skills fork:false archived:false created:2024-04-23..2025-06-22",
+          "query": "topic:codex-skills fork:false archived:false created:2024-04-24..2025-06-23",
           "total": 7,
-          "incomplete": false
-        },
-        {
-          "query": "topic:codex-skills fork:false archived:false created:2025-06-23..2026-08-21",
-          "total": 1208,
           "incomplete": false
         }
       ],
       "partitions": [
         {
           "from": "topic:codex-skills fork:false archived:false",
+          "dimension": "created",
           "into": [
-            "topic:codex-skills fork:false archived:false created:2008-01-01..2017-04-26",
-            "topic:codex-skills fork:false archived:false created:2017-04-27..2026-08-21"
+            "topic:codex-skills fork:false archived:false created:2008-01-01..2017-04-27",
+            "topic:codex-skills fork:false archived:false created:2017-04-28..2026-08-22"
           ]
         },
         {
-          "from": "topic:codex-skills fork:false archived:false created:2017-04-27..2026-08-21",
+          "from": "topic:codex-skills fork:false archived:false created:2017-04-28..2026-08-22",
           "dimension": "created",
           "into": [
-            "topic:codex-skills fork:false archived:false created:2017-04-27..2021-12-23",
-            "topic:codex-skills fork:false archived:false created:2021-12-24..2026-08-21"
+            "topic:codex-skills fork:false archived:false created:2017-04-28..2021-12-24",
+            "topic:codex-skills fork:false archived:false created:2021-12-25..2026-08-22"
           ]
         },
         {
-          "from": "topic:codex-skills fork:false archived:false created:2021-12-24..2026-08-21",
+          "from": "topic:codex-skills fork:false archived:false created:2021-12-25..2026-08-22",
           "dimension": "created",
           "into": [
-            "topic:codex-skills fork:false archived:false created:2021-12-24..2024-04-22",
-            "topic:codex-skills fork:false archived:false created:2024-04-23..2026-08-21"
+            "topic:codex-skills fork:false archived:false created:2021-12-25..2024-04-23",
+            "topic:codex-skills fork:false archived:false created:2024-04-24..2026-08-22"
           ]
         },
         {
-          "from": "topic:codex-skills fork:false archived:false created:2024-04-23..2026-08-21",
+          "from": "topic:codex-skills fork:false archived:false created:2024-04-24..2026-08-22",
           "dimension": "created",
           "into": [
-            "topic:codex-skills fork:false archived:false created:2024-04-23..2025-06-22",
-            "topic:codex-skills fork:false archived:false created:2025-06-23..2026-08-21"
-          ]
-        },
-        {
-          "from": "topic:codex-skills fork:false archived:false created:2025-06-23..2026-08-21",
-          "dimension": "created",
-          "into": [
-            "topic:codex-skills fork:false archived:false created:2025-06-23..2026-01-21",
-            "topic:codex-skills fork:false archived:false created:2026-01-22..2026-08-21"
+            "topic:codex-skills fork:false archived:false created:2024-04-24..2025-06-23",
+            "topic:codex-skills fork:false archived:false created:2025-06-24..2026-08-22"
           ]
         }
       ],
-      "pendingSegments": 2,
-      "results": 948,
+      "pendingSegments": 1,
+      "results": 890,
       "truncated": true,
       "errors": [],
       "rate": {
         "remaining": 22,
-        "reset": 1787366856,
+        "reset": 1787377554,
         "retryAfter": null
       }
     },
@@ -339,1223 +339,26 @@
       "segments": [
         {
           "query": "topic:codex-plugin fork:false archived:false",
-          "total": 925,
+          "total": 929,
           "incomplete": false
         }
       ],
       "partitions": [],
       "pendingSegments": 0,
-      "results": 925,
+      "results": 931,
       "truncated": false,
       "errors": [],
       "rate": {
-        "remaining": 20,
-        "reset": 1787336848,
+        "remaining": 12,
+        "reset": 1787377554,
         "retryAfter": null
-      }
-    },
-    {
-      "id": "github-topic-mcp-server",
-      "kind": "mcp",
-      "coverage": "exhaustive",
-      "query": "topic:mcp-server fork:false archived:false",
-      "segments": [
-        {
-          "query": "topic:mcp-server fork:false archived:false",
-          "total": 24749,
-          "incomplete": false
-        },
-        {
-          "query": "topic:mcp-server fork:false archived:false created:2008-01-01..2017-04-26",
-          "total": 31,
-          "incomplete": false
-        },
-        {
-          "query": "topic:mcp-server fork:false archived:false created:2017-04-27..2026-08-21",
-          "total": 24718,
-          "incomplete": false
-        },
-        {
-          "query": "topic:mcp-server fork:false archived:false created:2017-04-27..2021-12-23",
-          "total": 79,
-          "incomplete": false
-        },
-        {
-          "query": "topic:mcp-server fork:false archived:false created:2021-12-24..2026-08-21",
-          "total": 24639,
-          "incomplete": false
-        },
-        {
-          "query": "topic:mcp-server fork:false archived:false created:2021-12-24..2024-04-22",
-          "total": 130,
-          "incomplete": false
-        },
-        {
-          "query": "topic:mcp-server fork:false archived:false created:2024-04-23..2026-08-21",
-          "total": 24509,
-          "incomplete": false
-        },
-        {
-          "query": "topic:mcp-server fork:false archived:false created:2024-04-23..2025-06-22",
-          "total": 2719,
-          "incomplete": false
-        },
-        {
-          "query": "topic:mcp-server fork:false archived:false created:2024-04-23..2024-11-21",
-          "total": 71,
-          "incomplete": false
-        },
-        {
-          "query": "topic:mcp-server fork:false archived:false created:2024-11-22..2025-06-22",
-          "total": 2649,
-          "incomplete": false
-        },
-        {
-          "query": "topic:mcp-server fork:false archived:false created:2024-11-22..2025-03-08",
-          "total": 352,
-          "incomplete": false
-        },
-        {
-          "query": "topic:mcp-server fork:false archived:false created:2025-03-09..2025-06-22",
-          "total": 2297,
-          "incomplete": false
-        },
-        {
-          "query": "topic:mcp-server fork:false archived:false created:2025-03-09..2025-04-30",
-          "total": 1171,
-          "incomplete": false
-        },
-        {
-          "query": "topic:mcp-server fork:false archived:false created:2025-03-09..2025-04-04",
-          "total": 555,
-          "incomplete": false
-        },
-        {
-          "query": "topic:mcp-server fork:false archived:false created:2025-04-05..2025-04-30",
-          "total": 616,
-          "incomplete": false
-        },
-        {
-          "query": "topic:mcp-server fork:false archived:false created:2025-05-01..2025-06-22",
-          "total": 1126,
-          "incomplete": false
-        }
-      ],
-      "partitions": [
-        {
-          "from": "topic:mcp-server fork:false archived:false",
-          "into": [
-            "topic:mcp-server fork:false archived:false created:2008-01-01..2017-04-26",
-            "topic:mcp-server fork:false archived:false created:2017-04-27..2026-08-21"
-          ]
-        },
-        {
-          "from": "topic:mcp-server fork:false archived:false created:2017-04-27..2026-08-21",
-          "into": [
-            "topic:mcp-server fork:false archived:false created:2017-04-27..2021-12-23",
-            "topic:mcp-server fork:false archived:false created:2021-12-24..2026-08-21"
-          ]
-        },
-        {
-          "from": "topic:mcp-server fork:false archived:false created:2021-12-24..2026-08-21",
-          "into": [
-            "topic:mcp-server fork:false archived:false created:2021-12-24..2024-04-22",
-            "topic:mcp-server fork:false archived:false created:2024-04-23..2026-08-21"
-          ]
-        },
-        {
-          "from": "topic:mcp-server fork:false archived:false created:2024-04-23..2026-08-21",
-          "into": [
-            "topic:mcp-server fork:false archived:false created:2024-04-23..2025-06-22",
-            "topic:mcp-server fork:false archived:false created:2025-06-23..2026-08-21"
-          ]
-        },
-        {
-          "from": "topic:mcp-server fork:false archived:false created:2024-04-23..2025-06-22",
-          "into": [
-            "topic:mcp-server fork:false archived:false created:2024-04-23..2024-11-21",
-            "topic:mcp-server fork:false archived:false created:2024-11-22..2025-06-22"
-          ]
-        },
-        {
-          "from": "topic:mcp-server fork:false archived:false created:2024-11-22..2025-06-22",
-          "dimension": "created",
-          "into": [
-            "topic:mcp-server fork:false archived:false created:2024-11-22..2025-03-08",
-            "topic:mcp-server fork:false archived:false created:2025-03-09..2025-06-22"
-          ]
-        },
-        {
-          "from": "topic:mcp-server fork:false archived:false created:2025-03-09..2025-06-22",
-          "dimension": "created",
-          "into": [
-            "topic:mcp-server fork:false archived:false created:2025-03-09..2025-04-30",
-            "topic:mcp-server fork:false archived:false created:2025-05-01..2025-06-22"
-          ]
-        },
-        {
-          "from": "topic:mcp-server fork:false archived:false created:2025-03-09..2025-04-30",
-          "dimension": "created",
-          "into": [
-            "topic:mcp-server fork:false archived:false created:2025-03-09..2025-04-04",
-            "topic:mcp-server fork:false archived:false created:2025-04-05..2025-04-30"
-          ]
-        },
-        {
-          "from": "topic:mcp-server fork:false archived:false created:2025-05-01..2025-06-22",
-          "dimension": "created",
-          "into": [
-            "topic:mcp-server fork:false archived:false created:2025-05-01..2025-05-27",
-            "topic:mcp-server fork:false archived:false created:2025-05-28..2025-06-22"
-          ]
-        }
-      ],
-      "pendingSegments": 3,
-      "results": 1794,
-      "truncated": true,
-      "errors": [],
-      "rate": {
-        "remaining": 0,
-        "reset": 1787366856,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-topic-model-context-protocol",
-      "kind": "mcp",
-      "coverage": "exhaustive",
-      "query": "topic:model-context-protocol fork:false archived:false",
-      "segments": [
-        {
-          "query": "topic:model-context-protocol fork:false archived:false",
-          "total": 22652,
-          "incomplete": false
-        },
-        {
-          "query": "topic:model-context-protocol fork:false archived:false created:2008-01-01..2017-04-26",
-          "total": 9,
-          "incomplete": false
-        },
-        {
-          "query": "topic:model-context-protocol fork:false archived:false created:2017-04-27..2026-08-21",
-          "total": 22643,
-          "incomplete": false
-        },
-        {
-          "query": "topic:model-context-protocol fork:false archived:false created:2017-04-27..2021-12-23",
-          "total": 20,
-          "incomplete": false
-        },
-        {
-          "query": "topic:model-context-protocol fork:false archived:false created:2021-12-24..2026-08-21",
-          "total": 22623,
-          "incomplete": false
-        },
-        {
-          "query": "topic:model-context-protocol fork:false archived:false created:2021-12-24..2024-04-22",
-          "total": 50,
-          "incomplete": false
-        },
-        {
-          "query": "topic:model-context-protocol fork:false archived:false created:2024-04-23..2026-08-21",
-          "total": 22573,
-          "incomplete": false
-        },
-        {
-          "query": "topic:model-context-protocol fork:false archived:false created:2024-04-23..2025-06-22",
-          "total": 913,
-          "incomplete": false
-        },
-        {
-          "query": "topic:model-context-protocol fork:false archived:false created:2025-06-23..2026-08-21",
-          "total": 21701,
-          "incomplete": false
-        },
-        {
-          "query": "topic:model-context-protocol fork:false archived:false created:2025-06-23..2026-01-21",
-          "total": 2062,
-          "incomplete": false
-        },
-        {
-          "query": "topic:model-context-protocol fork:false archived:false created:2025-06-23..2025-10-07",
-          "total": 788,
-          "incomplete": false
-        },
-        {
-          "query": "topic:model-context-protocol fork:false archived:false created:2025-10-08..2026-01-21",
-          "total": 1274,
-          "incomplete": false
-        },
-        {
-          "query": "topic:model-context-protocol fork:false archived:false created:2025-10-08..2025-11-29",
-          "total": 511,
-          "incomplete": false
-        },
-        {
-          "query": "topic:model-context-protocol fork:false archived:false created:2025-11-30..2026-01-21",
-          "total": 763,
-          "incomplete": false
-        }
-      ],
-      "partitions": [
-        {
-          "from": "topic:model-context-protocol fork:false archived:false",
-          "into": [
-            "topic:model-context-protocol fork:false archived:false created:2008-01-01..2017-04-26",
-            "topic:model-context-protocol fork:false archived:false created:2017-04-27..2026-08-21"
-          ]
-        },
-        {
-          "from": "topic:model-context-protocol fork:false archived:false created:2017-04-27..2026-08-21",
-          "into": [
-            "topic:model-context-protocol fork:false archived:false created:2017-04-27..2021-12-23",
-            "topic:model-context-protocol fork:false archived:false created:2021-12-24..2026-08-21"
-          ]
-        },
-        {
-          "from": "topic:model-context-protocol fork:false archived:false created:2021-12-24..2026-08-21",
-          "into": [
-            "topic:model-context-protocol fork:false archived:false created:2021-12-24..2024-04-22",
-            "topic:model-context-protocol fork:false archived:false created:2024-04-23..2026-08-21"
-          ]
-        },
-        {
-          "from": "topic:model-context-protocol fork:false archived:false created:2024-04-23..2026-08-21",
-          "into": [
-            "topic:model-context-protocol fork:false archived:false created:2024-04-23..2025-06-22",
-            "topic:model-context-protocol fork:false archived:false created:2025-06-23..2026-08-21"
-          ]
-        },
-        {
-          "from": "topic:model-context-protocol fork:false archived:false created:2025-06-23..2026-08-21",
-          "dimension": "created",
-          "into": [
-            "topic:model-context-protocol fork:false archived:false created:2025-06-23..2026-01-21",
-            "topic:model-context-protocol fork:false archived:false created:2026-01-22..2026-08-21"
-          ]
-        },
-        {
-          "from": "topic:model-context-protocol fork:false archived:false created:2025-06-23..2026-01-21",
-          "dimension": "created",
-          "into": [
-            "topic:model-context-protocol fork:false archived:false created:2025-06-23..2025-10-07",
-            "topic:model-context-protocol fork:false archived:false created:2025-10-08..2026-01-21"
-          ]
-        },
-        {
-          "from": "topic:model-context-protocol fork:false archived:false created:2025-10-08..2026-01-21",
-          "dimension": "created",
-          "into": [
-            "topic:model-context-protocol fork:false archived:false created:2025-10-08..2025-11-29",
-            "topic:model-context-protocol fork:false archived:false created:2025-11-30..2026-01-21"
-          ]
-        }
-      ],
-      "pendingSegments": 2,
-      "results": 3492,
-      "truncated": true,
-      "errors": [
-        {
-          "query": "topic:model-context-protocol fork:false archived:false created:2025-11-30..2026-01-21",
-          "page": 4,
-          "error": "GitHub API 403",
-          "status": 403
-        }
-      ],
-      "rate": {
-        "remaining": 0,
-        "reset": 1787368827,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-name-codex-skills",
-      "kind": "skill",
-      "coverage": "exhaustive",
-      "query": "codex-skills in:name fork:false archived:false",
-      "segments": [
-        {
-          "query": "codex-skills in:name fork:false archived:false",
-          "total": 1899,
-          "incomplete": false
-        },
-        {
-          "query": "codex-skills in:name fork:false archived:false created:2008-01-01..2017-04-26",
-          "total": 0,
-          "incomplete": false
-        },
-        {
-          "query": "codex-skills in:name fork:false archived:false created:2017-04-27..2026-08-21",
-          "total": 1899,
-          "incomplete": false
-        },
-        {
-          "query": "codex-skills in:name fork:false archived:false created:2017-04-27..2021-12-23",
-          "total": 0,
-          "incomplete": false
-        },
-        {
-          "query": "codex-skills in:name fork:false archived:false created:2021-12-24..2026-08-21",
-          "total": 1899,
-          "incomplete": false
-        },
-        {
-          "query": "codex-skills in:name fork:false archived:false created:2021-12-24..2024-04-22",
-          "total": 3,
-          "incomplete": false
-        },
-        {
-          "query": "codex-skills in:name fork:false archived:false created:2024-04-23..2026-08-21",
-          "total": 1896,
-          "incomplete": false
-        },
-        {
-          "query": "codex-skills in:name fork:false archived:false created:2024-04-23..2025-06-22",
-          "total": 7,
-          "incomplete": false
-        },
-        {
-          "query": "codex-skills in:name fork:false archived:false created:2025-06-23..2026-08-21",
-          "total": 1890,
-          "incomplete": false
-        },
-        {
-          "query": "codex-skills in:name fork:false archived:false created:2025-06-23..2026-01-21",
-          "total": 62,
-          "incomplete": false
-        },
-        {
-          "query": "codex-skills in:name fork:false archived:false created:2026-01-22..2026-08-21",
-          "total": 1828,
-          "incomplete": false
-        },
-        {
-          "query": "codex-skills in:name fork:false archived:false created:2026-01-22..2026-05-07",
-          "total": 531,
-          "incomplete": false
-        },
-        {
-          "query": "codex-skills in:name fork:false archived:false created:2026-05-08..2026-08-21",
-          "total": 1297,
-          "incomplete": false
-        },
-        {
-          "query": "codex-skills in:name fork:false archived:false created:2026-05-08..2026-06-29",
-          "total": 643,
-          "incomplete": false
-        },
-        {
-          "query": "codex-skills in:name fork:false archived:false created:2026-06-30..2026-08-21",
-          "total": 654,
-          "incomplete": false
-        }
-      ],
-      "partitions": [
-        {
-          "from": "codex-skills in:name fork:false archived:false",
-          "into": [
-            "codex-skills in:name fork:false archived:false created:2008-01-01..2017-04-26",
-            "codex-skills in:name fork:false archived:false created:2017-04-27..2026-08-21"
-          ]
-        },
-        {
-          "from": "codex-skills in:name fork:false archived:false created:2017-04-27..2026-08-21",
-          "into": [
-            "codex-skills in:name fork:false archived:false created:2017-04-27..2021-12-23",
-            "codex-skills in:name fork:false archived:false created:2021-12-24..2026-08-21"
-          ]
-        },
-        {
-          "from": "codex-skills in:name fork:false archived:false created:2021-12-24..2026-08-21",
-          "into": [
-            "codex-skills in:name fork:false archived:false created:2021-12-24..2024-04-22",
-            "codex-skills in:name fork:false archived:false created:2024-04-23..2026-08-21"
-          ]
-        },
-        {
-          "from": "codex-skills in:name fork:false archived:false created:2024-04-23..2026-08-21",
-          "into": [
-            "codex-skills in:name fork:false archived:false created:2024-04-23..2025-06-22",
-            "codex-skills in:name fork:false archived:false created:2025-06-23..2026-08-21"
-          ]
-        },
-        {
-          "from": "codex-skills in:name fork:false archived:false created:2025-06-23..2026-08-21",
-          "dimension": "created",
-          "into": [
-            "codex-skills in:name fork:false archived:false created:2025-06-23..2026-01-21",
-            "codex-skills in:name fork:false archived:false created:2026-01-22..2026-08-21"
-          ]
-        },
-        {
-          "from": "codex-skills in:name fork:false archived:false created:2026-01-22..2026-08-21",
-          "dimension": "created",
-          "into": [
-            "codex-skills in:name fork:false archived:false created:2026-01-22..2026-05-07",
-            "codex-skills in:name fork:false archived:false created:2026-05-08..2026-08-21"
-          ]
-        },
-        {
-          "from": "codex-skills in:name fork:false archived:false created:2026-05-08..2026-08-21",
-          "dimension": "created",
-          "into": [
-            "codex-skills in:name fork:false archived:false created:2026-05-08..2026-06-29",
-            "codex-skills in:name fork:false archived:false created:2026-06-30..2026-08-21"
-          ]
-        }
-      ],
-      "pendingSegments": 0,
-      "results": 1898,
-      "truncated": false,
-      "errors": [],
-      "rate": {
-        "remaining": 6,
-        "reset": 1787368888,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-name-codex-plugin",
-      "kind": "plugin",
-      "coverage": "exhaustive",
-      "query": "codex-plugin in:name fork:false archived:false",
-      "segments": [
-        {
-          "query": "codex-plugin in:name fork:false archived:false",
-          "total": 1352,
-          "incomplete": false
-        },
-        {
-          "query": "codex-plugin in:name fork:false archived:false created:2008-01-01..2017-04-26",
-          "total": 2,
-          "incomplete": false
-        },
-        {
-          "query": "codex-plugin in:name fork:false archived:false created:2017-04-27..2026-08-21",
-          "total": 1350,
-          "incomplete": false
-        },
-        {
-          "query": "codex-plugin in:name fork:false archived:false created:2017-04-27..2021-12-23",
-          "total": 6,
-          "incomplete": false
-        },
-        {
-          "query": "codex-plugin in:name fork:false archived:false created:2021-12-24..2026-08-21",
-          "total": 1344,
-          "incomplete": false
-        },
-        {
-          "query": "codex-plugin in:name fork:false archived:false created:2021-12-24..2024-04-22",
-          "total": 8,
-          "incomplete": false
-        },
-        {
-          "query": "codex-plugin in:name fork:false archived:false created:2024-04-23..2026-08-21",
-          "total": 1336,
-          "incomplete": false
-        },
-        {
-          "query": "codex-plugin in:name fork:false archived:false created:2024-04-23..2025-06-22",
-          "total": 4,
-          "incomplete": false
-        },
-        {
-          "query": "codex-plugin in:name fork:false archived:false created:2025-06-23..2026-08-21",
-          "total": 1336,
-          "incomplete": false
-        },
-        {
-          "query": "codex-plugin in:name fork:false archived:false created:2025-06-23..2026-01-21",
-          "total": 27,
-          "incomplete": false
-        },
-        {
-          "query": "codex-plugin in:name fork:false archived:false created:2026-01-22..2026-08-21",
-          "total": 1309,
-          "incomplete": false
-        },
-        {
-          "query": "codex-plugin in:name fork:false archived:false created:2026-01-22..2026-05-07",
-          "total": 302,
-          "incomplete": false
-        },
-        {
-          "query": "codex-plugin in:name fork:false archived:false created:2026-05-08..2026-08-21",
-          "total": 1007,
-          "incomplete": false
-        },
-        {
-          "query": "codex-plugin in:name fork:false archived:false created:2026-05-08..2026-06-29",
-          "total": 481,
-          "incomplete": false
-        },
-        {
-          "query": "codex-plugin in:name fork:false archived:false created:2026-06-30..2026-08-21",
-          "total": 526,
-          "incomplete": false
-        }
-      ],
-      "partitions": [
-        {
-          "from": "codex-plugin in:name fork:false archived:false",
-          "into": [
-            "codex-plugin in:name fork:false archived:false created:2008-01-01..2017-04-26",
-            "codex-plugin in:name fork:false archived:false created:2017-04-27..2026-08-21"
-          ]
-        },
-        {
-          "from": "codex-plugin in:name fork:false archived:false created:2017-04-27..2026-08-21",
-          "into": [
-            "codex-plugin in:name fork:false archived:false created:2017-04-27..2021-12-23",
-            "codex-plugin in:name fork:false archived:false created:2021-12-24..2026-08-21"
-          ]
-        },
-        {
-          "from": "codex-plugin in:name fork:false archived:false created:2021-12-24..2026-08-21",
-          "into": [
-            "codex-plugin in:name fork:false archived:false created:2021-12-24..2024-04-22",
-            "codex-plugin in:name fork:false archived:false created:2024-04-23..2026-08-21"
-          ]
-        },
-        {
-          "from": "codex-plugin in:name fork:false archived:false created:2024-04-23..2026-08-21",
-          "into": [
-            "codex-plugin in:name fork:false archived:false created:2024-04-23..2025-06-22",
-            "codex-plugin in:name fork:false archived:false created:2025-06-23..2026-08-21"
-          ]
-        },
-        {
-          "from": "codex-plugin in:name fork:false archived:false created:2025-06-23..2026-08-21",
-          "dimension": "created",
-          "into": [
-            "codex-plugin in:name fork:false archived:false created:2025-06-23..2026-01-21",
-            "codex-plugin in:name fork:false archived:false created:2026-01-22..2026-08-21"
-          ]
-        },
-        {
-          "from": "codex-plugin in:name fork:false archived:false created:2026-01-22..2026-08-21",
-          "dimension": "created",
-          "into": [
-            "codex-plugin in:name fork:false archived:false created:2026-01-22..2026-05-07",
-            "codex-plugin in:name fork:false archived:false created:2026-05-08..2026-08-21"
-          ]
-        },
-        {
-          "from": "codex-plugin in:name fork:false archived:false created:2026-05-08..2026-08-21",
-          "dimension": "created",
-          "into": [
-            "codex-plugin in:name fork:false archived:false created:2026-05-08..2026-06-29",
-            "codex-plugin in:name fork:false archived:false created:2026-06-30..2026-08-21"
-          ]
-        }
-      ],
-      "pendingSegments": 0,
-      "results": 1356,
-      "truncated": false,
-      "errors": [],
-      "rate": {
-        "remaining": 11,
-        "reset": 1787371157,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-skill-manifest",
-      "kind": "skill",
-      "coverage": "supplemental",
-      "query": "filename:SKILL.md",
-      "mode": "code-search",
-      "total": 5644288,
-      "pages": 10,
-      "results": 771,
-      "truncated": true,
-      "errors": [],
-      "rate": {
-        "remaining": 0,
-        "reset": 1787337128,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-repo-skills",
-      "kind": "skill",
-      "coverage": "supplemental",
-      "query": "filename:SKILL.md path:.agents/skills",
-      "mode": "code-search",
-      "total": 288256,
-      "pages": 10,
-      "results": 698,
-      "truncated": true,
-      "errors": [],
-      "rate": {
-        "remaining": 0,
-        "reset": 1787371196,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-plugin-manifest",
-      "kind": "plugin",
-      "coverage": "supplemental",
-      "query": "filename:plugin.json path:.codex-plugin",
-      "mode": "code-search",
-      "total": 3480,
-      "pages": 10,
-      "results": 778,
-      "truncated": true,
-      "errors": [],
-      "rate": {
-        "remaining": 0,
-        "reset": 1787374393,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-plugin-mcp",
-      "kind": "mcp",
-      "coverage": "supplemental",
-      "query": "filename:.mcp.json",
-      "mode": "code-search",
-      "total": 0,
-      "pages": 0,
-      "results": 34,
-      "truncated": true,
-      "errors": [
-        {
-          "query": "filename:.mcp.json",
-          "error": "GitHub API 403",
-          "status": 403
-        }
-      ],
-      "rate": {
-        "remaining": 0,
-        "reset": 1787374393,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-plugin-app",
-      "kind": "mcp",
-      "coverage": "supplemental",
-      "query": "filename:.app.json",
-      "mode": "code-search",
-      "total": 573440,
-      "pages": 10,
-      "results": 86,
-      "truncated": true,
-      "errors": [
-        {
-          "query": "filename:.app.json",
-          "page": 2,
-          "error": "GitHub API 429",
-          "status": 429
-        }
-      ],
-      "rate": {
-        "remaining": 9,
-        "reset": 1787339701,
-        "retryAfter": 1
-      }
-    },
-    {
-      "id": "github-code-marketplace-agents",
-      "kind": "marketplace",
-      "coverage": "supplemental",
-      "query": "filename:marketplace.json path:.agents/plugins",
-      "mode": "code-search",
-      "total": 5328,
-      "pages": 10,
-      "results": 100,
-      "truncated": true,
-      "errors": [
-        {
-          "query": "filename:marketplace.json path:.agents/plugins",
-          "page": 2,
-          "error": "GitHub API 429",
-          "status": 429
-        }
-      ],
-      "rate": {
-        "remaining": 8,
-        "reset": 1787339701,
-        "retryAfter": 1
-      }
-    },
-    {
-      "id": "github-code-marketplace-claude",
-      "kind": "marketplace",
-      "coverage": "supplemental",
-      "query": "filename:marketplace.json path:.claude-plugin",
-      "mode": "code-search",
-      "total": 29952,
-      "pages": 10,
-      "results": 100,
-      "truncated": true,
-      "errors": [
-        {
-          "query": "filename:marketplace.json path:.claude-plugin",
-          "page": 2,
-          "error": "GitHub API 429",
-          "status": 429
-        }
-      ],
-      "rate": {
-        "remaining": 7,
-        "reset": 1787339701,
-        "retryAfter": 1
-      }
-    },
-    {
-      "id": "github-code-hooks",
-      "kind": "hook",
-      "coverage": "supplemental",
-      "query": "filename:hooks.json path:hooks",
-      "mode": "code-search",
-      "total": 6416,
-      "pages": 10,
-      "results": 680,
-      "truncated": true,
-      "errors": [
-        {
-          "query": "filename:hooks.json path:hooks",
-          "page": 10,
-          "error": "GitHub API 403",
-          "status": 403
-        }
-      ],
-      "rate": {
-        "remaining": 0,
-        "reset": 1787340754,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-plugin-metadata-yaml",
-      "kind": "plugin-metadata",
-      "coverage": "supplemental",
-      "query": "filename:openai.yaml path:agents",
-      "mode": "code-search",
-      "total": 6480,
-      "pages": 10,
-      "results": 691,
-      "truncated": true,
-      "errors": [
-        {
-          "query": "filename:openai.yaml path:agents",
-          "page": 10,
-          "error": "GitHub API 429",
-          "status": 429
-        }
-      ],
-      "rate": {
-        "remaining": 8,
-        "reset": 1787340885,
-        "retryAfter": 4
-      }
-    },
-    {
-      "id": "github-code-plugin-metadata-yml",
-      "kind": "plugin-metadata",
-      "coverage": "supplemental",
-      "query": "filename:openai.yml path:agents",
-      "mode": "code-search",
-      "total": 24,
-      "pages": 1,
-      "results": 21,
-      "truncated": false,
-      "errors": [],
-      "rate": {
-        "remaining": 7,
-        "reset": 1787340885,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-agents",
-      "kind": "agents",
-      "coverage": "supplemental",
-      "query": "filename:AGENTS.md",
-      "mode": "code-search",
-      "total": 800768,
-      "pages": 10,
-      "results": 963,
-      "truncated": true,
-      "errors": [],
-      "rate": {
-        "remaining": 0,
-        "reset": 1787341220,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-codex-action-yml",
-      "kind": "action",
-      "coverage": "supplemental",
-      "query": "filename:action.yml codex",
-      "mode": "code-search",
-      "total": 672,
-      "pages": 7,
-      "results": 177,
-      "truncated": true,
-      "errors": [
-        {
-          "query": "filename:action.yml codex",
-          "page": 3,
-          "error": "GitHub API 429",
-          "status": 429
-        }
-      ],
-      "rate": {
-        "remaining": 10,
-        "reset": 1787341345,
-        "retryAfter": 85
-      }
-    },
-    {
-      "id": "github-code-codex-action-yaml",
-      "kind": "action",
-      "coverage": "supplemental",
-      "query": "filename:action.yaml codex",
-      "mode": "code-search",
-      "total": 0,
-      "pages": 0,
-      "results": 0,
-      "truncated": true,
-      "errors": [
-        {
-          "query": "filename:action.yaml codex",
-          "error": "GitHub API 429",
-          "status": 429
-        }
-      ],
-      "rate": {
-        "remaining": 10,
-        "reset": 1787341466,
-        "retryAfter": 1
-      }
-    },
-    {
-      "id": "github-code-mcp-yaml",
-      "kind": "mcp",
-      "coverage": "supplemental",
-      "query": "filename:mcp.yaml",
-      "mode": "code-search",
-      "total": 4264,
-      "pages": 10,
-      "results": 515,
-      "truncated": true,
-      "errors": [],
-      "rate": {
-        "remaining": 0,
-        "reset": 1787342855,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-mcp-yml",
-      "kind": "mcp",
-      "coverage": "supplemental",
-      "query": "filename:mcp.yml",
-      "mode": "code-search",
-      "total": 0,
-      "pages": 0,
-      "results": 0,
-      "truncated": true,
-      "errors": [
-        {
-          "query": "filename:mcp.yml",
-          "error": "GitHub API 429",
-          "status": 429
-        }
-      ],
-      "rate": {
-        "remaining": 10,
-        "reset": 1787346272,
-        "retryAfter": 736
-      }
-    },
-    {
-      "id": "github-code-agent-plugin-manifest",
-      "kind": "plugin",
-      "coverage": "supplemental",
-      "query": "filename:plugin.json path:.agent-plugin",
-      "mode": "code-search",
-      "total": 1,
-      "pages": 1,
-      "results": 1,
-      "truncated": false,
-      "errors": [],
-      "rate": {
-        "remaining": 9,
-        "reset": 1787347633,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-claude-plugin-manifest",
-      "kind": "plugin",
-      "coverage": "supplemental",
-      "query": "filename:plugin.json path:.claude-plugin",
-      "mode": "code-search",
-      "total": 21696,
-      "pages": 10,
-      "results": 933,
-      "truncated": true,
-      "errors": [],
-      "rate": {
-        "remaining": 4,
-        "reset": 1787348686,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-project-hooks",
-      "kind": "hook",
-      "coverage": "supplemental",
-      "query": "filename:hooks.json path:.codex",
-      "mode": "code-search",
-      "total": 3228,
-      "pages": 10,
-      "results": 908,
-      "truncated": true,
-      "errors": [],
-      "rate": {
-        "remaining": 0,
-        "reset": 1787349627,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-hooks-anywhere",
-      "kind": "hook",
-      "coverage": "supplemental",
-      "query": "filename:hooks.json",
-      "mode": "code-search",
-      "total": 37888,
-      "pages": 10,
-      "results": 659,
-      "truncated": true,
-      "errors": [],
-      "rate": {
-        "remaining": 0,
-        "reset": 1787350989,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-codex-config",
-      "kind": "config",
-      "coverage": "supplemental",
-      "query": "filename:config.toml path:.codex",
-      "mode": "code-search",
-      "total": 7312,
-      "pages": 10,
-      "results": 896,
-      "truncated": true,
-      "errors": [],
-      "rate": {
-        "remaining": 0,
-        "reset": 1787352078,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-codex-requirements",
-      "kind": "config",
-      "coverage": "supplemental",
-      "query": "filename:requirements.toml path:.codex",
-      "mode": "code-search",
-      "total": 13,
-      "pages": 1,
-      "results": 11,
-      "truncated": false,
-      "errors": [],
-      "rate": {
-        "remaining": 9,
-        "reset": 1787353239,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-codex-agents",
-      "kind": "agent-config",
-      "coverage": "supplemental",
-      "query": "path:.codex/agents extension:toml",
-      "mode": "code-search",
-      "total": 21792,
-      "pages": 10,
-      "results": 575,
-      "truncated": true,
-      "errors": [],
-      "rate": {
-        "remaining": 0,
-        "reset": 1787353706,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-codex-rules",
-      "kind": "rule",
-      "coverage": "supplemental",
-      "query": "path:.codex/rules extension:rules",
-      "mode": "code-search",
-      "total": 964,
-      "pages": 10,
-      "results": 684,
-      "truncated": false,
-      "errors": [],
-      "rate": {
-        "remaining": 0,
-        "reset": 1787355122,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-action-prompts",
-      "kind": "prompt",
-      "coverage": "supplemental",
-      "query": "path:.github/codex/prompts extension:md",
-      "mode": "code-search",
-      "total": 489,
-      "pages": 5,
-      "results": 272,
-      "truncated": false,
-      "errors": [],
-      "rate": {
-        "remaining": 5,
-        "reset": 1787355779,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-action-prompt-text",
-      "kind": "prompt",
-      "coverage": "supplemental",
-      "query": "path:.github/codex/prompts extension:txt",
-      "mode": "code-search",
-      "total": 0,
-      "pages": 0,
-      "results": 0,
-      "truncated": false,
-      "errors": [],
-      "rate": {
-        "remaining": 9,
-        "reset": 1787358532,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-mcp-json",
-      "kind": "mcp",
-      "coverage": "supplemental",
-      "query": "filename:mcp.json",
-      "mode": "code-search",
-      "total": 124416,
-      "pages": 10,
-      "results": 522,
-      "truncated": true,
-      "errors": [],
-      "rate": {
-        "remaining": 0,
-        "reset": 1787359181,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-agents-override",
-      "kind": "agents",
-      "coverage": "supplemental",
-      "query": "filename:AGENTS.override.md",
-      "mode": "code-search",
-      "total": 662,
-      "pages": 7,
-      "results": 230,
-      "truncated": false,
-      "errors": [],
-      "rate": {
-        "remaining": 3,
-        "reset": 1787361880,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-team-guide",
-      "kind": "agents",
-      "coverage": "supplemental",
-      "query": "filename:TEAM_GUIDE.md",
-      "mode": "code-search",
-      "total": 494,
-      "pages": 5,
-      "results": 293,
-      "truncated": true,
-      "errors": [
-        {
-          "query": "filename:TEAM_GUIDE.md",
-          "page": 4,
-          "error": "GitHub API 403",
-          "status": 403
-        }
-      ],
-      "rate": {
-        "remaining": 0,
-        "reset": 1787361880,
-        "retryAfter": null
-      }
-    },
-    {
-      "id": "github-code-agents-dot",
-      "kind": "agents",
-      "coverage": "supplemental",
-      "query": "filename:.agents.md",
-      "mode": "code-search",
-      "total": 1948,
-      "pages": 10,
-      "results": 121,
-      "truncated": true,
-      "errors": [
-        {
-          "query": "filename:.agents.md",
-          "page": 5,
-          "error": "GitHub API 429",
-          "status": 429
-        }
-      ],
-      "rate": {
-        "remaining": 10,
-        "reset": 1787364398,
-        "retryAfter": 6
-      }
-    },
-    {
-      "id": "github-code-mcp-toml",
-      "kind": "mcp",
-      "coverage": "supplemental",
-      "query": "filename:mcp.toml",
-      "mode": "code-search",
-      "total": 626,
-      "pages": 7,
-      "results": 112,
-      "truncated": true,
-      "errors": [
-        {
-          "query": "filename:mcp.toml",
-          "page": 3,
-          "error": "GitHub API 429",
-          "status": 429
-        }
-      ],
-      "rate": {
-        "remaining": 8,
-        "reset": 1787364398,
-        "retryAfter": 735
       }
     }
   ],
   "sourcesProcessedThisRun": 2,
-  "sourcesRemaining": 15,
-  "exhaustiveSourcesRemaining": 3,
-  "supplementalSourcesRemaining": 12,
+  "sourcesRemaining": 37,
+  "exhaustiveSourcesRemaining": 5,
+  "supplementalSourcesRemaining": 32,
   "registry": {
     "source": "mcp-official-registry",
     "pages": [
@@ -3760,39 +2563,189 @@
         "count": 100,
         "nextCursor": "io.github.bytedance/mcp-server-browser:1.0.0",
         "cursor": "io.github.bruchris/canvas-lms-mcp:1.27.0"
+      },
+      {
+        "page": 368,
+        "count": 100,
+        "nextCursor": "io.github.caelum29/calibre-mcp:0.5.2",
+        "cursor": "io.github.bytedance/mcp-server-browser:1.0.0"
+      },
+      {
+        "page": 369,
+        "count": 100,
+        "nextCursor": "io.github.cammac-creator/ibanforge:1.4.0",
+        "cursor": "io.github.caelum29/calibre-mcp:0.5.2"
+      },
+      {
+        "page": 370,
+        "count": 100,
+        "nextCursor": "io.github.carson-see/arkova-verification:1.0.0",
+        "cursor": "io.github.cammac-creator/ibanforge:1.4.0"
+      },
+      {
+        "page": 371,
+        "count": 100,
+        "nextCursor": "io.github.centricai/centric-demo:1.0.0",
+        "cursor": "io.github.carson-see/arkova-verification:1.0.0"
+      },
+      {
+        "page": 372,
+        "count": 100,
+        "nextCursor": "io.github.chaandannn/finops-mcp:0.8.119",
+        "cursor": "io.github.centricai/centric-demo:1.0.0"
+      },
+      {
+        "page": 373,
+        "count": 100,
+        "nextCursor": "io.github.chaandannn/finops-mcp:0.8.97",
+        "cursor": "io.github.chaandannn/finops-mcp:0.8.119"
+      },
+      {
+        "page": 374,
+        "count": 100,
+        "nextCursor": "io.github.cherninlab/ennodia:0.2.0",
+        "cursor": "io.github.chaandannn/finops-mcp:0.8.97"
+      },
+      {
+        "page": 375,
+        "count": 100,
+        "nextCursor": "io.github.chrischall/compass-mcp:0.6.2",
+        "cursor": "io.github.cherninlab/ennodia:0.2.0"
+      },
+      {
+        "page": 376,
+        "count": 100,
+        "nextCursor": "io.github.chrischall/gogcli-mcp:2.18.2",
+        "cursor": "io.github.chrischall/compass-mcp:0.6.2"
+      },
+      {
+        "page": 377,
+        "count": 100,
+        "nextCursor": "io.github.chrischall/gogcli-mcp-drive:2.18.3",
+        "cursor": "io.github.chrischall/gogcli-mcp:2.18.2"
+      },
+      {
+        "page": 378,
+        "count": 100,
+        "nextCursor": "io.github.chrischall/homes-mcp:0.10.0",
+        "cursor": "io.github.chrischall/gogcli-mcp-drive:2.18.3"
+      },
+      {
+        "page": 379,
+        "count": 100,
+        "nextCursor": "io.github.chrischall/musescore-mcp:0.5.0",
+        "cursor": "io.github.chrischall/homes-mcp:0.10.0"
+      },
+      {
+        "page": 380,
+        "count": 100,
+        "nextCursor": "io.github.chrischall/redfin-mcp:0.4.2",
+        "cursor": "io.github.chrischall/musescore-mcp:0.5.0"
+      },
+      {
+        "page": 381,
+        "count": 100,
+        "nextCursor": "io.github.chrischall/tempo-api-mcp:2.1.6",
+        "cursor": "io.github.chrischall/redfin-mcp:0.4.2"
+      },
+      {
+        "page": 382,
+        "count": 100,
+        "nextCursor": "io.github.chrischall/zola-mcp:1.1.1",
+        "cursor": "io.github.chrischall/tempo-api-mcp:2.1.6"
+      },
+      {
+        "page": 383,
+        "count": 100,
+        "nextCursor": "io.github.chrismcdermut/proletariat-cli:0.3.89",
+        "cursor": "io.github.chrischall/zola-mcp:1.1.1"
+      },
+      {
+        "page": 384,
+        "count": 100,
+        "nextCursor": "io.github.claymore666/ccu-mcp:1.9.0",
+        "cursor": "io.github.chrismcdermut/proletariat-cli:0.3.89"
+      },
+      {
+        "page": 385,
+        "count": 100,
+        "nextCursor": "io.github.clouatre-labs/aptu-coder:0.23.0",
+        "cursor": "io.github.claymore666/ccu-mcp:1.9.0"
+      },
+      {
+        "page": 386,
+        "count": 100,
+        "nextCursor": "io.github.cmendezs/mcp-einvoicing-core:1.16.0",
+        "cursor": "io.github.clouatre-labs/aptu-coder:0.23.0"
+      },
+      {
+        "page": 387,
+        "count": 100,
+        "nextCursor": "io.github.cocaxcode/database-mcp:0.1.1",
+        "cursor": "io.github.cmendezs/mcp-einvoicing-core:1.16.0"
+      },
+      {
+        "page": 388,
+        "count": 100,
+        "nextCursor": "io.github.codespar/mcp-andreani:0.2.0-alpha.3",
+        "cursor": "io.github.cocaxcode/database-mcp:0.1.1"
+      },
+      {
+        "page": 389,
+        "count": 100,
+        "nextCursor": "io.github.codespar/mcp-flow-cl:0.1.0",
+        "cursor": "io.github.codespar/mcp-andreani:0.2.0-alpha.3"
+      },
+      {
+        "page": 390,
+        "count": 100,
+        "nextCursor": "io.github.codespar/mcp-safrapay:0.2.0-alpha.2",
+        "cursor": "io.github.codespar/mcp-flow-cl:0.1.0"
+      },
+      {
+        "page": 391,
+        "count": 100,
+        "nextCursor": "io.github.codeurali/dataverse:0.4.7",
+        "cursor": "io.github.codespar/mcp-safrapay:0.2.0-alpha.2"
+      },
+      {
+        "page": 392,
+        "count": 100,
+        "nextCursor": "io.github.commitshow/legitshow-search:0.1.0",
+        "cursor": "io.github.codeurali/dataverse:0.4.7"
       }
     ],
-    "results": 36698,
+    "results": 39198,
     "complete": false,
     "errors": []
   },
   "scans": [],
-  "repositoriesDiscovered": 44326,
-  "repositoriesSelected": 1000,
-  "repositoriesScanned": 8,
-  "repositoriesNotScanned": 34466,
+  "repositoriesDiscovered": 44727,
+  "repositoriesSelected": 0,
+  "repositoriesScanned": 0,
+  "repositoriesNotScanned": 34819,
   "scanOffset": 2096,
   "repositoriesScannedTotal": 2096,
   "cycleComplete": false,
   "persistedScanFailures": [],
   "terminalUnavailableRepositories": 37,
   "rateLimitedRepositories": 2,
-  "rateLimitedScanEvents": 8,
-  "artifactsDiscovered": 110371,
-  "errors": 1,
-  "scanDisabled": false,
+  "rateLimitedScanEvents": 0,
+  "artifactsDiscovered": 112871,
+  "errors": 0,
+  "scanDisabled": true,
   "complete": false,
   "categoryCounts": {
     "skill": 59412,
+    "skill-metadata": 6980,
     "plugin": 1588,
-    "mcp": 38187,
+    "mcp": 40687,
     "marketplace": 957,
     "hook": 383,
     "config": 18,
     "agent-config": 50,
     "rule": 2,
     "prompt": 249,
-    "plugin-metadata": 6980,
     "agents": 2474,
     "action": 71,
     "other": 0
@@ -3800,7 +2753,7 @@
   "verificationCounts": {
     "verified": 1078,
     "discovered": 72581,
-    "registry": 36698,
+    "registry": 39198,
     "unknown": 14
   }
 }

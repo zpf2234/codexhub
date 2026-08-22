@@ -1,11 +1,4 @@
 {
-  "generatedAt": "2026-08-22T04:52:23.570Z",
-  "errors": [
-    {
-      "source": "github-code-plugin-mcp",
-      "query": "filename:.mcp.json",
-      "error": "GitHub API 403",
-      "status": 403
-    }
-  ]
+  "generatedAt": "2026-08-22T05:45:27.332Z",
+  "errors": []
 }
