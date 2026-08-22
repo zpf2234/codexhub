@@ -1,11 +1,30 @@
 {
-  "generatedAt": "2026-08-22T09:45:03.187Z",
+  "generatedAt": "2026-08-22T10:14:23.479Z",
   "errors": [
     {
-      "source": "github-code-plugin-manifest",
-      "query": "filename:plugin.json path:.codex-plugin",
-      "error": "GitHub API 403",
-      "status": 403
+      "source": "github-tree-scan",
+      "repository": "134679wnagluo/codex-skills",
+      "error": "GitHub API 409"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "1jiang111/codex-skills",
+      "error": "GitHub API 409"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "7is7paris-FR/CodexSkills-",
+      "error": "GitHub API 409"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "94bnhktjtg-ctrl/codex-skills",
+      "error": "GitHub API 409"
+    },
+    {
+      "source": "github-tree-scan",
+      "repository": "AlexanderDolgan/juliawp",
+      "error": "GitHub API 403"
     },
     {
       "source": "github-tree-scan",
@@ -58,13 +77,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "199-mcp/mcp-kling",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "AceIDE/editor",
       "status": "fresh",
       "truncated": false,
@@ -73,20 +85,6 @@
     {
       "source": "github-tree-scan",
       "repository": "AaronBerman/canasta-mobile",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "4ndres30/terapeutas-australes-app",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "2025chunxi/make-skill",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -164,13 +162,6 @@
     {
       "source": "github-tree-scan",
       "repository": "scumunna/applycairn-releases",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0ics-srls/ui-ticket-mcp_public",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -261,28 +252,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "2214962083/2214962083",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "ActiveInferenceInstitute/GeneralizedNotationNotation",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1s-design/yishe-shop",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "06ketan/slideshot",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -311,13 +281,6 @@
     {
       "source": "github-tree-scan",
       "repository": "JenayNing/safe-project-rules",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "2025chunxi/github-check",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -408,13 +371,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "674019130/674019130",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "abhisheksharma026/abhisheksharma026",
       "status": "fresh",
       "truncated": false,
@@ -423,20 +379,6 @@
     {
       "source": "github-tree-scan",
       "repository": "Abilityai/agent-ruby",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1265615/prompt-refiner",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0GiS0/nerdearla-mcp",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -461,13 +403,6 @@
       "status": "terminal-unavailable",
       "truncated": false,
       "error": "GitHub API 404"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "79yuuki/dotfiles",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
     },
     {
       "source": "github-tree-scan",
@@ -534,21 +469,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "8manos/No-Al-Poliducto",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "achriom/achriom-mcp",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0p9b/TLDR",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -653,13 +574,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "111mihir/idiolect",
-      "status": "terminal-unavailable",
-      "truncated": false,
-      "error": "GitHub API 404"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "aaddrick/attention-control",
       "status": "fresh",
       "truncated": false,
@@ -759,20 +673,6 @@
     {
       "source": "github-tree-scan",
       "repository": "aahil62/unslop",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1695365384/1695365384",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0xku/kon",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -891,24 +791,10 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "1c-syntax/claude-code-bsl-lsp",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "Abbiirr/mcp-agent-qa",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "000safah000-ai/BlackHawkMCP",
-      "status": "terminal-unavailable",
-      "truncated": false,
-      "error": "GitHub API 404"
     },
     {
       "source": "github-tree-scan",
@@ -1206,13 +1092,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "1mad-elmakaoui/ops-mcp",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "Abstract-Foundation/abstract-skills",
       "status": "fresh",
       "truncated": false,
@@ -1228,13 +1107,6 @@
     {
       "source": "github-tree-scan",
       "repository": "cku3987/svn-precommit-review",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1vanBilous/checkviral-skills",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -1325,13 +1197,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "0xprogrammable/hookbuilder",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "ai-studying-man/youtube_auto",
       "status": "fresh",
       "truncated": false,
@@ -1374,49 +1239,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "0xdeval/leads-screening-skill",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0ics-srls/lsai-xmp4.public",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "abhijithvijayan/awesome-stars",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "2998980-hue/surreal-pop-collage",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "911218sky/mcp-cursor-message",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "06ketan/substack-ops",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0Mattias/bettermemory",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -1479,28 +1302,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "19TT94/workspace-setup",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "4bh1gn4/4bh1gn4",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "aamirmanisa/onenomad",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "100Hires/mcp",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -1514,35 +1316,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "2754LM/safe-file-ops",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "aborczuk/app-foundation",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1707049684/v2_myproject",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "ztxdkk/ai-vibe-workflow-toolkit",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "Zzy930/econ-ms-skills",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -1731,13 +1505,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "zwx1127/gdx",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "ycpiglet/editorial-publishing-kit",
       "status": "fresh",
       "truncated": false,
@@ -1815,13 +1582,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "222wcnm/BiliStalkerMCP",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "oh-summy/skills",
       "status": "fresh",
       "truncated": false,
@@ -1857,21 +1617,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "0200project/base-tx-explain",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "abu-talha-codex/HTML-CSS-Codes",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "613lys/mock-data",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -1920,13 +1666,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "17lang/mindraw4agent",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "fr33dr4g0n/agentry-public",
       "status": "fresh",
       "truncated": false,
@@ -1942,20 +1681,6 @@
     {
       "source": "github-tree-scan",
       "repository": "actions-marketplace-validations/vmactions_netbsd-vm",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0seaS/skills-copilot-codespaces-vscode",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "2ndkauboy/syntaxhighlighter-evolved-sass-brush",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -1991,20 +1716,6 @@
     {
       "source": "github-tree-scan",
       "repository": "nleononline/codex-context-window",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "54yyyu/code-mcp",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0langa/Web.de-Access",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -2221,13 +1932,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "20minds/sennen-computational-discovery",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "abhishekambad-leapswitch/openstack-mcp",
       "status": "fresh",
       "truncated": false,
@@ -2249,21 +1953,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "2mawi2/para",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "aaron-he-zhu/aaron-marketing-skills",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "18967105815-prog/gui-patent",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -2361,20 +2051,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "8dp6brm9hp-svg/lion-mcp-public",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1genadam/pilotgentic",
-      "status": "terminal-unavailable",
-      "truncated": false,
-      "error": "GitHub API 404"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "Victory-7291/project-scaffold-setup-skills",
       "status": "fresh",
       "truncated": false,
@@ -2438,42 +2114,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "2786559415/music-taste",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "3jdp/wtg",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "33Evgenyy33/euroroaming-dev",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "abel-2333-org/geist-nuxt",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "A-EVO-Lab/a-evolve",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "302ai/302_web_search_mcp",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -2557,13 +2198,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "A1-x-Tech/mcp-yango-retail",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "aalfie/CV-Site",
       "status": "fresh",
       "truncated": false,
@@ -2572,27 +2206,6 @@
     {
       "source": "github-tree-scan",
       "repository": "a8hok/DevOps-Study-Guide",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "24ganesh/WordPress-Hub",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1parado/xiaohei-workflow",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "8beeeaaat/touchdesigner-mcp",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -2649,13 +2262,6 @@
     {
       "source": "github-tree-scan",
       "repository": "zfifteen/agent-vision",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "5u5hil/edunguru",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -2767,13 +2373,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "3716319-dot/interaction-portfolio-mentors",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "elan6666/your-bytedance-skills",
       "status": "fresh",
       "truncated": false,
@@ -2844,13 +2443,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "a-oleynik/testng-workshop",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "acastineiraf/wordpress_0",
       "status": "fresh",
       "truncated": false,
@@ -2893,28 +2485,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "0rkz/byte-mcp-server",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "abduvik/abduvik",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "8lampard8/claude-science-cn",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "07kit/07kit",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -2964,13 +2535,6 @@
     {
       "source": "github-tree-scan",
       "repository": "Abrar2003/Abrar2003",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "10Dimensional/InspOrg",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -3061,42 +2625,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "45ck/45ck",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0xDevNinja/0xDevNinja",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1625081/TIC-PHP",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "abhitekula/GetHog",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "199ocero/google-sheets-mcp",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "2389-research/remote-system-maintenance",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -3153,27 +2682,6 @@
     {
       "source": "github-tree-scan",
       "repository": "aashari/boilerplate-mcp-server",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "6/mcp-server-rubygems",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "2n2n/greentomato-wp",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "540lyle/elite-code-review",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -3341,20 +2849,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "1inch/1inch-ai",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "2rami/kasaterm",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "phatnguyen975/ai-audit-log",
       "status": "fresh",
       "truncated": false,
@@ -3488,27 +2982,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "1elasmarjad/yc-founder-skills",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "777genius/claude-notifications-go",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "9thLevelSoftware/Daem0n-MCP",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "Kingslayer-bot/ieee-trans-skill",
       "status": "fresh",
       "truncated": false,
@@ -3600,28 +3073,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "0Jsnipes/0Jsnipes",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "5joerd5/web",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "academe/csv-importer-improved",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "812lcl/dotfiles",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -3720,13 +3172,6 @@
     {
       "source": "github-tree-scan",
       "repository": "cc282855/handoff-document-generator",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "2389-research/mcp-socialmedia",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -3838,27 +3283,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "1984vc/cap-table",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "23Maestro/singleton-systems",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0nork/0nMCP",
-      "status": "terminal-unavailable",
-      "truncated": false,
-      "error": "GitHub API 404"
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "7is7paris-FR/CodexSkills-",
       "status": "partial",
       "truncated": false,
@@ -3929,27 +3353,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "33themes/ttt-crop",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1Panel-dev/1Panel-skills",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "3D-Stories/rawgentic-memorypalace",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "blessleon/electron-cdp-automation",
       "status": "fresh",
       "truncated": false,
@@ -3979,13 +3382,6 @@
     {
       "source": "github-tree-scan",
       "repository": "abhisekjha/pith",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "60fps-Design/plugin",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -4070,20 +3466,6 @@
     {
       "source": "github-tree-scan",
       "repository": "abigailcherry/project",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1bharath-yadav/dotfiles",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0x3639/go-syrius",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -4230,20 +3612,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "3sztof/awesome-stars",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1NT9NS9/1NT9NS9",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "abdodeeksleem/NeTest",
       "status": "fresh",
       "truncated": false,
@@ -4276,13 +3644,6 @@
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1325ai/1325ai",
-      "status": "terminal-unavailable",
-      "truncated": false,
-      "error": "GitHub API 404"
     },
     {
       "source": "github-tree-scan",
@@ -4322,13 +3683,6 @@
     {
       "source": "github-tree-scan",
       "repository": "JamesRobertWiseman/manifester",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "19blue/wordpress_",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -4405,13 +3759,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "2111Indersohaljeet1980/pleasuresolutions.com",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "aAAaqwq/openclaw-team",
       "status": "fresh",
       "truncated": false,
@@ -4426,28 +3773,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "0xmariowu/AgentLint",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0xTanzim/smartautoresearch",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "aaaaninja/moneyforward-cloud-agent-browser",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "07pepa/unofficial_mapy_com_mcp",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -4560,20 +3886,6 @@
     {
       "source": "github-tree-scan",
       "repository": "code-yeongyu/codex-comment-checker",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "00wz/DesktopAssistant",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "A-PachecoT/uni-beamer-claude",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -4734,20 +4046,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "a-ariff/canvas-instant-mcp",
-      "status": "terminal-unavailable",
-      "truncated": false,
-      "error": "GitHub API 404"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "73nko/career-vault",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "abdielou/discovery-skill",
       "status": "fresh",
       "truncated": false,
@@ -4791,13 +4089,6 @@
     {
       "source": "github-tree-scan",
       "repository": "benteigland11/cartograph-plugin",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "777genius/universal-plugins-for-ai-agents",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -4853,13 +4144,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "3nesdeniz/ai-cybersecurity-skills",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "Boolsai-ai/mcp",
       "status": "fresh",
       "truncated": false,
@@ -4875,13 +4159,6 @@
     {
       "source": "github-tree-scan",
       "repository": "junhw8670/DartCopilot",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0xmono/ml_in_gamedev",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -4965,20 +4242,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "A1-x-Tech/mcp-yandex-dostavka",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0Bu/daikin-altherma-esp32",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "JarvixGaby/motion-guide-skill",
       "status": "fresh",
       "truncated": false,
@@ -5008,13 +4271,6 @@
     {
       "source": "github-tree-scan",
       "repository": "Nisus74/pencil-skill",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "04bhavyaa/startup-idea-analyzer-agent",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -5085,34 +4341,6 @@
     {
       "source": "github-tree-scan",
       "repository": "abhxhekrathore5/AI-Vibe-Check",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0xJacky/nginx-ui",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0xharryriddle/codex-field-kit",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "26BB/agentic-awesome-skills-mcp",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "13eholder/zflow",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -5232,27 +4460,6 @@
     {
       "source": "github-tree-scan",
       "repository": "acafourek/maidstone",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "911218sky/mechrevo-amd-restart-fix",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "843773493/vscode-graph-agent-opencode",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "777genius/review-router-saas",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -5504,13 +4711,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "0xjacq/0xjacq",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "happygoluckydev/c2",
       "status": "fresh",
       "truncated": false,
@@ -5554,13 +4754,6 @@
     {
       "source": "github-tree-scan",
       "repository": "BusyBee3333/sol-governed-codex",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1Panel-dev/MaxKB",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -5672,35 +4865,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "21st-dev/magic-mcp",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "121212165/mcp-integration",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "ActionProxy/actionproxy",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "25b3nk/skills-copilot-codespaces-vscode",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "777genius/reviewrouter-e2e-hybrid-20260528-223205",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -5743,27 +4908,6 @@
     {
       "source": "github-tree-scan",
       "repository": "xsoc1/rigorous-open-math-research",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1345AbhishekKumar/Soundly",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "45ck/prompt-language",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0917Ray/my-codex-skills",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -5833,13 +4977,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "2aces/post-types-order",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "wangyz1999/paper-list-outreach-skill",
       "status": "fresh",
       "truncated": false,
@@ -5862,34 +4999,6 @@
     {
       "source": "github-tree-scan",
       "repository": "brackendev/clojurescript-skills",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "6Kmfi6HP/network-optimizer-skill",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1nueve/motorzite",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "4m4t3ur/tntr",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "33themes/ttt-gallery",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -6015,35 +5124,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "0GiS0/youtube-mcp-server",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "aadilr/costbench-mcp",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1999AZZAR/linear-skill",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "9csg956r89-droid/agents-in-sdlc",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "06ketan/medium-ops",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -6106,20 +5187,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "0xErwin1/nixos",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1999AZZAR/code_purge",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "envokeME/tprm-risk-management-skills",
       "status": "fresh",
       "truncated": false,
@@ -6142,13 +5209,6 @@
     {
       "source": "github-tree-scan",
       "repository": "zl9099/codex-academic-writing-skills",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "709213219/supervisor-skill",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -6191,13 +5251,6 @@
     {
       "source": "github-tree-scan",
       "repository": "abhay-byte/abhay-byte",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1nueve/autoventas",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -6302,13 +5355,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "0-YuvrajSingh/AegisChat",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "abicheck/abicheck",
       "status": "fresh",
       "truncated": false,
@@ -6372,28 +5418,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "6eanut/NOTEBOOK",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "24ganesh/wpshoppings",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "aamangeldi/dad-jokes-mcp",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0xgonzalo/music-artist-os",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -6463,13 +5488,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "52Pickup/base-theme",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "dydtjr1128/antigravity-bridge",
       "status": "fresh",
       "truncated": false,
@@ -6520,13 +5538,6 @@
     {
       "source": "github-tree-scan",
       "repository": "KEDA-gagaga/codex-knows-your-network",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0xHoneyJar/loa-constructs",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -6701,13 +5712,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "0gnilc/auth",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "quietmill/respeak",
       "status": "fresh",
       "truncated": false,
@@ -6792,21 +5796,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "0413-mzy/codex-skills-pack",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "shizaishiwo323/rebuild-scientific-poster-ppt",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "50sotero/chatgpt-sol-pro-chrome",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -6877,41 +5867,6 @@
     {
       "source": "github-tree-scan",
       "repository": "Mars723/codex-geogebra-geometry",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "13592413557/shoop",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0xquqi/sun-skill",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "78degrees/mcp-server",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "00PrabalK00/OpenRosWarehouse",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0-co/company",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -6995,13 +5950,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "3D-Stories/design-doc-publish",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "jaychou805/make-song-skill",
       "status": "fresh",
       "truncated": false,
@@ -7065,21 +6013,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "4680demir/skills-copilot-codespaces-vscode",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "Javon0-0/claude-skills",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "992640451/codex-desktop-theme-builder",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -7157,27 +6091,6 @@
     {
       "source": "github-tree-scan",
       "repository": "abhicoder29/Bookstore_user",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "A-Locke/a-locke",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "12og3r/redpen",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "01056649000yoo/vibe_agit",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -7310,13 +6223,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "0x7067/ai-sdlc",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "gzh246/codex-skills",
       "status": "fresh",
       "truncated": false,
@@ -7422,20 +6328,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "777genius/agent-teams-ai",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0GiS0/chainlit-demo",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "EnosElinsa/mec-paper-writing-skills",
       "status": "fresh",
       "truncated": false,
@@ -7479,13 +6371,6 @@
     {
       "source": "github-tree-scan",
       "repository": "JOYLINK-LTD/lacuna-plugin",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "9Ninety/MCPNotes",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -7563,13 +6448,6 @@
     {
       "source": "github-tree-scan",
       "repository": "AbriantoLabs/smartschool-mcp",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "9398-haha/douyin-benchmark",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -7744,20 +6622,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "10kseason/Deep-memory-skills",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1Password/SCAM",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "abdlx/HomiOS",
       "status": "fresh",
       "truncated": false,
@@ -7856,20 +6720,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "24601/surreal-skills",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0h-n0/local-voice-assistant-codex",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "linyindong/platform-product-skills",
       "status": "fresh",
       "truncated": false,
@@ -7919,28 +6769,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "2019-02-18/MCX",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "aaryasharma2/lot",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "3lf/llm-for-humans",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "2han/hackletter.com",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -7955,13 +6784,6 @@
     {
       "source": "github-tree-scan",
       "repository": "abdullah-c9/proj2",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "302ai/302_custom_mcp",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -8017,35 +6839,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "6maple/mcp-for-chatgpt-web-tunnel",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "a-latyshev/dolfinx-external-operator",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "AccelerationConsortium/ac-organic-lab",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "a-pasquale/wordpress-www.elytra.net",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0xKaroshi/contendeo-mcp",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -8109,27 +6903,6 @@
     {
       "source": "github-tree-scan",
       "repository": "AbhiVarde/syncui",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0xnyn/canary",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "2389-research/firebase-development",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "06leong/trainmap",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -8207,13 +6980,6 @@
     {
       "source": "github-tree-scan",
       "repository": "heliohq/ship",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0xdenny218/vercel-geist-design-skill",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -8304,31 +7070,10 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "A1-x-Tech/mcp-yango-delivery",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "abmc2/skills-copilot-codespaces-vscode",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0xAidan/polymarket-bot-test",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0-don/unorouter-mcp",
-      "status": "terminal-unavailable",
-      "truncated": false,
-      "error": "GitHub API 404"
     },
     {
       "source": "github-tree-scan",
@@ -8396,20 +7141,6 @@
     {
       "source": "github-tree-scan",
       "repository": "aaronedev/aaronedev",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "05satyam/AI-ML",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1nueve/toljy",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -8528,13 +7259,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "0xjmp/mcp-tradovate",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "aa1143/aa1143",
       "status": "fresh",
       "truncated": false,
@@ -8605,13 +7329,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "90le/worker-rights-cn",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "rastagan-git/agent-wait-sponsor",
       "status": "fresh",
       "truncated": false,
@@ -8661,21 +7378,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "7nbsp/theclsc",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "abhijeet-codes/ai-avatar-video-generation",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "3M1RY33T/MyBlog",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -8753,20 +7456,6 @@
     {
       "source": "github-tree-scan",
       "repository": "patryk-bernasiewicz/turingbrain",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "A1-x-Tech/mcp-yandex-audience",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "45ck/maintenance-evolution-skills",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -8976,20 +7665,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "10up/simple-local-avatars",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "20225760kquang/inspect-ftel",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "abdoulihideya86/Understand-Anything",
       "status": "fresh",
       "truncated": false,
@@ -9081,13 +7756,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "717672878/novel-skills",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "ahump20/Austin-Writing---Communication-Style-Archive",
       "status": "fresh",
       "truncated": false,
@@ -9145,34 +7813,6 @@
     {
       "source": "github-tree-scan",
       "repository": "Gao327/render-to-rhino-3d",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1RB/mongo-mcp",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1eedaegon/...s",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0maru/gh-zen",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0GiS0/mcp-server-azure-function",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -9246,20 +7886,6 @@
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "3x-haust/oh-my-design",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "4dwebspro-cell/ylai-platform",
-      "status": "terminal-unavailable",
-      "truncated": false,
-      "error": "GitHub API 404"
     },
     {
       "source": "github-tree-scan",
@@ -9361,13 +7987,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "0xCyberBerserker/0xCyberBerserker",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "Achuan-2/pandoc_docx_template",
       "status": "fresh",
       "truncated": false,
@@ -9446,27 +8065,6 @@
     {
       "source": "github-tree-scan",
       "repository": "memi-design/memi",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0xWerz/exact-copy-paste",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "2ools/mcp-server",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "89jobrien/orca-strait",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -9613,13 +8211,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "44-99/OpenAlphaStack",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "houguangyu010416-star/choice-pilot",
       "status": "fresh",
       "truncated": false,
@@ -9634,13 +8225,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "54yyyu/pyapple-mcp",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "achappey/aihappey-mcp",
       "status": "fresh",
       "truncated": false,
@@ -9649,20 +8233,6 @@
     {
       "source": "github-tree-scan",
       "repository": "acornprover/acornlib",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0xArtex/Palmyr",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "224-Industries/webflow-ai-sdk",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -9760,13 +8330,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "7OO7/development",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "active-interest/xml-sitemap-feed",
       "status": "fresh",
       "truncated": false,
@@ -9775,20 +8338,6 @@
     {
       "source": "github-tree-scan",
       "repository": "AcTePuKc/bg-game-translation-qa",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0717376/cowork_bench",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "3A2DEV/ansible-designer",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -9844,21 +8393,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "36lean/spider",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "AccelAnalysis/AK9I-Customer-Pipeline",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1visio/calibration_tool",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -9907,35 +8442,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "A1-x-Tech/mcp-yandex-merchants",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "123gongjingyun/git_data",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "5u5hil/tgm",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "aadilr/changethisfile-mcp",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "42U/laqrumcode",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -10061,20 +8568,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "A-Mateen03/skills-copilot-codespaces-vscode",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "3610cn/enveng",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "dpearson2699/swift-ios-skills",
       "status": "fresh",
       "truncated": false,
@@ -10110,28 +8603,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "1148194155-cell/bureau2",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "aarora79/aws-cost-explorer-mcp-server",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "9cb14c1ec0/gitea-codex-action",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0rnot/DiscordClaudeCode",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -10208,28 +8680,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "418-teapot/ZooKeeper",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "30eggis/walwal-harness",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "abdulbasit742/anydesk",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "1ASunny/build-nexent-agents",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -10307,27 +8758,6 @@
     {
       "source": "github-tree-scan",
       "repository": "Kikser1214/strideos-harness",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "005739james/skills-copilot-codespaces-vscode",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "3doptix/skills",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "2389-research/review-squad",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -10425,13 +8855,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "917Dhj/DeepPaperNote",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "a798221115-byte/Book-Video-Factory",
       "status": "fresh",
       "truncated": false,
@@ -10523,13 +8946,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "1c7/chinese-independent-developer",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "a1yama/dotfiles",
       "status": "fresh",
       "truncated": false,
@@ -10537,21 +8953,7 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "1natsu172/dotfiles",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "abu-talha-codex/Abu-Develops",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0h-n0/auto-research",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -10587,13 +8989,6 @@
     {
       "source": "github-tree-scan",
       "repository": "browoz/agentic-sdlc-skills",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "169884902hzl/engineering-paper-skills",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -10650,13 +9045,6 @@
     {
       "source": "github-tree-scan",
       "repository": "DeepBiology/deepbiology-lab",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "6rzan/ai-helpdesk-agent",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -10727,13 +9115,6 @@
     {
       "source": "github-tree-scan",
       "repository": "abandon888/HappyBirthday",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "727735746/bishi-test",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -10859,27 +9240,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "3shn/skill-local-doc",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "100Thieves-team/review-swarm",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "0maru/wezterm-agent-dashboard",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "somnus-J-307/project-handoff-skill",
       "status": "fresh",
       "truncated": false,
@@ -10937,13 +9297,6 @@
     {
       "source": "github-tree-scan",
       "repository": "qteqpid/ios-app-development",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "8903211/emotion-skill",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -11020,20 +9373,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "0ta2/dots",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "102306071/nccu-mis-bmt",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "nexiuslabspublic/nexius-inbound-lead-triage-starter",
       "status": "fresh",
       "truncated": false,
@@ -11091,13 +9430,6 @@
     {
       "source": "github-tree-scan",
       "repository": "actionhero/keryx",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "612cs/TrailQuest",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -11167,20 +9499,6 @@
     },
     {
       "source": "github-tree-scan",
-      "repository": "6dweb/BlogEspa-o",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "11vated/Nexus",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
       "repository": "aaronkpickrell/openagent-registry",
       "status": "fresh",
       "truncated": false,
@@ -11203,13 +9521,6 @@
     {
       "source": "github-tree-scan",
       "repository": "wangwei1237/agent-skills",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "2023Anita/scientific-visual-skills",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
@@ -11245,20 +9556,6 @@
     {
       "source": "github-tree-scan",
       "repository": "acabezashSkillChallenge/skills-copilot-codespaces-vscode",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "3DStreet/3dstreet-mcp",
-      "status": "fresh",
-      "truncated": false,
-      "error": "Repository tree scan is incomplete."
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "14u9h/js-url-auto-reverse",
       "status": "fresh",
       "truncated": false,
       "error": "Repository tree scan is incomplete."
