@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-22T01:32:12.951Z",
-  "startedAt": "2026-08-22T01:23:40.128Z",
-  "completedAt": "2026-08-22T01:32:12.951Z",
+  "generatedAt": "2026-08-22T02:06:31.681Z",
+  "startedAt": "2026-08-22T02:03:18.707Z",
+  "completedAt": "2026-08-22T02:06:31.681Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -1200,6 +1200,54 @@
         "remaining": 0,
         "reset": 1787361880,
         "retryAfter": null
+      }
+    },
+    {
+      "id": "github-code-agents-dot",
+      "kind": "agents",
+      "coverage": "supplemental",
+      "query": "filename:.agents.md",
+      "mode": "code-search",
+      "total": 1948,
+      "pages": 10,
+      "results": 121,
+      "truncated": true,
+      "errors": [
+        {
+          "query": "filename:.agents.md",
+          "page": 5,
+          "error": "GitHub API 429",
+          "status": 429
+        }
+      ],
+      "rate": {
+        "remaining": 10,
+        "reset": 1787364398,
+        "retryAfter": 6
+      }
+    },
+    {
+      "id": "github-code-mcp-toml",
+      "kind": "mcp",
+      "coverage": "supplemental",
+      "query": "filename:mcp.toml",
+      "mode": "code-search",
+      "total": 626,
+      "pages": 7,
+      "results": 112,
+      "truncated": true,
+      "errors": [
+        {
+          "query": "filename:mcp.toml",
+          "page": 3,
+          "error": "GitHub API 429",
+          "status": 429
+        }
+      ],
+      "rate": {
+        "remaining": 8,
+        "reset": 1787364398,
+        "retryAfter": 735
       }
     }
   ],
@@ -2661,341 +2709,214 @@
         "count": 100,
         "nextCursor": "io.github.Larshiensch99/priceparse:0.1.0",
         "cursor": "io.github.L337-org/docker-mcp-server:2.1.3"
+      },
+      {
+        "page": 243,
+        "count": 100,
+        "nextCursor": "io.github.Lightyear-Technologies-Limited/cryptopunks:1.0.0",
+        "cursor": "io.github.Larshiensch99/priceparse:0.1.0"
+      },
+      {
+        "page": 244,
+        "count": 100,
+        "nextCursor": "io.github.Lucav21/heu-mcp:0.1.7",
+        "cursor": "io.github.Lightyear-Technologies-Limited/cryptopunks:1.0.0"
+      },
+      {
+        "page": 245,
+        "count": 100,
+        "nextCursor": "io.github.Lyellr88/marm-mcp-server:2.39.0",
+        "cursor": "io.github.Lucav21/heu-mcp:0.1.7"
+      },
+      {
+        "page": 246,
+        "count": 100,
+        "nextCursor": "io.github.Lykhoyda/ask-llm:0.4.4",
+        "cursor": "io.github.Lyellr88/marm-mcp-server:2.39.0"
+      },
+      {
+        "page": 247,
+        "count": 100,
+        "nextCursor": "io.github.MM-sheng/404-directory:0.7.0",
+        "cursor": "io.github.Lykhoyda/ask-llm:0.4.4"
+      },
+      {
+        "page": 248,
+        "count": 100,
+        "nextCursor": "io.github.MarcelRoozekrans/roslyn-codelens:2.18.0",
+        "cursor": "io.github.MM-sheng/404-directory:0.7.0"
+      },
+      {
+        "page": 249,
+        "count": 100,
+        "nextCursor": "io.github.MattStellisoft/stellify-mcp:0.1.39",
+        "cursor": "io.github.MarcelRoozekrans/roslyn-codelens:2.18.0"
+      },
+      {
+        "page": 250,
+        "count": 100,
+        "nextCursor": "io.github.Maxim-Mazurok/teams-api:1.6.2",
+        "cursor": "io.github.MattStellisoft/stellify-mcp:0.1.39"
+      },
+      {
+        "page": 251,
+        "count": 100,
+        "nextCursor": "io.github.Mgnlockii/reelfy:1.0.0",
+        "cursor": "io.github.Maxim-Mazurok/teams-api:1.6.2"
+      },
+      {
+        "page": 252,
+        "count": 100,
+        "nextCursor": "io.github.MikkoParkkola/trvl:1.19.1",
+        "cursor": "io.github.Mgnlockii/reelfy:1.0.0"
+      },
+      {
+        "page": 253,
+        "count": 100,
+        "nextCursor": "io.github.Mishakivskiy/hirenimbus-mcp:1.0.0",
+        "cursor": "io.github.MikkoParkkola/trvl:1.19.1"
+      },
+      {
+        "page": 254,
+        "count": 100,
+        "nextCursor": "io.github.MrCerq/agentcanary:1.4.0",
+        "cursor": "io.github.Mishakivskiy/hirenimbus-mcp:1.0.0"
+      },
+      {
+        "page": 255,
+        "count": 100,
+        "nextCursor": "io.github.Muvon/octobrain:0.11.0",
+        "cursor": "io.github.MrCerq/agentcanary:1.4.0"
+      },
+      {
+        "page": 256,
+        "count": 100,
+        "nextCursor": "io.github.NeerajG03/vector-memory:0.1.4",
+        "cursor": "io.github.Muvon/octobrain:0.11.0"
+      },
+      {
+        "page": 257,
+        "count": 100,
+        "nextCursor": "io.github.NeoDemosHQ/neodemos:0.3.41",
+        "cursor": "io.github.NeerajG03/vector-memory:0.1.4"
+      },
+      {
+        "page": 258,
+        "count": 100,
+        "nextCursor": "io.github.Nodemint-dev/projectmind:0.5.1",
+        "cursor": "io.github.NeoDemosHQ/neodemos:0.3.41"
+      },
+      {
+        "page": 259,
+        "count": 100,
+        "nextCursor": "io.github.ObscuritySRL/bun-uia:1.6.3",
+        "cursor": "io.github.Nodemint-dev/projectmind:0.5.1"
+      },
+      {
+        "page": 260,
+        "count": 100,
+        "nextCursor": "io.github.OjasKord/data-compliance-mcp:1.0.1",
+        "cursor": "io.github.ObscuritySRL/bun-uia:1.6.3"
+      },
+      {
+        "page": 261,
+        "count": 100,
+        "nextCursor": "io.github.Olddun/agent-revenue-copilot:0.1.36",
+        "cursor": "io.github.OjasKord/data-compliance-mcp:1.0.1"
+      },
+      {
+        "page": 262,
+        "count": 100,
+        "nextCursor": "io.github.OpenHCSDev/openhcs:0.7.16",
+        "cursor": "io.github.Olddun/agent-revenue-copilot:0.1.36"
+      },
+      {
+        "page": 263,
+        "count": 100,
+        "nextCursor": "io.github.OrygnsCode/omnicord:1.0.2",
+        "cursor": "io.github.OpenHCSDev/openhcs:0.7.16"
+      },
+      {
+        "page": 264,
+        "count": 100,
+        "nextCursor": "io.github.Pantani/tdmcp:0.11.0",
+        "cursor": "io.github.OrygnsCode/omnicord:1.0.2"
+      },
+      {
+        "page": 265,
+        "count": 100,
+        "nextCursor": "io.github.Patdolitse/piia-engram:4.17.1",
+        "cursor": "io.github.Pantani/tdmcp:0.11.0"
+      },
+      {
+        "page": 266,
+        "count": 100,
+        "nextCursor": "io.github.Perufitlife/postwire-mcp:0.2.2",
+        "cursor": "io.github.Patdolitse/piia-engram:4.17.1"
+      },
+      {
+        "page": 267,
+        "count": 100,
+        "nextCursor": "io.github.Preethi0716/weather:1.0.4",
+        "cursor": "io.github.Perufitlife/postwire-mcp:0.2.2"
       }
     ],
-    "results": 24200,
+    "results": 26699,
     "complete": false,
     "errors": []
   },
-  "scans": [
+  "scans": [],
+  "repositoriesDiscovered": 34787,
+  "repositoriesSelected": 1000,
+  "repositoriesScanned": 8,
+  "repositoriesNotScanned": 26150,
+  "scanOffset": 1892,
+  "repositoriesScannedTotal": 1892,
+  "cycleComplete": false,
+  "persistedScanFailures": [
     {
-      "repository": "tractorjuice/arckit-codex",
-      "status": "fresh",
-      "artifacts": 521,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 521,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "trelio-ru/agent-workspaces",
-      "status": "fresh",
-      "artifacts": 17,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 17,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "twanonymous/agent-dispatch-cli",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ulofiai/codex-context-rollover",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ulpi-io/marketplace",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "vadim-chiriac/worldkeep",
-      "status": "fresh",
-      "artifacts": 12,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 12,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ValerianXXX/billfit",
-      "status": "fresh",
-      "artifacts": 5,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "vishesh9131/elephant",
-      "status": "fresh",
-      "artifacts": 22,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 22,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ViszCham/RepoSeiri",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Vit129/agy-plugin-codex",
-      "status": "fresh",
-      "artifacts": 11,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 11,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "w1661884010-jpg/automation-learning-workbench",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "w1661884010-jpg/feibi-codex-pet",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "w93139/github-radar",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "wearshoes/release-ops",
-      "status": "fresh",
-      "artifacts": 10,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 10,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "weathour/ismism-system",
-      "status": "fresh",
-      "artifacts": 5,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "wei-b0/codexbar-lite",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "wvdsh/ai",
-      "status": "fresh",
-      "artifacts": 12,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 12,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "xDylanLong/xiaomi-band-codex-notify",
-      "status": "fresh",
-      "artifacts": 5,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "XiangyuSu611/claimmate",
-      "status": "fresh",
-      "artifacts": 14,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 14,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "XINGchi0130/dsh-base-plugin",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "xsoc1/rigorous-open-math-research",
-      "status": "fresh",
-      "artifacts": 14,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 14,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "YG-creator-ai/flagzy-community",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "zebbern/agent-collab",
-      "status": "fresh",
-      "artifacts": 18,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 18,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "zedarvates/botte-secrete",
-      "status": "fresh",
-      "artifacts": 81,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 81,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "zhongwangquan/multica-agent-sync",
-      "status": "fresh",
-      "artifacts": 6,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 6,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "zjunlp/AutoSciRub",
-      "status": "fresh",
-      "artifacts": 20,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 20,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "ActiveInferenceInstitute/courses",
+      "repository": "a798221115-byte/Book-Video-Factory",
       "status": "partial",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": true,
+      "truncated": false,
       "errors": [
-        "GitHub API 403"
+        "fetch failed"
       ]
     },
     {
-      "repository": "HIDORAKAI002/ai-workspace-archive",
+      "repository": "sodanyx/codebase-baseline-planner",
       "status": "partial",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": true,
-      "errors": [
-        "GitHub API 403"
-      ]
-    },
-    {
-      "repository": "0-co/company",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "000safah000-ai/BlackHawkMCP",
-      "status": "terminal-unavailable",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
       "truncated": false,
       "errors": [
-        "GitHub API 404"
+        "fetch failed"
       ]
-    },
-    {
-      "repository": "00PrabalK00/OpenRosWarehouse",
-      "status": "fresh",
-      "artifacts": 8,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 8,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "06ketan/medium-ops",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
     }
   ],
-  "repositoriesDiscovered": 33920,
-  "repositoriesScanned": 1000,
-  "repositoriesNotScanned": 25188,
-  "scanOffset": 2084,
-  "repositoriesScannedTotal": 2084,
-  "cycleComplete": false,
-  "persistedScanFailures": [],
   "terminalUnavailableRepositories": 37,
-  "rateLimitedRepositories": 2,
+  "rateLimitedRepositories": 192,
   "rateLimitedScanEvents": 8,
-  "artifactsDiscovered": 97721,
-  "errors": 3,
+  "artifactsDiscovered": 95695,
+  "errors": 4,
   "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
-    "skill": 59380,
-    "plugin": 1562,
-    "mcp": 25683,
-    "marketplace": 957,
-    "hook": 377,
-    "config": 15,
-    "agent-config": 41,
+    "skill": 56824,
+    "plugin": 1288,
+    "mcp": 28080,
+    "marketplace": 752,
+    "hook": 280,
+    "config": 10,
+    "agent-config": 22,
     "rule": 0,
-    "prompt": 186,
-    "plugin-metadata": 6978,
-    "agents": 2471,
-    "action": 71,
+    "prompt": 0,
+    "plugin-metadata": 6021,
+    "agents": 2353,
+    "action": 65,
     "other": 0
   },
   "verificationCounts": {
-    "verified": 1080,
-    "discovered": 72429,
-    "registry": 24198,
+    "verified": 1078,
+    "discovered": 67904,
+    "registry": 26699,
     "unknown": 14
   }
 }

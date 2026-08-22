@@ -1,22 +1,33 @@
 {
-  "generatedAt": "2026-08-22T01:32:12.951Z",
+  "generatedAt": "2026-08-22T02:06:31.681Z",
   "errors": [
     {
-      "source": "github-code-team-guide",
-      "query": "filename:TEAM_GUIDE.md",
-      "page": 4,
-      "error": "GitHub API 403",
-      "status": 403
+      "source": "github-code-agents-dot",
+      "query": "filename:.agents.md",
+      "page": 5,
+      "error": "GitHub API 429",
+      "status": 429
+    },
+    {
+      "source": "github-code-mcp-toml",
+      "query": "filename:mcp.toml",
+      "page": 3,
+      "error": "GitHub API 429",
+      "status": 429
     },
     {
       "source": "github-tree-scan",
-      "repository": "ActiveInferenceInstitute/courses",
-      "error": "GitHub API 403"
+      "repository": "a798221115-byte/Book-Video-Factory",
+      "status": "partial",
+      "truncated": false,
+      "error": "fetch failed"
     },
     {
       "source": "github-tree-scan",
-      "repository": "HIDORAKAI002/ai-workspace-archive",
-      "error": "GitHub API 403"
+      "repository": "sodanyx/codebase-baseline-planner",
+      "status": "partial",
+      "truncated": false,
+      "error": "fetch failed"
     }
   ]
 }
