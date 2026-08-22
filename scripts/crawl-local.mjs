@@ -15,5 +15,6 @@ const run = (args) => new Promise((resolve, reject) => {
   child.on('exit', (code) => code === 0 ? resolve() : reject(new Error(`node exited with ${code}`)));
 });
 
+await run(['scripts/discovery/local-inventory.mjs', '--write']);
 await run(['scripts/discover.mjs']);
 await run(['scripts/build-catalog.mjs', '--cached']);

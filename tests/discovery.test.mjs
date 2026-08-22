@@ -6,6 +6,7 @@ import { scanRepository } from '../scripts/discovery/github-tree-scan.mjs';
 import { loadCheckpoint, saveCheckpoint } from '../scripts/discovery/checkpoint.mjs';
 import { classifyPath, createDashboardSnapshot, normalizeDiscovery } from '../scripts/discovery/model.mjs';
 import { selectScanBatch } from '../scripts/discovery/scan-queue.mjs';
+import { discoverLocalComponents } from '../scripts/discovery/local-inventory.mjs';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
@@ -337,6 +338,25 @@ test('artifact classifier recognizes Codex component paths', () => {
   assert.equal(classifyPath('agents/openai.yaml').category, 'plugin-metadata');
   assert.equal(classifyPath('AGENTS.md').category, 'agents');
   assert.equal(classifyPath('action.yml').category, 'action');
+});
+
+test('local inventory finds and classifies Codex component paths without executing them', async () => {
+  const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'codexhub-local-'));
+  await fs.mkdir(path.join(directory, '.agents', 'skills', 'demo'), { recursive: true });
+  await fs.mkdir(path.join(directory, 'plugin', '.codex-plugin'), { recursive: true });
+  await fs.writeFile(path.join(directory, '.agents', 'skills', 'demo', 'SKILL.md'), '---\nname: demo\ndescription: demo\n---\n');
+  await fs.writeFile(path.join(directory, 'plugin', '.codex-plugin', 'plugin.json'), '{}');
+  await fs.writeFile(path.join(directory, '.mcp.json'), '{}');
+  const result = await discoverLocalComponents({ roots: [{ id: 'fixture', root: directory, include: ['.'] }], now: '2026-01-01T00:00:00.000Z' });
+  assert.deepEqual(result.artifacts.map((artifact) => artifact.category).sort(), ['mcp', 'plugin', 'skill']);
+  assert.ok(result.artifacts.every((artifact) => artifact.source === 'local-filesystem' && artifact.verification === 'deferred'));
+
+  const codexHome = await fs.mkdtemp(path.join(os.tmpdir(), 'codexhub-home-'));
+  await fs.mkdir(path.join(codexHome, 'rules'), { recursive: true });
+  await fs.writeFile(path.join(codexHome, 'config.toml'), '[mcp_servers.demo]\n');
+  await fs.writeFile(path.join(codexHome, 'rules', 'default.rules'), 'prefix_rule(pattern=["git"], decision="allow")\n');
+  const homeResult = await discoverLocalComponents({ roots: [{ id: 'codex-home', root: codexHome, include: ['config.toml', 'rules'] }], now: '2026-01-01T00:00:00.000Z' });
+  assert.deepEqual(homeResult.artifacts.map((artifact) => artifact.category).sort(), ['config', 'rule']);
 });
 
 test('discovery normalization adds registry artifacts and coverage counts', () => {

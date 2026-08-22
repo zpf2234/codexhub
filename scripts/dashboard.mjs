@@ -28,6 +28,7 @@ const run = (command, args) => new Promise((resolve, reject) => {
   child.on('exit', (code) => code === 0 ? resolve() : reject(new Error(`${command} exited with ${code}`)));
 });
 
+await run('node', ['scripts/discovery/local-inventory.mjs', '--write']);
 await run('node', ['scripts/build-catalog.mjs', '--cached']);
 if (process.argv.includes('--build-only')) process.exit(0);
 console.log(`Discovery dashboard: http://127.0.0.1:${port}/discovery.html`);

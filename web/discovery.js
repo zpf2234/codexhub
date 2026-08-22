@@ -39,8 +39,8 @@ function artifactCard(artifact) {
   if (artifact.version) meta.append(el('span', '', `v${artifact.version}`));
   if (artifact.stars != null) meta.append(el('span', '', `Stars ${formatNumber(artifact.stars)}`));
   meta.append(el('span', '', artifact.source === 'mcp-registry' ? 'Official registry' : artifact.verification || 'discovered'));
-  const link = el('a', 'card-link', artifact.source === 'mcp-registry' ? 'Open source' : 'View artifact');
-  link.href = artifactLink(artifact); link.target = '_blank'; link.rel = 'noreferrer';
+  const link = artifact.source === 'local-filesystem' ? el('span', 'card-link local-link', 'Local file') : el('a', 'card-link', artifact.source === 'mcp-registry' ? 'Open source' : 'View artifact');
+  if (link.tagName === 'A') { link.href = artifactLink(artifact); link.target = '_blank'; link.rel = 'noreferrer'; }
   article.append(header, title, repo, path, summary, meta, link);
   return article;
 }
@@ -57,7 +57,8 @@ function repositoryCard(repository) {
   const meta = el('div', 'artifact-meta');
   meta.append(el('span', '', `Stars ${formatNumber(repository.stars)}`), el('span', '', `Forks ${formatNumber(repository.forks)}`), el('span', '', repository.license || 'NOASSERTION'));
   const source = el('p', 'source-line', `Sources: ${(repository.discoveredBy || []).join(', ') || 'unknown'}`);
-  const link = el('a', 'card-link', 'View repository'); link.href = safeUrl(repository.url); link.target = '_blank'; link.rel = 'noreferrer';
+  const link = repository.discoveredBy?.includes('local-filesystem') ? el('span', 'card-link local-link', 'Local inventory') : el('a', 'card-link', 'View repository');
+  if (link.tagName === 'A') { link.href = safeUrl(repository.url); link.target = '_blank'; link.rel = 'noreferrer'; }
   article.append(header, title, summary, meta, source, link);
   return article;
 }
@@ -94,7 +95,13 @@ function renderSources(coverage) {
   const registryIdentity = el('div', 'source-identity'); registryIdentity.append(el('strong', '', 'mcp-official-registry'), el('small', '', 'Official MCP Registry'));
   const registryNumbers = el('div', 'source-numbers'); registryNumbers.append(el('span', '', `${formatNumber(coverage.registry?.results || 0)} records`), el('span', '', `${formatNumber(coverage.registry?.pages?.length || 0)} pages`));
   registry.append(registryIdentity, registryNumbers, coverage.registry?.complete ? el('span', 'verification verification-verified', 'Covered') : el('span', 'verification verification-discovered', 'In progress'));
-  document.querySelector('#source-coverage-list').replaceChildren(...rows, registry);
+  const local = coverage.local ? el('article', 'source-row') : null;
+  if (local) {
+    const localIdentity = el('div', 'source-identity'); localIdentity.append(el('strong', '', 'local-filesystem'), el('small', '', 'Local Codex directories'));
+    const localNumbers = el('div', 'source-numbers'); localNumbers.append(el('span', '', `${formatNumber(coverage.local.artifacts || 0)} artifacts`), el('span', '', `${formatNumber(coverage.local.roots || 0)} roots`));
+    local.append(localIdentity, localNumbers, el('span', 'verification verification-verified', 'Indexed'));
+  }
+  document.querySelector('#source-coverage-list').replaceChildren(...rows, registry, ...(local ? [local] : []));
 }
 
 function renderFilters() {

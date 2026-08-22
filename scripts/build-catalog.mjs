@@ -36,6 +36,13 @@ const publicDiscoveryDir = path.join(output, 'api', 'v1', 'discovery');
 try {
   await fs.mkdir(publicDiscoveryDir, { recursive: true });
   const discovery = normalizeDiscovery(JSON.parse(await fs.readFile(path.join(discoveryDir, 'discovery.json'), 'utf8')));
+  try {
+    const local = JSON.parse(await fs.readFile(path.join(discoveryDir, 'local.json'), 'utf8'));
+    discovery.repositories.push(...(local.repositories || []));
+    discovery.artifacts.push(...(local.artifacts || []));
+    const merged = normalizeDiscovery(discovery);
+    Object.assign(discovery, merged, { coverage: { ...merged.coverage, local: local.coverage || { artifacts: local.artifacts?.length || 0 } } });
+  } catch {}
   const dashboard = createDashboardSnapshot(discovery);
   await fs.writeFile(path.join(publicDiscoveryDir, 'discovery.json'), JSON.stringify(discovery) + '\n');
   await fs.writeFile(path.join(publicDiscoveryDir, 'repositories.json'), JSON.stringify({ generatedAt: discovery.generatedAt, repositories: discovery.repositories }) + '\n');

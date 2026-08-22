@@ -34,6 +34,8 @@ npm run dashboard
 
 Then open `http://127.0.0.1:4173/discovery.html`. The command builds from the latest local checkpoint and starts a no-cache local server without crawling the network.
 
+The dashboard also refreshes a read-only inventory of local Codex component paths under `CODEX_HOME`, `~/.agents`, and the current project. It records only recognized paths and classifications; it does not read credentials, execute component code, upload the inventory, or connect to MCP servers. Use `CODEX_LOCAL_ROOTS=path1;path2` to add custom local roots, or `npm run inventory:local` to refresh the inventory without starting the server.
+
 If port `4173` is already occupied, the dashboard automatically selects the next available local port. You can pin one explicitly with `npm run dashboard -- --port 4174`.
 
 To advance the local discovery snapshot first, run one bounded batch and then open the dashboard:

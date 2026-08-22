@@ -18,6 +18,7 @@
     "build:offline": "node scripts/build-catalog.mjs --offline",
     "refresh": "node scripts/build-catalog.mjs --write-cache",
     "discover": "node scripts/discover.mjs",
+    "inventory:local": "node scripts/discovery/local-inventory.mjs --write",
     "crawl:local": "node scripts/crawl-local.mjs",
     "dashboard": "node scripts/dashboard.mjs",
     "check": "node scripts/validate-entry.mjs",
