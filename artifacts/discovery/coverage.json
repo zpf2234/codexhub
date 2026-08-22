@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-22T10:43:30.240Z",
-  "startedAt": "2026-08-22T10:43:16.293Z",
-  "completedAt": "2026-08-22T10:43:30.240Z",
+  "generatedAt": "2026-08-22T10:59:18.275Z",
+  "startedAt": "2026-08-22T10:59:16.708Z",
+  "completedAt": "2026-08-22T10:59:18.275Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -872,7 +872,7 @@
       }
     }
   ],
-  "sourcesProcessedThisRun": 2,
+  "sourcesProcessedThisRun": 0,
   "sourcesRemaining": 37,
   "exhaustiveSourcesRemaining": 5,
   "supplementalSourcesRemaining": 32,
@@ -3988,8 +3988,8 @@
   },
   "scans": [],
   "repositoriesDiscovered": 48364,
-  "repositoriesSelected": 0,
-  "repositoriesScanned": 0,
+  "repositoriesSelected": 1000,
+  "repositoriesScanned": 8,
   "repositoriesNotScanned": 37386,
   "scanOffset": 2290,
   "repositoriesScannedTotal": 2290,
@@ -12258,16 +12258,16 @@
   ],
   "terminalUnavailableRepositories": 130,
   "rateLimitedRepositories": 4,
-  "rateLimitedScanEvents": 0,
-  "artifactsDiscovered": 196898,
-  "errors": 1365,
-  "scanDisabled": true,
+  "rateLimitedScanEvents": 8,
+  "artifactsDiscovered": 196793,
+  "errors": 1364,
+  "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
     "skill": 111371,
     "skill-metadata": 18172,
     "plugin": 4963,
-    "mcp": 54557,
+    "mcp": 54452,
     "marketplace": 1168,
     "hook": 962,
     "config": 163,
@@ -12281,7 +12281,7 @@
   "verificationCounts": {
     "verified": 4183,
     "discovered": 140928,
-    "registry": 51698,
+    "registry": 51593,
     "unknown": 89
   }
 }
