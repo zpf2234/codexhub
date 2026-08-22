@@ -329,7 +329,7 @@ test('artifact classifier recognizes Codex component paths', () => {
   assert.equal(classifyPath('.codex/agents/reviewer.toml').type, 'agent-config');
   assert.equal(classifyPath('.codex/rules/default.rules').category, 'rule');
   assert.equal(classifyPath('.github/codex/prompts/release.md').type, 'action-prompt');
-  assert.equal(classifyPath('.codex/prompts/release.md').category, 'other');
+  assert.equal(classifyPath('.codex/prompts/release.md').type, 'custom-prompt');
   assert.equal(classifyPath('services/AGENTS.override.md').category, 'agents');
   assert.equal(classifyPath('TEAM_GUIDE.md').category, 'agents');
   assert.equal(classifyPath('.agents.md').category, 'agents');
@@ -357,6 +357,13 @@ test('local inventory finds and classifies Codex component paths without executi
   await fs.writeFile(path.join(codexHome, 'rules', 'default.rules'), 'prefix_rule(pattern=["git"], decision="allow")\n');
   const homeResult = await discoverLocalComponents({ roots: [{ id: 'codex-home', root: codexHome, include: ['config.toml', 'rules'] }], now: '2026-01-01T00:00:00.000Z' });
   assert.deepEqual(homeResult.artifacts.map((artifact) => artifact.category).sort(), ['config', 'rule']);
+
+  await fs.mkdir(path.join(codexHome, 'prompts'), { recursive: true });
+  await fs.mkdir(path.join(codexHome, 'agents'), { recursive: true });
+  await fs.writeFile(path.join(codexHome, 'prompts', 'draftpr.md'), '---\ndescription: draft a PR\n---\n');
+  await fs.writeFile(path.join(codexHome, 'agents', 'reviewer.toml'), 'name = "reviewer"\n');
+  const promptResult = await discoverLocalComponents({ roots: [{ id: 'codex-home', root: codexHome, include: ['prompts', 'agents'] }], now: '2026-01-01T00:00:00.000Z' });
+  assert.deepEqual(promptResult.artifacts.map((artifact) => artifact.artifactType).sort(), ['agent-config', 'custom-prompt']);
 });
 
 test('discovery normalization adds registry artifacts and coverage counts', () => {

@@ -72,7 +72,7 @@ For operational recovery, `GITHUB_DISCOVERY_TIMEOUT_MS` and `GITHUB_DISCOVERY_RE
 - **Codex config**: project `.codex/config.toml` and `.codex/requirements.toml`, which may declare MCP servers, hooks, and managed requirements.
 - **Custom agents**: project `.codex/agents/*.toml` subagent definitions.
 - **Execpolicy rules**: project `.codex/rules/*.rules` command policy files.
-- **Codex Action prompts**: `.github/codex/prompts/*.md` or `.txt` files passed to `openai/codex-action`; private `~/.codex/prompts` files are not discoverable from GitHub.
+- **Prompts**: `.github/codex/prompts/*.md` or `.txt` files passed to `openai/codex-action`, plus local `~/.codex/prompts/*.md` custom commands when the local inventory is enabled.
 - **Agent guidance**: a declared `AGENTS.md`, `AGENTS.override.md`, `TEAM_GUIDE.md`, or `.agents.md` path; Codex's supported fallback guidance names are searched independently.
 - **Action**: a repository `action.yml` or `action.yaml` describing a GitHub Action.
 - **Tool**: a first-party or community tool listed for ecosystem context.

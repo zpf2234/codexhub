@@ -9,6 +9,7 @@ const PATH_RULES = [
   { category: 'agent-config', type: 'agent-config', label: 'Custom agent', test: (path) => /(?:^|\/)\.codex\/agents\/[^/]+\.toml$/i.test(path) },
   { category: 'rule', type: 'rule', label: 'Execpolicy rule', test: (path) => /(?:^|\/)\.codex\/rules\/[^/]+\.rules$/i.test(path) },
   { category: 'prompt', type: 'action-prompt', label: 'Codex Action prompt', test: (path) => /(?:^|\/)\.github\/codex\/prompts\/[^/]+\.(?:md|txt)$/i.test(path) },
+  { category: 'prompt', type: 'custom-prompt', label: 'Custom prompt', test: (path) => /(?:^|\/)(?:\.codex\/)?prompts\/[^/]+\.md$/i.test(path) },
   { category: 'plugin-metadata', type: 'plugin-metadata', label: 'Plugin metadata', test: (path) => /(?:^|\/)agents\/openai\.ya?ml$/i.test(path) },
   { category: 'agents', type: 'agents', label: 'Agent guidance', test: (path) => /(?:^|\/)(?:agents|agents\.override|team_guide)\.md$/i.test(path) || /(?:^|\/)\.agents\.md$/i.test(path) },
   { category: 'action', type: 'action', label: 'GitHub Action', test: (path) => /(?:^|\/)action\.ya?ml$/i.test(path) }

@@ -3,7 +3,7 @@ import path from 'node:path';
 import os from 'node:os';
 import { classifyPath } from './model.mjs';
 
-const TARGET_FILE = /(?:^|\/)(?:SKILL\.md|plugin\.json|marketplace\.json|\.mcp\.json|mcp\.json|\.app\.json|hooks\.json|config\.toml|requirements\.toml|AGENTS(?:\.override)?\.md|TEAM_GUIDE\.md|\.agents\.md|openai\.ya?ml|[^/]+\.rules|action\.ya?ml)$/i;
+const TARGET_FILE = /(?:^|\/)(?:SKILL\.md|plugin\.json|marketplace\.json|\.mcp\.json|mcp\.json|\.app\.json|hooks\.json|config\.toml|requirements\.toml|AGENTS(?:\.override)?\.md|TEAM_GUIDE\.md|\.agents\.md|openai\.ya?ml|[^/]+\.rules|action\.ya?ml|prompts\/[^/]+\.md|agents\/[^/]+\.toml)$/i;
 const SKIP_DIRS = new Set(['sessions', 'archived_sessions', 'logs', 'sqlite', 'attachments', 'generated_images', 'visualizations', 'mcp-oauth-locks', 'node_modules']);
 const ALLOWED_HIDDEN_DIRS = new Set(['.agents', '.codex', '.codex-plugin', '.agent-plugin', '.claude-plugin']);
 
@@ -15,7 +15,7 @@ function defaultRoots() {
   const home = homeDirectory();
   const codexHome = process.env.CODEX_HOME || path.join(home, '.codex');
   return [
-    { id: 'codex-home', root: codexHome, include: ['skills', 'plugins', '.tmp/plugins', 'AGENTS.md', 'AGENTS.override.md', 'config.toml', 'requirements.toml', 'hooks.json', 'rules'] },
+    { id: 'codex-home', root: codexHome, include: ['skills', 'plugins', '.tmp/plugins', 'AGENTS.md', 'AGENTS.override.md', 'config.toml', 'requirements.toml', 'hooks.json', 'hooks', 'rules', 'prompts', 'agents'] },
     { id: 'agents-home', root: path.join(home, '.agents'), include: ['skills', 'plugins'] },
     { id: 'project', root: process.cwd(), include: ['.agents', '.codex', 'AGENTS.md', 'AGENTS.override.md', 'TEAM_GUIDE.md', '.agents.md'] }
   ];
