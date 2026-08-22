@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-22T00:30:19.849Z",
-  "startedAt": "2026-08-22T00:27:51.418Z",
-  "completedAt": "2026-08-22T00:30:19.849Z",
+  "generatedAt": "2026-08-22T00:38:55.104Z",
+  "startedAt": "2026-08-22T00:38:40.937Z",
+  "completedAt": "2026-08-22T00:38:55.104Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -81,6 +81,12 @@
       "kind": "mcp",
       "coverage": "supplemental",
       "query": "filename:.mcp.json"
+    },
+    {
+      "id": "github-code-mcp-json",
+      "kind": "mcp",
+      "coverage": "supplemental",
+      "query": "filename:mcp.json"
     },
     {
       "id": "github-code-plugin-app",
@@ -1135,6 +1141,23 @@
       "rate": {
         "remaining": 9,
         "reset": 1787358532,
+        "retryAfter": null
+      }
+    },
+    {
+      "id": "github-code-mcp-json",
+      "kind": "mcp",
+      "coverage": "supplemental",
+      "query": "filename:mcp.json",
+      "mode": "code-search",
+      "total": 124416,
+      "pages": 10,
+      "results": 522,
+      "truncated": true,
+      "errors": [],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787359181,
         "retryAfter": null
       }
     }
@@ -2387,91 +2410,76 @@
         "count": 100,
         "nextCursor": "io.github.Disane87/weishaupt-wem-mcp-server:0.2.0",
         "cursor": "io.github.DevDs1989/t-rush-mcp:1.0.2"
+      },
+      {
+        "page": 208,
+        "count": 100,
+        "nextCursor": "io.github.DownAtTheBottomOfTheMoleHole/megalinter:2.0.1",
+        "cursor": "io.github.Disane87/weishaupt-wem-mcp-server:0.2.0"
+      },
+      {
+        "page": 209,
+        "count": 100,
+        "nextCursor": "io.github.Echoqili/ssh-licco:0.1.3",
+        "cursor": "io.github.DownAtTheBottomOfTheMoleHole/megalinter:2.0.1"
+      },
+      {
+        "page": 210,
+        "count": 100,
+        "nextCursor": "io.github.Elnora-AI/elnora-mcp-server:0.1.1",
+        "cursor": "io.github.Echoqili/ssh-licco:0.1.3"
+      },
+      {
+        "page": 211,
+        "count": 100,
+        "nextCursor": "io.github.Evozim/afforestation-satellite-mcp:2.0.0",
+        "cursor": "io.github.Elnora-AI/elnora-mcp-server:0.1.1"
+      },
+      {
+        "page": 212,
+        "count": 100,
+        "nextCursor": "io.github.Evozim/binance-orderbook-mcp:2.0.0",
+        "cursor": "io.github.Evozim/afforestation-satellite-mcp:2.0.0"
+      },
+      {
+        "page": 213,
+        "count": 100,
+        "nextCursor": "io.github.Evozim/cross-chain-contract-relayer-mcp:2.0.0",
+        "cursor": "io.github.Evozim/binance-orderbook-mcp:2.0.0"
+      },
+      {
+        "page": 214,
+        "count": 100,
+        "nextCursor": "io.github.Evozim/logisticflow:1.0.0",
+        "cursor": "io.github.Evozim/cross-chain-contract-relayer-mcp:2.0.0"
+      },
+      {
+        "page": 215,
+        "count": 100,
+        "nextCursor": "io.github.ExpertVagabond/photo-organizer:1.0.0",
+        "cursor": "io.github.Evozim/logisticflow:1.0.0"
+      },
+      {
+        "page": 216,
+        "count": 100,
+        "nextCursor": "io.github.FelixWaweru/code-fundi-mcp:0.1.4",
+        "cursor": "io.github.ExpertVagabond/photo-organizer:1.0.0"
+      },
+      {
+        "page": 217,
+        "count": 100,
+        "nextCursor": "io.github.FoundryNet/foundrynet-geo:1.0.1",
+        "cursor": "io.github.FelixWaweru/code-fundi-mcp:0.1.4"
       }
     ],
-    "results": 20700,
+    "results": 21700,
     "complete": false,
     "errors": []
   },
-  "scans": [
-    {
-      "repository": "ActiveInferenceInstitute/courses",
-      "status": "partial",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": true,
-      "errors": [
-        "GitHub API 403"
-      ]
-    },
-    {
-      "repository": "tetracoralla/migratory-time",
-      "status": "fresh",
-      "artifacts": 5,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "tian2-ai/conrad-research-suite",
-      "status": "fresh",
-      "artifacts": 16,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 16,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "tian2-ai/isef-research-suite",
-      "status": "fresh",
-      "artifacts": 16,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 16,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "tian2-ai/sts-research-suite",
-      "status": "fresh",
-      "artifacts": 15,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 15,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "tian2-ai/yau-research-suite",
-      "status": "fresh",
-      "artifacts": 13,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 13,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "Today-Hbw/codex-dev-workflow",
-      "status": "fresh",
-      "artifacts": 19,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 19,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "totolstoy/rehydrate-codex-plugin",
-      "status": "fresh",
-      "artifacts": 5,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 5,
-      "truncated": false,
-      "errors": []
-    }
-  ],
-  "repositoriesDiscovered": 31686,
+  "scans": [],
+  "repositoriesDiscovered": 32705,
   "repositoriesScanned": 600,
-  "repositoriesNotScanned": 23579,
+  "repositoriesNotScanned": 24209,
   "scanOffset": 2054,
   "repositoriesScannedTotal": 2054,
   "cycleComplete": false,
@@ -2479,14 +2487,14 @@
   "terminalUnavailableRepositories": 36,
   "rateLimitedRepositories": 28,
   "rateLimitedScanEvents": 8,
-  "artifactsDiscovered": 93412,
-  "errors": 1,
+  "artifactsDiscovered": 94412,
+  "errors": 0,
   "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
     "skill": 59065,
     "plugin": 1529,
-    "mcp": 22169,
+    "mcp": 23169,
     "marketplace": 932,
     "hook": 364,
     "config": 14,
@@ -2501,7 +2509,7 @@
   "verificationCounts": {
     "verified": 1080,
     "discovered": 71620,
-    "registry": 20698,
+    "registry": 21698,
     "unknown": 14
   }
 }
