@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-22T04:07:19.386Z",
-  "startedAt": "2026-08-22T03:58:16.577Z",
-  "completedAt": "2026-08-22T04:07:19.386Z",
+  "generatedAt": "2026-08-22T04:52:23.570Z",
+  "startedAt": "2026-08-22T04:52:12.999Z",
+  "completedAt": "2026-08-22T04:52:23.570Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -1000,22 +1000,15 @@
       "coverage": "supplemental",
       "query": "filename:plugin.json path:.codex-plugin",
       "mode": "code-search",
-      "total": 3496,
+      "total": 3480,
       "pages": 10,
-      "results": 100,
+      "results": 778,
       "truncated": true,
-      "errors": [
-        {
-          "query": "filename:plugin.json path:.codex-plugin",
-          "page": 2,
-          "error": "GitHub API 429",
-          "status": 429
-        }
-      ],
+      "errors": [],
       "rate": {
-        "remaining": 5,
-        "reset": 1787337530,
-        "retryAfter": 1
+        "remaining": 0,
+        "reset": 1787374393,
+        "retryAfter": null
       }
     },
     {
@@ -1024,22 +1017,21 @@
       "coverage": "supplemental",
       "query": "filename:.mcp.json",
       "mode": "code-search",
-      "total": 56960,
-      "pages": 10,
-      "results": 87,
+      "total": 0,
+      "pages": 0,
+      "results": 34,
       "truncated": true,
       "errors": [
         {
           "query": "filename:.mcp.json",
-          "page": 2,
-          "error": "GitHub API 429",
-          "status": 429
+          "error": "GitHub API 403",
+          "status": 403
         }
       ],
       "rate": {
-        "remaining": 4,
-        "reset": 1787337530,
-        "retryAfter": 1
+        "remaining": 0,
+        "reset": 1787374393,
+        "retryAfter": null
       }
     },
     {
@@ -1561,9 +1553,9 @@
     }
   ],
   "sourcesProcessedThisRun": 2,
-  "sourcesRemaining": 16,
+  "sourcesRemaining": 15,
   "exhaustiveSourcesRemaining": 3,
-  "supplementalSourcesRemaining": 13,
+  "supplementalSourcesRemaining": 12,
   "registry": {
     "source": "mcp-official-registry",
     "pages": [
@@ -3618,94 +3610,167 @@
         "count": 100,
         "nextCursor": "io.github.avabuildsdata/mcp-us-business-data:1.9.38",
         "cursor": "io.github.avabuildsdata/mcp-us-business-data:1.9.164"
+      },
+      {
+        "page": 343,
+        "count": 100,
+        "nextCursor": "io.github.axiosdevs/agentscoin-mcp:1.1.0",
+        "cursor": "io.github.avabuildsdata/mcp-us-business-data:1.9.38"
+      },
+      {
+        "page": 344,
+        "count": 100,
+        "nextCursor": "io.github.b1ff/atlassian-dc-mcp-confluence:0.28.0",
+        "cursor": "io.github.axiosdevs/agentscoin-mcp:1.1.0"
+      },
+      {
+        "page": 345,
+        "count": 100,
+        "nextCursor": "io.github.bardesss/arr-mcp:1.13.0",
+        "cursor": "io.github.b1ff/atlassian-dc-mcp-confluence:0.28.0"
+      },
+      {
+        "page": 346,
+        "count": 100,
+        "nextCursor": "io.github.beepboop2025/data-breach-detector:0.3.1",
+        "cursor": "io.github.bardesss/arr-mcp:1.13.0"
+      },
+      {
+        "page": 347,
+        "count": 100,
+        "nextCursor": "io.github.bekirdag/docdex:0.2.50",
+        "cursor": "io.github.beepboop2025/data-breach-detector:0.3.1"
+      },
+      {
+        "page": 348,
+        "count": 100,
+        "nextCursor": "io.github.benseverndev-oss/goldencheck:3.1.2",
+        "cursor": "io.github.bekirdag/docdex:0.2.50"
+      },
+      {
+        "page": 349,
+        "count": 100,
+        "nextCursor": "io.github.beyondwin/fixthis:1.1.0",
+        "cursor": "io.github.benseverndev-oss/goldencheck:3.1.2"
+      },
+      {
+        "page": 350,
+        "count": 100,
+        "nextCursor": "io.github.bitterdev/pixelletter-mcp:1.0.2",
+        "cursor": "io.github.beyondwin/fixthis:1.1.0"
+      },
+      {
+        "page": 351,
+        "count": 100,
+        "nextCursor": "io.github.blightbow/parkour-mcp:2.0.0",
+        "cursor": "io.github.bitterdev/pixelletter-mcp:1.0.2"
+      },
+      {
+        "page": 352,
+        "count": 100,
+        "nextCursor": "io.github.bol-tools/bol-advertiser-mcp:2.0.1",
+        "cursor": "io.github.blightbow/parkour-mcp:2.0.0"
+      },
+      {
+        "page": 353,
+        "count": 100,
+        "nextCursor": "io.github.brave/brave-search-mcp-server:2.0.63",
+        "cursor": "io.github.bol-tools/bol-advertiser-mcp:2.0.1"
+      },
+      {
+        "page": 354,
+        "count": 100,
+        "nextCursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.0.1",
+        "cursor": "io.github.brave/brave-search-mcp-server:2.0.63"
+      },
+      {
+        "page": 355,
+        "count": 100,
+        "nextCursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.38.3",
+        "cursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.0.1"
+      },
+      {
+        "page": 356,
+        "count": 100,
+        "nextCursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.40.93",
+        "cursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.38.3"
+      },
+      {
+        "page": 357,
+        "count": 100,
+        "nextCursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.41.93",
+        "cursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.40.93"
+      },
+      {
+        "page": 358,
+        "count": 100,
+        "nextCursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.49.50",
+        "cursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.41.93"
+      },
+      {
+        "page": 359,
+        "count": 100,
+        "nextCursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.55.31",
+        "cursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.49.50"
+      },
+      {
+        "page": 360,
+        "count": 100,
+        "nextCursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.58.138",
+        "cursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.55.31"
+      },
+      {
+        "page": 361,
+        "count": 100,
+        "nextCursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.58.231",
+        "cursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.58.138"
+      },
+      {
+        "page": 362,
+        "count": 100,
+        "nextCursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.58.340",
+        "cursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.58.231"
+      },
+      {
+        "page": 363,
+        "count": 100,
+        "nextCursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.58.430",
+        "cursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.58.340"
+      },
+      {
+        "page": 364,
+        "count": 100,
+        "nextCursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.58.520",
+        "cursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.58.430"
+      },
+      {
+        "page": 365,
+        "count": 100,
+        "nextCursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.58.67",
+        "cursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.58.520"
+      },
+      {
+        "page": 366,
+        "count": 100,
+        "nextCursor": "io.github.bruchris/canvas-lms-mcp:1.27.0",
+        "cursor": "io.github.brilliantdirectories/brilliant-directories-mcp:6.58.67"
+      },
+      {
+        "page": 367,
+        "count": 100,
+        "nextCursor": "io.github.bytedance/mcp-server-browser:1.0.0",
+        "cursor": "io.github.bruchris/canvas-lms-mcp:1.27.0"
       }
     ],
-    "results": 34198,
+    "results": 36698,
     "complete": false,
     "errors": []
   },
-  "scans": [
-    {
-      "repository": "ActiveInferenceInstitute/courses",
-      "status": "partial",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": true,
-      "errors": [
-        "GitHub API 403"
-      ]
-    },
-    {
-      "repository": "HIDORAKAI002/ai-workspace-archive",
-      "status": "partial",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": true,
-      "errors": [
-        "GitHub API 403"
-      ]
-    },
-    {
-      "repository": "0413-mzy/codex-skills-pack",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "04bhavyaa/startup-idea-analyzer-agent",
-      "status": "fresh",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "0917Ray/my-codex-skills",
-      "status": "fresh",
-      "artifacts": 4,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "0GiS0/mcp-server-azure-function",
-      "status": "fresh",
-      "artifacts": 1,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 1,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "0GiS0/nerdearla-mcp",
-      "status": "fresh",
-      "artifacts": 3,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "0h-n0/local-voice-assistant-codex",
-      "status": "fresh",
-      "artifacts": 14,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 14,
-      "truncated": false,
-      "errors": []
-    }
-  ],
-  "repositoriesDiscovered": 43378,
+  "scans": [],
+  "repositoriesDiscovered": 44326,
   "repositoriesSelected": 1000,
-  "repositoriesScanned": 16,
-  "repositoriesNotScanned": 33574,
+  "repositoriesScanned": 8,
+  "repositoriesNotScanned": 34466,
   "scanOffset": 2096,
   "repositoriesScannedTotal": 2096,
   "cycleComplete": false,
@@ -3713,14 +3778,14 @@
   "terminalUnavailableRepositories": 37,
   "rateLimitedRepositories": 2,
   "rateLimitedScanEvents": 8,
-  "artifactsDiscovered": 107871,
-  "errors": 2,
+  "artifactsDiscovered": 110371,
+  "errors": 1,
   "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
     "skill": 59412,
     "plugin": 1588,
-    "mcp": 35687,
+    "mcp": 38187,
     "marketplace": 957,
     "hook": 383,
     "config": 18,
@@ -3735,7 +3800,7 @@
   "verificationCounts": {
     "verified": 1078,
     "discovered": 72581,
-    "registry": 34198,
+    "registry": 36698,
     "unknown": 14
   }
 }
