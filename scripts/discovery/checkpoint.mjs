@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const REPOSITORY_SHARD_PATTERN = /^checkpoint-repositories-\d+\.json$/i;
+const repositoryShardCache = new Map();
 
 function compactRegistryServer(server = {}) {
   const fields = ['id', 'source', 'name', 'version', 'title', 'description', 'repositoryUrl'];
@@ -29,32 +30,37 @@ function migrateRegistry(registry) {
 async function loadRepositoryShards(filePath, value) {
   if (!Array.isArray(value.repositoryShards) || value.repositoryShards.length === 0) return value.repositories && typeof value.repositories === 'object' ? value.repositories : {};
   const directory = path.dirname(filePath);
-  const parts = await Promise.all(value.repositoryShards.map(async (name) => JSON.parse(await fs.readFile(path.join(directory, name), 'utf8'))));
-  return Object.assign({}, ...parts.map((part) => part.repositories || {}));
+  const parts = await Promise.all(value.repositoryShards.map(async (name) => {
+    const serialized = await fs.readFile(path.join(directory, name), 'utf8');
+    return { name, serialized, value: JSON.parse(serialized) };
+  }));
+  repositoryShardCache.set(path.resolve(directory), new Map(parts.map((part) => [part.name, part.serialized])));
+  return Object.assign({}, ...parts.map((part) => part.value.repositories || {}));
 }
 
-async function writeRepositoryShards(directory, repositories, maxBytes) {
-  const shardLimit = Math.max(1, Number(maxBytes) || 8 * 1024 * 1024);
-  const entries = Object.entries(repositories || {});
-  const names = [];
-  let shard = {};
-  let shardBytes = Buffer.byteLength('{"repositories":{}}\n');
-  const flush = async () => {
-    const name = `checkpoint-repositories-${String(names.length + 1).padStart(4, '0')}.json`;
-    const temporary = path.join(directory, `${name}.tmp`);
-    await fs.writeFile(temporary, JSON.stringify({ repositories: shard }) + '\n');
-    await fs.rename(temporary, path.join(directory, name));
-    names.push(name);
-    shard = {};
-    shardBytes = Buffer.byteLength('{"repositories":{}}\n');
+async function writeRepositoryShards(directory, repositories) {
+  const bucketCount = 128;
+  const buckets = Array.from({ length: bucketCount }, () => ({}));
+  const bucketFor = (key) => {
+    let hash = 2166136261;
+    for (const character of key) hash = Math.imul(hash ^ character.charCodeAt(0), 16777619);
+    return (hash >>> 0) % bucketCount;
   };
-  for (const [key, repository] of entries) {
-    const entryBytes = Buffer.byteLength(JSON.stringify(key)) + Buffer.byteLength(JSON.stringify(repository)) + 2;
-    if (Object.keys(shard).length > 0 && shardBytes + entryBytes > shardLimit) await flush();
-    shard[key] = repository;
-    shardBytes += entryBytes;
+  for (const [key, repository] of Object.entries(repositories || {})) buckets[bucketFor(key)][key] = repository;
+  const cacheKey = path.resolve(directory);
+  const previous = repositoryShardCache.get(cacheKey) || new Map();
+  const names = [];
+  for (let index = 0; index < buckets.length; index += 1) {
+    const name = `checkpoint-repositories-${String(index + 1).padStart(4, '0')}.json`;
+    const serialized = JSON.stringify({ repositories: buckets[index] }) + '\n';
+    names.push(name);
+    if (previous.get(name) === serialized) continue;
+    const temporary = path.join(directory, `${name}.tmp`);
+    await fs.writeFile(temporary, serialized);
+    await fs.rename(temporary, path.join(directory, name));
+    previous.set(name, serialized);
   }
-  await flush();
+  repositoryShardCache.set(cacheKey, previous);
   const existing = (await fs.readdir(directory)).filter((name) => REPOSITORY_SHARD_PATTERN.test(name));
   for (const name of existing) if (!names.includes(name)) await fs.rm(path.join(directory, name), { force: true });
   return names;
@@ -87,7 +93,7 @@ export async function saveCheckpoint(filePath, checkpoint) {
   const directory = path.dirname(filePath);
   await fs.mkdir(directory, { recursive: true });
   const { repositories, ...metadata } = checkpoint;
-  const repositoryShards = await writeRepositoryShards(directory, repositories, process.env.DISCOVERY_CHECKPOINT_SHARD_BYTES || 8 * 1024 * 1024);
+  const repositoryShards = await writeRepositoryShards(directory, repositories);
   const temporary = `${filePath}.tmp`;
   await fs.writeFile(temporary, JSON.stringify({ ...metadata, repositoryShards, version: 1 }) + '\n');
   await fs.rename(temporary, filePath);
