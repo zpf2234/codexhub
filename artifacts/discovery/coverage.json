@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-22T13:59:06.802Z",
-  "startedAt": "2026-08-22T13:59:05.044Z",
-  "completedAt": "2026-08-22T13:59:06.802Z",
+  "generatedAt": "2026-08-22T14:41:14.319Z",
+  "startedAt": "2026-08-22T14:41:02.055Z",
+  "completedAt": "2026-08-22T14:41:14.319Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -1003,12 +1003,54 @@
         "reset": 1787406436,
         "retryAfter": null
       }
+    },
+    {
+      "id": "github-code-codex-config",
+      "kind": "config",
+      "coverage": "supplemental",
+      "query": "filename:config.toml path:.codex",
+      "mode": "code-search",
+      "total": 7280,
+      "pages": 10,
+      "matches": 893,
+      "results": 904,
+      "truncated": true,
+      "errors": [],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787409723,
+        "retryAfter": null
+      }
+    },
+    {
+      "id": "github-code-codex-requirements",
+      "kind": "config",
+      "coverage": "supplemental",
+      "query": "filename:requirements.toml path:.codex",
+      "mode": "code-search",
+      "total": 0,
+      "pages": 0,
+      "matches": 0,
+      "results": 6,
+      "truncated": true,
+      "errors": [
+        {
+          "query": "filename:requirements.toml path:.codex",
+          "error": "GitHub API 403",
+          "status": 403
+        }
+      ],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787409723,
+        "retryAfter": null
+      }
     }
   ],
-  "sourcesProcessedThisRun": 0,
-  "sourcesRemaining": 35,
+  "sourcesProcessedThisRun": 2,
+  "sourcesRemaining": 34,
   "exhaustiveSourcesRemaining": 5,
-  "supplementalSourcesRemaining": 30,
+  "supplementalSourcesRemaining": 29,
   "registry": {
     "source": "mcp-official-registry",
     "pages": [
@@ -4563,17 +4605,167 @@
         "count": 100,
         "nextCursor": "io.github.nethinwei/sql-mcp-server:0.1.3-rc.3",
         "cursor": "io.github.neilberkman/ccrider:1.9.0"
+      },
+      {
+        "page": 593,
+        "count": 100,
+        "nextCursor": "io.github.ngkienmkqn/24htrack-mcp:1.0.2",
+        "cursor": "io.github.nethinwei/sql-mcp-server:0.1.3-rc.3"
+      },
+      {
+        "page": 594,
+        "count": 100,
+        "nextCursor": "io.github.nickzren/opentargets:0.1.0",
+        "cursor": "io.github.ngkienmkqn/24htrack-mcp:1.0.2"
+      },
+      {
+        "page": 595,
+        "count": 100,
+        "nextCursor": "io.github.nirholas/activity-mcp:0.1.1",
+        "cursor": "io.github.nickzren/opentargets:0.1.0"
+      },
+      {
+        "page": 596,
+        "count": 100,
+        "nextCursor": "io.github.nirholas/scene-mcp:0.1.0",
+        "cursor": "io.github.nirholas/activity-mcp:0.1.1"
+      },
+      {
+        "page": 597,
+        "count": 100,
+        "nextCursor": "io.github.noblabs/lit-forge-mcp:0.9.0",
+        "cursor": "io.github.nirholas/scene-mcp:0.1.0"
+      },
+      {
+        "page": 598,
+        "count": 100,
+        "nextCursor": "io.github.nonameuserd/paybond:0.12.1",
+        "cursor": "io.github.noblabs/lit-forge-mcp:0.9.0"
+      },
+      {
+        "page": 599,
+        "count": 100,
+        "nextCursor": "io.github.nrwl/nx-mcp:0.23.0",
+        "cursor": "io.github.nonameuserd/paybond:0.12.1"
+      },
+      {
+        "page": 600,
+        "count": 100,
+        "nextCursor": "io.github.nyuchi/mukoko-news:1.1.0",
+        "cursor": "io.github.nrwl/nx-mcp:0.23.0"
+      },
+      {
+        "page": 601,
+        "count": 100,
+        "nextCursor": "io.github.oaslananka/infra-lens-mcp:1.0.6",
+        "cursor": "io.github.nyuchi/mukoko-news:1.1.0"
+      },
+      {
+        "page": 602,
+        "count": 100,
+        "nextCursor": "io.github.ofershap/s3:1.0.1",
+        "cursor": "io.github.oaslananka/infra-lens-mcp:1.0.6"
+      },
+      {
+        "page": 603,
+        "count": 100,
+        "nextCursor": "io.github.olgasafonova/miro-mcp-server:1.11.2",
+        "cursor": "io.github.ofershap/s3:1.0.1"
+      },
+      {
+        "page": 604,
+        "count": 100,
+        "nextCursor": "io.github.onelogin/onelogin-mcp:1.1.1",
+        "cursor": "io.github.olgasafonova/miro-mcp-server:1.11.2"
+      },
+      {
+        "page": 605,
+        "count": 100,
+        "nextCursor": "io.github.opendata-kr/narajangteo-opening:0.2.0",
+        "cursor": "io.github.onelogin/onelogin-mcp:1.1.1"
+      },
+      {
+        "page": 606,
+        "count": 100,
+        "nextCursor": "io.github.ormastes/simple-lsp-mcp-server:0.9.8",
+        "cursor": "io.github.opendata-kr/narajangteo-opening:0.2.0"
+      },
+      {
+        "page": 607,
+        "count": 100,
+        "nextCursor": "io.github.ostapondo/plonk:0.3.2",
+        "cursor": "io.github.ormastes/simple-lsp-mcp-server:0.9.8"
+      },
+      {
+        "page": 608,
+        "count": 100,
+        "nextCursor": "io.github.pachote/nira-video-mcp:1.0.3",
+        "cursor": "io.github.ostapondo/plonk:0.3.2"
+      },
+      {
+        "page": 609,
+        "count": 100,
+        "nextCursor": "io.github.palewire/datawrapper-mcp:0.0.16",
+        "cursor": "io.github.pachote/nira-video-mcp:1.0.3"
+      },
+      {
+        "page": 610,
+        "count": 100,
+        "nextCursor": "io.github.partymola/monzo-mcp:0.5.1",
+        "cursor": "io.github.palewire/datawrapper-mcp:0.0.16"
+      },
+      {
+        "page": 611,
+        "count": 100,
+        "nextCursor": "io.github.paulieb89/uk-due-diligence-mcp:1.0.2",
+        "cursor": "io.github.partymola/monzo-mcp:0.5.1"
+      },
+      {
+        "page": 612,
+        "count": 100,
+        "nextCursor": "io.github.pedroknigge/ark:1.8.1",
+        "cursor": "io.github.paulieb89/uk-due-diligence-mcp:1.0.2"
+      },
+      {
+        "page": 613,
+        "count": 100,
+        "nextCursor": "io.github.pepabo/suzuri-mcp:0.4.0",
+        "cursor": "io.github.pedroknigge/ark:1.8.1"
+      },
+      {
+        "page": 614,
+        "count": 100,
+        "nextCursor": "io.github.pgalyen1987/nodeproxy:1.0.2",
+        "cursor": "io.github.pepabo/suzuri-mcp:0.4.0"
+      },
+      {
+        "page": 615,
+        "count": 100,
+        "nextCursor": "io.github.piiiico/proof-of-commitment:1.18.2",
+        "cursor": "io.github.pgalyen1987/nodeproxy:1.0.2"
+      },
+      {
+        "page": 616,
+        "count": 100,
+        "nextCursor": "io.github.pipeworx-io/airquality:0.1.0",
+        "cursor": "io.github.piiiico/proof-of-commitment:1.18.2"
+      },
+      {
+        "page": 617,
+        "count": 100,
+        "nextCursor": "io.github.pipeworx-io/arcgis-peterborough:0.1.0",
+        "cursor": "io.github.pipeworx-io/airquality:0.1.0"
       }
     ],
-    "results": 59198,
+    "results": 61698,
     "complete": false,
     "errors": []
   },
   "scans": [],
-  "repositoriesDiscovered": 51688,
-  "repositoriesSelected": 1000,
-  "repositoriesScanned": 8,
-  "repositoriesNotScanned": 40137,
+  "repositoriesDiscovered": 52525,
+  "repositoriesSelected": 0,
+  "repositoriesScanned": 0,
+  "repositoriesNotScanned": 40825,
   "scanOffset": 2516,
   "repositoriesScannedTotal": 2516,
   "cycleComplete": false,
@@ -11463,19 +11655,19 @@
   ],
   "terminalUnavailableRepositories": 131,
   "rateLimitedRepositories": 4,
-  "rateLimitedScanEvents": 8,
-  "artifactsDiscovered": 205791,
-  "errors": 1138,
-  "scanDisabled": false,
+  "rateLimitedScanEvents": 0,
+  "artifactsDiscovered": 209223,
+  "errors": 1139,
+  "scanDisabled": true,
   "complete": false,
   "categoryCounts": {
     "skill": 111512,
     "skill-metadata": 18172,
     "plugin": 4991,
-    "mcp": 62743,
+    "mcp": 65356,
     "marketplace": 1168,
     "hook": 1475,
-    "config": 164,
+    "config": 983,
     "agent-config": 892,
     "rule": 51,
     "prompt": 325,
@@ -11485,8 +11677,8 @@
   },
   "verificationCounts": {
     "verified": 4249,
-    "discovered": 142360,
-    "registry": 59085,
+    "discovered": 143179,
+    "registry": 61698,
     "unknown": 97
   }
 }
