@@ -1,15 +1,11 @@
 {
-  "generatedAt": "2026-08-22T15:01:51.844Z",
+  "generatedAt": "2026-08-22T15:37:18.550Z",
   "errors": [
     {
-      "source": "github-tree-scan",
-      "repository": "alexpon92/dev-codex-skills",
-      "error": "GitHub API 409"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "AllenDing-CHN/Codex-Skills",
-      "error": "GitHub API 409"
+      "source": "github-code-codex-rules",
+      "query": "path:.codex/rules extension:rules",
+      "error": "GitHub API 403",
+      "status": 403
     },
     {
       "source": "github-tree-scan",
