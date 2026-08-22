@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-22T08:01:20.187Z",
-  "startedAt": "2026-08-22T08:01:18.822Z",
-  "completedAt": "2026-08-22T08:01:20.187Z",
+  "generatedAt": "2026-08-22T08:49:40.919Z",
+  "startedAt": "2026-08-22T08:49:28.896Z",
+  "completedAt": "2026-08-22T08:49:40.919Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -743,12 +743,54 @@
         "reset": 1787384910,
         "retryAfter": null
       }
+    },
+    {
+      "id": "github-code-skill-manifest",
+      "kind": "skill",
+      "coverage": "supplemental",
+      "query": "filename:SKILL.md",
+      "mode": "code-search",
+      "total": 5619712,
+      "pages": 10,
+      "matches": 1000,
+      "results": 779,
+      "truncated": true,
+      "errors": [],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787388629,
+        "retryAfter": null
+      }
+    },
+    {
+      "id": "github-code-repo-skills",
+      "kind": "skill",
+      "coverage": "supplemental",
+      "query": "filename:SKILL.md path:.agents/skills",
+      "mode": "code-search",
+      "total": 0,
+      "pages": 0,
+      "matches": 0,
+      "results": 626,
+      "truncated": true,
+      "errors": [
+        {
+          "query": "filename:SKILL.md path:.agents/skills",
+          "error": "GitHub API 403",
+          "status": 403
+        }
+      ],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787388629,
+        "retryAfter": null
+      }
     }
   ],
-  "sourcesProcessedThisRun": 0,
-  "sourcesRemaining": 40,
+  "sourcesProcessedThisRun": 2,
+  "sourcesRemaining": 39,
   "exhaustiveSourcesRemaining": 5,
-  "supplementalSourcesRemaining": 35,
+  "supplementalSourcesRemaining": 34,
   "registry": {
     "source": "mcp-official-registry",
     "pages": [
@@ -3403,17 +3445,167 @@
         "count": 100,
         "nextCursor": "io.github.drivenrajat/f1:0.1.0",
         "cursor": "io.github.drfccv/mcp-server-12306:0.3.1.post20260628"
+      },
+      {
+        "page": 443,
+        "count": 100,
+        "nextCursor": "io.github.dropthis-dev/dropthis-mcp:0.28.0",
+        "cursor": "io.github.drivenrajat/f1:0.1.0"
+      },
+      {
+        "page": 444,
+        "count": 100,
+        "nextCursor": "io.github.dushyant30suthar/endiagram-mcp:0.2.8",
+        "cursor": "io.github.dropthis-dev/dropthis-mcp:0.28.0"
+      },
+      {
+        "page": 445,
+        "count": 100,
+        "nextCursor": "io.github.eZhing/runik-ai:1.0.1",
+        "cursor": "io.github.dushyant30suthar/endiagram-mcp:0.2.8"
+      },
+      {
+        "page": 446,
+        "count": 100,
+        "nextCursor": "io.github.ebeirne/lians:0.5.0",
+        "cursor": "io.github.eZhing/runik-ai:1.0.1"
+      },
+      {
+        "page": 447,
+        "count": 100,
+        "nextCursor": "io.github.egorthinks/perception:0.1.6",
+        "cursor": "io.github.ebeirne/lians:0.5.0"
+      },
+      {
+        "page": 448,
+        "count": 100,
+        "nextCursor": "io.github.elestirelbilinc-sketch/vap-e:1.5.0",
+        "cursor": "io.github.egorthinks/perception:0.1.6"
+      },
+      {
+        "page": 449,
+        "count": 100,
+        "nextCursor": "io.github.elisymlabs/elisym:0.8.16",
+        "cursor": "io.github.elestirelbilinc-sketch/vap-e:1.5.0"
+      },
+      {
+        "page": 450,
+        "count": 100,
+        "nextCursor": "io.github.encodi/validar-semver:1.0.1",
+        "cursor": "io.github.elisymlabs/elisym:0.8.16"
+      },
+      {
+        "page": 451,
+        "count": 100,
+        "nextCursor": "io.github.epistemedeus/x402-data-gateway:1.11.40",
+        "cursor": "io.github.encodi/validar-semver:1.0.1"
+      },
+      {
+        "page": 452,
+        "count": 100,
+        "nextCursor": "io.github.erikirby/web-network-tools:1.0.0",
+        "cursor": "io.github.epistemedeus/x402-data-gateway:1.11.40"
+      },
+      {
+        "page": 453,
+        "count": 100,
+        "nextCursor": "io.github.evan-moon/firma:0.4.2",
+        "cursor": "io.github.erikirby/web-network-tools:1.0.0"
+      },
+      {
+        "page": 454,
+        "count": 100,
+        "nextCursor": "io.github.fadnavismehul/sql-preview:0.6.12",
+        "cursor": "io.github.evan-moon/firma:0.4.2"
+      },
+      {
+        "page": 455,
+        "count": 100,
+        "nextCursor": "io.github.fauguste/boondmanager-mcp-server:2.6.2",
+        "cursor": "io.github.fadnavismehul/sql-preview:0.6.12"
+      },
+      {
+        "page": 456,
+        "count": 100,
+        "nextCursor": "io.github.fetter-io/fetter-mcp:0.1.0",
+        "cursor": "io.github.fauguste/boondmanager-mcp-server:2.6.2"
+      },
+      {
+        "page": 457,
+        "count": 100,
+        "nextCursor": "io.github.fkiene/llmtrim:0.11.6",
+        "cursor": "io.github.fetter-io/fetter-mcp:0.1.0"
+      },
+      {
+        "page": 458,
+        "count": 100,
+        "nextCursor": "io.github.flowzap-xyz/flowzap:1.0.7",
+        "cursor": "io.github.fkiene/llmtrim:0.11.6"
+      },
+      {
+        "page": 459,
+        "count": 100,
+        "nextCursor": "io.github.forever-healthy/evipedia-mcp:0.1.15",
+        "cursor": "io.github.flowzap-xyz/flowzap:1.0.7"
+      },
+      {
+        "page": 460,
+        "count": 100,
+        "nextCursor": "io.github.freshfos/dropcoin-utility:1.0.0",
+        "cursor": "io.github.forever-healthy/evipedia-mcp:0.1.15"
+      },
+      {
+        "page": 461,
+        "count": 100,
+        "nextCursor": "io.github.furo-solutions/morfee:1.0.0",
+        "cursor": "io.github.freshfos/dropcoin-utility:1.0.0"
+      },
+      {
+        "page": 462,
+        "count": 100,
+        "nextCursor": "io.github.g-digital-by-Garrigues/gocertius:1.1.6",
+        "cursor": "io.github.furo-solutions/morfee:1.0.0"
+      },
+      {
+        "page": 463,
+        "count": 100,
+        "nextCursor": "io.github.gaforov/selenium-mcp:0.2.1",
+        "cursor": "io.github.g-digital-by-Garrigues/gocertius:1.1.6"
+      },
+      {
+        "page": 464,
+        "count": 100,
+        "nextCursor": "io.github.gautamgb/mcp-server-mcpindex:0.4.0",
+        "cursor": "io.github.gaforov/selenium-mcp:0.2.1"
+      },
+      {
+        "page": 465,
+        "count": 100,
+        "nextCursor": "io.github.gavxm/ani-mcp:0.3.0",
+        "cursor": "io.github.gautamgb/mcp-server-mcpindex:0.4.0"
+      },
+      {
+        "page": 466,
+        "count": 100,
+        "nextCursor": "io.github.geowire/geowire:0.1.2",
+        "cursor": "io.github.gavxm/ani-mcp:0.3.0"
+      },
+      {
+        "page": 467,
+        "count": 100,
+        "nextCursor": "io.github.get-tmonier/argot:0.2.85",
+        "cursor": "io.github.geowire/geowire:0.1.2"
       }
     ],
-    "results": 44198,
+    "results": 46698,
     "complete": false,
     "errors": []
   },
   "scans": [],
-  "repositoriesDiscovered": 45607,
-  "repositoriesSelected": 1000,
-  "repositoriesScanned": 8,
-  "repositoriesNotScanned": 36773,
+  "repositoriesDiscovered": 46324,
+  "repositoriesSelected": 0,
+  "repositoriesScanned": 0,
+  "repositoriesNotScanned": 37366,
   "scanOffset": 826,
   "repositoriesScannedTotal": 826,
   "cycleComplete": false,
@@ -14649,16 +14841,16 @@
   ],
   "terminalUnavailableRepositories": 75,
   "rateLimitedRepositories": 3,
-  "rateLimitedScanEvents": 8,
-  "artifactsDiscovered": 126742,
-  "errors": 1857,
-  "scanDisabled": false,
+  "rateLimitedScanEvents": 0,
+  "artifactsDiscovered": 130262,
+  "errors": 1858,
+  "scanDisabled": true,
   "complete": false,
   "categoryCounts": {
-    "skill": 64723,
+    "skill": 65691,
     "skill-metadata": 7519,
     "plugin": 2821,
-    "mcp": 46133,
+    "mcp": 48685,
     "marketplace": 1039,
     "hook": 641,
     "config": 76,
@@ -14671,8 +14863,8 @@
   },
   "verificationCounts": {
     "verified": 2517,
-    "discovered": 80035,
-    "registry": 44146,
+    "discovered": 81003,
+    "registry": 46698,
     "unknown": 44
   }
 }
