@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-22T06:15:06.751Z",
-  "startedAt": "2026-08-22T06:15:05.286Z",
-  "completedAt": "2026-08-22T06:15:06.751Z",
+  "generatedAt": "2026-08-22T06:09:38.467Z",
+  "startedAt": "2026-08-22T06:01:17.099Z",
+  "completedAt": "2026-08-22T06:09:38.467Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -59,12 +59,6 @@
       "query": "filename:SKILL.md path:.agents/skills"
     },
     {
-      "id": "github-code-plugin-skills",
-      "kind": "skill",
-      "coverage": "supplemental",
-      "query": "filename:SKILL.md path:skills"
-    },
-    {
       "id": "github-code-plugin-manifest",
       "kind": "plugin",
       "coverage": "supplemental",
@@ -111,12 +105,6 @@
       "kind": "hook",
       "coverage": "supplemental",
       "query": "filename:hooks.json"
-    },
-    {
-      "id": "github-code-plugin-hooks",
-      "kind": "hook",
-      "coverage": "supplemental",
-      "query": "path:hooks extension:json"
     },
     {
       "id": "github-code-codex-config",
@@ -249,12 +237,6 @@
       "kind": "mcp",
       "coverage": "supplemental",
       "query": "filename:server.json modelcontextprotocol.io"
-    },
-    {
-      "id": "github-code-mcp-server-json-anywhere",
-      "kind": "mcp",
-      "coverage": "supplemental",
-      "query": "filename:server.json"
     }
   ],
   "sources": [
@@ -374,9 +356,9 @@
     }
   ],
   "sourcesProcessedThisRun": 0,
-  "sourcesRemaining": 40,
+  "sourcesRemaining": 37,
   "exhaustiveSourcesRemaining": 5,
-  "supplementalSourcesRemaining": 35,
+  "supplementalSourcesRemaining": 32,
   "registry": {
     "source": "mcp-official-registry",
     "pages": [
@@ -2737,41 +2719,120 @@
     "complete": false,
     "errors": []
   },
-  "scans": [],
+  "scans": [
+    {
+      "repository": "ActiveInferenceInstitute/courses",
+      "status": "partial",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": true,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "HIDORAKAI002/ai-workspace-archive",
+      "status": "partial",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": true,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "0ics-srls/ui-ticket-mcp_public",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "0langa/Web.de-Access",
+      "status": "fresh",
+      "artifacts": 5,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 5,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "0maru/wezterm-agent-dashboard",
+      "status": "fresh",
+      "artifacts": 2,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 2,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "0Mattias/bettermemory",
+      "status": "fresh",
+      "artifacts": 6,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 6,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "0nork/0nMCP",
+      "status": "terminal-unavailable",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": [
+        "GitHub API 404"
+      ]
+    },
+    {
+      "repository": "0rnot/DiscordClaudeCode",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    }
+  ],
   "repositoriesDiscovered": 44727,
   "repositoriesSelected": 1000,
-  "repositoriesScanned": 8,
-  "repositoriesNotScanned": 36915,
-  "scanOffset": 0,
-  "repositoriesScannedTotal": 0,
+  "repositoriesScanned": 16,
+  "repositoriesNotScanned": 34813,
+  "scanOffset": 2102,
+  "repositoriesScannedTotal": 2102,
   "cycleComplete": false,
   "persistedScanFailures": [],
-  "terminalUnavailableRepositories": 0,
-  "rateLimitedRepositories": 0,
+  "terminalUnavailableRepositories": 38,
+  "rateLimitedRepositories": 2,
   "rateLimitedScanEvents": 8,
-  "artifactsDiscovered": 39146,
-  "errors": 0,
+  "artifactsDiscovered": 112832,
+  "errors": 2,
   "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
-    "skill": 0,
-    "skill-metadata": 0,
-    "plugin": 0,
-    "mcp": 39146,
-    "marketplace": 0,
-    "hook": 0,
-    "config": 0,
-    "agent-config": 0,
-    "rule": 0,
-    "prompt": 0,
-    "agents": 0,
-    "action": 0,
+    "skill": 59414,
+    "skill-metadata": 6980,
+    "plugin": 1591,
+    "mcp": 40638,
+    "marketplace": 959,
+    "hook": 384,
+    "config": 18,
+    "agent-config": 50,
+    "rule": 3,
+    "prompt": 249,
+    "agents": 2475,
+    "action": 71,
     "other": 0
   },
   "verificationCounts": {
-    "verified": 0,
-    "discovered": 0,
+    "verified": 1078,
+    "discovered": 72594,
     "registry": 39146,
-    "unknown": 0
+    "unknown": 14
   }
 }
