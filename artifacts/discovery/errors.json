@@ -1,15 +1,12 @@
 {
-  "generatedAt": "2026-08-22T02:54:29.082Z",
+  "generatedAt": "2026-08-22T03:21:16.263Z",
   "errors": [
     {
-      "source": "github-tree-scan",
-      "repository": "ActiveInferenceInstitute/courses",
-      "error": "GitHub API 403"
-    },
-    {
-      "source": "github-tree-scan",
-      "repository": "HIDORAKAI002/ai-workspace-archive",
-      "error": "GitHub API 403"
+      "source": "github-topic-model-context-protocol",
+      "query": "topic:model-context-protocol fork:false archived:false created:2025-11-30..2026-01-21",
+      "page": 4,
+      "error": "GitHub API 403",
+      "status": 403
     }
   ]
 }
