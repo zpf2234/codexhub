@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-22T03:21:16.263Z",
-  "startedAt": "2026-08-22T03:19:26.447Z",
-  "completedAt": "2026-08-22T03:21:16.263Z",
+  "generatedAt": "2026-08-22T04:07:19.386Z",
+  "startedAt": "2026-08-22T03:58:16.577Z",
+  "completedAt": "2026-08-22T04:07:19.386Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -859,6 +859,41 @@
           "query": "codex-plugin in:name fork:false archived:false created:2024-04-23..2025-06-22",
           "total": 4,
           "incomplete": false
+        },
+        {
+          "query": "codex-plugin in:name fork:false archived:false created:2025-06-23..2026-08-21",
+          "total": 1336,
+          "incomplete": false
+        },
+        {
+          "query": "codex-plugin in:name fork:false archived:false created:2025-06-23..2026-01-21",
+          "total": 27,
+          "incomplete": false
+        },
+        {
+          "query": "codex-plugin in:name fork:false archived:false created:2026-01-22..2026-08-21",
+          "total": 1309,
+          "incomplete": false
+        },
+        {
+          "query": "codex-plugin in:name fork:false archived:false created:2026-01-22..2026-05-07",
+          "total": 302,
+          "incomplete": false
+        },
+        {
+          "query": "codex-plugin in:name fork:false archived:false created:2026-05-08..2026-08-21",
+          "total": 1007,
+          "incomplete": false
+        },
+        {
+          "query": "codex-plugin in:name fork:false archived:false created:2026-05-08..2026-06-29",
+          "total": 481,
+          "incomplete": false
+        },
+        {
+          "query": "codex-plugin in:name fork:false archived:false created:2026-06-30..2026-08-21",
+          "total": 526,
+          "incomplete": false
         }
       ],
       "partitions": [
@@ -889,15 +924,39 @@
             "codex-plugin in:name fork:false archived:false created:2024-04-23..2025-06-22",
             "codex-plugin in:name fork:false archived:false created:2025-06-23..2026-08-21"
           ]
+        },
+        {
+          "from": "codex-plugin in:name fork:false archived:false created:2025-06-23..2026-08-21",
+          "dimension": "created",
+          "into": [
+            "codex-plugin in:name fork:false archived:false created:2025-06-23..2026-01-21",
+            "codex-plugin in:name fork:false archived:false created:2026-01-22..2026-08-21"
+          ]
+        },
+        {
+          "from": "codex-plugin in:name fork:false archived:false created:2026-01-22..2026-08-21",
+          "dimension": "created",
+          "into": [
+            "codex-plugin in:name fork:false archived:false created:2026-01-22..2026-05-07",
+            "codex-plugin in:name fork:false archived:false created:2026-05-08..2026-08-21"
+          ]
+        },
+        {
+          "from": "codex-plugin in:name fork:false archived:false created:2026-05-08..2026-08-21",
+          "dimension": "created",
+          "into": [
+            "codex-plugin in:name fork:false archived:false created:2026-05-08..2026-06-29",
+            "codex-plugin in:name fork:false archived:false created:2026-06-30..2026-08-21"
+          ]
         }
       ],
-      "pendingSegments": 1,
-      "results": 20,
-      "truncated": true,
+      "pendingSegments": 0,
+      "results": 1356,
+      "truncated": false,
       "errors": [],
       "rate": {
-        "remaining": 14,
-        "reset": 1787337110,
+        "remaining": 11,
+        "reset": 1787371157,
         "retryAfter": null
       }
     },
@@ -926,20 +985,13 @@
       "mode": "code-search",
       "total": 288256,
       "pages": 10,
-      "results": 358,
+      "results": 698,
       "truncated": true,
-      "errors": [
-        {
-          "query": "filename:SKILL.md path:.agents/skills",
-          "page": 5,
-          "error": "GitHub API 429",
-          "status": 429
-        }
-      ],
+      "errors": [],
       "rate": {
-        "remaining": 6,
-        "reset": 1787337530,
-        "retryAfter": 1
+        "remaining": 0,
+        "reset": 1787371196,
+        "retryAfter": null
       }
     },
     {
@@ -1509,9 +1561,9 @@
     }
   ],
   "sourcesProcessedThisRun": 2,
-  "sourcesRemaining": 18,
-  "exhaustiveSourcesRemaining": 4,
-  "supplementalSourcesRemaining": 14,
+  "sourcesRemaining": 16,
+  "exhaustiveSourcesRemaining": 3,
+  "supplementalSourcesRemaining": 13,
   "registry": {
     "source": "mcp-official-registry",
     "pages": [
@@ -3416,47 +3468,274 @@
         "count": 100,
         "nextCursor": "io.github.ailingqu/apiany-mcp:0.1.2",
         "cursor": "io.github.ai-dashboad/flutter-skill:0.9.32"
+      },
+      {
+        "page": 318,
+        "count": 100,
+        "nextCursor": "io.github.airweave-ai/search:0.9.53",
+        "cursor": "io.github.ailingqu/apiany-mcp:0.1.2"
+      },
+      {
+        "page": 319,
+        "count": 100,
+        "nextCursor": "io.github.akutishevsky/nutrition-mcp:1.24.2",
+        "cursor": "io.github.airweave-ai/search:0.9.53"
+      },
+      {
+        "page": 320,
+        "count": 100,
+        "nextCursor": "io.github.alex-feel/mcp-context-server:0.3.0",
+        "cursor": "io.github.akutishevsky/nutrition-mcp:1.24.2"
+      },
+      {
+        "page": 321,
+        "count": 100,
+        "nextCursor": "io.github.alexpota/cloudscope:0.3.3",
+        "cursor": "io.github.alex-feel/mcp-context-server:0.3.0"
+      },
+      {
+        "page": 322,
+        "count": 100,
+        "nextCursor": "io.github.aliasunder/vault-cortex:0.29.2",
+        "cursor": "io.github.alexpota/cloudscope:0.3.3"
+      },
+      {
+        "page": 323,
+        "count": 100,
+        "nextCursor": "io.github.alpha-ai-labs/seo-agent:1.0.0",
+        "cursor": "io.github.aliasunder/vault-cortex:0.29.2"
+      },
+      {
+        "page": 324,
+        "count": 100,
+        "nextCursor": "io.github.alyiox/mcp-walmart-ads:0.1.0a9",
+        "cursor": "io.github.alpha-ai-labs/seo-agent:1.0.0"
+      },
+      {
+        "page": 325,
+        "count": 100,
+        "nextCursor": "io.github.andreilungeanu/codex-delegate-mcp:1.17.0",
+        "cursor": "io.github.alyiox/mcp-walmart-ads:0.1.0a9"
+      },
+      {
+        "page": 326,
+        "count": 100,
+        "nextCursor": "io.github.andypgray/roz-mcp:1.1.0",
+        "cursor": "io.github.andreilungeanu/codex-delegate-mcp:1.17.0"
+      },
+      {
+        "page": 327,
+        "count": 100,
+        "nextCursor": "io.github.antohins/seo-tools-mcp-gsc:1.3.0",
+        "cursor": "io.github.andypgray/roz-mcp:1.1.0"
+      },
+      {
+        "page": 328,
+        "count": 100,
+        "nextCursor": "io.github.anulum/synapse-channel:0.99.17",
+        "cursor": "io.github.antohins/seo-tools-mcp-gsc:1.3.0"
+      },
+      {
+        "page": 329,
+        "count": 100,
+        "nextCursor": "io.github.apollographql/apollo-mcp-server:1.4.0",
+        "cursor": "io.github.anulum/synapse-channel:0.99.17"
+      },
+      {
+        "page": 330,
+        "count": 100,
+        "nextCursor": "io.github.appium/appium-mcp:1.58.0",
+        "cursor": "io.github.apollographql/apollo-mcp-server:1.4.0"
+      },
+      {
+        "page": 331,
+        "count": 100,
+        "nextCursor": "io.github.appium/appium-mcp:1.85.1",
+        "cursor": "io.github.appium/appium-mcp:1.58.0"
+      },
+      {
+        "page": 332,
+        "count": 100,
+        "nextCursor": "io.github.appwrite/mcp:0.8.36",
+        "cursor": "io.github.appium/appium-mcp:1.85.1"
+      },
+      {
+        "page": 333,
+        "count": 100,
+        "nextCursor": "io.github.arianlopezc/trabuco:1.14.0",
+        "cursor": "io.github.appwrite/mcp:0.8.36"
+      },
+      {
+        "page": 334,
+        "count": 100,
+        "nextCursor": "io.github.armandocodecr/ramp-kit:0.1.4",
+        "cursor": "io.github.arianlopezc/trabuco:1.14.0"
+      },
+      {
+        "page": 335,
+        "count": 100,
+        "nextCursor": "io.github.arturogarrido/claudinho:0.5.1",
+        "cursor": "io.github.armandocodecr/ramp-kit:0.1.4"
+      },
+      {
+        "page": 336,
+        "count": 100,
+        "nextCursor": "io.github.ashev87/propstack-mcp:1.0.1",
+        "cursor": "io.github.arturogarrido/claudinho:0.5.1"
+      },
+      {
+        "page": 337,
+        "count": 100,
+        "nextCursor": "io.github.askuma/workflow-generator:0.2.0",
+        "cursor": "io.github.ashev87/propstack-mcp:1.0.1"
+      },
+      {
+        "page": 338,
+        "count": 100,
+        "nextCursor": "io.github.atef-ataya/depwire:0.6.0",
+        "cursor": "io.github.askuma/workflow-generator:0.2.0"
+      },
+      {
+        "page": 339,
+        "count": 100,
+        "nextCursor": "io.github.atomadictech/atomadic-forge:0.65.0",
+        "cursor": "io.github.atef-ataya/depwire:0.6.0"
+      },
+      {
+        "page": 340,
+        "count": 100,
+        "nextCursor": "io.github.auregimon/dappgrade:0.2.0",
+        "cursor": "io.github.atomadictech/atomadic-forge:0.65.0"
+      },
+      {
+        "page": 341,
+        "count": 100,
+        "nextCursor": "io.github.avabuildsdata/mcp-us-business-data:1.9.164",
+        "cursor": "io.github.auregimon/dappgrade:0.2.0"
+      },
+      {
+        "page": 342,
+        "count": 100,
+        "nextCursor": "io.github.avabuildsdata/mcp-us-business-data:1.9.38",
+        "cursor": "io.github.avabuildsdata/mcp-us-business-data:1.9.164"
       }
     ],
-    "results": 31698,
+    "results": 34198,
     "complete": false,
     "errors": []
   },
-  "scans": [],
-  "repositoriesDiscovered": 41037,
+  "scans": [
+    {
+      "repository": "ActiveInferenceInstitute/courses",
+      "status": "partial",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": true,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "HIDORAKAI002/ai-workspace-archive",
+      "status": "partial",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": true,
+      "errors": [
+        "GitHub API 403"
+      ]
+    },
+    {
+      "repository": "0413-mzy/codex-skills-pack",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "04bhavyaa/startup-idea-analyzer-agent",
+      "status": "fresh",
+      "artifacts": 0,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 0,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "0917Ray/my-codex-skills",
+      "status": "fresh",
+      "artifacts": 4,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 4,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "0GiS0/mcp-server-azure-function",
+      "status": "fresh",
+      "artifacts": 1,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 1,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "0GiS0/nerdearla-mcp",
+      "status": "fresh",
+      "artifacts": 3,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 3,
+      "truncated": false,
+      "errors": []
+    },
+    {
+      "repository": "0h-n0/local-voice-assistant-codex",
+      "status": "fresh",
+      "artifacts": 14,
+      "verifiedArtifacts": 0,
+      "deferredArtifacts": 14,
+      "truncated": false,
+      "errors": []
+    }
+  ],
+  "repositoriesDiscovered": 43378,
   "repositoriesSelected": 1000,
-  "repositoriesScanned": 8,
-  "repositoriesNotScanned": 31605,
-  "scanOffset": 2090,
-  "repositoriesScannedTotal": 2090,
+  "repositoriesScanned": 16,
+  "repositoriesNotScanned": 33574,
+  "scanOffset": 2096,
+  "repositoriesScannedTotal": 2096,
   "cycleComplete": false,
   "persistedScanFailures": [],
   "terminalUnavailableRepositories": 37,
   "rateLimitedRepositories": 2,
   "rateLimitedScanEvents": 8,
-  "artifactsDiscovered": 105349,
-  "errors": 1,
+  "artifactsDiscovered": 107871,
+  "errors": 2,
   "scanDisabled": false,
   "complete": false,
   "categoryCounts": {
-    "skill": 59408,
+    "skill": 59412,
     "plugin": 1588,
-    "mcp": 33185,
+    "mcp": 35687,
     "marketplace": 957,
     "hook": 383,
-    "config": 17,
+    "config": 18,
     "agent-config": 50,
-    "rule": 1,
-    "prompt": 239,
-    "plugin-metadata": 6978,
-    "agents": 2472,
+    "rule": 2,
+    "prompt": 249,
+    "plugin-metadata": 6980,
+    "agents": 2474,
     "action": 71,
     "other": 0
   },
   "verificationCounts": {
     "verified": 1078,
-    "discovered": 72559,
-    "registry": 31698,
+    "discovered": 72581,
+    "registry": 34198,
     "unknown": 14
   }
 }
