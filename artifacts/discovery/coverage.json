@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-22T19:56:44.012Z",
-  "startedAt": "2026-08-22T19:56:41.976Z",
-  "completedAt": "2026-08-22T19:56:44.012Z",
+  "generatedAt": "2026-08-22T20:43:05.679Z",
+  "startedAt": "2026-08-22T20:42:50.816Z",
+  "completedAt": "2026-08-22T20:43:05.679Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -1249,12 +1249,54 @@
         "reset": 1787427576,
         "retryAfter": null
       }
+    },
+    {
+      "id": "github-code-agents",
+      "kind": "agents",
+      "coverage": "supplemental",
+      "query": "filename:AGENTS.md",
+      "mode": "code-search",
+      "total": 811008,
+      "pages": 10,
+      "matches": 979,
+      "results": 983,
+      "truncated": true,
+      "errors": [],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787431431,
+        "retryAfter": null
+      }
+    },
+    {
+      "id": "github-code-agents-override",
+      "kind": "agents",
+      "coverage": "supplemental",
+      "query": "filename:AGENTS.override.md",
+      "mode": "code-search",
+      "total": 0,
+      "pages": 0,
+      "matches": 0,
+      "results": 216,
+      "truncated": true,
+      "errors": [
+        {
+          "query": "filename:AGENTS.override.md",
+          "error": "GitHub API 403",
+          "status": 403
+        }
+      ],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787431431,
+        "retryAfter": null
+      }
     }
   ],
-  "sourcesProcessedThisRun": 0,
-  "sourcesRemaining": 28,
+  "sourcesProcessedThisRun": 2,
+  "sourcesRemaining": 27,
   "exhaustiveSourcesRemaining": 5,
-  "supplementalSourcesRemaining": 23,
+  "supplementalSourcesRemaining": 22,
   "registry": {
     "source": "mcp-official-registry",
     "pages": [
@@ -5709,17 +5751,167 @@
         "count": 100,
         "nextCursor": "io.github.wyre-technology/superops-mcp:1.6.6",
         "cursor": "io.github.wyre-technology/proofpoint-mcp:1.1.3"
+      },
+      {
+        "page": 743,
+        "count": 100,
+        "nextCursor": "io.github.xaviviro/opendata-cat:0.4.5",
+        "cursor": "io.github.wyre-technology/superops-mcp:1.6.6"
+      },
+      {
+        "page": 744,
+        "count": 100,
+        "nextCursor": "io.github.xieyuschen/gopls-mcp:1.0.3",
+        "cursor": "io.github.xaviviro/opendata-cat:0.4.5"
+      },
+      {
+        "page": 745,
+        "count": 100,
+        "nextCursor": "io.github.xpaysh/media:1.0.0",
+        "cursor": "io.github.xieyuschen/gopls-mcp:1.0.3"
+      },
+      {
+        "page": 746,
+        "count": 100,
+        "nextCursor": "io.github.yadu-tv/db-compare:v0.1.1",
+        "cursor": "io.github.xpaysh/media:1.0.0"
+      },
+      {
+        "page": 747,
+        "count": 100,
+        "nextCursor": "io.github.yaver-io/yaver:1.99.409",
+        "cursor": "io.github.yadu-tv/db-compare:v0.1.1"
+      },
+      {
+        "page": 748,
+        "count": 100,
+        "nextCursor": "io.github.ynishi/mlua-swarm:0.7.0",
+        "cursor": "io.github.yaver-io/yaver:1.99.409"
+      },
+      {
+        "page": 749,
+        "count": 100,
+        "nextCursor": "io.github.yonatangross/orchestkit:8.47.0",
+        "cursor": "io.github.ynishi/mlua-swarm:0.7.0"
+      },
+      {
+        "page": 750,
+        "count": 100,
+        "nextCursor": "io.github.youdotcom-oss/mcp:1.3.8",
+        "cursor": "io.github.yonatangross/orchestkit:8.47.0"
+      },
+      {
+        "page": 751,
+        "count": 100,
+        "nextCursor": "io.github.yusong652/itasca-mcp:0.6.3",
+        "cursor": "io.github.youdotcom-oss/mcp:1.3.8"
+      },
+      {
+        "page": 752,
+        "count": 100,
+        "nextCursor": "io.github.zenml-io/mcp-zenml:1.3.0",
+        "cursor": "io.github.yusong652/itasca-mcp:0.6.3"
+      },
+      {
+        "page": 753,
+        "count": 100,
+        "nextCursor": "io.github.zhurong2020/pyobfus-mcp:0.3.6",
+        "cursor": "io.github.zenml-io/mcp-zenml:1.3.0"
+      },
+      {
+        "page": 754,
+        "count": 100,
+        "nextCursor": "io.github.zoharbabin/web-researcher-mcp:1.35.0",
+        "cursor": "io.github.zhurong2020/pyobfus-mcp:0.3.6"
+      },
+      {
+        "page": 755,
+        "count": 100,
+        "nextCursor": "io.github.zw008/vmware-aiops:1.5.23",
+        "cursor": "io.github.zoharbabin/web-researcher-mcp:1.35.0"
+      },
+      {
+        "page": 756,
+        "count": 100,
+        "nextCursor": "io.github.zw008/vmware-harden:1.0.1",
+        "cursor": "io.github.zw008/vmware-aiops:1.5.23"
+      },
+      {
+        "page": 757,
+        "count": 100,
+        "nextCursor": "io.github.zw008/vmware-nsx:1.8.2",
+        "cursor": "io.github.zw008/vmware-harden:1.0.1"
+      },
+      {
+        "page": 758,
+        "count": 100,
+        "nextCursor": "io.github.zw008/vmware-vks:1.7.4",
+        "cursor": "io.github.zw008/vmware-nsx:1.8.2"
+      },
+      {
+        "page": 759,
+        "count": 100,
+        "nextCursor": "io.identark/gateway:0.1.0",
+        "cursor": "io.github.zw008/vmware-vks:1.7.4"
+      },
+      {
+        "page": 760,
+        "count": 100,
+        "nextCursor": "io.lmxcloud/mcp-server:0.1.0",
+        "cursor": "io.identark/gateway:0.1.0"
+      },
+      {
+        "page": 761,
+        "count": 100,
+        "nextCursor": "io.nestr/mcp:0.1.60",
+        "cursor": "io.lmxcloud/mcp-server:0.1.0"
+      },
+      {
+        "page": 762,
+        "count": 100,
+        "nextCursor": "io.plantrip/plantrip:1.0.2",
+        "cursor": "io.nestr/mcp:0.1.60"
+      },
+      {
+        "page": 763,
+        "count": 100,
+        "nextCursor": "io.satoshiapi/mcp:1.0.0",
+        "cursor": "io.plantrip/plantrip:1.0.2"
+      },
+      {
+        "page": 764,
+        "count": 100,
+        "nextCursor": "io.studiomeyer/academy:0.4.1",
+        "cursor": "io.satoshiapi/mcp:1.0.0"
+      },
+      {
+        "page": 765,
+        "count": 100,
+        "nextCursor": "io.tooloracle/contractoracle:1.0.0",
+        "cursor": "io.studiomeyer/academy:0.4.1"
+      },
+      {
+        "page": 766,
+        "count": 100,
+        "nextCursor": "io.usefulapi/chargebee:1.0.0",
+        "cursor": "io.tooloracle/contractoracle:1.0.0"
+      },
+      {
+        "page": 767,
+        "count": 100,
+        "nextCursor": "io.usefulapi/quaderno:1.0.0",
+        "cursor": "io.usefulapi/chargebee:1.0.0"
       }
     ],
-    "results": 74198,
+    "results": 76698,
     "complete": false,
     "errors": []
   },
   "scans": [],
-  "repositoriesDiscovered": 57729,
-  "repositoriesSelected": 1000,
-  "repositoriesScanned": 8,
-  "repositoriesNotScanned": 42613,
+  "repositoriesDiscovered": 58516,
+  "repositoriesSelected": 0,
+  "repositoriesScanned": 0,
+  "repositoriesNotScanned": 43127,
   "scanOffset": 5286,
   "repositoriesScannedTotal": 5286,
   "cycleComplete": false,
@@ -8115,30 +8307,30 @@
   ],
   "terminalUnavailableRepositories": 315,
   "rateLimitedRepositories": 6,
-  "rateLimitedScanEvents": 8,
-  "artifactsDiscovered": 267923,
-  "errors": 392,
-  "scanDisabled": false,
+  "rateLimitedScanEvents": 0,
+  "artifactsDiscovered": 271345,
+  "errors": 393,
+  "scanDisabled": true,
   "complete": false,
   "categoryCounts": {
     "skill": 144185,
     "skill-metadata": 20429,
     "plugin": 8185,
-    "mcp": 79577,
+    "mcp": 82190,
     "marketplace": 2334,
     "hook": 2269,
     "config": 1065,
     "agent-config": 2106,
     "rule": 92,
     "prompt": 1857,
-    "agents": 5440,
+    "agents": 6249,
     "action": 384,
     "other": 0
   },
   "verificationCounts": {
     "verified": 8230,
-    "discovered": 185426,
-    "registry": 74085,
+    "discovered": 186235,
+    "registry": 76698,
     "unknown": 182
   }
 }

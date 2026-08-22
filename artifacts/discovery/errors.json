@@ -1,6 +1,12 @@
 {
-  "generatedAt": "2026-08-22T19:56:44.012Z",
+  "generatedAt": "2026-08-22T20:43:05.679Z",
   "errors": [
+    {
+      "source": "github-code-agents-override",
+      "query": "filename:AGENTS.override.md",
+      "error": "GitHub API 403",
+      "status": 403
+    },
     {
       "source": "github-tree-scan",
       "repository": "sp-daewoon/chronicle",
