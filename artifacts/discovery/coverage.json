@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-22T21:13:17.445Z",
-  "startedAt": "2026-08-22T21:00:24.231Z",
-  "completedAt": "2026-08-22T21:13:17.445Z",
+  "generatedAt": "2026-08-22T21:38:44.371Z",
+  "startedAt": "2026-08-22T21:38:28.254Z",
+  "completedAt": "2026-08-22T21:38:44.371Z",
   "scope": "Cumulative Codex ecosystem index refreshed from declared GitHub search sources plus the official MCP Registry.",
   "limitations": [
     "GitHub repository search is exhaustively date-partitioned across batches until every segment is below the 1,000-result API boundary.",
@@ -1291,12 +1291,55 @@
         "reset": 1787431431,
         "retryAfter": null
       }
+    },
+    {
+      "id": "github-code-team-guide",
+      "kind": "agents",
+      "coverage": "supplemental",
+      "query": "filename:TEAM_GUIDE.md",
+      "mode": "code-search",
+      "total": 494,
+      "pages": 5,
+      "matches": 500,
+      "results": 481,
+      "truncated": false,
+      "errors": [],
+      "rate": {
+        "remaining": 5,
+        "reset": 1787434769,
+        "retryAfter": null
+      }
+    },
+    {
+      "id": "github-code-agents-dot",
+      "kind": "agents",
+      "coverage": "supplemental",
+      "query": "filename:.agents.md",
+      "mode": "code-search",
+      "total": 1916,
+      "pages": 10,
+      "matches": 429,
+      "results": 137,
+      "truncated": true,
+      "errors": [
+        {
+          "query": "filename:.agents.md",
+          "page": 6,
+          "error": "GitHub API 403",
+          "status": 403
+        }
+      ],
+      "rate": {
+        "remaining": 0,
+        "reset": 1787434769,
+        "retryAfter": null
+      }
     }
   ],
-  "sourcesProcessedThisRun": 0,
-  "sourcesRemaining": 27,
+  "sourcesProcessedThisRun": 2,
+  "sourcesRemaining": 26,
   "exhaustiveSourcesRemaining": 5,
-  "supplementalSourcesRemaining": 22,
+  "supplementalSourcesRemaining": 21,
   "registry": {
     "source": "mcp-official-registry",
     "pages": [
@@ -5901,98 +5944,155 @@
         "count": 100,
         "nextCursor": "io.usefulapi/quaderno:1.0.0",
         "cursor": "io.usefulapi/chargebee:1.0.0"
+      },
+      {
+        "page": 768,
+        "count": 100,
+        "nextCursor": "jp.menufresh/menufresh:1.0.0",
+        "cursor": "io.usefulapi/quaderno:1.0.0"
+      },
+      {
+        "page": 769,
+        "count": 100,
+        "nextCursor": "live.alpic.staging.mcp-server-template-7b99436a/mcp-server-template:0.0.1",
+        "cursor": "jp.menufresh/menufresh:1.0.0"
+      },
+      {
+        "page": 770,
+        "count": 100,
+        "nextCursor": "live.alpic.staging/mcp-server-template--43874b8f:0.0.7",
+        "cursor": "live.alpic.staging.mcp-server-template-7b99436a/mcp-server-template:0.0.1"
+      },
+      {
+        "page": 771,
+        "count": 100,
+        "nextCursor": "markets.dino/mcp:1.0.2",
+        "cursor": "live.alpic.staging/mcp-server-template--43874b8f:0.0.7"
+      },
+      {
+        "page": 772,
+        "count": 100,
+        "nextCursor": "money.barker/stablecoin-yield:1.0.1",
+        "cursor": "markets.dino/mcp:1.0.2"
+      },
+      {
+        "page": 773,
+        "count": 100,
+        "nextCursor": "net.hogarmas/blindspot:1.14.0",
+        "cursor": "money.barker/stablecoin-yield:1.0.1"
+      },
+      {
+        "page": 774,
+        "count": 100,
+        "nextCursor": "net.zhihuo.mcp/rotospider-layout:1.0.1",
+        "cursor": "net.hogarmas/blindspot:1.14.0"
+      },
+      {
+        "page": 775,
+        "count": 100,
+        "nextCursor": "nz.tier1.mcp/it-assessment:1.0.0",
+        "cursor": "net.zhihuo.mcp/rotospider-layout:1.0.1"
+      },
+      {
+        "page": 776,
+        "count": 100,
+        "nextCursor": "org.alaskajobs/board:1.0.0",
+        "cursor": "nz.tier1.mcp/it-assessment:1.0.0"
+      },
+      {
+        "page": 777,
+        "count": 100,
+        "nextCursor": "org.lightpaper/lightpaper-mcp:0.1.1",
+        "cursor": "org.alaskajobs/board:1.0.0"
+      },
+      {
+        "page": 778,
+        "count": 100,
+        "nextCursor": "org.ungovr/mcp:1.0.0",
+        "cursor": "org.lightpaper/lightpaper-mcp:0.1.1"
+      },
+      {
+        "page": 779,
+        "count": 100,
+        "nextCursor": "pro.bananabanana/image-video:1.0.1",
+        "cursor": "org.ungovr/mcp:1.0.0"
+      },
+      {
+        "page": 780,
+        "count": 100,
+        "nextCursor": "report.thales/thales:1.0.0",
+        "cursor": "pro.bananabanana/image-video:1.0.1"
+      },
+      {
+        "page": 781,
+        "count": 100,
+        "nextCursor": "se.aapl/nyheter:1.0.0",
+        "cursor": "report.thales/thales:1.0.0"
+      },
+      {
+        "page": 782,
+        "count": 100,
+        "nextCursor": "sh.xorfox.drawbridge/server:1.0.0",
+        "cursor": "se.aapl/nyheter:1.0.0"
+      },
+      {
+        "page": 783,
+        "count": 100,
+        "nextCursor": "so.pharaoh/pharaoh:1.0.127",
+        "cursor": "sh.xorfox.drawbridge/server:1.0.0"
+      },
+      {
+        "page": 784,
+        "count": 100,
+        "nextCursor": "so.pharaoh/pharaoh:1.0.59",
+        "cursor": "so.pharaoh/pharaoh:1.0.127"
+      },
+      {
+        "page": 785,
+        "count": 100,
+        "nextCursor": "studio.kynth/core:0.2.1",
+        "cursor": "so.pharaoh/pharaoh:1.0.59"
+      },
+      {
+        "page": 786,
+        "count": 100,
+        "nextCursor": "tech.xns/relayer:0.10.1",
+        "cursor": "studio.kynth/core:0.2.1"
+      },
+      {
+        "page": 787,
+        "count": 100,
+        "nextCursor": "trade.snacs/snacs-data:3.5.0",
+        "cursor": "tech.xns/relayer:0.10.1"
+      },
+      {
+        "page": 788,
+        "count": 100,
+        "nextCursor": "us.propertyscoop/mcp:1.0.0",
+        "cursor": "trade.snacs/snacs-data:3.5.0"
+      },
+      {
+        "page": 789,
+        "count": 100,
+        "nextCursor": "xyz.gembook/gembook:0.1.0",
+        "cursor": "us.propertyscoop/mcp:1.0.0"
+      },
+      {
+        "page": 790,
+        "count": 96,
+        "nextCursor": null,
+        "cursor": "xyz.gembook/gembook:0.1.0"
       }
     ],
-    "results": 76698,
-    "complete": false,
+    "results": 78994,
+    "complete": true,
     "errors": []
   },
-  "scans": [
-    {
-      "repository": "Arnie016/codex-agent-skills",
-      "status": "partial",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 409"
-      ]
-    },
-    {
-      "repository": "Arpasoft/Codex",
-      "status": "partial",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 409"
-      ]
-    },
-    {
-      "repository": "Ashvr87/codex-skills-public",
-      "status": "partial",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": false,
-      "errors": [
-        "GitHub API 409"
-      ]
-    },
-    {
-      "repository": "athinklmonroee/winget-pkgs",
-      "status": "partial",
-      "artifacts": 0,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 0,
-      "truncated": true,
-      "errors": [
-        "GitHub API 403"
-      ]
-    },
-    {
-      "repository": "SnoopyKim/Outsource",
-      "status": "fresh",
-      "artifacts": 14,
-      "verifiedArtifacts": 5,
-      "deferredArtifacts": 4,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "sodanyx/codebase-baseline-planner",
-      "status": "fresh",
-      "artifacts": 2,
-      "verifiedArtifacts": 0,
-      "deferredArtifacts": 2,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "sogitec-br/aya-plugins",
-      "status": "fresh",
-      "artifacts": 31,
-      "verifiedArtifacts": 4,
-      "deferredArtifacts": 21,
-      "truncated": false,
-      "errors": []
-    },
-    {
-      "repository": "SoliEstre/idd",
-      "status": "fresh",
-      "artifacts": 9,
-      "verifiedArtifacts": 3,
-      "deferredArtifacts": 3,
-      "truncated": false,
-      "errors": []
-    }
-  ],
-  "repositoriesDiscovered": 58516,
-  "repositoriesSelected": 1000,
-  "repositoriesScanned": 16,
-  "repositoriesNotScanned": 43123,
+  "scans": [],
+  "repositoriesDiscovered": 60366,
+  "repositoriesSelected": 0,
+  "repositoriesScanned": 0,
+  "repositoriesNotScanned": 43701,
   "scanOffset": 5290,
   "repositoriesScannedTotal": 5290,
   "cycleComplete": false,
@@ -8364,30 +8464,30 @@
   ],
   "terminalUnavailableRepositories": 315,
   "rateLimitedRepositories": 6,
-  "rateLimitedScanEvents": 8,
-  "artifactsDiscovered": 271249,
-  "errors": 392,
-  "scanDisabled": false,
+  "rateLimitedScanEvents": 0,
+  "artifactsDiscovered": 273954,
+  "errors": 389,
+  "scanDisabled": true,
   "complete": false,
   "categoryCounts": {
     "skill": 144191,
     "skill-metadata": 20429,
     "plugin": 8194,
-    "mcp": 82079,
+    "mcp": 84488,
     "marketplace": 2334,
     "hook": 2269,
     "config": 1065,
     "agent-config": 2106,
     "rule": 92,
     "prompt": 1857,
-    "agents": 6249,
+    "agents": 6545,
     "action": 384,
     "other": 0
   },
   "verificationCounts": {
     "verified": 8248,
-    "discovered": 186234,
-    "registry": 76585,
+    "discovered": 186530,
+    "registry": 78994,
     "unknown": 182
   }
 }
