@@ -167,6 +167,21 @@ test('repository tree scan discovers and validates multiple artifact types witho
   assert.ok(result.artifacts.every((artifact) => artifact.status === 'verified'));
 });
 
+test('repository tree scan reuses search metadata and skips the repository request', async () => {
+  const calls = [];
+  const result = await scanRepository({ fullName: 'a/known', owner: 'a', name: 'known', defaultBranch: 'main', stars: 5, forks: 2, archived: false, license: 'MIT' }, {
+    maxArtifacts: 0,
+    fetchImpl: async (url) => {
+      calls.push(url);
+      if (url.endsWith('/git/trees/main?recursive=1')) return response({ tree: [{ type: 'blob', path: 'SKILL.md' }] });
+      throw new Error(`unexpected ${url}`);
+    }
+  });
+  assert.equal(result.status, 'fresh');
+  assert.deepEqual(calls, ['https://api.github.com/repos/a/known/git/trees/main?recursive=1']);
+  assert.equal(result.repository.stars, 5);
+});
+
 test('MCP Registry resumes for another page budget after a checkpoint', async () => {
   const cursors = [];
   const fetchImpl = async (url) => {

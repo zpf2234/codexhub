@@ -58,11 +58,22 @@ export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, 
       }
     }
   };
-  const repo = await request(base);
-  if (!repo.ok) return { repository: candidate, artifacts: [], status: repo.rateLimited ? 'rate-limited' : repo.status === 404 || repo.status === 451 ? 'terminal-unavailable' : 'unavailable', terminal: repo.status === 404 || repo.status === 451, rateLimited: repo.rateLimited === true, rateRemaining: repo.rateRemaining, rateReset: repo.rateReset, errors: [repo.error] };
-  const branch = repo.data.default_branch || candidate.defaultBranch || 'main';
-  const encodedBranch = encodeURIComponent(branch);
+  let repo = null;
+  let branch = candidate.defaultBranch;
+  const loadRepository = async () => {
+    repo = await request(base);
+    if (!repo.ok) return false;
+    branch = repo.data.default_branch || branch || 'main';
+    return true;
+  };
+  if (!branch && !(await loadRepository())) return { repository: candidate, artifacts: [], status: repo.rateLimited ? 'rate-limited' : repo.status === 404 || repo.status === 451 ? 'terminal-unavailable' : 'unavailable', terminal: repo.status === 404 || repo.status === 451, rateLimited: repo.rateLimited === true, rateRemaining: repo.rateRemaining, rateReset: repo.rateReset, errors: [repo.error] };
+  let encodedBranch = encodeURIComponent(branch);
   let tree = await request(`${base}/git/trees/${encodedBranch}?recursive=1`);
+  if (!tree.ok && [404, 422].includes(tree.status) && !repo) {
+    if (!(await loadRepository())) return { repository: candidate, artifacts: [], status: repo.rateLimited ? 'rate-limited' : repo.status === 404 || repo.status === 451 ? 'terminal-unavailable' : 'unavailable', terminal: repo.status === 404 || repo.status === 451, rateLimited: repo.rateLimited === true, rateRemaining: repo.rateRemaining, rateReset: repo.rateReset, errors: [repo.error] };
+    encodedBranch = encodeURIComponent(branch);
+    tree = await request(`${base}/git/trees/${encodedBranch}?recursive=1`);
+  }
   if (!tree.ok) return { repository: { ...candidate, defaultBranch: branch }, artifacts: [], status: tree.rateLimited ? 'rate-limited' : 'partial', rateLimited: tree.rateLimited === true, rateRemaining: tree.rateRemaining, rateReset: tree.rateReset, errors: [tree.error] };
   if (tree.data.truncated) {
     const root = await request(`${base}/git/trees/${encodedBranch}`);
@@ -99,5 +110,5 @@ export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, 
     const result = validate(type, decoded, file.path);
     artifacts.push({ id: artifactId(candidate.fullName, file.path), type, category: classification.category, categoryLabel: classification.label, path: file.path, status: result.valid ? 'verified' : 'unknown', verification: result.valid ? 'passed' : 'failed', note: result.note, source: 'github-tree', ...(result.metadata || {}) });
   }
-  return { repository: { ...candidate, defaultBranch: branch, archived: repo.data.archived, stars: repo.data.stargazers_count, forks: repo.data.forks_count, license: repo.data.license?.spdx_id || candidate.license }, artifacts, status: 'fresh', truncated: false, verifiedArtifacts: Math.min(files.length, maxArtifacts), deferredArtifacts: Math.max(0, files.length - maxArtifacts), errors: [] };
+  return { repository: { ...candidate, defaultBranch: branch, archived: repo?.data.archived ?? candidate.archived, stars: repo?.data.stargazers_count ?? candidate.stars, forks: repo?.data.forks_count ?? candidate.forks, license: repo?.data.license?.spdx_id || candidate.license }, artifacts, status: 'fresh', truncated: false, verifiedArtifacts: Math.min(files.length, maxArtifacts), deferredArtifacts: Math.max(0, files.length - maxArtifacts), errors: [] };
 }

@@ -168,11 +168,13 @@ const scanList = selectScanBatch(scanCandidates, { limit: maxRepositories, retry
 const artifacts = [];
 const scanReports = [];
 let rateLimitedScanEvents = 0;
+let scanAttemptsThisRun = 0;
 if (scanEnabled) {
   let rateLimited = false;
   for (let batchStart = 0; batchStart < scanList.length; batchStart += scanConcurrency) {
     const batch = scanList.slice(batchStart, batchStart + scanConcurrency);
     const results = await Promise.all(batch.map(async (candidate) => {
+      scanAttemptsThisRun += 1;
       const key = candidate.fullName.toLowerCase();
       const scanned = await scanRepository(candidate, { maxArtifacts: maxArtifactsPerRepository });
       scanned.attempts = (checkpoint.repositories[key]?.scan?.attempts || 0) + 1;
@@ -252,7 +254,8 @@ const coverage = {
   registry: registryReport,
   scans: scanReports,
   repositoriesDiscovered: candidateList.length,
-  repositoriesScanned: scanEnabled ? scanList.length : 0,
+  repositoriesSelected: scanEnabled ? scanList.length : 0,
+  repositoriesScanned: scanEnabled ? scanAttemptsThisRun : 0,
   repositoriesNotScanned: scanEnabled ? repositoriesNotScanned : candidateList.length,
   scanOffset: scanEnabled ? checkpoint.scanOffset : 0,
   repositoriesScannedTotal: scanEnabled ? checkpoint.scanOffset : 0,
