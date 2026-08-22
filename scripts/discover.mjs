@@ -6,15 +6,16 @@ import { GithubClient, repositoryCandidate } from './discovery/github-search.mjs
 import { scanRepository } from './discovery/github-tree-scan.mjs';
 import { crawlMcpRegistry } from './discovery/mcp-registry.mjs';
 import { loadCheckpoint, saveCheckpoint } from './discovery/checkpoint.mjs';
-import { normalizeDiscovery } from './discovery/model.mjs';
+import { classifyPath, normalizeDiscovery } from './discovery/model.mjs';
 import { selectScanBatch } from './discovery/scan-queue.mjs';
 import { writeArtifactShards } from './discovery/artifact-shards.mjs';
 
 const outputDir = path.join(ROOT, 'artifacts', 'discovery');
 const checkpointPath = path.join(outputDir, 'checkpoint.json');
-const SOURCE_ALGORITHM_VERSION = 3;
+const SOURCE_ALGORITHM_VERSION = 4;
 const resume = !process.argv.includes('--fresh');
 const scanEnabled = !process.argv.includes('--no-scan');
+const scanOnly = process.argv.includes('--scan-only');
 const maxRepositories = Number(process.env.DISCOVERY_MAX_REPOSITORIES || 0);
 const maxArtifactsPerRepository = Number(process.env.DISCOVERY_MAX_ARTIFACTS_PER_REPOSITORY || 500);
 const artifactShardBytes = Math.max(1_048_576, Number(process.env.DISCOVERY_ARTIFACT_SHARD_BYTES || 8 * 1024 * 1024));
@@ -55,6 +56,7 @@ if (resume && checkpoint.cycleComplete) {
       continue;
     }
     delete repository.scan;
+    delete repository.discoveredArtifacts;
     delete repository.registryServers;
     delete repository.registryOnly;
   }
@@ -89,12 +91,27 @@ function mergeRepositories(items, source) {
   for (const item of items) {
     const key = item.full_name.toLowerCase();
     const candidate = repositoryCandidate(item, source);
+    const codeArtifacts = (item.codeMatches || []).map((match) => {
+      const classification = classifyPath(match.path);
+      return {
+        id: `github:${item.full_name.toLowerCase()}#${match.path}`,
+        type: classification.type,
+        category: classification.category,
+        categoryLabel: classification.label,
+        path: match.path,
+        status: 'discovered',
+        verification: 'code-search',
+        note: 'Exact path returned by GitHub Code Search; repository content was not executed.',
+        source: 'github-code-search'
+      };
+    }).filter((artifact) => artifact.category !== 'other');
     const previous = repositories.get(key);
     if (previous) {
       Object.assign(previous, Object.fromEntries(Object.entries(candidate).filter(([, value]) => value != null)));
       previous.discoveredBy = [...new Set([...(previous.discoveredBy || []), source.id])].sort();
       previous.sourceKinds = [...new Set([...(previous.sourceKinds || []), source.kind])].sort();
-    } else repositories.set(key, candidate);
+      previous.discoveredArtifacts = [...new Map([...(previous.discoveredArtifacts || []), ...codeArtifacts].map((artifact) => [artifact.id, artifact])).values()];
+    } else repositories.set(key, { ...candidate, ...(codeArtifacts.length ? { discoveredArtifacts: codeArtifacts } : {}) });
     markRepositoryDirty(key);
   }
 }
@@ -114,7 +131,7 @@ function parseGithubRepository(value) {
   return { owner, name, fullName: `${owner}/${name}`, url: `https://github.com/${owner}/${name}` };
 }
 
-const unresolvedSources = githubSources
+const unresolvedSources = (scanOnly ? [] : githubSources)
   .filter((source) => (!selectedSources || selectedSources.has(source.id)) && !checkpoint.completedSources.includes(source.id))
   .sort((a, b) => (checkpoint.sourceAttempts[a.id] || 0) - (checkpoint.sourceAttempts[b.id] || 0) || sourceOrder.get(a.id) - sourceOrder.get(b.id));
 const sourcesThisRun = selectedSources ? unresolvedSources : unresolvedSources.slice(0, maxSourcesPerRun > 0 ? maxSourcesPerRun : unresolvedSources.length);
@@ -130,7 +147,7 @@ for (const source of sourcesThisRun) {
   if (!isCodeSource) checkpoint.sourceStates[source.id] = result.state;
   mergeRepositories(result.items, source);
   const sourceReport = isCodeSource
-    ? { id: source.id, kind: source.kind, coverage: source.coverage, query: source.query, mode: 'code-search', total: result.total, pages: result.pages, results: [...repositories.values()].filter((repository) => repository.discoveredBy?.includes(source.id)).length, truncated: result.truncated, errors: result.errors, rate: result.rate }
+    ? { id: source.id, kind: source.kind, coverage: source.coverage, query: source.query, mode: 'code-search', total: result.total, pages: result.pages, matches: result.items.reduce((sum, item) => sum + (item.codeMatches?.length || 0), 0), results: [...repositories.values()].filter((repository) => repository.discoveredBy?.includes(source.id)).length, truncated: result.truncated, errors: result.errors, rate: result.rate }
     : { id: source.id, kind: source.kind, coverage: source.coverage, query: source.query, segments: result.segments, partitions: result.partitions, pendingSegments: result.state.queue.length, results: [...repositories.values()].filter((repository) => repository.discoveredBy?.includes(source.id)).length, truncated: result.truncated, errors: result.errors, rate: result.rate };
   saveSourceReport(sourceReport);
   errors.push(...result.errors.map((error) => ({ source: source.id, ...error })));
@@ -144,7 +161,7 @@ for (const source of sourcesThisRun) {
 
 let registryReport = { source: MCP_REGISTRY_SOURCE.id, pages: [], results: 0, complete: false, errors: [] };
 if (checkpoint.registryReport) registryReport = checkpoint.registryReport;
-if (!process.env.DISCOVERY_SKIP_REGISTRY && (!selectedSources || selectedSources.has(MCP_REGISTRY_SOURCE.id)) && !checkpoint.completedSources.includes(MCP_REGISTRY_SOURCE.id)) {
+if (!scanOnly && !process.env.DISCOVERY_SKIP_REGISTRY && (!selectedSources || selectedSources.has(MCP_REGISTRY_SOURCE.id)) && !checkpoint.completedSources.includes(MCP_REGISTRY_SOURCE.id)) {
   const registry = await crawlMcpRegistry({ endpoint: process.env.MCP_REGISTRY_ENDPOINT || MCP_REGISTRY_SOURCE.endpoint, token: process.env.MCP_REGISTRY_TOKEN, maxPages: Number(process.env.MCP_REGISTRY_MAX_PAGES || 20), initialCursor: checkpoint.registry?.nextCursor || null, initialServers: checkpoint.registry?.servers || [], initialPages: checkpoint.registry?.pages || [], onPage: async ({ page, cursor, nextCursor, count, servers, pages, complete }) => { checkpoint.registry = { page, cursor, nextCursor, count, servers, pages, complete }; await saveCheckpoint(checkpointPath, checkpoint); } });
   registryReport = { source: MCP_REGISTRY_SOURCE.id, pages: registry.pages, results: registry.servers.length, complete: registry.complete, errors: registry.errors };
   checkpoint.registryReport = registryReport;
@@ -219,12 +236,16 @@ if (scanEnabled) {
 }
 
 const generatedAt = new Date().toISOString();
-const candidateList = [...repositories.values()].map(({ scan, ...candidate }) => ({ ...candidate })).sort((a, b) => (b.stars ?? -1) - (a.stars ?? -1) || String(a.fullName).localeCompare(String(b.fullName)));
+const candidateList = [...repositories.values()].map(({ scan, discoveredArtifacts, ...candidate }) => ({ ...candidate })).sort((a, b) => (b.stars ?? -1) - (a.stars ?? -1) || String(a.fullName).localeCompare(String(b.fullName)));
 const repositoryIndex = new Map(candidateList.map((repository) => [String(repository.fullName).toLowerCase(), repository]));
-const accumulatedArtifacts = Object.values(checkpoint.repositories).flatMap((stored) => (stored.scan?.artifacts || []).map((artifact) => {
+const accumulatedArtifactMap = new Map();
+for (const stored of Object.values(checkpoint.repositories)) {
   const repository = repositoryIndex.get(String(stored.fullName).toLowerCase()) || stored;
-  return { ...artifact, repository: stored.fullName, repositoryUrl: repository.url, defaultBranch: repository.defaultBranch, stars: repository.stars, discoveredBy: repository.discoveredBy, sourceKinds: repository.sourceKinds };
-}));
+  const enrich = (artifact) => ({ ...artifact, repository: stored.fullName, repositoryUrl: repository.url, defaultBranch: repository.defaultBranch, stars: repository.stars, discoveredBy: repository.discoveredBy, sourceKinds: repository.sourceKinds });
+  for (const artifact of stored.discoveredArtifacts || []) accumulatedArtifactMap.set(artifact.id, enrich(artifact));
+  for (const artifact of stored.scan?.artifacts || []) accumulatedArtifactMap.set(artifact.id, enrich(artifact));
+}
+const accumulatedArtifacts = [...accumulatedArtifactMap.values()];
 const isRateLimitedScan = (scan) => scan?.status === 'rate-limited' || ((scan?.errors || []).length > 0 && scan.errors.every((error) => /^GitHub API (?:403|429)$/.test(error)));
 const persistedScanFailures = allRepositories
   .filter((candidate) => {
@@ -268,10 +289,10 @@ const coverage = {
   repositoriesDiscovered: candidateList.length,
   repositoriesSelected: scanEnabled ? scanList.length : 0,
   repositoriesScanned: scanEnabled ? scanAttemptsThisRun : 0,
-  repositoriesNotScanned: scanEnabled ? repositoriesNotScanned : candidateList.length,
-  scanOffset: scanEnabled ? checkpoint.scanOffset : 0,
-  repositoriesScannedTotal: scanEnabled ? checkpoint.scanOffset : 0,
-  cycleComplete: scanEnabled ? checkpoint.cycleComplete : false,
+  repositoriesNotScanned,
+  scanOffset: checkpoint.scanOffset,
+  repositoriesScannedTotal: checkpoint.scanOffset,
+  cycleComplete: checkpoint.cycleComplete,
   persistedScanFailures,
   terminalUnavailableRepositories,
   rateLimitedRepositories,
@@ -279,7 +300,7 @@ const coverage = {
   artifactsDiscovered: accumulatedArtifacts.length,
   errors: unresolvedErrors.length,
   scanDisabled: !scanEnabled,
-  complete: !selectedSources && !process.env.DISCOVERY_SKIP_REGISTRY && scanEnabled && checkpoint.cycleComplete && sourcesRemaining === 0 && repositoriesNotScanned === 0 && persistedScanFailures.length === 0 && allSourceReportsReady && registryReport.complete
+  complete: scanEnabled && checkpoint.cycleComplete && sourcesRemaining === 0 && repositoriesNotScanned === 0 && persistedScanFailures.length === 0 && allSourceReportsReady && registryReport.complete
 };
 const payload = normalizeDiscovery({ schemaVersion: '1.1.0', generatedAt, coverage, repositories: candidateList, artifacts: accumulatedArtifacts, errors: unresolvedErrors });
 await fs.mkdir(outputDir, { recursive: true });

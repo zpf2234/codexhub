@@ -100,7 +100,11 @@ export class GithubClient {
       if (!result.ok) { errors.push({ query, page, error: result.error, status: result.status }); break; }
       for (const item of result.data.items || []) {
         const repository = item.repository;
-        if (repository?.full_name) repositories.set(repository.full_name.toLowerCase(), repository);
+        if (!repository?.full_name) continue;
+        const key = repository.full_name.toLowerCase();
+        const stored = repositories.get(key) || { ...repository, codeMatches: [] };
+        if (item.path && !stored.codeMatches.some((match) => match.path === item.path)) stored.codeMatches.push({ path: item.path, htmlUrl: item.html_url || null });
+        repositories.set(key, stored);
       }
     }
     return { source, items: [...repositories.values()], total, pages, errors, truncated: total > 1000 || Boolean(first.data.incomplete_results) || errors.length > 0, rate: this.lastRate };

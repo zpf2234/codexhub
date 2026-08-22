@@ -1,8 +1,8 @@
 const params = new URLSearchParams(location.search);
-const state = { data: null, query: params.get('q') || '', category: params.get('category') || 'all', verification: params.get('verification') || 'all', view: params.get('view') || 'artifacts', sort: params.get('sort') || 'repository', visible: 60 };
-const categories = ['all', 'skill', 'plugin', 'mcp', 'marketplace', 'hook', 'config', 'agent-config', 'rule', 'prompt', 'plugin-metadata', 'agents', 'action', 'other'];
-const labels = { all: 'All artifacts', skill: 'Skills', plugin: 'Plugins', mcp: 'MCP', marketplace: 'Marketplaces', hook: 'Hooks', config: 'Codex config', 'agent-config': 'Custom agents', rule: 'Execpolicy rules', prompt: 'Custom prompts', 'plugin-metadata': 'Plugin metadata', agents: 'Agent guidance', action: 'Actions', other: 'Other' };
-const artifactTypeLabels = { 'mcp-app': 'MCP app mapping', mcp: 'MCP configuration', 'mcp-registry': 'MCP Registry', 'codex-config': 'Codex configuration', 'agent-config': 'Custom agent', rule: 'Execpolicy rule', 'action-prompt': 'Codex Action prompt', 'custom-prompt': 'Custom prompt' };
+const state = { data: null, loading: true, query: params.get('q') || '', category: params.get('category') || 'all', verification: params.get('verification') || 'all', view: params.get('view') || 'artifacts', sort: params.get('sort') || 'repository', visible: 60 };
+const categories = ['all', 'skill', 'skill-metadata', 'plugin', 'mcp', 'marketplace', 'hook', 'config', 'agent-config', 'rule', 'prompt', 'agents', 'action', 'other'];
+const labels = { all: 'All artifacts', skill: 'Skills', 'skill-metadata': 'Skill metadata', plugin: 'Plugins', mcp: 'MCP', marketplace: 'Marketplaces', hook: 'Hooks', config: 'Codex config', 'agent-config': 'Custom agents', rule: 'Execpolicy rules', prompt: 'Custom prompts', agents: 'Agent guidance', action: 'Actions', other: 'Other' };
+const artifactTypeLabels = { 'skill-metadata': 'Skill metadata', 'mcp-app': 'MCP app mapping', 'mcp-server-manifest': 'MCP server manifest', mcp: 'MCP configuration', 'mcp-registry': 'MCP Registry', 'mcp-config-entry': 'Configured MCP server', 'hook-config-entry': 'Configured hook event', 'agent-role-entry': 'Configured agent role', 'skill-config-entry': 'Skill configuration', 'codex-config': 'Codex configuration', 'agent-config': 'Custom agent', rule: 'Execpolicy rule', 'action-prompt': 'Codex Action prompt', 'custom-prompt': 'Custom prompt' };
 const statusLabels = { verified: 'Verified', discovered: 'Deferred', registry: 'Registry', unknown: 'Unknown' };
 const el = (tag, className, text) => { const node = document.createElement(tag); if (className) node.className = className; if (text != null) node.textContent = text; return node; };
 const safeUrl = (value) => { try { const url = new URL(value); return ['http:', 'https:'].includes(url.protocol) ? url.href : '#'; } catch { return '#'; } };
@@ -151,13 +151,16 @@ function render() {
   const loadMore = document.querySelector('#discovery-load-more');
   loadMore.hidden = visible.length >= items.length;
   loadMore.textContent = `Load ${formatNumber(Math.min(60, items.length - visible.length))} more`;
-  document.querySelector('#discovery-empty').hidden = items.length !== 0;
+  document.querySelector('#discovery-empty').hidden = state.loading || items.length !== 0;
 }
 
 async function start() {
-  const response = await fetch('./api/v1/discovery/dashboard.json');
-  if (!response.ok) throw new Error('Discovery snapshot unavailable');
-  state.data = await response.json();
+  const [metaResponse, repositoriesResponse] = await Promise.all([fetch('./api/v1/discovery/dashboard-meta.json'), fetch('./api/v1/discovery/dashboard-repositories.json')]);
+  if (!metaResponse.ok || !repositoriesResponse.ok) throw new Error('Discovery snapshot unavailable');
+  const meta = await metaResponse.json();
+  const repositories = await repositoriesResponse.json();
+  const shardCount = Number(meta.artifactShardCount || 0);
+  state.data = { ...meta, repositories: repositories.repositories || [], artifacts: [] };
   const repositoryIndex = new Map(state.data.repositories.map((repository) => [String(repository.fullName).toLowerCase(), repository]));
   state.data.artifacts = state.data.artifacts.map((artifact) => {
     const repository = repositoryIndex.get(String(artifact.repository || '').toLowerCase());
@@ -169,6 +172,21 @@ async function start() {
   const sort = document.querySelector('#discovery-sort'); sort.value = state.sort; sort.onchange = () => { state.sort = sort.value; state.visible = 60; render(); };
   const verification = document.querySelector('#verification-filter'); verification.value = state.verification; verification.onchange = () => { state.verification = verification.value; state.visible = 60; render(); };
   document.querySelector('#discovery-load-more').onclick = () => { state.visible += 60; render(); };
+  render();
+  const loadShard = async (index) => {
+    const response = await fetch(`./api/v1/discovery/artifacts-${String(index).padStart(4, '0')}.json`);
+    if (!response.ok) throw new Error(`Discovery artifact shard ${index} unavailable`);
+    state.data.artifacts.push(...((await response.json()).artifacts || []));
+    state.loading = index < shardCount;
+    renderCoverage();
+    render();
+  };
+  if (shardCount > 0) {
+    await loadShard(1);
+    const remaining = Array.from({ length: Math.max(0, shardCount - 1) }, (_, offset) => offset + 2);
+    for (let offset = 0; offset < remaining.length; offset += 2) await Promise.all(remaining.slice(offset, offset + 2).map(loadShard));
+  }
+  state.loading = false;
   render();
 }
 

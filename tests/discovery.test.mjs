@@ -133,11 +133,12 @@ test('GitHub code search paginates and collapses multiple files from one reposit
     const parsed = new URL(url);
     assert.equal(parsed.pathname, '/search/code');
     const page = Number(parsed.searchParams.get('page'));
-    return response({ total_count: 2, incomplete_results: false, items: page === 1 ? [{ repository: { full_name: 'a/repo', name: 'repo', owner: { login: 'a' }, html_url: 'https://github.com/a/repo' } }, { repository: { full_name: 'a/repo', name: 'repo', owner: { login: 'a' }, html_url: 'https://github.com/a/repo' } }] : [] });
+    return response({ total_count: 2, incomplete_results: false, items: page === 1 ? [{ path: 'one/SKILL.md', repository: { full_name: 'a/repo', name: 'repo', owner: { login: 'a' }, html_url: 'https://github.com/a/repo' } }, { path: 'two/SKILL.md', repository: { full_name: 'a/repo', name: 'repo', owner: { login: 'a' }, html_url: 'https://github.com/a/repo' } }] : [] });
   };
   const result = await new GithubClient({ fetchImpl }).collectCodeQuery('filename:SKILL.md', { id: 'code', kind: 'skill' }, { perPage: 1 });
   assert.equal(result.total, 2);
   assert.equal(result.items.length, 1);
+  assert.deepEqual(result.items[0].codeMatches.map((match) => match.path), ['one/SKILL.md', 'two/SKILL.md']);
   assert.equal(result.truncated, false);
 });
 
@@ -157,15 +158,16 @@ test('MCP Registry follows cursors and deduplicates versions', async () => {
 test('repository tree scan discovers and validates multiple artifact types without executing code', async () => {
   const files = {
     'https://api.github.com/repos/a/b': { default_branch: 'main', archived: false, stargazers_count: 1, forks: 0, license: { spdx_id: 'MIT' } },
-    'https://api.github.com/repos/a/b/git/trees/main?recursive=1': { tree: [{ type: 'blob', path: 'one/SKILL.md' }, { type: 'blob', path: '.codex-plugin/plugin.json' }, { type: 'blob', path: '.mcp.json' }, { type: 'blob', path: 'mcp.json' }, { type: 'blob', path: 'AGENTS.md' }] },
+    'https://api.github.com/repos/a/b/git/trees/main?recursive=1': { tree: [{ type: 'blob', path: 'one/SKILL.md' }, { type: 'blob', path: '.codex-plugin/plugin.json' }, { type: 'blob', path: '.mcp.json' }, { type: 'blob', path: 'mcp.json' }, { type: 'blob', path: 'server.json' }, { type: 'blob', path: 'AGENTS.md' }] },
     'https://api.github.com/repos/a/b/contents/one/SKILL.md?ref=main': { content: Buffer.from('---\nname: demo\ndescription: useful\n---\n').toString('base64') },
     'https://api.github.com/repos/a/b/contents/.codex-plugin/plugin.json?ref=main': { content: Buffer.from('{"name":"demo","version":"1.0.0","description":"useful"}').toString('base64') },
     'https://api.github.com/repos/a/b/contents/mcp.json?ref=main': { content: Buffer.from('{"name":"demo"}').toString('base64') },
     'https://api.github.com/repos/a/b/contents/.mcp.json?ref=main': { content: Buffer.from('{"demo":{"command":"demo"}}').toString('base64') },
+    'https://api.github.com/repos/a/b/contents/server.json?ref=main': { content: Buffer.from('{"name":"io.github/demo","description":"server","version":"1.0.0"}').toString('base64') },
     'https://api.github.com/repos/a/b/contents/AGENTS.md?ref=main': { content: Buffer.from('rules').toString('base64') }
   };
   const result = await scanRepository({ fullName: 'a/b', owner: 'a', name: 'b', defaultBranch: 'main', license: 'MIT' }, { fetchImpl: async (url) => response(files[url]) });
-  assert.deepEqual(result.artifacts.map((artifact) => artifact.type).sort(), ['agents', 'mcp', 'mcp', 'plugin', 'skill']);
+  assert.deepEqual(result.artifacts.map((artifact) => artifact.type).sort(), ['agents', 'mcp', 'mcp', 'mcp-server-manifest', 'plugin', 'skill']);
   assert.ok(result.artifacts.every((artifact) => artifact.status === 'verified'));
 });
 
@@ -384,7 +386,11 @@ test('artifact classifier recognizes Codex component paths', () => {
   assert.equal(classifyPath('.agents.md').category, 'agents');
   assert.equal(classifyPath('.agents/plugins/marketplace.json').category, 'marketplace');
   assert.equal(classifyPath('hooks/hooks.json').category, 'hook');
-  assert.equal(classifyPath('agents/openai.yaml').category, 'plugin-metadata');
+  assert.equal(classifyPath('agents/openai.yaml').category, 'skill-metadata');
+  assert.equal(classifyPath('server.json').type, 'mcp-server-manifest');
+  assert.equal(classifyPath('random/server.json').type, 'mcp-server-manifest');
+  assert.equal(classifyPath('prompts/generic.md').category, 'other');
+  assert.equal(classifyPath('.codex/prompts/release.md').category, 'prompt');
   assert.equal(classifyPath('AGENTS.md').category, 'agents');
   assert.equal(classifyPath('action.yml').category, 'action');
 });
@@ -402,10 +408,12 @@ test('local inventory finds and classifies Codex component paths without executi
 
   const codexHome = await fs.mkdtemp(path.join(os.tmpdir(), 'codexhub-home-'));
   await fs.mkdir(path.join(codexHome, 'rules'), { recursive: true });
-  await fs.writeFile(path.join(codexHome, 'config.toml'), '[mcp_servers.demo]\n');
+  await fs.writeFile(path.join(codexHome, 'config.toml'), '[mcp_servers.demo]\nurl = "https://example.com/mcp"\n[hooks]\nSessionStart = []\n[agents.reviewer]\ndescription = "review"\n[[skills.config]]\npath = "/tmp/demo/SKILL.md"\nenabled = false\n');
   await fs.writeFile(path.join(codexHome, 'rules', 'default.rules'), 'prefix_rule(pattern=["git"], decision="allow")\n');
   const homeResult = await discoverLocalComponents({ roots: [{ id: 'codex-home', root: codexHome, include: ['config.toml', 'rules'] }], now: '2026-01-01T00:00:00.000Z' });
-  assert.deepEqual(homeResult.artifacts.map((artifact) => artifact.category).sort(), ['config', 'rule']);
+  assert.deepEqual(homeResult.artifacts.map((artifact) => artifact.category).sort(), ['agent-config', 'config', 'hook', 'mcp', 'rule', 'skill']);
+  assert.ok(homeResult.artifacts.some((artifact) => artifact.artifactType === 'mcp-config-entry' && artifact.name === 'demo'));
+  assert.ok(homeResult.artifacts.every((artifact) => !String(artifact.description || '').includes('https://example.com/mcp')));
 
   await fs.mkdir(path.join(codexHome, 'prompts'), { recursive: true });
   await fs.mkdir(path.join(codexHome, 'agents'), { recursive: true });

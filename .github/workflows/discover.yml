@@ -3,6 +3,7 @@ name: Discover candidates
 on:
   schedule:
     - cron: "17 * * * *"
+    - cron: "47 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -23,17 +24,26 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run discover
+      - name: Advance search sources and Registry
+        if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '17 * * * *' }}
+        run: npm run discover -- --no-scan
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DISCOVERY_MAX_REPOSITORIES: 1000
-          DISCOVERY_MAX_ARTIFACTS_PER_REPOSITORY: 0
           GITHUB_DISCOVERY_TIMEOUT_MS: 10000
           GITHUB_DISCOVERY_RETRIES: 2
           GITHUB_DISCOVERY_MAX_SEGMENTS_PER_RUN: 8
           MCP_REGISTRY_MAX_PAGES: 25
           MCP_REGISTRY_TIMEOUT_MS: 8000
           DISCOVERY_MAX_SOURCES_PER_RUN: 2
+      - name: Scan repository trees
+        if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '47 * * * *' }}
+        run: npm run discover -- --scan-only
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DISCOVERY_MAX_REPOSITORIES: 1000
+          DISCOVERY_MAX_ARTIFACTS_PER_REPOSITORY: 0
+          GITHUB_DISCOVERY_TIMEOUT_MS: 10000
+          GITHUB_DISCOVERY_RETRIES: 2
           DISCOVERY_SCAN_CONCURRENCY: 8
       - run: npm run build:cached
       - name: Commit discovery dataset

@@ -1,9 +1,10 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
+import { parse as parseToml } from 'smol-toml';
 import { classifyPath } from './model.mjs';
 
-const TARGET_FILE = /(?:^|\/)(?:SKILL\.md|plugin\.json|marketplace\.json|\.mcp\.json|mcp\.json|\.app\.json|hooks\.json|config\.toml|requirements\.toml|AGENTS(?:\.override)?\.md|TEAM_GUIDE\.md|\.agents\.md|openai\.ya?ml|[^/]+\.rules|action\.ya?ml|prompts\/[^/]+\.md|agents\/[^/]+\.toml)$/i;
+const TARGET_FILE = /(?:^|\/)(?:SKILL\.md|plugin\.json|marketplace\.json|\.mcp\.json|mcp(?:-server)?\.(?:json|ya?ml|toml)|server\.json|\.app\.json|hooks\.json|config\.toml|requirements\.toml|AGENTS(?:\.override)?\.md|TEAM_GUIDE\.md|\.agents\.md|openai\.ya?ml|[^/]+\.rules|action\.ya?ml|prompts\/[^/]+\.md|agents\/[^/]+\.toml)$/i;
 const SKIP_DIRS = new Set(['sessions', 'archived_sessions', 'logs', 'sqlite', 'attachments', 'generated_images', 'visualizations', 'mcp-oauth-locks', 'node_modules']);
 const ALLOWED_HIDDEN_DIRS = new Set(['.agents', '.codex', '.codex-plugin', '.agent-plugin', '.claude-plugin']);
 
@@ -14,11 +15,14 @@ function homeDirectory() {
 function defaultRoots() {
   const home = homeDirectory();
   const codexHome = process.env.CODEX_HOME || path.join(home, '.codex');
-  return [
+  const adminHome = process.env.CODEX_ADMIN_ROOT || (process.platform === 'win32' ? path.join(process.env.ProgramData || 'C:\\ProgramData', 'codex') : '/etc/codex');
+  const roots = [
     { id: 'codex-home', root: codexHome, include: ['skills', 'plugins', '.tmp/plugins', 'AGENTS.md', 'AGENTS.override.md', 'config.toml', 'requirements.toml', 'hooks.json', 'hooks', 'rules', 'prompts', 'agents'] },
     { id: 'agents-home', root: path.join(home, '.agents'), include: ['skills', 'plugins'] },
-    { id: 'project', root: process.cwd(), include: ['.agents', '.codex', 'AGENTS.md', 'AGENTS.override.md', 'TEAM_GUIDE.md', '.agents.md'] }
+    { id: 'project', root: process.cwd(), include: ['.agents', '.codex', '.codex-plugin', '.agent-plugin', '.claude-plugin', 'skills', 'hooks', '.mcp.json', '.app.json', 'AGENTS.md', 'AGENTS.override.md', 'TEAM_GUIDE.md', '.agents.md'] }
   ];
+  roots.push({ id: 'codex-admin', root: adminHome, include: ['skills', 'config.toml', 'requirements.toml', 'hooks.json', 'hooks', 'rules', 'agents'] });
+  return roots;
 }
 
 function configuredRoots() {
@@ -39,8 +43,13 @@ function classifyLocalPath(relative, sourceId) {
 
 async function collectFiles(root, include) {
   const files = [];
+  const visited = new Set();
   const requested = include.flatMap((entry) => entry === '.' ? [root] : [path.join(root, entry)]);
   const visit = async (current) => {
+    let realCurrent;
+    try { realCurrent = await fs.realpath(current); } catch { return; }
+    if (visited.has(realCurrent)) return;
+    visited.add(realCurrent);
     let entries;
     try { entries = await fs.readdir(current, { withFileTypes: true }); } catch { return; }
     for (const entry of entries) {
@@ -48,9 +57,11 @@ async function collectFiles(root, include) {
         if (entry.isDirectory()) continue;
       }
       const full = path.join(current, entry.name);
-      if (entry.isDirectory()) {
+      let stat;
+      try { stat = await fs.stat(full); } catch { continue; }
+      if (stat.isDirectory()) {
         if (!SKIP_DIRS.has(entry.name)) await visit(full);
-      } else if (entry.isFile() && TARGET_FILE.test(relativeArtifactPath(root, full))) {
+      } else if (stat.isFile() && TARGET_FILE.test(relativeArtifactPath(root, full))) {
         files.push(full);
       }
     }
@@ -63,6 +74,39 @@ async function collectFiles(root, include) {
     } catch {}
   }
   return files;
+}
+
+async function configuredComponents(file, relative, sourceId, repository) {
+  if (classifyLocalPath(relative, sourceId).type !== 'codex-config') return [];
+  let config;
+  try { config = parseToml(await fs.readFile(file, 'utf8')); } catch { return []; }
+  const artifacts = [];
+  const add = (category, artifactType, name, section, description) => artifacts.push({
+    id: `local:${sourceId}#${relative}#${section}`,
+    category,
+    artifactType,
+    categoryLabel: description,
+    type: artifactType,
+    path: `${relative}#${section}`,
+    name,
+    description,
+    status: 'discovered',
+    verification: 'configured',
+    source: 'local-filesystem',
+    repository,
+    repositoryUrl: null,
+    note: 'Configuration structure only; credential values are not retained or displayed.'
+  });
+  for (const name of Object.keys(config.mcp_servers || {})) add('mcp', 'mcp-config-entry', name, `mcp_servers.${name}`, 'Configured MCP server');
+  for (const event of Object.keys(config.hooks || {})) add('hook', 'hook-config-entry', event, `hooks.${event}`, 'Configured hook event');
+  for (const [name, value] of Object.entries(config.agents || {})) {
+    if (value && typeof value === 'object' && !Array.isArray(value)) add('agent-config', 'agent-role-entry', name, `agents.${name}`, 'Configured agent role');
+  }
+  for (const [index, value] of (config.skills?.config || []).entries()) {
+    const name = typeof value?.path === 'string' ? path.basename(path.dirname(value.path)) || path.basename(value.path) : `skill-${index + 1}`;
+    add('skill', 'skill-config-entry', name, `skills.config.${index + 1}`, 'Configured skill override');
+  }
+  return artifacts;
 }
 
 export async function discoverLocalComponents({ roots = configuredRoots(), now = new Date().toISOString() } = {}) {
@@ -82,8 +126,13 @@ export async function discoverLocalComponents({ roots = configuredRoots(), now =
       if (seen.has(id)) continue;
       seen.add(id);
       artifacts.push({ id, category: classification.category, artifactType: classification.type, categoryLabel: classification.label, type: classification.type, path: relative, status: 'discovered', verification: 'deferred', source: 'local-filesystem', repository, repositoryUrl: null, note: 'Local path inventory only; content is not executed or uploaded.' });
+      for (const configured of await configuredComponents(file, relative, source.id, repository)) {
+        if (!seen.has(configured.id)) { seen.add(configured.id); artifacts.push(configured); }
+      }
       const repositoryRecord = repositories.at(-1);
-      if (!repositoryRecord.categories.includes(classification.category)) repositoryRecord.categories.push(classification.category);
+      for (const category of artifacts.filter((artifact) => artifact.repository === repository).map((artifact) => artifact.category)) {
+        if (!repositoryRecord.categories.includes(category)) repositoryRecord.categories.push(category);
+      }
     }
   }
   return { schemaVersion: '1.0.0', generatedAt: now, source: 'local-filesystem', roots: roots.map(({ id, root }) => ({ id, root: path.resolve(root) })), repositories, artifacts, coverage: { generatedAt: now, roots: roots.length, artifacts: artifacts.length } };

@@ -13,7 +13,7 @@ function validate(type, content, filePath) {
     const description = frontmatter.match(/^description:\s*["']?([^\n"']+)/m)?.[1]?.trim();
     return { valid: Boolean(match && name && description), note: 'Requires YAML frontmatter with name and description.', metadata: { name, description } };
   }
-  if (['plugin', 'mcp', 'marketplace', 'hook'].includes(type) && filePath.toLowerCase().endsWith('.json')) {
+  if (['plugin', 'mcp', 'mcp-server-manifest', 'marketplace', 'hook'].includes(type) && filePath.toLowerCase().endsWith('.json')) {
     try {
       const value = JSON.parse(content);
       if (type === 'plugin') return { valid: Boolean(value.name && value.version && value.description), note: 'Requires name, version, and description.', metadata: { name: value.name, version: value.version, description: value.description, bundles: ['skills', 'mcpServers', 'apps', 'hooks'].filter((key) => value[key]) } };
@@ -103,7 +103,7 @@ export async function scanRepository(candidate, { fetchImpl = globalThis.fetch, 
     }
     const content = await request(`${base}/contents/${file.path.split('/').map(encodeURIComponent).join('/')}?ref=${encodeURIComponent(branch)}`);
     if (!content.ok || !content.data?.content) {
-      artifacts.push({ id: artifactId(candidate.fullName, file.path), type, category: classification.category, categoryLabel: classification.label, path: file.path, status: 'unknown', verification: 'unavailable', note: content.error || 'Content unavailable.' });
+      artifacts.push({ id: artifactId(candidate.fullName, file.path), type, category: classification.category, categoryLabel: classification.label, path: file.path, status: 'unknown', verification: 'unavailable', note: content.error || 'Content unavailable.', source: 'github-tree' });
       continue;
     }
     const decoded = Buffer.from(content.data.content.replace(/\s/g, ''), 'base64').toString('utf8');

@@ -1,8 +1,8 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { ROOT, readEntries, fetchMetadata, scoreEntry } from './lib.mjs';
-import { createDashboardSnapshot, normalizeDiscovery } from './discovery/model.mjs';
-import { readArtifactShards } from './discovery/artifact-shards.mjs';
+import { createDashboardRepositories, normalizeDiscovery } from './discovery/model.mjs';
+import { readArtifactShards, writeArtifactShards } from './discovery/artifact-shards.mjs';
 
 const offline = process.argv.includes('--offline');
 const cachedOnly = process.argv.includes('--cached');
@@ -61,13 +61,13 @@ try {
     const merged = normalizeDiscovery(discovery);
     Object.assign(discovery, merged, { coverage: { ...merged.coverage, local: local.coverage || { artifacts: local.artifacts?.length || 0 } } });
   } catch {}
-  const dashboard = createDashboardSnapshot(discovery);
   await fs.writeFile(path.join(publicDiscoveryDir, 'discovery.json'), JSON.stringify(discovery) + '\n');
   await fs.writeFile(path.join(publicDiscoveryDir, 'repositories.json'), JSON.stringify({ generatedAt: discovery.generatedAt, repositories: discovery.repositories }) + '\n');
-  await fs.writeFile(path.join(publicDiscoveryDir, 'artifacts.json'), JSON.stringify({ generatedAt: discovery.generatedAt, artifacts: discovery.artifacts }) + '\n');
+  const artifactShardNames = await writeArtifactShards(publicDiscoveryDir, { generatedAt: discovery.generatedAt, artifacts: discovery.artifacts });
   await fs.writeFile(path.join(publicDiscoveryDir, 'coverage.json'), JSON.stringify(discovery.coverage, null, 2) + '\n');
   await fs.writeFile(path.join(publicDiscoveryDir, 'errors.json'), JSON.stringify({ generatedAt: discovery.generatedAt, errors: discovery.errors || [] }, null, 2) + '\n');
-  await fs.writeFile(path.join(publicDiscoveryDir, 'dashboard.json'), JSON.stringify(dashboard) + '\n');
+  await fs.writeFile(path.join(publicDiscoveryDir, 'dashboard-meta.json'), JSON.stringify({ schemaVersion: discovery.schemaVersion, generatedAt: discovery.generatedAt, artifactShardCount: artifactShardNames.length, coverage: discovery.coverage, errors: discovery.errors || [] }) + '\n');
+  await fs.writeFile(path.join(publicDiscoveryDir, 'dashboard-repositories.json'), JSON.stringify({ generatedAt: discovery.generatedAt, repositories: createDashboardRepositories(discovery.repositories) }) + '\n');
   await fs.copyFile(path.join(ROOT, 'schemas', 'discovery.schema.json'), path.join(publicDiscoveryDir, 'schema.json'));
 } catch {
   // Discovery is an independent, optionally scheduled dataset.

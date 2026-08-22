@@ -10,14 +10,14 @@
   <body>
     <header class="site-header">
       <a class="brand" href="./"><span class="brand-mark">CH</span><span>CodexHub</span></a>
-      <nav><a href="./">Reviewed catalog</a><a class="active-link" href="./discovery.html">Discovery</a><a href="./api/v1/discovery/discovery.json">JSON API</a></nav>
+      <nav><a href="./">Reviewed catalog</a><a class="active-link" href="./discovery.html">Discovery</a><a href="./api/v1/discovery/coverage.json">Coverage API</a></nav>
     </header>
     <main>
       <section class="discovery-hero">
         <div>
           <p class="eyebrow">Local-first ecosystem crawler</p>
           <h1>See what Codex can load.</h1>
-          <p class="lede">Explore discovered Skills, Plugins, MCP servers, marketplaces, hooks, AGENTS.md guidance, and Actions. Candidate discovery is separate from the reviewed quality ranking.</p>
+          <p class="lede">Explore discovered Skills, Skill metadata, Plugins, MCP servers, marketplaces, hooks, AGENTS.md guidance, and Actions. Candidate discovery is separate from the reviewed quality ranking.</p>
         </div>
         <aside id="coverage-card" class="coverage-card" aria-live="polite"><p>Loading discovery snapshot…</p></aside>
       </section>
@@ -47,7 +47,7 @@
 
       <section class="method discovery-method">
         <div><p class="eyebrow">Coverage contract</p><h2>Complete means auditable.</h2></div>
-        <div class="method-grid"><p><strong>Discovery</strong> records every matching path returned by complete repository trees, even when content verification is deferred.</p><p><strong>Classification</strong> separates Skills, Plugins, MCP, marketplaces, hooks, plugin metadata, AGENTS.md, and Actions.</p><p><strong>Coverage</strong> exhaustively partitions declared repository sources and the official MCP Registry; global Code Search is a supplemental API-capped sample.</p></div>
+        <div class="method-grid"><p><strong>Discovery</strong> records exact Code Search matches immediately, then enriches them with complete repository trees as API quota permits.</p><p><strong>Classification</strong> separates Skills, Skill metadata, Plugins, MCP, marketplaces, hooks, config, agents, rules, prompts, AGENTS.md, and Actions.</p><p><strong>Coverage</strong> exhaustively partitions declared repository sources and the official MCP Registry; global Code Search is a supplemental API-capped sample.</p></div>
       </section>
       <section class="source-coverage" aria-labelledby="source-coverage-title">
         <div class="section-title"><div><p class="eyebrow">Source diagnostics</p><h2 id="source-coverage-title">Crawler coverage</h2></div><p id="coverage-source-count"></p></div>

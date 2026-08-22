@@ -45,7 +45,8 @@ test('compares two projects side by side', async ({ page }) => {
 });
 
 test('discovery dashboard loads, filters artifacts, and switches to repositories', async ({ page }) => {
-  const discovery = await (await page.request.get('/api/v1/discovery/dashboard.json')).json();
+  const discovery = await (await page.request.get('/api/v1/discovery/dashboard-meta.json')).json();
+  expect(discovery.artifactShardCount).toBeGreaterThan(0);
   await page.goto('/discovery.html');
   await expect(page.locator('#discovery-repositories')).toHaveText(new Intl.NumberFormat('en').format(discovery.coverage.repositoriesDiscovered));
   await expect(page.locator('#discovery-results .discovery-card').first()).toBeVisible();

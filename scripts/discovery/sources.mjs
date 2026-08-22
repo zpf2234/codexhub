@@ -24,11 +24,12 @@ export const GITHUB_CODE_SOURCES = [
   { id: 'github-code-codex-rules', kind: 'rule', coverage: 'supplemental', query: 'path:.codex/rules extension:rules' },
   { id: 'github-code-action-prompts', kind: 'prompt', coverage: 'supplemental', query: 'path:.github/codex/prompts extension:md' },
   { id: 'github-code-action-prompt-text', kind: 'prompt', coverage: 'supplemental', query: 'path:.github/codex/prompts extension:txt' },
+  { id: 'github-code-custom-prompts', kind: 'prompt', coverage: 'supplemental', query: 'path:.codex/prompts extension:md' },
   { id: 'github-code-marketplace-agents', kind: 'marketplace', coverage: 'supplemental', query: 'filename:marketplace.json path:.agents/plugins' },
   { id: 'github-code-marketplace-claude', kind: 'marketplace', coverage: 'supplemental', query: 'filename:marketplace.json path:.claude-plugin' },
   { id: 'github-code-hooks', kind: 'hook', coverage: 'supplemental', query: 'filename:hooks.json path:hooks' },
-  { id: 'github-code-plugin-metadata-yaml', kind: 'plugin-metadata', coverage: 'supplemental', query: 'filename:openai.yaml path:agents' },
-  { id: 'github-code-plugin-metadata-yml', kind: 'plugin-metadata', coverage: 'supplemental', query: 'filename:openai.yml path:agents' },
+  { id: 'github-code-plugin-metadata-yaml', kind: 'skill-metadata', coverage: 'supplemental', query: 'filename:openai.yaml path:agents' },
+  { id: 'github-code-plugin-metadata-yml', kind: 'skill-metadata', coverage: 'supplemental', query: 'filename:openai.yml path:agents' },
   { id: 'github-code-agents', kind: 'agents', coverage: 'supplemental', query: 'filename:AGENTS.md' },
   { id: 'github-code-agents-override', kind: 'agents', coverage: 'supplemental', query: 'filename:AGENTS.override.md' },
   { id: 'github-code-team-guide', kind: 'agents', coverage: 'supplemental', query: 'filename:TEAM_GUIDE.md' },
@@ -37,7 +38,8 @@ export const GITHUB_CODE_SOURCES = [
   { id: 'github-code-codex-action-yaml', kind: 'action', coverage: 'supplemental', query: 'filename:action.yaml codex' },
   { id: 'github-code-mcp-yaml', kind: 'mcp', coverage: 'supplemental', query: 'filename:mcp.yaml' },
   { id: 'github-code-mcp-yml', kind: 'mcp', coverage: 'supplemental', query: 'filename:mcp.yml' },
-  { id: 'github-code-mcp-toml', kind: 'mcp', coverage: 'supplemental', query: 'filename:mcp.toml' }
+  { id: 'github-code-mcp-toml', kind: 'mcp', coverage: 'supplemental', query: 'filename:mcp.toml' },
+  { id: 'github-code-mcp-server-json', kind: 'mcp', coverage: 'supplemental', query: 'filename:server.json modelcontextprotocol.io' }
 ];
 
 export const MCP_REGISTRY_SOURCE = {

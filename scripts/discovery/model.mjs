@@ -2,23 +2,25 @@ const PATH_RULES = [
   { category: 'skill', type: 'skill', label: 'Skill', test: (path) => /(?:^|\/)skill\.md$/i.test(path) },
   { category: 'plugin', type: 'plugin', label: 'Plugin manifest', test: (path) => /(?:^|\/)(?:\.codex-plugin|\.agent-plugin|\.claude-plugin)\/plugin\.json$/i.test(path) },
   { category: 'mcp', type: 'mcp-app', label: 'MCP app mapping', test: (path) => /(?:^|\/)\.app\.json$/i.test(path) },
-  { category: 'mcp', type: 'mcp', label: 'MCP configuration', test: (path) => /(?:^|\/)\.mcp\.json$/i.test(path) || /(?:^|\/)(?:mcp|mcp-server|server|servers)\.(?:json|ya?ml|toml)$/i.test(path) },
+  { category: 'mcp', type: 'mcp-server-manifest', label: 'MCP server manifest', test: (path) => /(?:^|\/)server\.json$/i.test(path) },
+  { category: 'mcp', type: 'mcp', label: 'MCP configuration', test: (path) => /(?:^|\/)\.mcp\.json$/i.test(path) || /(?:^|\/)(?:mcp|mcp-server)\.(?:json|ya?ml|toml)$/i.test(path) },
   { category: 'marketplace', type: 'marketplace', label: 'Plugin marketplace', test: (path) => /(?:^|\/)(?:\.agents\/plugins|\.claude-plugin)\/marketplace\.json$/i.test(path) },
   { category: 'hook', type: 'hook', label: 'Codex hook', test: (path) => /(?:^|\/)(?:\.codex\/)?hooks\.json$/i.test(path) || /(?:^|\/)hooks\/[^/]+\.json$/i.test(path) },
   { category: 'config', type: 'codex-config', label: 'Codex configuration', test: (path) => /(?:^|\/)\.codex\/(?:config|requirements)\.toml$/i.test(path) },
   { category: 'agent-config', type: 'agent-config', label: 'Custom agent', test: (path) => /(?:^|\/)\.codex\/agents\/[^/]+\.toml$/i.test(path) },
   { category: 'rule', type: 'rule', label: 'Execpolicy rule', test: (path) => /(?:^|\/)\.codex\/rules\/[^/]+\.rules$/i.test(path) },
   { category: 'prompt', type: 'action-prompt', label: 'Codex Action prompt', test: (path) => /(?:^|\/)\.github\/codex\/prompts\/[^/]+\.(?:md|txt)$/i.test(path) },
-  { category: 'prompt', type: 'custom-prompt', label: 'Custom prompt', test: (path) => /(?:^|\/)(?:\.codex\/)?prompts\/[^/]+\.md$/i.test(path) },
-  { category: 'plugin-metadata', type: 'plugin-metadata', label: 'Plugin metadata', test: (path) => /(?:^|\/)agents\/openai\.ya?ml$/i.test(path) },
+  { category: 'prompt', type: 'custom-prompt', label: 'Custom prompt', test: (path) => /(?:^|\/)\.codex\/prompts\/[^/]+\.md$/i.test(path) },
+  { category: 'skill-metadata', type: 'skill-metadata', label: 'Skill metadata', test: (path) => /(?:^|\/)agents\/openai\.ya?ml$/i.test(path) },
   { category: 'agents', type: 'agents', label: 'Agent guidance', test: (path) => /(?:^|\/)(?:agents|agents\.override|team_guide)\.md$/i.test(path) || /(?:^|\/)\.agents\.md$/i.test(path) },
   { category: 'action', type: 'action', label: 'GitHub Action', test: (path) => /(?:^|\/)action\.ya?ml$/i.test(path) }
 ];
 
-export const CATEGORY_ORDER = ['skill', 'plugin', 'mcp', 'marketplace', 'hook', 'config', 'agent-config', 'rule', 'prompt', 'plugin-metadata', 'agents', 'action', 'other'];
+export const CATEGORY_ORDER = ['skill', 'skill-metadata', 'plugin', 'mcp', 'marketplace', 'hook', 'config', 'agent-config', 'rule', 'prompt', 'agents', 'action', 'other'];
 export const CATEGORY_LABELS = {
   all: 'All artifacts',
   skill: 'Skills',
+  'skill-metadata': 'Skill metadata',
   plugin: 'Plugins',
   mcp: 'MCP',
   marketplace: 'Marketplaces',
@@ -27,7 +29,6 @@ export const CATEGORY_LABELS = {
   'agent-config': 'Custom agents',
   rule: 'Execpolicy rules',
   prompt: 'Codex Action prompts',
-  'plugin-metadata': 'Plugin metadata',
   agents: 'Agent guidance',
   action: 'Actions',
   other: 'Other'
@@ -48,11 +49,12 @@ export function classifyArtifact(artifact = {}) {
 
 function withClassification(artifact) {
   const classification = classifyArtifact(artifact);
-  return { ...artifact, category: classification.category, artifactType: artifact.artifactType || classification.type, categoryLabel: classification.label };
+  return { ...artifact, category: classification.category, artifactType: classification.type, categoryLabel: classification.label };
 }
 
 export function normalizeDiscovery(payload = {}) {
-  const repositories = (payload.repositories || []).map((repository) => ({ ...repository, categories: [...new Set((repository.categories || []).concat(repository.sourceKinds || []))].filter((value) => CATEGORY_LABELS[value]).sort() }));
+  const normalizeCategory = (value) => value === 'plugin-metadata' ? 'skill-metadata' : value;
+  const repositories = (payload.repositories || []).map((repository) => ({ ...repository, sourceKinds: (repository.sourceKinds || []).map(normalizeCategory), categories: [...new Set((repository.categories || []).concat(repository.sourceKinds || []).map(normalizeCategory))].filter((value) => CATEGORY_LABELS[value]).sort() }));
   const artifacts = (payload.artifacts || []).map(withClassification);
   const existing = new Set(artifacts.map((artifact) => artifact.id));
   for (const repository of repositories) {
@@ -90,8 +92,8 @@ export function normalizeDiscovery(payload = {}) {
   return { ...payload, schemaVersion: '1.1.0', repositories, artifacts, coverage };
 }
 
-export function createDashboardSnapshot(discovery) {
-  const repositories = discovery.repositories.map((repository) => ({
+export function createDashboardRepositories(repositories = []) {
+  return repositories.map((repository) => ({
     fullName: repository.fullName,
     name: repository.name,
     url: repository.url,
@@ -104,6 +106,10 @@ export function createDashboardSnapshot(discovery) {
     discoveredBy: repository.discoveredBy,
     reviewed: repository.reviewed === true
   }));
+}
+
+export function createDashboardSnapshot(discovery) {
+  const repositories = createDashboardRepositories(discovery.repositories);
   const artifacts = discovery.artifacts.map((artifact) => ({
     id: artifact.id,
     category: artifact.category,
